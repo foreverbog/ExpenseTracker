@@ -3,7 +3,9 @@ const cors = require("cors");
 require("dotenv").config();
 require("colors");
 const connectDB = require("./dbinit");
+const user = require("./routes/user");
 
+//*middlewares
 const app = express();
 const PORT = process.env.PORT || 8080;
 connectDB();
@@ -14,6 +16,9 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.send("Welcome to Expense Tracker API");
 });
+
+//*Routes:
+app.use("/", user);
 
 app.listen(PORT, () => {
   const boldUrl = `http://localhost:${PORT}`.bold.underline;
