@@ -2,10 +2,11 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 require("colors");
+const connectDB = require("./dbinit");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
-
+connectDB();
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
