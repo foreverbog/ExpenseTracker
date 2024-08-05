@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcrypt");
 
+//Regex for text only
+const isTextOnly = (str) => /^[a-zA-Z]+$/.test(str);
+
 const userSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -12,9 +15,44 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  firstName: {
+    type: String,
+    required: true,
+    minLength: 2,
+  },
+  lastName: {
+    type: String,
+    required: true,
+    minLength: 2,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  expenses: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Expenses",
+    },
+  ],
+  trips: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Trips",
+    },
+  ],
+  currency: {
+    type: String,
+  },
 });
 
-userSchema.statics.signup = async function (email, password, confirmPassword) {
+userSchema.statics.signup = async function (
+  firstName,
+  lastName,
+  email,
+  password,
+  confirmPassword
+) {
   //check if email exists
   const exists = await this.findOne({ email });
 
@@ -23,13 +61,30 @@ userSchema.statics.signup = async function (email, password, confirmPassword) {
   }
 
   //check if all fields are filled in
-  if (!email || !password) {
+  if (!firstName || !lastName || !email || !password || !confirmPassword) {
     throw Error("All fields must be filled in!");
   }
 
   //check if email is valid
   if (!validator.isEmail(email)) {
     throw Error("Invalid email address!");
+  }
+
+  //check first/last name lenght > 2
+  if (firstName.length < 2) {
+    throw Error("First name should contain at least two letters!");
+  }
+  if (lastName.length < 2) {
+    throw Error("Last name should contain at least two letters!");
+  }
+
+  //check if first/last name are text only
+  if (!isTextOnly(firstName)) {
+    throw Error("First name should contain only letters!");
+  }
+
+  if (!isTextOnly(lastName)) {
+    throw Error("Last name should contain only letters!");
   }
 
   //check if password is strong enough
@@ -49,7 +104,12 @@ userSchema.statics.signup = async function (email, password, confirmPassword) {
   const hash = await bcrypt.hash(password, salt);
 
   //create user
-  const user = await this.create({ email, password: hash });
+  const user = await this.create({
+    firstName,
+    lastName,
+    email,
+    password: hash,
+  });
 
   return user;
 };
