@@ -82,7 +82,7 @@ const editUser = async (req, res) => {
     }
 
     //Check to be only text
-    if (!/^[a-zA-Z]+$/.test(firstName) || !/^[a-zA-Z]+$/.test(lastName)) {
+    if (!/^[a-zA-Z\s-]+$/.test(firstName) || !/^[a-zA-Z\s-]+$/.test(lastName)) {
       return res
         .status(400)
         .json({ error: "First and last name should containt only letters!" });

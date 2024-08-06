@@ -3,7 +3,7 @@ const validator = require("validator");
 const bcrypt = require("bcrypt");
 
 //Regex for text only
-const isTextOnly = (str) => /^[a-zA-Z]+$/.test(str);
+const isTextOnly = (str) => /^[a-zA-Z\s-]+$/.test(str);
 
 const userSchema = new mongoose.Schema({
   email: {
