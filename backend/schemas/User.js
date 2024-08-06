@@ -32,13 +32,13 @@ const userSchema = new mongoose.Schema({
   expenses: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Expenses",
+      ref: "Expense",
     },
   ],
   trips: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Trips",
+      ref: "Trip",
     },
   ],
   currency: {
