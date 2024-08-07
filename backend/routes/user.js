@@ -6,6 +6,7 @@ const {
   editUser,
   deleteUser,
   getUserExpenses,
+  getUserExpensesByType,
 } = require("../controllers/userControllers");
 
 const app = express.Router();
@@ -20,5 +21,6 @@ app.put("/:id", editUser);
 app.delete("/:id", deleteUser);
 
 app.get("/:id/expenses", getUserExpenses);
+app.get("/:id/expenses/type", getUserExpensesByType);
 
 module.exports = app;

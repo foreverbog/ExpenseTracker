@@ -128,7 +128,7 @@ const deleteUser = async (req, res) => {
 //* Get user expenses and sort by date/value
 const getUserExpenses = async (req, res) => {
   const { id } = req.params;
-  const { sortBy = "date", order = "asc" } = req.query; // Default to sorting by date in ascending order
+  const { sortBy = "date", order = "desc" } = req.query; // Default to sorting by date in ascending order
 
   try {
     // Validate the sortBy and order parameters
@@ -164,6 +164,31 @@ const getUserExpenses = async (req, res) => {
   }
 };
 
+//* Get user monthly expenses
+const getUserExpensesByType = async (req, res) => {
+  const { id } = req.params;
+  const { type = "monthly" } = req.query;
+
+  if (!["monthly", "yearly"].includes(type)) {
+    return res
+      .status(400)
+      .json({ error: "Invalid type. Use 'monthly' or 'yearly'." });
+  }
+
+  try {
+    const user = await User.findById(id).populate({
+      path: "expenses",
+      match: { type: type },
+      options: {
+        sort: { date: -1 },
+      },
+    });
+    res.status(200).json(user.expenses);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
   signupUser,
   loginUser,
@@ -171,4 +196,5 @@ module.exports = {
   editUser,
   deleteUser,
   getUserExpenses,
+  getUserExpensesByType,
 };
