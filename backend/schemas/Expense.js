@@ -22,7 +22,7 @@ const expenseSchema = new mongoose.Schema({
     required: true,
   },
   type: {
-    type: String, //*monthly/yearly
+    type: String, //*monthly/yearly//trip
   },
 });
 

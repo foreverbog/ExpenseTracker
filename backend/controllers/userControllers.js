@@ -21,7 +21,7 @@ const signupUser = async (req, res) => {
 
     const token = createToken(user._id);
 
-    res.status(200).json({ email, token });
+    res.status(201).json({ email, token });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -49,9 +49,10 @@ const getUser = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const findUser = await User.findById(id).select("-password");
-    // .populate("expenses")
-    // .populate("trips");
+    const findUser = await User.findById(id)
+      .select("-password")
+      .populate("expenses")
+      .populate("trips");
     if (!findUser) {
       return res.status(404).json({ error: "User not found!" });
     }
@@ -124,10 +125,50 @@ const deleteUser = async (req, res) => {
   }
 };
 
+//* Get user expenses and sort by date/value
+const getUserExpenses = async (req, res) => {
+  const { id } = req.params;
+  const { sortBy = "date", order = "asc" } = req.query; // Default to sorting by date in ascending order
+
+  try {
+    // Validate the sortBy and order parameters
+    if (!["date", "value"].includes(sortBy)) {
+      return res
+        .status(400)
+        .json({ error: "Invalid sort field. Use 'date' or 'value'." });
+    }
+    if (!["asc", "desc"].includes(order)) {
+      return res
+        .status(400)
+        .json({ error: "Invalid sort order. Use 'asc' or 'desc'." });
+    }
+
+    // Find the user by ID and populate the expenses field
+    const user = await User.findById(id).populate({
+      path: "expenses",
+      options: {
+        sort: {
+          [sortBy]: order === "asc" ? 1 : -1,
+        },
+      },
+    });
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found!" });
+    }
+
+    // Return only the sorted expenses array
+    res.status(200).json({ expenses: user.expenses });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
   signupUser,
   loginUser,
   getUser,
   editUser,
   deleteUser,
+  getUserExpenses,
 };

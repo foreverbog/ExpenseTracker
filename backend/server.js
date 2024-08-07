@@ -4,6 +4,8 @@ require("dotenv").config();
 require("colors");
 const connectDB = require("./dbinit");
 const user = require("./routes/user");
+const expense = require("./routes/expense");
+const trip = require("./routes/trip");
 
 //*middlewares
 const app = express();
@@ -19,6 +21,8 @@ app.get("/", (req, res) => {
 
 //*Routes:
 app.use("/", user);
+app.use("/", expense);
+app.use("/", trip);
 
 app.listen(PORT, () => {
   const boldUrl = `http://localhost:${PORT}`.bold.underline;

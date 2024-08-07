@@ -17,6 +17,9 @@ const tripSchema = new mongoose.Schema({
     type: Boolean,
     reqiured: true,
   },
+  roundTripCost: {
+    type: Number,
+  },
   startDate: {
     type: Date,
     required: true,
@@ -30,22 +33,8 @@ const tripSchema = new mongoose.Schema({
   },
   expenses: [
     {
-      icon: {
-        type: String,
-        required: true,
-      },
-      name: {
-        type: String,
-        required: true,
-      },
-      date: {
-        type: Date,
-        required: true,
-      },
-      value: {
-        type: Number,
-        required: true,
-      },
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Expense",
     },
   ],
 });

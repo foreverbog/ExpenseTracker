@@ -5,14 +5,20 @@ const {
   getUser,
   editUser,
   deleteUser,
+  getUserExpenses,
 } = require("../controllers/userControllers");
 
 const app = express.Router();
 
 app.post("/signup", signupUser);
 app.post("/login", loginUser);
+
 app.get("/:id", getUser);
+
 app.put("/:id", editUser);
+
 app.delete("/:id", deleteUser);
+
+app.get("/:id/expenses", getUserExpenses);
 
 module.exports = app;
