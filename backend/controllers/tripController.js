@@ -1,5 +1,6 @@
 const Trip = require("../schemas/Trip");
 const User = require("../schemas/User");
+const Expense = require("../schemas/Expense");
 
 //*create Trip
 const createTrip = async (req, res) => {

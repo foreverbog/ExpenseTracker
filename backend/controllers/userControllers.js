@@ -125,31 +125,57 @@ const deleteUser = async (req, res) => {
   }
 };
 
-//* Get user expenses and sort by date/value
-const getUserExpenses = async (req, res) => {
+//* get user expense, sort by type,date,value,year,month
+//? queries:
+//? type= monthly || yearly
+//? sortBy = date || value
+//? order = asc || desc
+//? year = NUMBER , month=NUMBER
+const getUserExpensesSort = async (req, res) => {
   const { id } = req.params;
-  const { sortBy = "date", order = "desc" } = req.query; // Default to sorting by date in ascending order
-
+  const { sortBy = "date", order = "desc", type, month, year } = req.query;
   try {
-    // Validate the sortBy and order parameters
     if (!["date", "value"].includes(sortBy)) {
       return res
         .status(400)
-        .json({ error: "Invalid sort field. Use 'date' or 'value'." });
+        .json({ error: "Invalid sort field. Use 'date' or 'value'. " });
     }
+
     if (!["asc", "desc"].includes(order)) {
       return res
         .status(400)
         .json({ error: "Invalid sort order. Use 'asc' or 'desc'." });
     }
 
-    // Find the user by ID and populate the expenses field
+    if (type && !["monthly", "yearly"].includes(type)) {
+      return res
+        .status(400)
+        .json({ error: "Invalid type. Use 'monthyl' or 'yearly'." });
+    }
+
+    if (year && isNaN(year)) {
+      return res
+        .status(400)
+        .json({ error: "Invalid year. Provide a valid year." });
+    }
+
+    if (month && (isNaN(month) || month < 1 || month > 12)) {
+      return res
+        .status(400)
+        .json({ error: "Invalid month. Provide a month between 1 and 12" });
+    }
+
+    const startDate = new Date(year, month - 1, 1);
+    const endDate = new Date(year, month, 0);
+
     const user = await User.findById(id).populate({
       path: "expenses",
+      match: {
+        ...(type && { type }),
+        date: { $gte: startDate, $lte: endDate },
+      },
       options: {
-        sort: {
-          [sortBy]: order === "asc" ? 1 : -1,
-        },
+        sort: { [sortBy]: order === "asc" ? 1 : -1 },
       },
     });
 
@@ -157,32 +183,6 @@ const getUserExpenses = async (req, res) => {
       return res.status(404).json({ error: "User not found!" });
     }
 
-    // Return only the sorted expenses array
-    res.status(200).json({ expenses: user.expenses });
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
-
-//* Get user monthly expenses
-const getUserExpensesByType = async (req, res) => {
-  const { id } = req.params;
-  const { type = "monthly" } = req.query;
-
-  if (!["monthly", "yearly"].includes(type)) {
-    return res
-      .status(400)
-      .json({ error: "Invalid type. Use 'monthly' or 'yearly'." });
-  }
-
-  try {
-    const user = await User.findById(id).populate({
-      path: "expenses",
-      match: { type: type },
-      options: {
-        sort: { date: -1 },
-      },
-    });
     res.status(200).json(user.expenses);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -195,6 +195,6 @@ module.exports = {
   getUser,
   editUser,
   deleteUser,
-  getUserExpenses,
-  getUserExpensesByType,
+
+  getUserExpensesSort,
 };
