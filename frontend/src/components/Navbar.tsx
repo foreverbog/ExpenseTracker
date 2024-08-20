@@ -1,3 +1,4 @@
+import LanguageSelector from "./LanguageSelector";
 import ThemeSelector from "./ThemeSelector";
 
 const Navbar = () => {
@@ -11,9 +12,7 @@ const Navbar = () => {
         </ul>
         <div className="hidden md:flex items-center gap-2 mr-24">
           <ThemeSelector />
-          <div>
-            <p>EN</p>
-          </div>
+          <LanguageSelector />
           <div className="hidden md:block bg-red-300 rounded-md px-4 py-2">
             Sign Up
           </div>
