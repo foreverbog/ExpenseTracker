@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --color-primary: #f5f5f5;
+}
+
+.theme-light {
+  --color-primary: #f5f5f5;
+  --color-text: green;
+}
+
+.theme-dark {
+  --color-primary: #021526;
+  --color-text: #f5f5f5;
+}
+
+.theme-neon {
+  --color-primary: #eb3678;
+  --color-text: black;
+}
