@@ -4,10 +4,30 @@ import App from "./App.tsx";
 import "./index.css";
 import ThemeContextProvider from "./context/ThemeContext.tsx";
 
+import global_en from "./translations/en/global.json";
+import global_de from "./translations/de/global.json";
+import i18next from "i18next";
+import { I18nextProvider } from "react-i18next";
+
+i18next.init({
+  interpolation: { escapeValue: false },
+  lng: "en",
+  resources: {
+    en: {
+      global: global_en,
+    },
+    de: {
+      global: global_de,
+    },
+  },
+});
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <ThemeContextProvider>
-      <App />
-    </ThemeContextProvider>
+    <I18nextProvider i18n={i18next}>
+      <ThemeContextProvider>
+        <App />
+      </ThemeContextProvider>
+    </I18nextProvider>
   </StrictMode>
 );

@@ -11,7 +11,7 @@ function App() {
     throw new Error("Must be used within a ThemeContextProvider");
   }
 
-  const { theme, themeToggler } = themeContext;
+  const { theme } = themeContext;
   return (
     <div className={`theme-${theme}`}>
       <Navbar />

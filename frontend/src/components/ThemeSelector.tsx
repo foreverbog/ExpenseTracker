@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useContext } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { ThemeContext } from "../context/ThemeContext";
+import { useTranslation } from "react-i18next";
 
 const themes: string[] = ["Light", "Dark", "Neon", "Another"];
 
@@ -24,6 +25,8 @@ const ThemeSelector = ({
   }
 
   const { themeToggler } = themeContext;
+
+  const [t] = useTranslation("global");
   return (
     <div className="relative">
       <div
@@ -35,7 +38,7 @@ const ThemeSelector = ({
           isThemeOpen && "bg-red-300 rounded-t-md "
         }`}
       >
-        <p>Theme</p>
+        <p>{t("nav.theme")}</p>
         <IoMdArrowDropdown
           className={`text-text text-lg mt-1 transition-transform duration-500 ease-in-out ${
             isThemeOpen ? "rotate-180" : ""

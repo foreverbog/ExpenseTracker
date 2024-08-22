@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import LanguageSelector from "./LanguageSelector";
 import ThemeSelector from "./ThemeSelector";
 import { useState } from "react";
@@ -5,14 +6,15 @@ import { useState } from "react";
 const Navbar = () => {
   const [isThemeOpen, setIsThemeOpen] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const [t] = useTranslation("global");
 
   return (
     <>
       <nav className="bg-primary text-text p-4 flex justify-end md:justify-between items-center ">
         <ul className=" hidden md:flex  w-1/2 text-xl gap-16 ml-24">
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
+          <li>{t("nav.home")}</li>
+          <li>{t("nav.about")}</li>
+          <li>{t("nav.contact")}</li>
         </ul>
         <div className="hidden md:flex items-center gap-2 mr-24">
           <ThemeSelector
