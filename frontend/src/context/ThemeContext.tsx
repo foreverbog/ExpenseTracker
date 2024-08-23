@@ -9,7 +9,7 @@ export const ThemeContext = createContext<ThemeContextType | undefined>(
   undefined
 );
 
-const themes: string[] = ["light", "dark", "lofi", "neon"];
+const themes: string[] = ["light", "dark", "retro", "lofi", "neon"];
 
 type ThemeContextProviderProps = {
   children: ReactNode;

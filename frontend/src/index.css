@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -46,6 +48,25 @@
   --color-secondary-text: #fff;
 
   --font-family: ;
+}
+.theme-retro {
+  --color-base: #fbf6e2;
+  --color-base-100: #f6e7b2;
+  --color-base-200: #f1d87d;
+  --color-base-300: ##ecca47;
+  --color-base-text: #000;
+
+  --color-primary: #131842;
+  --color-primary-darker: #1e2759;
+  --color-primary-lighter: #2d3870;
+  --color-primary-text: #fbf6e2;
+
+  --color-secondary: #e68369;
+  --color-secondary-darker: #e3684b;
+  --color-secondary-lighter: #eca493;
+  --color-secondary-text: #000;
+
+  --font-family: "Poiret One", sans-serif;
 }
 
 .theme-lofi {

@@ -4,7 +4,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { ThemeContext } from "../context/ThemeContext";
 import { useTranslation } from "react-i18next";
 
-const themes: string[] = ["Light", "Dark", "Lofi", "Neon"];
+const themes: string[] = ["Light", "Dark", "Retro", "Lofi", "Neon"];
 
 type ThemeSelectorProps = {
   isThemeOpen: boolean;
@@ -64,6 +64,10 @@ const ThemeSelector = ({
                     ${theme === "Light" && "bg-[#f5f5f5] text-black "}
                     ${theme === "Dark" && "bg-[#3b3636] text-white"}
                     ${
+                      theme === "Retro" &&
+                      "bg-[#fbf6e2] text-black font-[Poiret-One] "
+                    } 
+                    ${
                       theme === "Lofi" &&
                       "bg-[#afa7a7] text-black font-[Quicksand] "
                     } 
@@ -77,6 +81,7 @@ const ThemeSelector = ({
                   className={`
                     ${theme === "Light" && "bg-[#4d9295]"}
                     ${theme === "Dark" && "bg-[#016a70]"}
+                    ${theme === "Retro" && "bg-[#131842]"}
                     ${theme === "Lofi" && "bg-[#2a2743]"} 
                     ${theme === "Neon" && "bg-[#16ff00]"}  
 
@@ -86,6 +91,7 @@ const ThemeSelector = ({
                   className={`
                     ${theme === "Light" && "bg-[#924d93]"}
                     ${theme === "Dark" && "bg-[#70016a]"}
+                    ${theme === "Retro" && "bg-[#e68369]"}
                     ${theme === "Lofi" && "bg-[#f9dc5c]"}  
                     ${theme === "Neon" && "bg-[#ffed00]"}  
                     absolute  top-0 left-9 h-full w-4 rotate-12 scale-150 group-hover:w-6 group-hover:left-12 transition-all duration-1000 ease-in-out`}
