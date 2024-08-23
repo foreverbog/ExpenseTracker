@@ -1,7 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
-import _ from "lodash";
 
 // const languages: string[] = ["EN", "DE"];
 

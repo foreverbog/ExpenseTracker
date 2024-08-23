@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,16 +9,81 @@
 }
 
 .theme-light {
-  --color-primary: #f5f5f5;
-  --color-text: green;
+  --color-base: #f5f5f5;
+  --color-base-100: #eeeeee;
+  --color-base-200: #e0e0e0;
+  --color-base-300: #bdbdbd;
+  --color-base-text: #000;
+
+  --color-primary: #4d9295;
+  --color-primary-darker: #3c5958;
+  --color-primary-lighter: #59b6bf;
+  --color-primary-text: #000;
+
+  --color-secondary: #924d93;
+  --color-secondary-darker: #75317b;
+  --color-secondary-lighter: #be92bf;
+  --color-secondary-text: #000;
+
+  --font-family: ;
 }
 
 .theme-dark {
-  --color-primary: #021526;
-  --color-text: #f5f5f5;
+  --color-base: #3b3636;
+  --color-base-100: #5a5454;
+  --color-base-200: #6d6767;
+  --color-base-300: #1b1616;
+  --color-base-text: #fff;
+
+  --color-primary: #016a70;
+  --color-primary-darker: #3c5958;
+  --color-primary-lighter: #0ca2b5;
+  --color-primary-text: #fff;
+
+  --color-secondary: #70016a;
+  --color-secondary-darker: #55005c;
+  --color-secondary-lighter: #7f0572;
+  --color-secondary-text: #fff;
+
+  --font-family: ;
+}
+
+.theme-lofi {
+  --color-base: #afa7a7;
+  --color-base-100: #cbcbcb;
+  --color-base-200: #948383;
+  --color-base-300: #806868;
+  --color-base-text: #000;
+
+  --color-primary: #2a2743;
+  --color-primary-darker: #37365b;
+  --color-primary-lighter: #474974;
+  --color-primary-text: #fff;
+
+  --color-secondary: #f9dc5c;
+  --color-secondary-darker: #f5c553;
+  --color-secondary-lighter: #f5e75c;
+  --color-secondary-text: #000;
+
+  --font-family: "Quicksand", sans-serif;
 }
 
 .theme-neon {
-  --color-primary: #eb3678;
-  --color-text: black;
+  --color-base: #000;
+  --color-base-100: #262626;
+  --color-base-200: #434343;
+  --color-base-300: #555555;
+  --color-base-text: #fff;
+
+  --color-primary: #16ff00;
+  --color-primary-darker: #00ea00;
+  --color-primary-lighter: #6fff57;
+  --color-primary-text: #000;
+
+  --color-secondary: #ffed00;
+  --color-secondary-darker: #ffda00;
+  --color-secondary-lighter: #fbed3c;
+  --color-secondary-text: #000;
+
+  --font-family: "Chakra Petch", sans-serif;
 }

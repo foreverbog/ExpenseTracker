@@ -10,8 +10,8 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-primary text-text p-4 flex justify-end md:justify-between items-center ">
-        <ul className=" hidden md:flex  w-1/2 text-xl gap-16 ml-24">
+      <nav className="bg-base text-text p-4 flex justify-end md:justify-between items-center ">
+        <ul className=" hidden md:flex  w-1/2 text-xl gap-16 ml-24 text-base-text font-base ">
           <li>{t("nav.home")}</li>
           <li>{t("nav.about")}</li>
           <li>{t("nav.contact")}</li>
