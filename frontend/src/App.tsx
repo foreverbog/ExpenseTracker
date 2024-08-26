@@ -1,6 +1,9 @@
 import { useContext } from "react";
 import { ThemeContext } from "./context/ThemeContext";
-import Navbar from "./components/Navbar";
+// import Navbar from "./components/Navbar";
+import MainLayout from "./layout/MainLayout";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
 
 function App() {
   const themeContext = useContext(ThemeContext);
@@ -13,31 +16,12 @@ function App() {
 
   const { theme } = themeContext;
   return (
-    <div className={`theme-${theme}`}>
-      <Navbar />
-      {/* <div className="bg-primary text-text">
-        <p
-          onClick={() => {
-            themeToggler("dark");
-          }}
-        >
-          dark
-        </p>
-        <p
-          onClick={() => {
-            themeToggler("light");
-          }}
-        >
-          light
-        </p>
-        <p
-          onClick={() => {
-            themeToggler("neon");
-          }}
-        >
-          neon
-        </p>
-      </div> */}
+    <div className={`theme-${theme} relative`}>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route path="/" element={<Home />} />
+        </Route>
+      </Routes>
     </div>
   );
 }

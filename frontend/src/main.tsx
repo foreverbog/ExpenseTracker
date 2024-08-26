@@ -8,6 +8,7 @@ import global_en from "./translations/en/global.json";
 import global_de from "./translations/de/global.json";
 import i18next from "i18next";
 import { I18nextProvider } from "react-i18next";
+import { BrowserRouter } from "react-router-dom";
 
 i18next.init({
   interpolation: { escapeValue: false },
@@ -24,10 +25,12 @@ i18next.init({
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <I18nextProvider i18n={i18next}>
-      <ThemeContextProvider>
-        <App />
-      </ThemeContextProvider>
-    </I18nextProvider>
+    <BrowserRouter>
+      <I18nextProvider i18n={i18next}>
+        <ThemeContextProvider>
+          <App />
+        </ThemeContextProvider>
+      </I18nextProvider>
+    </BrowserRouter>
   </StrictMode>
 );
