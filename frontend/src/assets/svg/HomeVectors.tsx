@@ -252,7 +252,7 @@ export const LandingGridVector = () => {
 export const HomeSectionTwoBgVector = () => {
   return (
     <svg
-      className="-mt-1"
+      className="-mt-1 "
       id="wave"
       style={{ transform: "rotate(180deg)", transition: "0.3" }}
       viewBox="0 0 1440 200"

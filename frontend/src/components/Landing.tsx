@@ -9,7 +9,7 @@ const Landing = () => {
           <h1 className="text-8xl text-center">
             Welcome to <span className="text-primary">AppName</span>
           </h1>
-          <p className=" w-[85%]  text-center text-balance">
+          <p className=" w-5/6  text-center text-balance">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
             officia eveniet consectetur illo omnis tempore atque, blanditiis
             numquam iusto aliquid aut soluta reprehenderit impedit amet libero,
