@@ -1,0 +1,112 @@
+[
+  {
+    "name": {
+      "first": "Kathy",
+      "last": "Warren"
+    },
+    "picture": {
+      "large": "https://randomuser.me/api/portraits/women/14.jpg"
+    },
+    "feedbackRating": 4.5,
+    "feedbackText": "Excellent app, very satisfied!"
+  },
+  {
+    "name": {
+      "first": "Benjamin",
+      "last": "Olsen"
+    },
+    "picture": {
+      "large": "https://randomuser.me/api/portraits/men/79.jpg"
+    },
+    "feedbackRating": 4,
+    "feedbackText": "Good experience overall, would recommend."
+  },
+  {
+    "name": {
+      "first": "Murat",
+      "last": "Sepetçi"
+    },
+    "picture": {
+      "large": "https://randomuser.me/api/portraits/men/80.jpg"
+    },
+    "feedbackRating": 3.5,
+    "feedbackText": "Decent app, but there's room for improvement."
+  },
+  {
+    "name": {
+      "first": "Paraskoviya",
+      "last": "Dunec"
+    },
+    "picture": {
+      "large": "https://randomuser.me/api/portraits/women/27.jpg"
+    },
+    "feedbackRating": 4.5,
+    "feedbackText": "Very good app, almost perfect!"
+  },
+  {
+    "name": {
+      "first": "Nadja",
+      "last": "Bernard"
+    },
+    "picture": {
+      "large": "https://randomuser.me/api/portraits/women/19.jpg"
+    },
+    "feedbackRating": 5,
+    "feedbackText": "Outstanding! Exceeded all expectations."
+  },
+  {
+    "name": {
+      "first": "Luukas",
+      "last": "Kantola"
+    },
+    "picture": {
+      "large": "https://randomuser.me/api/portraits/men/95.jpg"
+    },
+    "feedbackRating": 3,
+    "feedbackText": "App was okay, but could use some improvements."
+  },
+  {
+    "name": {
+      "first": "Camila",
+      "last": "Maestas"
+    },
+    "picture": {
+      "large": "https://randomuser.me/api/portraits/women/83.jpg"
+    },
+    "feedbackRating": 4,
+    "feedbackText": "Solid app, met most expectations."
+  },
+  {
+    "name": {
+      "first": "Linnea",
+      "last": "Hakala"
+    },
+    "picture": {
+      "large": "https://randomuser.me/api/portraits/women/88.jpg"
+    },
+    "feedbackRating": 4.5,
+    "feedbackText": "Very good experience, highly recommended."
+  },
+  {
+    "name": {
+      "first": "Giulia",
+      "last": "Fontai"
+    },
+    "picture": {
+      "large": "https://randomuser.me/api/portraits/women/95.jpg"
+    },
+    "feedbackRating": 4,
+    "feedbackText": "Great app with minor areas for improvement."
+  },
+  {
+    "name": {
+      "first": "Adrian",
+      "last": "Moradi"
+    },
+    "picture": {
+      "large": "https://randomuser.me/api/portraits/men/78.jpg"
+    },
+    "feedbackRating": 3.5,
+    "feedbackText": "App was decent, could be better in some aspects."
+  }
+]

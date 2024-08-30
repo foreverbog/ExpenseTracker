@@ -1,19 +1,26 @@
 import FeedbackUserCard from "./FeedbackUserCard";
-import axios from "axios";
-import { useState } from "react";
+import users from "../utils/users.json";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
 
 type UsersType = {
-  imgLink: string;
-  firstName: string;
-  lastName: string;
+  picture: {
+    large: string;
+  };
+  name: {
+    first: string;
+    last: string;
+  };
   feedbackRating?: number;
-  feedback?: string;
+  feedbackText?: string;
 };
 
 const UserFeedbackSection = () => {
-  const [users, setUsers] = useState<UsersType | undefined>(undefined);
   return (
-    <div className="relative my-12">
+    <div className="relative my-12 flex flex-col gap-24 font-base">
       <div className="flex flex-col justify-center items-center gap-8 text-base-text">
         <h2 className="text-6xl text-center ">
           Check out other user experience
@@ -25,8 +32,28 @@ const UserFeedbackSection = () => {
           possimus et tempore. Facere, nulla asperiores inventore magni aperiam
           nobis laboriosam est.
         </p>
-        <FeedbackUserCard />
+        {/* <FeedbackUserCard /> */}
       </div>
+      <Swiper
+        className="w-[500px] h-48 rounded-md shadow-base-300 shadow-2xl text-base-text"
+        modules={[Autoplay]}
+        spaceBetween={30}
+        autoplay={true}
+        slidesPerView={1}
+        loop={true}
+      >
+        {users.map((user: UsersType, i) => (
+          <SwiperSlide key={i}>
+            <FeedbackUserCard
+              imgLink={user.picture.large}
+              firstName={user.name.first}
+              lastName={user.name.last}
+              feedbackRating={user.feedbackRating}
+              feedbackText={user.feedbackText}
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 };
