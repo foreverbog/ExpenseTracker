@@ -26,6 +26,9 @@ export default {
       fontFamily: {
         base: ["var(--font-family)", "sans-serif"],
       },
+      fontSize: {
+        normal: "16px",
+      },
     },
   },
   plugins: [],

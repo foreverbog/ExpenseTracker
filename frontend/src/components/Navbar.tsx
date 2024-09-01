@@ -17,7 +17,7 @@ const Navbar = () => {
             className={({ isActive }) =>
               isActive
                 ? "underline underline-offset-8 decoration-primary decoration-2"
-                : "hover:text-primary transition-all duration-500 ease-in-out"
+                : "hover:text-primary transition duration-300 ease-linear"
             }
             to="/"
           >
@@ -27,7 +27,7 @@ const Navbar = () => {
             className={({ isActive }) =>
               isActive
                 ? "underline underline-offset-8 decoration-primary decoration-2"
-                : "hover:text-primary transition-all duration-500 ease-in-out"
+                : "hover:text-primary transition duration-300 ease-linear"
             }
             to="/about"
           >
@@ -37,7 +37,7 @@ const Navbar = () => {
             className={({ isActive }) =>
               isActive
                 ? "underline underline-offset-8 decoration-primary decoration-2"
-                : "hover:text-primary transition-all duration-500 ease-in-out"
+                : "hover:text-primary transition duration-300 ease-linear"
             }
             to="/contact"
           >

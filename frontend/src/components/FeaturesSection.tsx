@@ -55,22 +55,26 @@ const FeaturesSection = () => {
       {/* *TOP SVG */}
       <HomeSectionTwoBgVector />
       <div className="flex flex-col items-center gap-8">
-        <h1 className="text-6xl text-base-text">AppName features:</h1>
-        <p className="w-1/2 text-center text-ellipsis text-balance text-base-text">
+        <h1 className="text-3xl md:text-6xl text-base-text">
+          AppName features:
+        </h1>
+        <p className="w-4/5 md:w-1/2 text-center text-ellipsis text-balance text-base-text text-sm md:text-normal">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique
           cumque laboriosam vero repellat ullam aliquid magni nostrum autem nisi
           quas iste, dicta rerum, quisquam totam. Quaerat culpa commodi quam
           voluptates?
         </p>
-        <div className="text-base-text grid grid-cols-3  w-4/5  justify-items-center z-20 mb-12 ">
+        <div className="text-base-text grid grid-cols-2 md:grid-cols-3  w-4/5  justify-items-center z-20 mb-12 ">
           {features.map((feature) => (
             <div
               key={feature.name}
               className="w-full flex flex-col gap-4 p-4 justify-center items-center "
             >
-              <div className={`${feature.color} text-8xl`}>{feature.icon}</div>
-              <h2 className="text-2xl">{feature.name}</h2>
-              <p className="text-balance text-center text-lg w-1/2">
+              <div className={`${feature.color} text-6xl md:text-8xl`}>
+                {feature.icon}
+              </div>
+              <h2 className="text-2xl font-semibold">{feature.name}</h2>
+              <p className="text-balance text-center text-lg md:w-1/2 italic">
                 {feature.description}
               </p>
             </div>

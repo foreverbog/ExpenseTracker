@@ -3,7 +3,7 @@ export const LandingBackgroundVectors = () => {
     <>
       {/* //*TOP RIGHT SVG */}
       <svg
-        className="absolute top-0 right-0 "
+        className="absolute -top-28 -right-28 scale-[.4] md:top-0 md:right-0 md:scale-100 "
         width="369"
         height="335"
         viewBox="0 0 269 235"
@@ -57,7 +57,7 @@ export const LandingBackgroundVectors = () => {
 export const LandingGridVector = () => {
   return (
     <svg
-      className=" justify-self-center"
+      className=" justify-self-center  h-auto w-1/3 md:w-auto"
       xmlns="http://www.w3.org/2000/svg"
       width="345.56323"
       height="323.50056"

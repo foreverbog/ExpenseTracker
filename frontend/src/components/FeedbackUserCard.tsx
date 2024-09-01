@@ -26,27 +26,34 @@ const FeedbackUserCard = ({
 
   return (
     <div
-      className="bg-base-200 w-[500px] h-48 p-4 rounded-md grid grid-cols-2 items-center gap-4 text-base-text font-base shadow-base-300 shadow-2xl"
+      className="bg-base-200 w-[300px] md:w-[500px] h-48 p-4 rounded-md grid grid-cols-2 items-center gap-4 text-base-text font-base shadow-base-300 shadow-2xl"
       style={{ gridTemplateColumns: "64px auto" }}
     >
       <img className="rounded-full " src={imgLink} alt="s" width={64} />
       <div className="flex flex-col gap-2">
-        <p className="text-lg">{`${firstName} ${lastName}`}</p>
+        <p className="text-normal md:text-lg">{`${firstName} ${lastName}`}</p>
         <div className="flex ">
-          <p className="mr-2 ">{feedbackRating}/5</p>
+          <p className="mr-1 md:mr-2 text-sm md:text-normal">
+            {feedbackRating}/5
+          </p>
           {Array.from({ length: fullStars }).map((_, index) => (
-            <IoIosStar key={index} className="text-yellow-400 text-2xl" />
+            <IoIosStar
+              key={index}
+              className="text-yellow-400 text-xl md:text-2xl"
+            />
           ))}
-          {halfStars && <IoIosStarHalf className="text-yellow-400 text-2xl" />}
+          {halfStars && (
+            <IoIosStarHalf className="text-yellow-400 text-xl md:text-2xl" />
+          )}
           {Array.from({ length: 5 - emptyStars }).map((_, index) => (
             <IoIosStarOutline
               key={index}
-              className="text-2xl text-yellow-400"
+              className=" text-yellow-400 text-xl md:text-2xl"
             />
           ))}
         </div>
       </div>
-      <p className="text-lg col-span-2 text-center self-start">
+      <p className="text-normal md:text-lg col-span-2 text-center self-start">
         {feedbackText}
       </p>
     </div>
