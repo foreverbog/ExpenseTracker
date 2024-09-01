@@ -20,6 +20,8 @@ function App() {
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<Home />} />
+          <Route path="/contact" element={<Home />} />
         </Route>
       </Routes>
     </div>

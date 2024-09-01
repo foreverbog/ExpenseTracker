@@ -22,7 +22,6 @@ const Landing = () => {
             Sign Up
           </button>
         </div>
-        {/* 0px 10px 138px 44px rgba(0,0,0,0.51 */}
         <LandingGridVector />
       </div>
     </div>

@@ -46,13 +46,13 @@ const LanguageSelector = ({
     setIsLanguageOpen(false);
   };
   return (
-    <div className="relative p-2 rounded-t-md cursor-pointer">
+    <div className="relative p-2 rounded-t-md cursor-pointer font-base ">
       <div
         onClick={() => {
           setIsLanguageOpen(!isLanguageOpen);
           setIsThemeOpen(false);
         }}
-        className="flex gap-1 relative justify-center items-center  p-1"
+        className="flex gap-1 relative justify-center items-center  p-1 text-secondary-text "
       >
         <img
           src={`../images/${selectedLanguage === "EN" ? "en" : "de"}.svg`}
@@ -68,7 +68,7 @@ const LanguageSelector = ({
             initial={{ opacity: 0, height: "0px" }}
             animate={{ opacity: 1, height: "30px" }}
             exit={{ opacity: 0, height: "0px" }}
-            className="bg-red-300  absolute  right-0 w-full   rounded-b-md flex flex-col justify-center items-center gap-2 p-2 cursor-pointer"
+            className="bg-base-100  absolute  right-0 w-full   rounded-b-md flex flex-col justify-center items-center gap-2 p-2 cursor-pointer"
           >
             <li
               onClick={() =>
@@ -76,7 +76,7 @@ const LanguageSelector = ({
                   ? handleChangeLanguage("EN")
                   : handleChangeLanguage("DE")
               }
-              className="flex gap-1 justify-center items-center"
+              className="flex gap-1 justify-center items-center text-base-text"
             >
               <img
                 src={`../images/${selectedLanguage === "DE" ? "en" : "de"}.svg`}

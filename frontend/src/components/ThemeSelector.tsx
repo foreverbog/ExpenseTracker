@@ -34,11 +34,13 @@ const ThemeSelector = ({
           setIsThemeOpen(!isThemeOpen);
           setIsLanguageOpen(false);
         }}
-        className={`cursor-pointer flex items-center p-2 text-base-text ${
-          isThemeOpen && "bg-base-300 rounded-t-md  "
+        className={`cursor-pointer flex items-center p-2 text-secondary-text  ${
+          isThemeOpen && "bg-base-100 rounded-t-md  "
         }`}
       >
-        <p>{t("nav.theme")}</p>
+        <p className={`${isThemeOpen && "text-base-text"} font-base`}>
+          {t("nav.theme")}
+        </p>
         <IoMdArrowDropdown
           className={`text-text text-lg mt-1 transition-transform duration-500 ease-in-out ${
             isThemeOpen ? "rotate-180" : ""
@@ -52,7 +54,7 @@ const ThemeSelector = ({
             initial={{ opacity: 0, height: "0px" }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: "20px" }}
-            className="bg-base-200 absolute -right-2 w-48 rounded-md flex flex-col justify-center items-center gap-2 p-2 overflow-hidden"
+            className="bg-base-100 absolute -right-2 w-48 rounded-md flex flex-col justify-center items-center gap-2 p-2 overflow-hidden shadow-2xl"
           >
             {themes.map((theme) => (
               <li

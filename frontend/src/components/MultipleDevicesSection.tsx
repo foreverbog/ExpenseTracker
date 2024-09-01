@@ -1,7 +1,7 @@
 const MultipleDevicesSection = () => {
   return (
     <div
-      className=" bg-cover bg-center p-12 flex flex-col justify-center items-center gap-12"
+      className=" bg-cover bg-center p-12 flex  justify-center items-center gap-12 font-base text-base-text"
       // style={{ backgroundImage: "url('./images/blob-scatter-haikei.svg')" }}
     >
       <h2 className="text-6xl text-center">Avalaible on multiple devices</h2>

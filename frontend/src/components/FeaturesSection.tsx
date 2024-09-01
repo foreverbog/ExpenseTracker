@@ -51,7 +51,7 @@ const features: FeaturesType[] = [
 
 const FeaturesSection = () => {
   return (
-    <div className="min-h-dvh relative border-b-2 border-b-orange-500">
+    <div className="min-h-dvh relative border-b-2 font-base border-b-orange-500">
       {/* *TOP SVG */}
       <HomeSectionTwoBgVector />
       <div className="flex flex-col items-center gap-8">
