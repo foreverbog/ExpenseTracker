@@ -6,5 +6,27 @@
     "theme": "Thema"
   },
 
-  "title": "TITEL"
+  "landing": {
+    "title": "Wilkommen bei",
+    "paragraphStart": "Melden Sie sich bei",
+    "paragraphEnd": "an, um Ihre Ausgaben einfach zu verwalten, Reisen zu planen und Währungsumrechnungen vorzunehmen. Starten Sie noch heute!",
+    "btn": "Registrieren"
+  },
+  "features": {
+    "titleStart": "Warum",
+    "titleEnd": "wählen?",
+    "paragraph": "TrackIt vereinfacht die Verwaltung Ihrer Ausgaben mit leistungsstarken Funktionen für Budgetierung, Reiseplanung und Währungsumrechnung. Genießen Sie nahtlose Organisation und aussagekräftige Finanzverfolgung in einer intuitiven App.",
+    "Feature1": "ft1",
+    "Feature1Description": "da",
+    "Feature2": "ft1",
+    "Feature2Description": "da",
+    "Feature3": "ft1",
+    "Feature3Description": "da",
+    "Feature4": "ft1",
+    "Feature4Description": "da",
+    "Feature5": "ft1",
+    "Feature5Description": "da",
+    "Feature6": "ft1",
+    "Feature6Description": "da"
+  }
 }

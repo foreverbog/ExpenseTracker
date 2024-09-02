@@ -3,6 +3,7 @@ import LanguageSelector from "./LanguageSelector";
 import ThemeSelector from "./ThemeSelector";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { LogoVector } from "../assets/svg/BrandsVectors";
 
 const Navbar = () => {
   const [isThemeOpen, setIsThemeOpen] = useState(false);
@@ -11,39 +12,44 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className=" text-text text-base-text p-4 flex justify-end md:justify-between items-center bg-transparent absolute w-full top-0 z-10 mb-24">
-        <ul className=" hidden md:flex  w-1/2 text-xl gap-16 ml-24 text-base-text font-base ">
-          <NavLink
-            className={({ isActive }) =>
-              isActive
-                ? "underline underline-offset-8 decoration-primary decoration-2"
-                : "hover:text-primary transition duration-300 ease-linear"
-            }
-            to="/"
-          >
-            {t("nav.home")}
+      <nav className="  text-text text-base-text p-4 flex justify-between  items-center bg-transparent absolute w-full top-0 z-10 mb-24">
+        <div className="flex flex-1 gap-24  items-center ">
+          <NavLink className="group" to="/">
+            <LogoVector />
           </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              isActive
-                ? "underline underline-offset-8 decoration-primary decoration-2"
-                : "hover:text-primary transition duration-300 ease-linear"
-            }
-            to="/about"
-          >
-            {t("nav.about")}
-          </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              isActive
-                ? "underline underline-offset-8 decoration-primary decoration-2"
-                : "hover:text-primary transition duration-300 ease-linear"
-            }
-            to="/contact"
-          >
-            {t("nav.contact")}
-          </NavLink>
-        </ul>
+          <ul className=" hidden md:flex  w-full text-xl gap-16  text-base-text font-base ">
+            <NavLink
+              className={({ isActive }) =>
+                isActive
+                  ? "underline underline-offset-8 decoration-primary decoration-2"
+                  : "hover:text-primary transition duration-300 ease-linear"
+              }
+              to="/"
+            >
+              {t("nav.home")}
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                isActive
+                  ? "underline underline-offset-8 decoration-primary decoration-2"
+                  : "hover:text-primary transition duration-300 ease-linear"
+              }
+              to="/about"
+            >
+              {t("nav.about")}
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                isActive
+                  ? "underline underline-offset-8 decoration-primary decoration-2"
+                  : "hover:text-primary transition duration-300 ease-linear"
+              }
+              to="/contact"
+            >
+              {t("nav.contact")}
+            </NavLink>
+          </ul>
+        </div>
         <div className="hidden md:flex items-center gap-2 mr-24">
           <ThemeSelector
             isThemeOpen={isThemeOpen}

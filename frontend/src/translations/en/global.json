@@ -6,5 +6,28 @@
     "theme": "Theme"
   },
 
-  "title": "TITLE"
+  "landing": {
+    "title": "Welcome to",
+    "paragraphStart": "Register with",
+    "paragraphEnd": "to easily manage your expenses, plan trips, and handle currency exchanges. Get started today!",
+    "btn": "Sign Up"
+  },
+
+  "features": {
+    "titleStart": "Why Choose",
+    "titleEnd": "?",
+    "paragraph": "TrackIt simplifies expense management with powerful features for budgeting, trip planning, and currency conversion. Enjoy seamless organization and insightful financial tracking in one intuitive app.",
+    "Feature1": "ft1",
+    "Feature1Description": "s",
+    "Feature2": "ft1",
+    "Feature2Description": "s",
+    "Feature3": "ft1",
+    "Feature3Description": "s",
+    "Feature4": "ft1",
+    "Feature4Description": "s",
+    "Feature5": "ft1",
+    "Feature5Description": "s",
+    "Feature6": "ft1",
+    "Feature6Description": "s"
+  }
 }
