@@ -35,9 +35,10 @@ const LanguageSelector = ({
       | null;
     if (storedLanguage) {
       setSelectedLanguage(storedLanguage);
-      i18n.changeLanguage(storedLanguage.toLowerCase());
+      console.log(storedLanguage);
+      i18n.changeLanguage(selectedLanguage.toLowerCase());
     }
-  }, [i18n]);
+  }, [selectedLanguage, i18n]);
 
   //*Changelng and close the modal
   const handleChangeLanguage = (language: "EN" | "DE") => {

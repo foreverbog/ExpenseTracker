@@ -16,17 +16,29 @@
     "titleStart": "Warum",
     "titleEnd": "wählen?",
     "paragraph": "TrackIt vereinfacht die Verwaltung Ihrer Ausgaben mit leistungsstarken Funktionen für Budgetierung, Reiseplanung und Währungsumrechnung. Genießen Sie nahtlose Organisation und aussagekräftige Finanzverfolgung in einer intuitiven App.",
-    "Feature1": "ft1",
-    "Feature1Description": "da",
-    "Feature2": "ft1",
-    "Feature2Description": "da",
-    "Feature3": "ft1",
-    "Feature3Description": "da",
-    "Feature4": "ft1",
-    "Feature4Description": "da",
-    "Feature5": "ft1",
-    "Feature5Description": "da",
-    "Feature6": "ft1",
-    "Feature6Description": "da"
+
+    "Feature1": "Ausgabenverfolgung",
+    "Feature1Description": "Verfolgen Sie Ihre Ausgaben täglich, monatlich oder jährlich mit anpassbaren Ansichten.",
+    "Feature1Benefit": "Bietet einen detaillierten Überblick über Ihre Ausgabengewohnheiten über verschiedene Zeiträume hinweg.",
+
+    "Feature2": "Reiseplanung",
+    "Feature2Description": "Planen Sie Reisen und verwalten Sie alle damit verbundenen Ausgaben, einschließlich Reise-, Unterkunfts- und Aktivitätskosten.",
+    "Feature2Benefit": "Hält Ihr Reisebudget im Griff und vereinfacht das Ausgabenmanagement für jede Reise.",
+
+    "Feature3": "Integrierter Währungsumrechner",
+    "Feature3Description": "Konvertieren Sie Ausgaben in verschiedenen Währungen mit Echtzeit-Wechselkursen.",
+    "Feature3Benefit": "Ideal für internationale Reisende und Nutzer mit Ausgaben in mehreren Währungen.",
+
+    "Feature4": "Sicheres Login und Registrierung",
+    "Feature4Description": "Melden Sie sich sicher an oder registrieren Sie sich, um auf Ihre Finanzdaten zuzugreifen und Ausgaben zu verwalten.",
+    "Feature4Benefit": "Schützt Ihre persönlichen und finanziellen Informationen mit robusten Sicherheitsfunktionen.",
+
+    "Feature5": "Ausgabenberichte",
+    "Feature5Description": "Erstellen Sie detaillierte Berichte Ihrer Ausgaben nach Kategorie, Datum oder Reise für eine bessere finanzielle Analyse.",
+    "Feature5Benefit": "Hilft Ihnen, Ihre Ausgabemuster zu verstehen und fundierte finanzielle Entscheidungen zu treffen.",
+
+    "Feature6": "Mehrere Themen und Sprachen",
+    "Feature6Description": "Wählen Sie aus mehreren Themen und wechseln Sie zwischen Sprachen wie Englisch und Deutsch.",
+    "Feature6Benefit": "Personalisieren Sie das App-Erlebnis und verbessern Sie die Zugänglichkeit für ein globales Publikum."
   }
 }

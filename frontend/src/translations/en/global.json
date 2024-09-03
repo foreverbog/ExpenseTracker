@@ -17,17 +17,28 @@
     "titleStart": "Why Choose",
     "titleEnd": "?",
     "paragraph": "TrackIt simplifies expense management with powerful features for budgeting, trip planning, and currency conversion. Enjoy seamless organization and insightful financial tracking in one intuitive app.",
-    "Feature1": "ft1",
-    "Feature1Description": "s",
-    "Feature2": "ft1",
-    "Feature2Description": "s",
-    "Feature3": "ft1",
-    "Feature3Description": "s",
-    "Feature4": "ft1",
-    "Feature4Description": "s",
-    "Feature5": "ft1",
-    "Feature5Description": "s",
-    "Feature6": "ft1",
-    "Feature6Description": "s"
+    "Feature1": "Expense Tracking",
+    "Feature1Description": "Track your expenses on a daily, monthly, or yearly basis with customizable views.",
+    "Feature1Benefit": "Provides a detailed overview of your spending habits over different time frames.",
+
+    "Feature2": "Trip Planning",
+    "Feature2Description": " Plan trips and manage all related expenses, including travel, accommodation, and activities.",
+    "Feature2Benefit": "Keeps your trip budget on track and simplifies expense management for each journey.",
+
+    "Feature3": "In-Built Currency Exchanger",
+    "Feature3Description": "Convert expenses across different currencies using real-time exchange rates.",
+    "Feature3Benefit": " Ideal for international travelers and users with multi-currency expenses.",
+
+    "Feature4": "Secure Login and Registration",
+    "Feature4Description": "Sign up and log in securely to access your financial data and manage expenses.",
+    "Feature4Benefit": "Protects your personal and financial information with robust security features.",
+
+    "Feature5": "Expense Reports",
+    "Feature5Description": "Generate detailed reports of your expenses by category, date, or trip for better financial analysis.",
+    "Feature5Benefit": "Helps you understand your spending patterns and make informed financial decisions.",
+
+    "Feature6": "Multiple Themes and Languages",
+    "Feature6Description": "Choose from multiple themes and switch between languages like English and German.",
+    "Feature6Benefit": "Personalizes the app experience and enhances accessibility for a global audience."
   }
 }
