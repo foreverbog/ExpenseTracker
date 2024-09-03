@@ -16,7 +16,7 @@ const Landing = () => {
               TrackIt
             </span>
           </h1>
-          <p className=" w-5/6  text-center text-balance text-sm md:text-lg  ">
+          <p className=" w-5/6  text-center text-balance text-sm md:text-lg italic  ">
             {t("landing.paragraphStart")}{" "}
             <span className="font-semibold text-secondary">TrackIt </span>
             {t("landing.paragraphEnd")}

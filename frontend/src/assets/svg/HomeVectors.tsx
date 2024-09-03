@@ -273,3 +273,53 @@ export const HomeSectionTwoBgVector = () => {
     </svg>
   );
 };
+
+export const MultipleDevicesVector = () => {
+  return (
+    <svg
+      className="w-full h-full"
+      id="visual"
+      viewBox="0 0 960 540"
+      width="960"
+      height="540"
+      xmlns="http://www.w3.org/2000/svg"
+      // xmlns:xlink="http://www.w3.org/1999/xlink"
+      version="1.1"
+    >
+      <g>
+        <g transform="translate(662 193)">
+          <path
+            d="M42 -43.8C51.6 -32.5 54.5 -16.2 55 0.5C55.5 17.2 53.5 34.4 44 48.8C34.4 63.1 17.2 74.7 1.3 73.4C-14.6 72.1 -29.2 57.9 -42 43.5C-54.7 29.2 -65.7 14.6 -66.5 -0.7C-67.2 -16.1 -57.7 -32.1 -44.9 -43.5C-32.1 -54.9 -16.1 -61.6 0.1 -61.7C16.2 -61.7 32.5 -55.2 42 -43.8Z"
+            stroke="var(--color-secondary)"
+            fill="none"
+            stroke-width="7"
+          ></path>
+        </g>
+        <g transform="translate(155 181)">
+          <path
+            d="M45.3 -43.4C58.5 -32.2 68.7 -16.1 67 -1.7C65.3 12.7 51.7 25.4 38.6 39C25.4 52.6 12.7 67.1 -1.3 68.4C-15.2 69.6 -30.4 57.6 -43.7 44C-56.9 30.4 -68.2 15.2 -70.4 -2.2C-72.6 -19.6 -65.7 -39.2 -52.5 -50.5C-39.2 -61.8 -19.6 -64.7 -1.8 -62.9C16.1 -61.2 32.2 -54.7 45.3 -43.4Z"
+            stroke="var(--color-primary-lighter)"
+            fill="none"
+            stroke-width="7"
+          ></path>
+        </g>
+        <g transform="translate(430 373)">
+          <path
+            d="M37.7 -37.3C49.1 -26.2 58.9 -13.1 58.2 -0.7C57.6 11.8 46.5 23.6 35 36.1C23.6 48.6 11.8 61.9 -2.4 64.3C-16.6 66.8 -33.2 58.3 -46 45.7C-58.9 33.2 -68 16.6 -67.2 0.8C-66.4 -15 -55.8 -30.1 -42.9 -41.2C-30.1 -52.2 -15 -59.4 -1 -58.4C13.1 -57.4 26.2 -48.4 37.7 -37.3Z"
+            stroke="var(--color-secondary-lighter)"
+            fill="none"
+            stroke-width="7"
+          ></path>
+        </g>
+        <g transform="translate(778 400)">
+          <path
+            d="M36.7 -36.2C46 -27.4 50.9 -13.7 53.2 2.3C55.6 18.4 55.4 36.8 46.1 45.4C36.8 54 18.4 52.8 0.7 52.1C-16.9 51.4 -33.9 51.1 -44.9 42.5C-56 33.9 -61.1 16.9 -62.1 -1C-63.1 -19 -60 -38 -49 -46.7C-38 -55.4 -19 -53.9 -2.6 -51.3C13.7 -48.6 27.4 -44.9 36.7 -36.2Z"
+            stroke="var(--color-primary)"
+            fill="none"
+            stroke-width="7"
+          ></path>
+        </g>
+      </g>
+    </svg>
+  );
+};

@@ -16,7 +16,7 @@
   "features": {
     "titleStart": "Why Choose",
     "titleEnd": "?",
-    "paragraph": "TrackIt simplifies expense management with powerful features for budgeting, trip planning, and currency conversion. Enjoy seamless organization and insightful financial tracking in one intuitive app.",
+    "paragraph": "simplifies expense management with powerful features for budgeting, trip planning, and currency conversion. Enjoy seamless organization and insightful financial tracking in one intuitive app.",
     "Feature1": "Expense Tracking",
     "Feature1Description": "Track your expenses on a daily, monthly, or yearly basis with customizable views.",
     "Feature1Benefit": "Provides a detailed overview of your spending habits over different time frames.",
@@ -40,5 +40,16 @@
     "Feature6": "Multiple Themes and Languages",
     "Feature6Description": "Choose from multiple themes and switch between languages like English and German.",
     "Feature6Benefit": "Personalizes the app experience and enhances accessibility for a global audience."
+  },
+
+  "devices": {
+    "title": "Track Your Expenses Anytime, Anywhere",
+    "paragraph": "ensures you never miss a beat, whether you're at your desk, commuting, or on vacation. Our app is designed to work flawlessly on your smartphone, tablet, and desktop, providing a seamless experience across all your devices. Manage your expenses effortlessly and stay organized wherever you are."
+  },
+
+  "feedback": {
+    "title": "What Our Users Are Saying",
+    "paragraphStart": "Discover how",
+    "paragraphEnd": "has made managing finances easier for our users. They love the simplicity and effectiveness of our app across all devices. Read their stories and see the impact for yourself."
   }
 }

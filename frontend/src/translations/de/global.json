@@ -15,7 +15,7 @@
   "features": {
     "titleStart": "Warum",
     "titleEnd": "wählen?",
-    "paragraph": "TrackIt vereinfacht die Verwaltung Ihrer Ausgaben mit leistungsstarken Funktionen für Budgetierung, Reiseplanung und Währungsumrechnung. Genießen Sie nahtlose Organisation und aussagekräftige Finanzverfolgung in einer intuitiven App.",
+    "paragraph": "vereinfacht die Verwaltung Ihrer Ausgaben mit leistungsstarken Funktionen für Budgetierung, Reiseplanung und Währungsumrechnung. Genießen Sie nahtlose Organisation und aussagekräftige Finanzverfolgung in einer intuitiven App.",
 
     "Feature1": "Ausgabenverfolgung",
     "Feature1Description": "Verfolgen Sie Ihre Ausgaben täglich, monatlich oder jährlich mit anpassbaren Ansichten.",
@@ -40,5 +40,15 @@
     "Feature6": "Mehrere Themen und Sprachen",
     "Feature6Description": "Wählen Sie aus mehreren Themen und wechseln Sie zwischen Sprachen wie Englisch und Deutsch.",
     "Feature6Benefit": "Personalisieren Sie das App-Erlebnis und verbessern Sie die Zugänglichkeit für ein globales Publikum."
+  },
+
+  "devices": {
+    "title": "Verwalten Sie Ihre Ausgaben jederzeit und überall",
+    "paragraph": "sorgt dafür, dass Sie keine Ausgaben mehr verpassen, egal ob Sie am Schreibtisch, unterwegs oder im Urlaub sind. Unsere App funktioniert nahtlos auf Ihrem Smartphone, Tablet und Desktop und bietet Ihnen ein einheitliches Erlebnis auf all Ihren Geräten. Verwalten Sie Ihre Ausgaben mühelos und bleiben Sie organisiert, wo auch immer Sie sich befinden."
+  },
+  "feedback": {
+    "title": "Was unsere Nutzer sagen",
+    "paragraphStart": "Erfahren Sie, wie",
+    "paragraphEnd": "die Finanzverwaltung für unsere Nutzer vereinfacht hat. Sie schätzen die Einfachheit und Effektivität unserer App auf allen Geräten. Lesen Sie ihre Geschichten und überzeugen Sie sich selbst."
   }
 }

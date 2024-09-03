@@ -69,7 +69,8 @@ const FeaturesSection = () => {
           </span>{" "}
           {t("features.titleEnd")}
         </h1>
-        <p className="w-4/5 md:w-1/2 text-center text-ellipsis text-balance text-base-text text-sm md:text-lg">
+        <p className="w-4/5 md:w-1/2 text-center text-ellipsis text-balance text-base-text text-sm md:text-lg italic">
+          <span className="text-secondary font-semibold">TrackIt</span>{" "}
           {t("features.paragraph")}
         </p>
         <div className="text-base-text grid grid-cols-2 md:grid-cols-3   gap-y-11 justify-items-center z-20 mb-12 ">
