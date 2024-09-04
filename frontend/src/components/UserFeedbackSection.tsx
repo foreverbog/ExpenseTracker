@@ -6,6 +6,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import { useTranslation } from "react-i18next";
+import { UserFeedbackSectionVector } from "../assets/svg/HomeVectors";
 
 type UsersType = {
   picture: {
@@ -22,7 +23,7 @@ type UsersType = {
 const UserFeedbackSection = () => {
   const [t] = useTranslation("global");
   return (
-    <div className="relative my-12 flex flex-col  gap-12 md:gap-24 font-base">
+    <div className="relative my-12 flex flex-col  gap-12 md:gap-24 font-base overflow-hidden ">
       <div className="flex flex-col justify-center items-center gap-8 text-base-text">
         <h2 className="text-3xl md:text-6xl text-center z-20 ">
           {t("feedback.title")}
@@ -55,6 +56,7 @@ const UserFeedbackSection = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+      <UserFeedbackSectionVector />
     </div>
   );
 };
