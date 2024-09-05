@@ -9,6 +9,7 @@ import global_de from "./translations/de/global.json";
 import i18next from "i18next";
 import { I18nextProvider } from "react-i18next";
 import { BrowserRouter } from "react-router-dom";
+import LanguageContextProvider from "./context/LanguageContext.tsx";
 
 i18next.init({
   interpolation: { escapeValue: false },
@@ -27,9 +28,11 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <I18nextProvider i18n={i18next}>
-        <ThemeContextProvider>
-          <App />
-        </ThemeContextProvider>
+        <LanguageContextProvider>
+          <ThemeContextProvider>
+            <App />
+          </ThemeContextProvider>
+        </LanguageContextProvider>
       </I18nextProvider>
     </BrowserRouter>
   </StrictMode>

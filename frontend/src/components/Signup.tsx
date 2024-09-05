@@ -1,26 +1,25 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 type SignupProps = {
   isSmallScreen: boolean;
   hasAccount: boolean;
   setHasAccount: React.Dispatch<React.SetStateAction<boolean>>;
-  signUpAnimationComplete: boolean;
   setSignUpAnimationComplete: React.Dispatch<React.SetStateAction<boolean>>;
   loginAnimationComplete: boolean;
-  setLoginAnimationComplete: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const Signup = ({
   isSmallScreen,
   hasAccount,
   setHasAccount,
-  // signUpAnimationComplete,
   setSignUpAnimationComplete,
   loginAnimationComplete,
-}: //   setLoginAnimationComplete,
-SignupProps) => {
+}: SignupProps) => {
+  const [t] = useTranslation("global");
+
   return (
     <AnimatePresence>
       //*Small screens only the form
@@ -48,7 +47,7 @@ SignupProps) => {
               hasAccount ? "hidden" : "flex"
             } md:flex flex-col items-center justify-center gap-24 h-full`}
           >
-            <h1 className="text-6xl text-center">Get Started</h1>
+            <h1 className="text-6xl text-center">{t("signup.title")}</h1>
             <form className="flex flex-col justify-center items-center  w-4/5">
               <label htmlFor="firstName">
                 First Name <br />
@@ -95,7 +94,7 @@ SignupProps) => {
             <button
               disabled={hasAccount}
               onClick={() => {
-                setHasAccount(!hasAccount);
+                setHasAccount((prevState) => !prevState);
                 setSignUpAnimationComplete(false);
               }}
             >
@@ -168,7 +167,7 @@ SignupProps) => {
             <button
               disabled={hasAccount}
               onClick={() => {
-                setHasAccount(!hasAccount);
+                setHasAccount((prevState) => !prevState);
                 setSignUpAnimationComplete(true);
               }}
             >

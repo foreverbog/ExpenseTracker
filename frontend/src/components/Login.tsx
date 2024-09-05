@@ -11,8 +11,6 @@ type LoginProps = {
   hasAccount: boolean;
   setHasAccount: React.Dispatch<React.SetStateAction<boolean>>;
   signUpAnimationComplete: boolean;
-  setSignUpAnimationComplete: React.Dispatch<React.SetStateAction<boolean>>;
-  loginAnimationComplete: boolean;
   setLoginAnimationComplete: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
@@ -22,9 +20,7 @@ const Login = ({
   setHasAccount,
   signUpAnimationComplete,
   setLoginAnimationComplete,
-}: //   setSignUpAnimationComplete,
-//   loginAnimationComplete,
-LoginProps) => {
+}: LoginProps) => {
   return (
     <AnimatePresence>
       //*Small screens only the form
@@ -101,7 +97,7 @@ LoginProps) => {
             <button
               disabled={!hasAccount}
               onClick={() => {
-                setHasAccount(!hasAccount);
+                setHasAccount((prevState) => !prevState);
                 setLoginAnimationComplete(false);
               }}
             >
@@ -183,7 +179,7 @@ LoginProps) => {
             <button
               disabled={!hasAccount}
               onClick={() => {
-                setHasAccount(!hasAccount);
+                setHasAccount((prevState) => !prevState);
               }}
             >
               ac

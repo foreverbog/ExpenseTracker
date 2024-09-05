@@ -4,7 +4,7 @@ import { ThemeContext } from "./context/ThemeContext";
 import MainLayout from "./layout/MainLayout";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Register from "./pages/Register";
+import Authentication from "./pages/Authentication";
 
 function App() {
   const themeContext = useContext(ThemeContext);
@@ -24,7 +24,7 @@ function App() {
           <Route path="/about" element={<Home />} />
           <Route path="/contact" element={<Home />} /> */}
         </Route>
-        <Route path="/" element={<Register />} />
+        <Route path="/" element={<Authentication />} />
       </Routes>
     </div>
   );

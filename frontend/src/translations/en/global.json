@@ -51,5 +51,15 @@
     "title": "What Our Users Are Saying",
     "paragraphStart": "Discover how",
     "paragraphEnd": "has made managing finances easier for our users. They love the simplicity and effectiveness of our app across all devices. Read their stories and see the impact for yourself."
+  },
+
+  "signup": {
+    "title": "Get StartedSSS",
+    "subtitle": "Create Your Account!"
+  },
+
+  "login": {
+    "title": "Welcome Back",
+    "subtitle": "Log In to Your Account"
   }
 }

@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useTranslation } from "react-i18next";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { LanguageContext } from "../context/LanguageContext";
 
 // const languages: string[] = ["EN", "DE"];
 
@@ -17,50 +17,27 @@ const LanguageSelector = ({
   isThemeOpen,
   setIsThemeOpen,
 }: LanguageSelectorProps) => {
-  const [selectedLanguage, setSelectedLanguage] = useState<"EN" | "DE">("EN");
+  const languageContext = useContext(LanguageContext);
+  if (!languageContext) {
+    throw new Error("Must be used within a ThemeContextProvider");
+  }
+  const { language, languageToggler } = languageContext;
 
-  const [, i18n] = useTranslation("global");
-
-  //* Store the lng in localStorage
-  const languageSelect = (newLanguage: "EN" | "DE") => {
-    setSelectedLanguage(newLanguage);
-    localStorage.setItem("user-lng", newLanguage);
-  };
-
-  //*Check language preferences
-  useEffect(() => {
-    const storedLanguage = localStorage.getItem("user-lng") as
-      | "EN"
-      | "DE"
-      | null;
-    if (storedLanguage) {
-      setSelectedLanguage(storedLanguage);
-      console.log(storedLanguage);
-      i18n.changeLanguage(selectedLanguage.toLowerCase());
-    }
-  }, [selectedLanguage, i18n]);
-
-  //*Changelng and close the modal
-  const handleChangeLanguage = (language: "EN" | "DE") => {
-    i18n.changeLanguage(language.toLowerCase());
-    languageSelect(language);
-    setIsLanguageOpen(false);
-  };
   return (
     <div className="relative p-2 rounded-t-md cursor-pointer font-base ">
       <div
         onClick={() => {
-          setIsLanguageOpen(!isLanguageOpen);
+          setIsLanguageOpen((prevState) => !prevState);
           setIsThemeOpen(false);
         }}
         className="flex gap-1 relative justify-center items-center  p-1 text-secondary-text "
       >
         <img
-          src={`../images/${selectedLanguage === "EN" ? "en" : "de"}.svg`}
+          src={`../images/${language === "en" ? "en" : "de"}.svg`}
           alt="flag"
           width={16}
         />
-        <p>{selectedLanguage}</p>
+        <p>{language.toUpperCase()}</p>
       </div>
       <AnimatePresence>
         {isLanguageOpen && !isThemeOpen && (
@@ -72,19 +49,20 @@ const LanguageSelector = ({
             className="bg-base-100  absolute  right-0 w-full   rounded-b-md flex flex-col justify-center items-center gap-2 p-2 cursor-pointer"
           >
             <li
-              onClick={() =>
-                selectedLanguage === "DE"
-                  ? handleChangeLanguage("EN")
-                  : handleChangeLanguage("DE")
-              }
+              onClick={() => {
+                const newLanguage = language === "de" ? "en" : "de";
+                languageToggler(newLanguage);
+
+                setIsLanguageOpen((prevState) => !prevState);
+              }}
               className="flex gap-1 justify-center items-center text-base-text"
             >
               <img
-                src={`../images/${selectedLanguage === "DE" ? "en" : "de"}.svg`}
+                src={`../images/${language === "de" ? "en" : "de"}.svg`}
                 alt="flag"
                 width={16}
               />
-              <p>{selectedLanguage === "DE" ? "EN" : "DE"}</p>
+              <p>{language.toUpperCase() === "DE" ? "EN" : "DE"}</p>
             </li>
           </motion.ul>
         )}

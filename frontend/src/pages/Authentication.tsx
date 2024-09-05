@@ -4,13 +4,26 @@ import useMediaQuery from "../hooks/useMediaQuery";
 import Signup from "../components/Signup";
 import Login from "../components/Login";
 
-const Register = () => {
+// type AuthFormDataType = {
+//   firstName?: string;
+//   lastName?: string;
+//   email: string;
+//   password: string;
+//   confirmPassword?: string;
+// };
+
+const Authentication = () => {
   const [hasAccount, setHasAccount] = useState(false);
   const [signUpAnimationComplete, setSignUpAnimationComplete] = useState(false);
   const [loginAnimationComplete, setLoginAnimationComplete] = useState(true);
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
-
-  //! MAKE 2 BTN FOR SMALL AND BIG SCREENS - ANIMATION AND FOR GRID
+  // const [authFormData, setAuthFormData] = useState<AuthFormDataType>({
+  //   firstName: "",
+  //   lastName: "",
+  //   email: "",
+  //   password: "",
+  //   confirmPassword: "",
+  // });
 
   return (
     <div className="min-h-dvh  p-24 flex justify-center items-center ">
@@ -26,10 +39,8 @@ const Register = () => {
           isSmallScreen={isSmallScreen}
           hasAccount={hasAccount}
           setHasAccount={setHasAccount}
-          signUpAnimationComplete={signUpAnimationComplete}
           setSignUpAnimationComplete={setSignUpAnimationComplete}
           loginAnimationComplete={loginAnimationComplete}
-          setLoginAnimationComplete={setLoginAnimationComplete}
         />
         {/* //*RIGHT SIDE GRID -- Login */}
 
@@ -38,8 +49,6 @@ const Register = () => {
           hasAccount={hasAccount}
           setHasAccount={setHasAccount}
           signUpAnimationComplete={signUpAnimationComplete}
-          setSignUpAnimationComplete={setSignUpAnimationComplete}
-          loginAnimationComplete={loginAnimationComplete}
           setLoginAnimationComplete={setLoginAnimationComplete}
         />
       </motion.div>
@@ -47,4 +56,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Authentication;

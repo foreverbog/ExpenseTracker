@@ -31,7 +31,7 @@ const ThemeSelector = ({
     <div className="relative">
       <div
         onClick={() => {
-          setIsThemeOpen(!isThemeOpen);
+          setIsThemeOpen((prevState) => !prevState);
           setIsLanguageOpen(false);
         }}
         className={`cursor-pointer flex items-center p-2 text-secondary-text  ${
