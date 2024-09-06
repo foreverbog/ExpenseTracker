@@ -52,13 +52,21 @@
     "paragraphEnd": "die Finanzverwaltung für unsere Nutzer vereinfacht hat. Sie schätzen die Einfachheit und Effektivität unserer App auf allen Geräten. Lesen Sie ihre Geschichten und überzeugen Sie sich selbst."
   },
 
-  "signup": {
-    "title": "Los geht's",
-    "subtitle": "Erstellen Sie Ihr Konto!"
-  },
-
-  "login": {
-    "title": "Willkommen zurück",
-    "subtitle": " Melden Sie sich an"
+  "auth": {
+    "home": "Zurück zur Homepage",
+    "titleSignup": "Los geht's",
+    "subtitleSignup": "Erstellen Sie Ihr Konto!",
+    "titleLogin": "Willkommen zurück",
+    "subtitleLogin": "Melden Sie sich an!",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "email": "Email",
+    "password": "Passwort",
+    "confirmPassword": "Passwort Bestätigen",
+    "signup": "Registrieren",
+    "login": "Einloggen",
+    "alreadyUser": "Schon ein Konto?",
+    "signupToast": "Herzlichen Glückwunsch, {{firstName}}! Sie haben sich erfolgreich registriert.",
+    "signupLoading": "Ihr Konto wird erstellt…"
   }
 }

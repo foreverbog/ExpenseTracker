@@ -5,6 +5,8 @@ import MainLayout from "./layout/MainLayout";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Authentication from "./pages/Authentication";
+import { ToastContainer, Zoom } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const themeContext = useContext(ThemeContext);
@@ -18,6 +20,14 @@ function App() {
   const { theme } = themeContext;
   return (
     <div className={`theme-${theme} relative`}>
+      <ToastContainer
+        position="top-center"
+        autoClose={1500}
+        hideProgressBar={false}
+        closeOnClick
+        rtl={false}
+        transition={Zoom}
+      />
       <Routes>
         <Route path="/home" element={<MainLayout />}>
           {/* <Route path="/home" element={<Home />} />

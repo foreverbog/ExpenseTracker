@@ -53,13 +53,20 @@
     "paragraphEnd": "has made managing finances easier for our users. They love the simplicity and effectiveness of our app across all devices. Read their stories and see the impact for yourself."
   },
 
-  "signup": {
-    "title": "Get StartedSSS",
-    "subtitle": "Create Your Account!"
-  },
-
-  "login": {
-    "title": "Welcome Back",
-    "subtitle": "Log In to Your Account"
+  "auth": {
+    "home": "Go back home",
+    "titleSignup": "Get Started",
+    "subtitleSignup": "Create Your Account!",
+    "titleLogin": "Welcome Back",
+    "subtitleLogin": "Log In to Your Account!",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "signup": "Sign Up",
+    "login": "Log in",
+    "signupToast": "Congratulations, {{firstName}}! You have successfully registered.",
+    "signupLoading": "Creating Your Account…"
   }
 }
