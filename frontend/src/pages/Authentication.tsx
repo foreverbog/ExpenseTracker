@@ -18,8 +18,6 @@ const Authentication: React.FC = () => {
   const [loginAnimationComplete, setLoginAnimationComplete] = useState(true);
   const isSmallScreen = useMediaQuery("(max-width: 767px)");
   const [isShowingPassword, setIsShowingPassword] = useState(false);
-  const [serverError, setServerError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
   const [authFormData, setAuthFormData] = useState<AuthFormDataType>({
     firstName: "",
     lastName: "",
@@ -46,21 +44,21 @@ const Authentication: React.FC = () => {
           setHasAccount={setHasAccount}
           setSignUpAnimationComplete={setSignUpAnimationComplete}
           loginAnimationComplete={loginAnimationComplete}
-          serverError={serverError}
-          setServerError={setServerError}
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
           authFormData={authFormData}
           setAuthFormData={setAuthFormData}
         />
         {/* //*RIGHT SIDE GRID -- Login */}
 
         <Login
+          isShowingPassword={isShowingPassword}
+          setIsShowingPassword={setIsShowingPassword}
           isSmallScreen={isSmallScreen}
           hasAccount={hasAccount}
           setHasAccount={setHasAccount}
-          signUpAnimationComplete={signUpAnimationComplete}
           setLoginAnimationComplete={setLoginAnimationComplete}
+          signUpAnimationComplete={signUpAnimationComplete}
+          authFormData={authFormData}
+          setAuthFormData={setAuthFormData}
         />
       </motion.div>
     </div>

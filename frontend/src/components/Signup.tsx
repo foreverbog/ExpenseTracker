@@ -2,12 +2,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { AuthFormDataType } from "../pages/Authentication";
-import axios from "axios";
 import Loading from "./Loading";
-import { useNavigate } from "react-router-dom";
-import { toast, Zoom } from "react-toastify";
 import { FaEye, FaEyeSlash, FaHome } from "react-icons/fa";
 import { useState } from "react";
+import useAuthSubmit from "../hooks/useAuthSubmit";
 
 type SignupProps = {
   isShowingPassword: boolean;
@@ -17,12 +15,8 @@ type SignupProps = {
   setHasAccount: React.Dispatch<React.SetStateAction<boolean>>;
   setSignUpAnimationComplete: React.Dispatch<React.SetStateAction<boolean>>;
   loginAnimationComplete: boolean;
-  serverError: string | null;
-  setServerError: React.Dispatch<React.SetStateAction<string | null>>;
   authFormData: AuthFormDataType;
   setAuthFormData: React.Dispatch<React.SetStateAction<AuthFormDataType>>;
-  isLoading: boolean;
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const Signup: React.FC<SignupProps> = ({
@@ -33,14 +27,9 @@ const Signup: React.FC<SignupProps> = ({
   setHasAccount,
   setSignUpAnimationComplete,
   loginAnimationComplete,
-  serverError,
-  setServerError,
-  isLoading,
-  setIsLoading,
   authFormData,
   setAuthFormData,
 }) => {
-  const navigate = useNavigate();
   const [t] = useTranslation("global");
   const [isShowingConfirmPassword, setIsShowingConfirmPassword] =
     useState(false);
@@ -49,62 +38,82 @@ const Signup: React.FC<SignupProps> = ({
     const { name, value } = e.target;
     setAuthFormData({ ...authFormData, [name]: value });
   };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setServerError(null);
-    try {
-      const response = await axios.post(
-        "https://extr-backend.onrender.com/signup",
-        {
-          firstName: authFormData.firstName,
-          lastName: authFormData.lastName,
-          email: authFormData.email,
-          password: authFormData.password,
-          confirmPassword: authFormData.confirmPassword,
-        }
-      );
-
-      const data = response.data;
-      console.log(data);
-      setIsLoading(false);
+  const { isLoading, serverError, handleSubmit } = useAuthSubmit({
+    url: "https://extr-backend.onrender.com/signup",
+    redirectUrl: "/home",
+    succesMessage: t("auth.signupToast", { firstName: authFormData.firstName }),
+    resetForm: () =>
       setAuthFormData({
         firstName: "",
         lastName: "",
         email: "",
         password: "",
         confirmPassword: "",
-      });
-      toast.success(
-        t("auth.signupToast", { firstName: authFormData.firstName }),
-        {
-          position: "top-center",
-          autoClose: 1500,
-          closeOnClick: true,
-          transition: Zoom,
-          className: "bg-base text-center text-sm",
-        }
-      );
-      setTimeout(() => {
-        navigate("/home");
-      }, 1000);
-    } catch (error: unknown) {
-      if (axios.isAxiosError(error)) {
-        console.log(error?.response?.data);
-        if (error?.response?.data) {
-          setServerError(error?.response?.data.error);
-        } else {
-          setServerError("Unknown error happened");
-        }
-      } else {
-        setServerError("An unexpected error occured");
-      }
-      console.log(serverError);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+      }),
+    authData: {
+      firstName: authFormData.firstName,
+      lastName: authFormData.lastName,
+      email: authFormData.email,
+      password: authFormData.password,
+      confirmPassword: authFormData.confirmPassword,
+    },
+  });
+
+  // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   setIsLoading(true);
+  //   setServerError(null);
+  //   try {
+  //     const response = await axios.post(
+  //       "https://extr-backend.onrender.com/signup",
+  //       {
+  //         firstName: authFormData.firstName,
+  //         lastName: authFormData.lastName,
+  //         email: authFormData.email,
+  //         password: authFormData.password,
+  //         confirmPassword: authFormData.confirmPassword,
+  //       }
+  //     );
+
+  //     const data = response.data;
+  //     console.log(data);
+  //     setIsLoading(false);
+  //     setAuthFormData({
+  //       firstName: "",
+  //       lastName: "",
+  //       email: "",
+  //       password: "",
+  //       confirmPassword: "",
+  //     });
+  //     toast.success(
+  //       t("auth.signupToast", { firstName: authFormData.firstName }),
+  //       {
+  //         position: "top-center",
+  //         autoClose: 1500,
+  //         closeOnClick: true,
+  //         transition: Zoom,
+  //         className: "bg-base text-center text-sm",
+  //       }
+  //     );
+  //     setTimeout(() => {
+  //       navigate("/home");
+  //     }, 1000);
+  //   } catch (error: unknown) {
+  //     if (axios.isAxiosError(error)) {
+  //       console.log(error?.response?.data);
+  //       if (error?.response?.data) {
+  //         setServerError(error?.response?.data.error);
+  //       } else {
+  //         setServerError("Unknown error happened");
+  //       }
+  //     } else {
+  //       setServerError("An unexpected error occured");
+  //     }
+  //     console.log(serverError);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
 
   return (
     <AnimatePresence>

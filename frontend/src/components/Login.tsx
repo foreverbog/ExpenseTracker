@@ -5,13 +5,18 @@ import {
 } from "../assets/svg/RegisterVectors";
 import { FaHome } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
+import { AuthFormDataType } from "../pages/Authentication";
 
 type LoginProps = {
+  isShowingPassword: boolean;
+  setIsShowingPassword: React.Dispatch<React.SetStateAction<boolean>>;
   isSmallScreen: boolean;
   hasAccount: boolean;
   setHasAccount: React.Dispatch<React.SetStateAction<boolean>>;
   signUpAnimationComplete: boolean;
   setLoginAnimationComplete: React.Dispatch<React.SetStateAction<boolean>>;
+  authFormData: AuthFormDataType;
+  setAuthFormData: React.Dispatch<React.SetStateAction<AuthFormDataType>>;
 };
 
 const Login = ({
