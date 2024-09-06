@@ -3,6 +3,15 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      keyframes: {
+        wiggle: {
+          "0%, 100%": { transform: "translateX(5px)" },
+          "50%": { transform: "translateX(-5px)" },
+        },
+      },
+      animation: {
+        wiggle: "wiggle 0.3s ease-in-out ",
+      },
       screens: {
         xs: "425px",
       },

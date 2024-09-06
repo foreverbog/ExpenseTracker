@@ -170,7 +170,7 @@ const Signup: React.FC<SignupProps> = ({
                     serverError === "All fields must be filled in!" ||
                     serverError ===
                       "First name should contain at least two letters!"
-                      ? "border-b-red-500"
+                      ? "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
                       : ""
                   } inputStyle w-1/3 md:w-1/4`}
                   id="firstName"
@@ -185,7 +185,7 @@ const Signup: React.FC<SignupProps> = ({
                     serverError === "All fields must be filled in!" ||
                     serverError ===
                       "Last name should contain at least two letters!"
-                      ? "border-b-red-500"
+                      ? "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
                       : ""
                   } inputStyle w-1/3 md:w-1/4`}
                   id="lastName"
@@ -200,7 +200,7 @@ const Signup: React.FC<SignupProps> = ({
                 className={`${
                   serverError === "All fields must be filled in!" ||
                   serverError === "Email already in use!"
-                    ? "border-b-red-500"
+                    ? "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
                     : ""
                 } inputStyle`}
                 id="email"
@@ -212,7 +212,7 @@ const Signup: React.FC<SignupProps> = ({
                     serverError === "All fields must be filled in!" ||
                     serverError ===
                       "Make sure to use at least 8 characters, one uppercase, one lowercase, a number and a symbol!"
-                      ? "border-b-red-500"
+                      ? "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
                       : ""
                   } inputStyle`}
                   value={authFormData.password}
@@ -237,7 +237,7 @@ const Signup: React.FC<SignupProps> = ({
                   className={`${
                     serverError === "All fields must be filled in!" ||
                     serverError === "Passwords do not match!"
-                      ? "border-b-red-500"
+                      ? "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
                       : ""
                   } inputStyle`}
                   value={authFormData.confirmPassword}
@@ -319,7 +319,7 @@ const Signup: React.FC<SignupProps> = ({
                     serverError === "All fields must be filled in!" ||
                     serverError ===
                       "First name should contain at least two letters!"
-                      ? "border-b-red-500"
+                      ? "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
                       : ""
                   } inputStyle w-1/4`}
                   value={authFormData.firstName}
@@ -334,7 +334,7 @@ const Signup: React.FC<SignupProps> = ({
                     serverError === "All fields must be filled in!" ||
                     serverError ===
                       "Last name should contain at least two letters!"
-                      ? "border-b-red-500"
+                      ? "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
                       : ""
                   } inputStyle w-1/4`}
                   value={authFormData.lastName}
@@ -350,7 +350,7 @@ const Signup: React.FC<SignupProps> = ({
                 className={`${
                   serverError === "All fields must be filled in!" ||
                   serverError === "Email already in use!"
-                    ? "border-b-red-500 "
+                    ? "border-b-red-500 animate-[wiggle_0.3s_ease-in-out] "
                     : ""
                 } inputStyle`}
                 value={authFormData.email}
@@ -366,7 +366,7 @@ const Signup: React.FC<SignupProps> = ({
                     serverError === "All fields must be filled in!" ||
                     serverError ===
                       "Make sure to use at least 8 characters, one uppercase, one lowercase, a number and a symbol!"
-                      ? "border-b-red-500"
+                      ? "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
                       : ""
                   } inputStyle`}
                   value={authFormData.password}
@@ -391,7 +391,7 @@ const Signup: React.FC<SignupProps> = ({
                   className={`${
                     serverError === "All fields must be filled in!" ||
                     serverError === "Passwords do not match!"
-                      ? "border-b-red-500"
+                      ? "border-b-red-500 animate-[wiggle_0.3s_ease-in-out] animate-[wiggle_0.3s_ease-in-out]"
                       : ""
                   } inputStyle`}
                   value={authFormData.confirmPassword}

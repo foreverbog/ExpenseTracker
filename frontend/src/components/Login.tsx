@@ -135,60 +135,50 @@ const Login = ({
           <div
             className={`${
               !hasAccount ? "hidden" : "flex"
-            } md:flex flex-col items-center justify-center gap-24 h-full relative `}
+            } md:flex flex-col items-center justify-center gap-12 h-full relative `}
           >
-            <h1 className="text-6xl text-center">Login</h1>
-            <form className="flex flex-col justify-center items-center  w-4/5 ">
-              <label htmlFor="firstName">
-                First Name <br />
-                <input
-                  id="firstName"
-                  type="text"
-                  placeholder="Enter your first name here... "
-                />
-              </label>
-              <label htmlFor="lastName">
-                Last Name <br />
-                <input
-                  id="lastName"
-                  type="text"
-                  placeholder="Enter your last name here... "
-                />
-              </label>
-              <label htmlFor="email">
-                Email <br />
-                <input
-                  id="email"
-                  type="text"
-                  placeholder="Enter your email here... "
-                />
-              </label>
-              <label htmlFor="password">
-                Password <br />
-                <input
-                  id="password"
-                  type="text"
-                  placeholder="Enter your password here... "
-                />
-              </label>
-              <label htmlFor="confirmPassword">
-                Confirm Password <br />
-                <input
-                  id="confirmPassword"
-                  type="text"
-                  placeholder="Enter your password here... "
-                />
-              </label>
-              <button>Sign up</button>
+            {/* {isLoading && <Loading text={t("auth.signupLoading")} />} */}
+            <div className="flex flex-col  justify-center items-center gap-4">
+              <h1 className="text-6xl text-center font-semibold text-primary">
+                Welcome back!
+              </h1>
+              <h2 className="text-lg text-center text-secondary font-semibold">
+                Log in your account to continue
+              </h2>
+            </div>
+            <form className="flex flex-col justify-center items-center w-full gap-4">
+              <input
+                className="inputStyle"
+                name="email"
+                id="email"
+                type="text"
+                placeholder="Enter your email here... "
+              />
+
+              <input
+                className="inputStyle"
+                name="password"
+                id="password"
+                type="text"
+                placeholder="Enter your password here... "
+              />
+              <button className="bg-primary text-primary-text py-2 px-4 rounded-md hover:scale-105 transition duration-300 ease-in-out">
+                Log In
+              </button>
+              <div className="flex gap-1 font-base text-base-text mt-2">
+                <p className=" text-sm">Don't have an account?</p>
+                <button
+                  className="font-bold underline text-sm"
+                  disabled={!hasAccount}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setHasAccount((prevState) => !prevState);
+                  }}
+                >
+                  Signup
+                </button>
+              </div>
             </form>
-            <button
-              disabled={!hasAccount}
-              onClick={() => {
-                setHasAccount((prevState) => !prevState);
-              }}
-            >
-              ac
-            </button>
             <div
               className={`${
                 hasAccount ? "-translate-x-full" : ""
