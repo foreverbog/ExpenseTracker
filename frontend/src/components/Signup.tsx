@@ -391,7 +391,7 @@ const Signup: React.FC<SignupProps> = ({
                   className={`${
                     serverError === "All fields must be filled in!" ||
                     serverError === "Passwords do not match!"
-                      ? "border-b-red-500 animate-[wiggle_0.3s_ease-in-out] animate-[wiggle_0.3s_ease-in-out]"
+                      ? "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
                       : ""
                   } inputStyle`}
                   value={authFormData.confirmPassword}
