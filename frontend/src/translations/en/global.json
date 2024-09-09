@@ -67,7 +67,9 @@
     "signup": "Sign Up",
     "login": "Log in",
     "alreadyUser": "Already have an account?",
+    "notAnUser": "Don't have an account?",
     "signupToast": "Congratulations, {{firstName}}! You have successfully registered.",
-    "signupLoading": "Creating Your Account…"
+    "signupLoading": "Creating Your Account…",
+    "loginLoading": "Authenticating..."
   }
 }

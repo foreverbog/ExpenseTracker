@@ -66,7 +66,9 @@
     "signup": "Registrieren",
     "login": "Einloggen",
     "alreadyUser": "Schon ein Konto?",
+    "notAnUser": "Haben Sie kein Konto?",
     "signupToast": "Herzlichen Glückwunsch, {{firstName}}! Sie haben sich erfolgreich registriert.",
-    "signupLoading": "Ihr Konto wird erstellt…"
+    "signupLoading": "Ihr Konto wird erstellt…",
+    "loginLoading": "Authentifizieren..."
   }
 }
