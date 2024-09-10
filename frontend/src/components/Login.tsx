@@ -28,13 +28,15 @@ const Login = ({
   authFormData,
   setAuthFormData,
 }: LoginProps) => {
+  // const deployed = "https://extr-backend.onrender.com/login";
+  const local = "http://localhost:8080/login";
   const [t] = useTranslation("global");
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setAuthFormData({ ...authFormData, [name]: value });
   };
   const { isLoading, serverError, handleSubmit } = useAuthSubmit({
-    url: "https://extr-backend.onrender.com/login",
+    url: local,
     redirectUrl: "/home",
     succesMessage: t("auth.titleLogin", {
       firstName: "s",

@@ -1,7 +1,10 @@
 import { useState, useEffect, createContext, ReactNode } from "react";
+import { jwtDecode } from "jwt-decode";
+import axios from "axios";
 
 type AuthContextType = {
-  token: string | null;
+  user: UserType;
+  isAuthenticated: boolean;
   login: (newToken: string) => void;
   logout: () => void;
 };
@@ -21,6 +24,10 @@ type UserType = {
   lastName: string;
 };
 
+type DecodedTokentype = {
+  id: string;
+};
+
 const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
   children,
 }) => {
@@ -32,30 +39,62 @@ const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
     lastName: "",
   });
 
+  const getUser = async (userId: string) => {
+    try {
+      const response = await axios.get(`http://localhost:8080/${userId}`);
+      const data = response.data;
+      setUser({
+        id: userId,
+        email: data.email,
+        firstName: data.firstName,
+        lastName: data.lastName,
+      });
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        console.log(error);
+      }
+    }
+  };
+
   //*Function to set the token on login/signup or remove it
   const login = (newToken: string) => {
     setToken(newToken);
     localStorage.setItem("token", newToken);
+    const decodedToken = jwtDecode<DecodedTokentype>(newToken);
+    getUser(decodedToken.id);
   };
   //*logout => remove the token
   const logout = () => {
     setToken(null);
+    setUser({
+      id: "",
+      email: "",
+      firstName: "",
+      lastName: "",
+    });
     localStorage.removeItem("token");
+    console.log("log out");
   };
 
-  console.log(token);
+  // console.log(token);
 
-  //*get token from local storage
+  //*get token from local storage , this runs only if there is a token stored
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     if (storedToken) {
       setToken(storedToken);
-      console.log("work");
+
+      const decodedToken = jwtDecode<DecodedTokentype>(storedToken);
+      getUser(decodedToken.id);
     }
   }, []);
 
+  // console.log(user);
+
+  const isAuthenticated = token !== null;
+
   return (
-    <AuthContext.Provider value={{ login, logout, token }}>
+    <AuthContext.Provider value={{ login, logout, user, isAuthenticated }}>
       {children}
     </AuthContext.Provider>
   );

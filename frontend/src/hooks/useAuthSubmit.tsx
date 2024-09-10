@@ -3,6 +3,8 @@ import { AuthFormDataType } from "../pages/Authentication";
 import { useState } from "react";
 import axios from "axios";
 import { toast, Zoom } from "react-toastify";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 type UseAuthSubmitProps = {
   url: string;
@@ -22,6 +24,13 @@ const useAuthSubmit = ({
   const [isLoading, setIsLoading] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
 
+  const authContext = useContext(AuthContext);
+  if (!authContext) {
+    throw new Error("useContext must be used within an AuthContextProvider");
+  }
+
+  const { login } = authContext;
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -33,6 +42,7 @@ const useAuthSubmit = ({
 
       const data = response.data;
       console.log(data);
+      login(data.token);
       setIsLoading(false);
       if (resetForm) resetForm();
 
