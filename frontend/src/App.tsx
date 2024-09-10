@@ -30,11 +30,11 @@ function App() {
       />
       <Routes>
         <Route path="/home" element={<MainLayout />}>
-          {/* <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          {/* <Route path="/about" element={<Home />} />
           <Route path="/contact" element={<Home />} /> */}
         </Route>
-        <Route path="/" element={<Authentication />} />
+        <Route path="/auth" element={<Authentication />} />
       </Routes>
     </div>
   );

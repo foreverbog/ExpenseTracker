@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import ThemeContextProvider from "./context/ThemeContext.tsx";
-
+import AuthContextProvider from "./context/AuthContext.tsx";
 import global_en from "./translations/en/global.json";
 import global_de from "./translations/de/global.json";
 import i18next from "i18next";
@@ -27,13 +27,15 @@ i18next.init({
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
-      <I18nextProvider i18n={i18next}>
-        <LanguageContextProvider>
-          <ThemeContextProvider>
-            <App />
-          </ThemeContextProvider>
-        </LanguageContextProvider>
-      </I18nextProvider>
+      <AuthContextProvider>
+        <I18nextProvider i18n={i18next}>
+          <LanguageContextProvider>
+            <ThemeContextProvider>
+              <App />
+            </ThemeContextProvider>
+          </LanguageContextProvider>
+        </I18nextProvider>
+      </AuthContextProvider>
     </BrowserRouter>
   </StrictMode>
 );

@@ -117,7 +117,13 @@ const LoginBigScreen: React.FC<LoginBigScreenProps> = ({
               onClick={(e) => {
                 e.preventDefault();
                 setHasAccount((prevState) => !prevState);
-                setAuthFormData({ email: "", password: "" });
+                setAuthFormData({
+                  firstName: "",
+                  lastName: "",
+                  email: "",
+                  password: "",
+                  confirmPassword: "",
+                });
               }}
             >
               {t("auth.signup")}

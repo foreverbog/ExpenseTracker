@@ -135,7 +135,13 @@ const LoginSmallScreen: React.FC<LoginSmallScreenProps> = ({
               e.preventDefault();
               setHasAccount((prevState) => !prevState);
               setLoginAnimationComplete(false);
-              setAuthFormData({ email: "", password: "" });
+              setAuthFormData({
+                firstName: "",
+                lastName: "",
+                email: "",
+                password: "",
+                confirmPassword: "",
+              });
             }}
           >
             {t("auth.signup")}
