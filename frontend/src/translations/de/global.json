@@ -3,14 +3,22 @@
     "home": "Home",
     "about": "Über uns",
     "contact": "Kontakt",
-    "theme": "Thema"
+    "theme": "Thema",
+    "settings": "Einstellungen",
+    "logout": "Abmelden"
   },
 
   "landing": {
     "title": "Wilkommen bei",
     "paragraphStart": "Melden Sie sich bei",
     "paragraphEnd": "an, um Ihre Ausgaben einfach zu verwalten, Reisen zu planen und Währungsumrechnungen vorzunehmen. Starten Sie noch heute!",
-    "btn": "Registrieren"
+    "btn": "Registrieren",
+
+    "isAuthenticated": {
+      "title": "Hallo",
+      "paragraph": "Es ist Zeit, die Kontrolle über deine Finanzen zu übernehmen. Beginne jetzt, deine Ausgaben zu verwalten, um deinen Überblick über das Budget zu behalten und deine finanziellen Ziele zu erreichen.",
+      "btn": "Jetzt starten"
+    }
   },
   "features": {
     "titleStart": "Warum",

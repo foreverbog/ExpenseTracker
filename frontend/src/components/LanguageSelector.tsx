@@ -5,17 +5,21 @@ import { LanguageContext } from "../context/LanguageContext";
 // const languages: string[] = ["EN", "DE"];
 
 type LanguageSelectorProps = {
-  isLanguageOpen: boolean;
-  setIsLanguageOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isUserOpen: boolean;
+  setIsUserOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isThemeOpen: boolean;
   setIsThemeOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isLanguageOpen: boolean;
+  setIsLanguageOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const LanguageSelector = ({
-  isLanguageOpen,
-  setIsLanguageOpen,
+  isUserOpen,
+  setIsUserOpen,
   isThemeOpen,
   setIsThemeOpen,
+  isLanguageOpen,
+  setIsLanguageOpen,
 }: LanguageSelectorProps) => {
   const languageContext = useContext(LanguageContext);
   if (!languageContext) {
@@ -29,6 +33,7 @@ const LanguageSelector = ({
         onClick={() => {
           setIsLanguageOpen((prevState) => !prevState);
           setIsThemeOpen(false);
+          setIsUserOpen(false);
         }}
         className="flex gap-1 relative justify-center items-center  p-1 text-secondary-text "
       >
@@ -40,23 +45,21 @@ const LanguageSelector = ({
         <p>{language.toUpperCase()}</p>
       </div>
       <AnimatePresence>
-        {isLanguageOpen && !isThemeOpen && (
+        {isLanguageOpen && !isThemeOpen && !isUserOpen && (
           <motion.ul
+            onClick={() => {
+              const newLanguage = language === "de" ? "en" : "de";
+              languageToggler(newLanguage);
+
+              setIsLanguageOpen((prevState) => !prevState);
+            }}
             key="modal"
             initial={{ opacity: 0, height: "0px" }}
             animate={{ opacity: 1, height: "30px" }}
             exit={{ opacity: 0, height: "0px" }}
-            className="bg-base-100  absolute  right-0 w-full   rounded-b-md flex flex-col justify-center items-center gap-2 p-2 cursor-pointer"
+            className="bg-base-100  absolute  right-0 w-full   rounded-b-md flex flex-col justify-center items-center gap-2 p-2 cursor-pointer hover:bg-base-200"
           >
-            <li
-              onClick={() => {
-                const newLanguage = language === "de" ? "en" : "de";
-                languageToggler(newLanguage);
-
-                setIsLanguageOpen((prevState) => !prevState);
-              }}
-              className="flex gap-1 justify-center items-center text-base-text"
-            >
+            <li className="flex gap-1 justify-center items-center text-base-text ">
               <img
                 src={`../images/${language === "de" ? "en" : "de"}.svg`}
                 alt="flag"

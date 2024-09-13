@@ -38,7 +38,7 @@ const Signup: React.FC<SignupProps> = ({
   };
   const { isLoading, serverError, handleSubmit } = useAuthSubmit({
     url: "https://extr-backend.onrender.com/signup",
-    redirectUrl: "/home",
+    redirectUrl: "/",
     succesMessage: t("auth.signupToast", {
       firstName: authFormData.firstName,
     }),

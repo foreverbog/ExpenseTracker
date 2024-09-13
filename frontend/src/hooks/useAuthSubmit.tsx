@@ -58,9 +58,7 @@ const useAuthSubmit = ({
       }
 
       if (redirectUrl) {
-        setTimeout(() => {
-          navigate(redirectUrl);
-        }, 1000);
+        navigate(redirectUrl);
       }
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {

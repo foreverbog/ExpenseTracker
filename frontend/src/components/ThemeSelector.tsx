@@ -7,6 +7,8 @@ import { useTranslation } from "react-i18next";
 const themes: string[] = ["Light", "Dark", "Retro", "Lofi", "Neon"];
 
 type ThemeSelectorProps = {
+  isUserOpen: boolean;
+  setIsUserOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isThemeOpen: boolean;
   setIsThemeOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isLanguageOpen: boolean;
@@ -14,6 +16,8 @@ type ThemeSelectorProps = {
 };
 
 const ThemeSelector = ({
+  isUserOpen,
+  setIsUserOpen,
   isThemeOpen,
   setIsThemeOpen,
   isLanguageOpen,
@@ -33,6 +37,7 @@ const ThemeSelector = ({
         onClick={() => {
           setIsThemeOpen((prevState) => !prevState);
           setIsLanguageOpen(false);
+          setIsUserOpen(false);
         }}
         className={`cursor-pointer flex items-center p-2 text-secondary-text  ${
           isThemeOpen && "bg-base-100 rounded-t-md  "
@@ -48,7 +53,7 @@ const ThemeSelector = ({
         />
       </div>
       <AnimatePresence>
-        {isThemeOpen && !isLanguageOpen && (
+        {isThemeOpen && !isLanguageOpen && !isUserOpen && (
           <motion.ul
             key="modal"
             initial={{ opacity: 0, height: "0px" }}

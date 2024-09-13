@@ -1,6 +1,7 @@
 import { useState, useEffect, createContext, ReactNode } from "react";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 type AuthContextType = {
   user: UserType;
@@ -31,6 +32,7 @@ type DecodedTokentype = {
 const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
   children,
 }) => {
+  const navigate = useNavigate();
   const [token, setToken] = useState<string | null>(null);
   const [user, setUser] = useState<UserType>({
     id: "",
@@ -74,6 +76,7 @@ const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
     });
     localStorage.removeItem("token");
     console.log("log out");
+    navigate("/auth");
   };
 
   // console.log(token);

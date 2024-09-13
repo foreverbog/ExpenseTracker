@@ -1,14 +1,24 @@
 import { useTranslation } from "react-i18next";
 import LanguageSelector from "./LanguageSelector";
 import ThemeSelector from "./ThemeSelector";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { LogoVector } from "../assets/svg/BrandsVectors";
-
+import { AuthContext } from "../context/AuthContext";
+import NavbarUserIcon from "./NavbarUserIcon";
 const Navbar = () => {
   const [isThemeOpen, setIsThemeOpen] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const [isUserOpen, setIsUserOpen] = useState(false);
   const [t] = useTranslation("global");
+
+  const authContext = useContext(AuthContext);
+
+  if (!authContext) {
+    throw new Error("useContext must be used within an AuthContextProvider");
+  }
+
+  const { isAuthenticated, logout } = authContext;
 
   return (
     <>
@@ -51,13 +61,29 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="hidden md:flex items-center gap-2 mr-24">
+          {isAuthenticated ? (
+            <NavbarUserIcon
+              logout={logout}
+              isUserOpen={isUserOpen}
+              setIsUserOpen={setIsUserOpen}
+              isThemeOpen={isThemeOpen}
+              setIsThemeOpen={setIsThemeOpen}
+              isLanguageOpen={isLanguageOpen}
+              setIsLanguageOpen={setIsLanguageOpen}
+            />
+          ) : null}
+
           <ThemeSelector
+            isUserOpen={isUserOpen}
+            setIsUserOpen={setIsUserOpen}
             isThemeOpen={isThemeOpen}
             setIsThemeOpen={setIsThemeOpen}
             isLanguageOpen={isLanguageOpen}
             setIsLanguageOpen={setIsLanguageOpen}
           />
           <LanguageSelector
+            isUserOpen={isUserOpen}
+            setIsUserOpen={setIsUserOpen}
             isLanguageOpen={isLanguageOpen}
             setIsLanguageOpen={setIsLanguageOpen}
             isThemeOpen={isThemeOpen}

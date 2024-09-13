@@ -3,14 +3,22 @@
     "home": "Home",
     "about": "About",
     "contact": "Contact",
-    "theme": "Theme"
+    "theme": "Theme",
+    "settings": "Settings",
+    "logout": "Log Out"
   },
 
   "landing": {
     "title": "Welcome to",
     "paragraphStart": "Register with",
     "paragraphEnd": "to easily manage your expenses, plan trips, and handle currency exchanges. Get started today!",
-    "btn": "Sign Up"
+    "btn": "Sign Up",
+
+    "isAuthenticated": {
+      "title": "Hello",
+      "paragraph": "It's time to take control of your finances. Start managing your expenses now to stay on top of your budget and achieve your financial goals.",
+      "btn": "Start Now"
+    }
   },
 
   "features": {

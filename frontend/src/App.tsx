@@ -29,8 +29,8 @@ function App() {
         transition={Zoom}
       />
       <Routes>
-        <Route path="/home" element={<MainLayout />}>
-          <Route path="/home" element={<Home />} />
+        <Route path="/" element={<MainLayout />}>
+          <Route path="/" element={<Home />} />
           {/* <Route path="/about" element={<Home />} />
           <Route path="/contact" element={<Home />} /> */}
         </Route>
