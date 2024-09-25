@@ -61,7 +61,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSideBarOpen, handleSideBar }) => {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            `flex items-center gap-2 text-2xl  ${
+            `flex items-center gap-2 text-lg xs:text-2xl  ${
               isActive &&
               "underline underline-offset-4 decoration-primary decoration-2"
             }`
@@ -73,7 +73,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSideBarOpen, handleSideBar }) => {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            `flex items-center gap-2 text-2xl  ${
+            `flex items-center gap-2 text-lg xs:text-2xl  ${
               isActive &&
               "underline underline-offset-4 decoration-primary decoration-2"
             }`
@@ -85,7 +85,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSideBarOpen, handleSideBar }) => {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            `flex items-center gap-2 text-2xl  ${
+            `flex items-center gap-2 text-lg xs:text-2xl  ${
               isActive &&
               "underline underline-offset-4 decoration-primary decoration-2"
             }`
@@ -97,7 +97,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSideBarOpen, handleSideBar }) => {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            `flex items-center gap-2 text-2xl  ${
+            `flex items-center gap-2 text-lg xs:text-2xl  ${
               isActive &&
               "underline underline-offset-4 decoration-primary decoration-2"
             }`
@@ -110,7 +110,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSideBarOpen, handleSideBar }) => {
       {isAuthenticated && (
         <button
           onClick={logout}
-          className="bg-red-500 flex justify-center items-center gap-2 rounded-md mx-4 w-1/2  px-4 py-2 hover:bg-red-600 mb-24 overflow-hidden"
+          className="bg-red-700 flex justify-center items-center gap-2 rounded-md w-3/4 sm:w-1/2   py-2 hover:bg-red-800 mb-24 overflow-hidden text-lg xs:text-lg "
         >
           <IoIosLogOut />
           <p>{t("nav.logout")}</p>
