@@ -114,3 +114,7 @@
     @apply py-1 px-2 m-1 bg-base border-b-2 border-base-300 text-base-text placeholder:italic placeholder:text-base-text placeholder:opacity-50 focus:outline-none;
   }
 }
+
+.no-scroll {
+  overflow: hidden;
+}

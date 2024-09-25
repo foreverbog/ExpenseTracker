@@ -1,8 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { IoMdSettings } from "react-icons/io";
-import { IoIosLogOut } from "react-icons/io";
+import { IoMdSettings, IoIosLogOut } from "react-icons/io";
 import { useTranslation } from "react-i18next";
 
 type NavbarUserIconProps = {

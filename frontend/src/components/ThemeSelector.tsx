@@ -1,12 +1,14 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useContext } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { HiOutlineColorSwatch } from "react-icons/hi";
 import { ThemeContext } from "../context/ThemeContext";
 import { useTranslation } from "react-i18next";
 
 const themes: string[] = ["Light", "Dark", "Retro", "Lofi", "Neon"];
 
-type ThemeSelectorProps = {
+export type ThemeSelectorProps = {
+  isSmallScreen: boolean;
   isUserOpen: boolean;
   setIsUserOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isThemeOpen: boolean;
@@ -16,6 +18,7 @@ type ThemeSelectorProps = {
 };
 
 const ThemeSelector = ({
+  isSmallScreen,
   isUserOpen,
   setIsUserOpen,
   isThemeOpen,
@@ -43,14 +46,20 @@ const ThemeSelector = ({
           isThemeOpen && "bg-base-100 rounded-t-md  "
         }`}
       >
-        <p className={`${isThemeOpen && "text-base-text"} font-base`}>
-          {t("nav.theme")}
-        </p>
-        <IoMdArrowDropdown
-          className={`text-text text-lg mt-1 transition-transform duration-500 ease-in-out ${
-            isThemeOpen ? "rotate-180" : ""
-          }`}
-        />
+        {isSmallScreen ? (
+          <HiOutlineColorSwatch className="text-base-text text-2xl" />
+        ) : (
+          <>
+            <p className={`${isThemeOpen && "text-base-text"} font-base`}>
+              {t("nav.theme")}
+            </p>
+            <IoMdArrowDropdown
+              className={`text-text text-lg mt-1 transition-transform duration-500 ease-in-out ${
+                isThemeOpen ? "rotate-180" : ""
+              }`}
+            />
+          </>
+        )}
       </div>
       <AnimatePresence>
         {isThemeOpen && !isLanguageOpen && !isUserOpen && (
@@ -59,7 +68,7 @@ const ThemeSelector = ({
             initial={{ opacity: 0, height: "0px" }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: "20px" }}
-            className="bg-base-100 absolute -right-2 w-48 rounded-md flex flex-col justify-center items-center gap-2 p-2 overflow-hidden shadow-2xl"
+            className="bg-base-100 absolute -right-2 w-24 md:w-48 rounded-md flex flex-col justify-center items-center gap-2 p-2 overflow-hidden shadow-2xl"
           >
             {themes.map((theme) => (
               <li
@@ -82,7 +91,7 @@ const ThemeSelector = ({
                       theme === "Neon" &&
                       "bg-[#000] text-white font-[Chakra-Petch]"
                     } 
-                    cursor-pointer  w-full rounded-md  p-2 relative overflow-hidden group flex justify-center items-center `}
+                    cursor-pointer  w-2/3 rounded-full md:w-full md:rounded-md p-2 relative overflow-hidden group flex justify-center items-center `}
               >
                 <span
                   className={`
@@ -92,7 +101,7 @@ const ThemeSelector = ({
                     ${theme === "Lofi" && "bg-[#2a2743]"} 
                     ${theme === "Neon" && "bg-[#16ff00]"}  
 
-                    absolute top-0 left-0 h-full w-4  rotate-12 scale-150 group-hover:w-6 transition-all duration-1000 ease-in-out`}
+                    absolute top-0 left-0 h-full w-3 md:w-4  rotate-12 scale-150 md:group-hover:w-6 md:transition-all md:duration-1000 md:ease-in-out`}
                 ></span>
                 <span
                   className={`
@@ -101,10 +110,10 @@ const ThemeSelector = ({
                     ${theme === "Retro" && "bg-[#e68369]"}
                     ${theme === "Lofi" && "bg-[#f9dc5c]"}  
                     ${theme === "Neon" && "bg-[#ffed00]"}  
-                    absolute  top-0 left-9 h-full w-4 rotate-12 scale-150 group-hover:w-6 group-hover:left-12 transition-all duration-1000 ease-in-out`}
+                    absolute  top-0 right-0 md:left-9 h-full  w-3 md:w-4 rotate-12 scale-150 md:group-hover:w-6 md:group-hover:left-12 md:transition-all md:duration-1000 md:ease-in-out`}
                 ></span>
 
-                <span className="group-hover:translate-x-8  transition-all duration-1000 ease-in-out ">
+                <span className="hidden md:block group-hover:translate-x-8  transition-all duration-1000 ease-in-out ">
                   {theme}
                 </span>
               </li>

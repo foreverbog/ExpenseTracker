@@ -1,16 +1,38 @@
 import { useTranslation } from "react-i18next";
 import LanguageSelector from "./LanguageSelector";
 import ThemeSelector from "./ThemeSelector";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { LogoVector } from "../assets/svg/BrandsVectors";
 import { AuthContext } from "../context/AuthContext";
 import NavbarUserIcon from "./NavbarUserIcon";
+import Sidebar from "./Sidebar";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { AnimatePresence } from "framer-motion";
+import useMediaQuery from "../hooks/useMediaQuery";
 const Navbar = () => {
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   const [isThemeOpen, setIsThemeOpen] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isUserOpen, setIsUserOpen] = useState(false);
+  const isSmallScreen = useMediaQuery("(max-width: 767px)");
   const [t] = useTranslation("global");
+
+  //* open/close the sidebar and add the no scroll to it if open
+  const handleSideBar = () => {
+    setIsSideBarOpen((prev) => !prev);
+    if (isSideBarOpen) {
+      document.body.classList.remove("no-scroll");
+    } else {
+      document.body.classList.add("no-scroll");
+    }
+  };
+  //* useEffect to automatically close the sidebar on bigger screens
+  useEffect(() => {
+    if (!isSmallScreen) {
+      setIsSideBarOpen(false);
+    }
+  }, [isSmallScreen]);
 
   const authContext = useContext(AuthContext);
 
@@ -60,8 +82,8 @@ const Navbar = () => {
             </NavLink>
           </ul>
         </div>
-        <div className="hidden md:flex items-center gap-2 mr-24">
-          {isAuthenticated ? (
+        <div className="flex items-center gap-2 md:mr-24">
+          {isAuthenticated && !isSmallScreen ? (
             <NavbarUserIcon
               logout={logout}
               isUserOpen={isUserOpen}
@@ -74,6 +96,7 @@ const Navbar = () => {
           ) : null}
 
           <ThemeSelector
+            isSmallScreen={isSmallScreen}
             isUserOpen={isUserOpen}
             setIsUserOpen={setIsUserOpen}
             isThemeOpen={isThemeOpen}
@@ -89,16 +112,20 @@ const Navbar = () => {
             isThemeOpen={isThemeOpen}
             setIsThemeOpen={setIsThemeOpen}
           />
+          <GiHamburgerMenu
+            onClick={handleSideBar}
+            className="text-3xl md:hidden text-secondary-text"
+          />
         </div>
-        <label className="md:hidden">
-          <div className="w-9 h-10 cursor-pointer  flex flex-col items-center justify-center scale-125 mr-6">
-            <input className="hidden peer" type="checkbox" />
-            <div className="w-[50%] h-[2px] bg-white rounded-sm transition-all duration-300 origin-left translate-y-[0.45rem] peer-checked:rotate-[-45deg]"></div>
-            <div className="w-[50%] h-[2px] bg-white rounded-md transition-all duration-300 origin-center peer-checked:hidden"></div>
-            <div className="w-[50%] h-[2px] bg-white rounded-md transition-all duration-300 origin-left -translate-y-[0.45rem] peer-checked:rotate-[45deg]"></div>
-          </div>
-        </label>
       </nav>
+      <AnimatePresence>
+        {isSideBarOpen && (
+          <Sidebar
+            isSideBarOpen={isSideBarOpen}
+            handleSideBar={handleSideBar}
+          />
+        )}
+      </AnimatePresence>
     </>
   );
 };
