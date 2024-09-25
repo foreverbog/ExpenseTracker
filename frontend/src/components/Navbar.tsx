@@ -56,7 +56,7 @@ const Navbar = () => {
                   ? "underline underline-offset-8 decoration-primary decoration-2"
                   : "hover:text-primary transition duration-300 ease-linear"
               }
-              to="/"
+              to="/home"
             >
               {t("nav.home")}
             </NavLink>
