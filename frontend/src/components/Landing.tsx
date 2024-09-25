@@ -30,8 +30,8 @@ const Landing = () => {
               {t("landing.isAuthenticated.paragraph")}{" "}
             </p>
             <Link
-              to="/auth"
-              className="bg-primary px-4 py-2 md:px-8 md:py-4 rounded-md text-primary-text text-center w-1/3 hover:bg-primary-darker hover:shadow-[0px_13px_190px_10px_var(--color-secondary-lighter)] transition-shadow duration-300 ease-in-out"
+              to="/menu"
+              className="bg-primary px-4 py-2 md:px-8 md:py-4 rounded-md text-primary-text text-center w-1/3 hover:bg-primary-darker hover:shadow-[0px_13px_190px_10px_var(--color-secondary-lighter)] transition-shadow duration-300 ease-in-out z-20"
             >
               {t("landing.isAuthenticated.btn")}
             </Link>

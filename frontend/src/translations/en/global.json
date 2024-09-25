@@ -79,5 +79,11 @@
     "signupToast": "Congratulations, {{firstName}}! You have successfully registered.",
     "signupLoading": "Creating Your Account…",
     "loginLoading": "Authenticating..."
+  },
+
+  "menu": {
+    "expense": "Expense Dashboard",
+    "trip": "Trip Organizer",
+    "currency": "Exchange Rates"
   }
 }

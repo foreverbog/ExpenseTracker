@@ -54,7 +54,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSideBarOpen, handleSideBar }) => {
         stiffness: 100,
       }}
       ref={sideBarRef}
-      className="bg-base-200 font-base text-base-text absolute top-0 right-0 h-dvh z-50 w-1/2 shadow-[0_0_0_10000px_rgba(0,0,0,.60)] flex flex-col items-center justify-start overflow-hidden"
+      className="bg-base-200 font-base text-base-text absolute top-0 right-0 min-h-dvh z-50 w-1/2 shadow-[0_0_0_10000px_rgba(0,0,0,.60)] flex flex-col items-center justify-start overflow-hidden "
     >
       {isAuthenticated && (
         <div className="flex flex-wrap gap-2 text-4xl mt-24">

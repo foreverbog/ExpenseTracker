@@ -1,25 +1,31 @@
 import { useContext } from "react";
 import { ThemeContext } from "./context/ThemeContext";
-// import Navbar from "./components/Navbar";
 import MainLayout from "./layout/MainLayout";
-import { Routes, Route } from "react-router-dom";
+import Menu from "./components/Menu";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Authentication from "./pages/Authentication";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import { ToastContainer, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AuthContext } from "./context/AuthContext";
 
 function App() {
   const themeContext = useContext(ThemeContext);
-  // console.log(themeContext);
+  const authContext = useContext(AuthContext);
+  console.log(authContext);
 
   //*Checks if is true so that TS don't thinks is undefined when I am trying to destructure it
+  if (!authContext) {
+    throw new Error("Must be used within a AuthContextProvider");
+  }
   if (!themeContext) {
     throw new Error("Must be used within a ThemeContextProvider");
   }
 
   const { theme } = themeContext;
+  const { isAuthenticated } = authContext;
   return (
     <div className={`theme-${theme} relative`}>
       <ToastContainer
@@ -36,7 +42,16 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
         </Route>
-        <Route path="/auth" element={<Authentication />} />
+        <Route
+          path="/auth"
+          element={
+            isAuthenticated ? <Navigate to="/home" /> : <Authentication />
+          }
+        />
+        <Route
+          path="/menu"
+          element={isAuthenticated ? <Menu /> : <Navigate to="/auth" />}
+        />
       </Routes>
     </div>
   );

@@ -114,7 +114,7 @@ const Navbar = () => {
           />
           <GiHamburgerMenu
             onClick={handleSideBar}
-            className="text-3xl md:hidden text-secondary-text"
+            className="text-3xl md:hidden text-secondary-text hover:cursor-pointer"
           />
         </div>
       </nav>

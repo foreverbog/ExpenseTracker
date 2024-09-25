@@ -78,5 +78,11 @@
     "signupToast": "Herzlichen Glückwunsch, {{firstName}}! Sie haben sich erfolgreich registriert.",
     "signupLoading": "Ihr Konto wird erstellt…",
     "loginLoading": "Authentifizieren..."
+  },
+
+  "menu": {
+    "expense": "Ausgabenübersicht",
+    "trip": "Reiseorganisator",
+    "currency": "Wechselkurse"
   }
 }
