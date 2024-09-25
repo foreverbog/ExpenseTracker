@@ -37,7 +37,7 @@ const Login = ({
   };
   const { isLoading, serverError, handleSubmit } = useAuthSubmit({
     url: local,
-    redirectUrl: "/",
+    redirectUrl: "/home",
     succesMessage: t("auth.titleLogin", {
       firstName: "s",
     }),
