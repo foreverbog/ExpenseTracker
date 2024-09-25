@@ -39,6 +39,11 @@ const Sidebar: React.FC<SidebarProps> = ({ isSideBarOpen, handleSideBar }) => {
     };
   }, [handleSideBar, isSideBarOpen]);
 
+  const handleLogout = () => {
+    logout();
+    handleSideBar();
+  };
+
   return (
     <motion.div
       initial={{ width: 0 }}
@@ -109,7 +114,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSideBarOpen, handleSideBar }) => {
       </div>
       {isAuthenticated && (
         <button
-          onClick={logout}
+          onClick={handleLogout}
           className="bg-red-700 flex justify-center items-center gap-2 rounded-md w-3/4 sm:w-1/2   py-2 hover:bg-red-800 mb-24 overflow-hidden text-lg xs:text-lg "
         >
           <IoIosLogOut />
