@@ -46,14 +46,14 @@ const NavbarUserIcon: React.FC<NavbarUserIconProps> = ({
           >
             <Link
               to="/auth"
-              className="flex justify-center items-center gap-2 font-base hover:bg-base-200 px-4 py-2  w-full"
+              className="flex justify-center items-center gap-2 font-base hover:bg-base-200 transition-colors duration-300 ease-in-out px-4 py-2  w-full"
             >
               <IoMdSettings />
               <p>{t("nav.settings")}</p>
             </Link>
             <button
               onClick={logout}
-              className="bg-red-700 flex justify-center items-center gap-2 rounded-md mx-4 w-2/3 mb-2 px-2 py-1 hover:bg-red-800  "
+              className="bg-red-700 flex justify-center items-center gap-2 rounded-md mx-4 w-2/3 mb-2 px-2 py-1 hover:bg-red-800 transition-colors ease-in-out duration-300 text-base font-medium  "
             >
               <IoIosLogOut className="text-lg" />
               {t("nav.logout")}

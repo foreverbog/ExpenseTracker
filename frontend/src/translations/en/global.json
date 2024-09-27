@@ -83,7 +83,7 @@
 
   "menu": {
     "expense": "Expense Dashboard",
-    "trip": "Trip Organizer",
+    "trip": "Trips Organizer",
     "currency": "Exchange Rates"
   }
 }

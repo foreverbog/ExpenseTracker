@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { ThemeContext } from "./context/ThemeContext";
 import MainLayout from "./layout/MainLayout";
-import Menu from "./components/Menu";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Authentication from "./pages/Authentication";
@@ -10,6 +9,11 @@ import Contact from "./pages/Contact";
 import { ToastContainer, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "./context/AuthContext";
+import MenuLayout from "./layout/MenuLayout";
+import ExpenseDashboard from "./pages/ExpenseDashboard";
+import TripsOrganizer from "./pages/TripsOrganizer";
+import ExchangeRates from "./pages/ExchangeRates";
+import Settings from "./pages/Settings";
 
 function App() {
   const themeContext = useContext(ThemeContext);
@@ -50,8 +54,13 @@ function App() {
         />
         <Route
           path="/menu"
-          element={isAuthenticated ? <Menu /> : <Navigate to="/auth" />}
-        />
+          element={isAuthenticated ? <MenuLayout /> : <Navigate to="/auth" />}
+        >
+          <Route path="expenses" element={<ExpenseDashboard />} />
+          <Route path="trips" element={<TripsOrganizer />} />
+          <Route path="exchange" element={<ExchangeRates />} />
+        </Route>
+        <Route path="settings" element={<Settings />} />
       </Routes>
     </div>
   );
