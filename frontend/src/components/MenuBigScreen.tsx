@@ -18,7 +18,7 @@ const MenuBigScreen: React.FC<MenuBigScreenType> = ({ logout }) => {
       {/* //*Back to home Link */}
       <Link
         to="/home"
-        className="absolute left-3 top-4 flex justify-center items-center gap-4 text-base-text group hover:text-primary hover:scale-105 transition duration-300 ease-in-out"
+        className="absolute left-3 top-4 flex justify-center items-center gap-4 text-base-text group hover:text-primary hover:scale-105 transition duration-300 ease-in-out "
       >
         <FaHome className="text-2xl" />
         <p className="underline opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
@@ -30,7 +30,7 @@ const MenuBigScreen: React.FC<MenuBigScreenType> = ({ logout }) => {
       <div className="flex flex-col justify-center flex-1 gap-8  w-full">
         <NavLink
           to="/menu/expenses"
-          className="flex items-center gap-4 pl-1 transition-all duration-300"
+          className="flex items-center gap-4 pl-1 transition-all duration-300 hover:scale-105 hover:bg-base-200 py-2"
         >
           <MdBarChart className="text-blue-600 text-4xl flex-shrink-0 " />
           <p className="text-md text-center font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
@@ -39,7 +39,7 @@ const MenuBigScreen: React.FC<MenuBigScreenType> = ({ logout }) => {
         </NavLink>
         <NavLink
           to="/menu/trips"
-          className="flex items-center gap-4 pl-1 transition-all duration-300 "
+          className="flex items-center gap-4 pl-1 transition-all duration-300 hover:scale-105 hover:bg-base-200 py-2 "
         >
           <TbBeach className="text-amber-500 text-4xl flex-shrink-0" />
           <p className="text-md text-center font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
@@ -48,7 +48,7 @@ const MenuBigScreen: React.FC<MenuBigScreenType> = ({ logout }) => {
         </NavLink>
         <NavLink
           to="/menu/exchange"
-          className="flex items-center gap-4 pl-1 transition-all duration-300"
+          className="flex items-center gap-4 pl-1 transition-all duration-300 hover:scale-105 hover:bg-base-200 py-2"
         >
           <BsCurrencyExchange className="text-green-500 text-4xl flex-shrink-0" />
           <p className="text-md text-center font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
@@ -57,7 +57,7 @@ const MenuBigScreen: React.FC<MenuBigScreenType> = ({ logout }) => {
         </NavLink>
         <NavLink
           to="/settings"
-          className="flex items-center gap-4 pl-1 transition-all duration-300"
+          className="flex items-center gap-4 pl-1 transition-all duration-300 hover:scale-105 hover:bg-base-200 py-2"
         >
           <IoMdSettings className="text-base-text text-4xl flex-shrink-0" />
           <p className="text-md text-center font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
