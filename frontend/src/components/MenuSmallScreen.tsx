@@ -44,28 +44,28 @@ const MenuSmallScreen: React.FC<MenuSmallScreenType> = ({
             <NavLink
               onClick={() => setIsMenuOpen((prev) => !prev)}
               to="/menu/expenses"
-              className="flex flex-wrap  text-center gap-2 items-center justify-center   text-2xl xs:text-4xl  hover:scale-110 transition-transform duration-500 ease-in-out p-2"
+              className="flex flex-wrap  text-center gap-2 items-center justify-center   text-2xl xs:text-4xl  hover:scale-110 transition-all duration-300  p-2 hover:bg-base-200 w-full"
             >
               <MdBarChart className="text-blue-600 text-3xl xs:text-5xl" />
               <p>{t("menu.expense")}</p>
             </NavLink>
             <NavLink
               to="/home"
-              className="flex flex-wrap  text-center gap-2 items-center justify-center  text-2xl xs:text-4xl  hover:scale-110 transition-transform duration-500 ease-in-out p-2"
+              className="flex flex-wrap  text-center gap-2 items-center justify-center   text-2xl xs:text-4xl  hover:scale-110 transition-all duration-300  p-2 hover:bg-base-200 w-full"
             >
               <TbBeach className="text-amber-500 text-3xl xs:text-5xl" />
               <p>{t("menu.trip")}</p>
             </NavLink>
             <NavLink
               to="/home"
-              className="flex flex-wrap text-center gap-2 items-center justify-center  text-2xl xs:text-4xl  hover:scale-110 transition-transform duration-500 ease-in-out p-2"
+              className="flex flex-wrap  text-center gap-2 items-center justify-center   text-2xl xs:text-4xl  hover:scale-110 transition-all duration-300  p-2 hover:bg-base-200 w-full"
             >
               <BsCurrencyExchange className="text-green-500 text-3xl xs:text-5xl" />
               <p>{t("menu.currency")}</p>
             </NavLink>
             <NavLink
               to="/home"
-              className="flex flex-wrap text-center gap-2 items-center justify-center  text-2xl xs:text-4xl  hover:scale-110 transition-transform duration-500 ease-in-out p-2"
+              className="flex flex-wrap  text-center gap-2 items-center justify-center   text-2xl xs:text-4xl  hover:scale-110 transition-all duration-300  p-2 hover:bg-base-200 w-full"
             >
               <IoMdSettings className="text-base-text text-3xl xs:text-5xl" />
               <p>{t("nav.settings")}</p>
