@@ -18,7 +18,7 @@ import Settings from "./pages/Settings";
 function App() {
   const themeContext = useContext(ThemeContext);
   const authContext = useContext(AuthContext);
-  console.log(authContext);
+  // console.log(authContext);
 
   //*Checks if is true so that TS don't thinks is undefined when I am trying to destructure it
   if (!authContext) {

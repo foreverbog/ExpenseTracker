@@ -28,7 +28,7 @@ const MenuSmallScreen: React.FC<MenuSmallScreenType> = ({
           animate={{ width: "100%" }}
           exit={{ width: 0, transition: { duration: 0.1 } }}
           transition={{ duration: 0.2 }}
-          className="bg-base font-base text-base-text h-dvh flex flex-col  items-center fixed "
+          className="z-40 bg-base-200 font-base text-base-text h-dvh flex flex-col  items-center fixed "
         >
           {/* //*Back to home Link */}
           <Link

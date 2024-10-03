@@ -85,5 +85,14 @@
     "expense": "Expense Dashboard",
     "trip": "Trips Organizer",
     "currency": "Exchange Rates"
+  },
+
+  "expenses": {
+    "title": "Expense Dashboard",
+    "types": {
+      "daily": "Daily",
+      "monthly": "Monthly",
+      "yearly": "Yearly"
+    }
   }
 }

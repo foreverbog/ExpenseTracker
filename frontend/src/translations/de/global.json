@@ -84,5 +84,14 @@
     "expense": "Ausgabenübersicht",
     "trip": "Reiseorganisator",
     "currency": "Wechselkurse"
+  },
+
+  "expenses": {
+    "title": "Ausgabenübersicht",
+    "types": {
+      "daily": "Täglich",
+      "monthly": "Monatlich",
+      "yearly": "Jährlich"
+    }
   }
 }

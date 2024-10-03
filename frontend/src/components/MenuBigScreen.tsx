@@ -14,7 +14,7 @@ const MenuBigScreen: React.FC<MenuBigScreenType> = ({ logout }) => {
   const [t] = useTranslation("global");
 
   return (
-    <div className="bg-base font-base text-base-text h-full flex flex-col justify-between items-center fixed left-0 w-[50px] hover:w-[220px]  transition-all duration-300 group rounded-r-md overflow-hidden">
+    <div className="z-40 bg-base-200 font-base text-base-text h-full flex flex-col justify-between items-center fixed left-0 w-[50px] hover:w-[220px]  transition-all duration-300 group rounded-r-md overflow-hidden">
       {/* //*Back to home Link */}
       <Link
         to="/home"
