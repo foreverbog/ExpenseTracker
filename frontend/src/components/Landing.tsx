@@ -4,10 +4,13 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { useContext } from "react";
+import useMediaQuery from "../hooks/useMediaQuery";
 
 const Landing = () => {
   const [t] = useTranslation("global");
   const authContext = useContext(AuthContext);
+  const isSmallScreen = useMediaQuery("(max-width: 767px)");
+
   if (!authContext) {
     throw new Error("useContext must be used within an AuthContextProvider");
   }
@@ -29,8 +32,9 @@ const Landing = () => {
             <p className=" w-5/6  text-center text-balance text-sm md:text-lg italic  ">
               {t("landing.isAuthenticated.paragraph")}{" "}
             </p>
+
             <Link
-              to="/menu"
+              to={`/menu${isSmallScreen ? "" : "/expenses"}`}
               className="bg-primary px-4 py-2 md:px-8 md:py-4 rounded-md text-primary-text text-center w-1/3 hover:bg-primary-darker hover:shadow-[0px_13px_190px_10px_var(--color-secondary-lighter)] transition-shadow duration-300 ease-in-out z-20"
             >
               {t("landing.isAuthenticated.btn")}
