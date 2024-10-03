@@ -1,5 +1,5 @@
 import MenuSmallScreen from "../components/MenuSmallScreen";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import MenuBigScreen from "../components/MenuBigScreen";
 import useMediaQuery from "../hooks/useMediaQuery";
@@ -14,7 +14,19 @@ const MenuLayout = () => {
     throw new Error("useContext must be used within an AuthContextProvider ");
   }
   const { logout } = authContext;
-  console.log(`Small screen is = ${isSmallScreen} `);
+  // console.log(`Small screen is = ${isSmallScreen} `);
+
+  useEffect(() => {
+    const handleBackClick = () => {
+      setIsMenuOpen((prev) => !prev);
+    };
+
+    window.addEventListener("popstate", handleBackClick);
+
+    return () => {
+      window.removeEventListener("popstate", handleBackClick);
+    };
+  }, []);
 
   return (
     <>
