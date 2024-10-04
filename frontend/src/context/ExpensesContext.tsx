@@ -8,7 +8,9 @@ import {
 import { AuthContext } from "./AuthContext";
 import useFetch from "../hooks/useFetch";
 import { useLocation } from "react-router-dom";
+import moment from "moment";
 
+//*Expense type
 type ExpenseType = {
   _id: string;
   icon: string;
@@ -18,9 +20,17 @@ type ExpenseType = {
   type?: string;
 };
 
+//*Expense Date Type
+type ExpensDateType = {
+  month: number;
+  year: string;
+};
+
 export type ExpensesContextType = {
   expenses: ExpenseType[];
   setExpenses: React.Dispatch<React.SetStateAction<ExpenseType[]>>;
+  expenseDate: ExpensDateType;
+  setExpenseDate: React.Dispatch<React.SetStateAction<ExpensDateType>>;
   isLoading: boolean;
 };
 
@@ -39,16 +49,28 @@ const ExpenseContextProvider: React.FC<ExpensesContextProviderType> = ({
   if (!authContext) {
     throw new Error("useContext must be used within an AuthContextProvider");
   }
+
   const { user } = authContext;
   const location = useLocation();
   const [expenses, setExpenses] = useState<ExpenseType[]>([]);
+
+  //* getting dates for the expenses
+  const date = moment();
+  const [expenseDate, setExpenseDate] = useState<ExpensDateType>({
+    month: Number(date.format("MM")),
+    year: date.format("YYYY"),
+  });
+  console.log(expenseDate);
+
   const [apiUrl, setApiUrl] = useState<string | null>(null);
 
   useEffect(() => {
     if (user && location.pathname === "/menu/expenses") {
-      setApiUrl(`http://localhost:8080/${user.id}/expenses?year=2024&month=05`);
+      setApiUrl(
+        `http://localhost:8080/${user.id}/expenses?year=${expenseDate.year}&month=${expenseDate.month}`
+      );
     }
-  }, [user, location.pathname]);
+  }, [user, location.pathname, expenseDate]);
 
   //*use the custom hook to get the data
   const { apiData, isLoading } = useFetch<ExpenseType[]>(apiUrl && apiUrl);
@@ -60,7 +82,9 @@ const ExpenseContextProvider: React.FC<ExpensesContextProviderType> = ({
   }, [apiData]);
 
   return (
-    <ExpenseContext.Provider value={{ expenses, setExpenses, isLoading }}>
+    <ExpenseContext.Provider
+      value={{ expenses, setExpenses, expenseDate, setExpenseDate, isLoading }}
+    >
       {children}
     </ExpenseContext.Provider>
   );
