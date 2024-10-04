@@ -19,7 +19,7 @@ const ExpensesHeading: React.FC<ExpensesHeadingPropsType> = ({
   return (
     <div className="relative flex text-center mx-auto roundend-full overflow-hidden border-base-200 rounded-md mt-6 w-2/3 text-base-text drop-shadow-xl">
       <div
-        className={` absolute bg-secondary  left-0 top-0 h-full w-1/3 rounded-full z-20  ${
+        className={` absolute bg-secondary  left-0 top-0 h-full w-1/3 rounded-full z-20 border-secondary-darker border-2  ${
           activeExpenseType === t("expenses.types.daily") && "translate-x-0 "
         } ${
           activeExpenseType === t("expenses.types.monthly") &&
@@ -37,7 +37,7 @@ const ExpensesHeading: React.FC<ExpensesHeadingPropsType> = ({
           key={type}
           className={`p-2  w-1/3 cursor-pointer transition-colors duration-1000 ease-in-out border-2 border-base-200 rounded-full  ${
             activeExpenseType === type
-              ? "text-secondary-text"
+              ? "text-secondary-text "
               : "text-base-text"
           }`}
         >

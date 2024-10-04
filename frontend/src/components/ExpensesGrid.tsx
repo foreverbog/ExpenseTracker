@@ -68,7 +68,7 @@ const ExpensesGrid = () => {
             {isDropdownOpen.month && (
               <motion.div
                 initial={{ height: 0 }}
-                animate={{ height: "auto " }}
+                animate={{ height: "auto" }}
                 exit={{ height: 0, transition: { duration: 0.3 } }}
                 transition={{
                   type: "spring",
@@ -121,7 +121,7 @@ const ExpensesGrid = () => {
             {expenses?.map((expense) => (
               <div
                 key={expense._id}
-                className=" border grid grid-cols-4  w-full divide-x even:bg-base odd:bg-base-100"
+                className=" border grid grid-cols-4  w-full divide-x even:bg-base odd:bg-base-100 "
                 style={{ gridTemplateColumns: "100px auto 150px 150px" }}
               >
                 <p className="text-center">{expense.icon}</p>
