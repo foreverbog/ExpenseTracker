@@ -64,6 +64,17 @@ const ExpenseContextProvider: React.FC<ExpensesContextProviderType> = ({
 
   const [apiUrl, setApiUrl] = useState<string | null>(null);
 
+  //*Reset the month/year back to today's month/year when user login/logout
+  useEffect(() => {
+    if (user) {
+      const currentDate = moment();
+      setExpenseDate({
+        month: Number(currentDate.format("MM")),
+        year: currentDate.format("YYYY"),
+      });
+    }
+  }, [user]);
+
   useEffect(() => {
     if (user && location.pathname === "/menu/expenses") {
       setApiUrl(

@@ -78,6 +78,7 @@ const ExpensesGrid = () => {
               >
                 {months.map((month, i) => (
                   <div
+                    key={month + i}
                     onClick={() => handleChangeMonth(i)}
                     className={`text-center p-2 ${
                       months[expenseDate.month - 1] === month &&
@@ -98,7 +99,9 @@ const ExpensesGrid = () => {
           onChange={handleChangeYear}
         >
           {years.map((year) => (
-            <option value={year}>{year}</option>
+            <option key={year} value={year}>
+              {year}
+            </option>
           ))}
         </select>
       </div>
