@@ -8,8 +8,8 @@ import { MdBarChart } from "react-icons/md";
 const ExpenseDashboard = () => {
   const [t] = useTranslation("global");
   // console.log(expenses);
-  const [activeExpenseType, setActiveExpenseType] = useState<string | "Daily">(
-    "Daily"
+  const [activeExpenseType, setActiveExpenseType] = useState<string>(
+    t("expenses.types.daily")
   );
 
   const handleExpenseTypesSelect = (type: string) => {
@@ -28,7 +28,7 @@ const ExpenseDashboard = () => {
       />
       <ExepnsesSubHeading />
 
-      <ExpensesGrid />
+      <ExpensesGrid activeExpenseType={activeExpenseType} />
     </div>
   );
 };

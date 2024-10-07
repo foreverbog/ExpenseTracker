@@ -95,11 +95,13 @@
       "yearly": "Yearly"
     },
     "gridHeading": {
-      "category": "Category",
+      "category": "Cat.",
       "name": "Name",
       "price": "Price",
       "date": "Date"
     },
+    "notFound": "No expenses found!",
+
     "months": {
       "January": "January",
       "February": "February",

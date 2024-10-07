@@ -94,11 +94,12 @@
       "yearly": "Jährlich"
     },
     "gridHeading": {
-      "category": "Kategorie",
+      "category": "Kat.",
       "name": "Name",
       "price": "Preis",
       "date": "Datum"
     },
+    "notFound": "Keine Ausgaben gefunden!",
 
     "months": {
       "January": "Januar",
