@@ -1,0 +1,101 @@
+import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import useCategoriesIcons from "../utils/categoryIcons";
+import { useTranslation } from "react-i18next";
+
+const categories: string[] = [
+  "House",
+  "Food",
+  "Transport",
+  "Clothes",
+  "Health",
+  "Wellness",
+  "Sport",
+  "Education",
+  "Gift",
+  "Gaming",
+  "Other",
+];
+type ExpenseCreatorProps = {
+  setIsNewExpenseOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const ExpenseCreator: React.FC<ExpenseCreatorProps> = ({
+  setIsNewExpenseOpen,
+}) => {
+  const { t } = useTranslation("global");
+
+  const { categoryIconsExpenseCreator } = useCategoriesIcons();
+
+  const modalRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
+        setIsNewExpenseOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [setIsNewExpenseOpen]);
+
+  return (
+    <>
+      <div className="fixed inset-0 z-40 bg-black opacity-60"></div>
+      <motion.div
+        ref={modalRef}
+        initial={{ width: "20px" }}
+        animate={{ width: "auto" }}
+        transition={{ duration: 0.5 }}
+        exit={{ width: "20px", transition: { duration: 0.5, delay: 0.4 } }}
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-md bg-base-100 z-50 overflow-clip"
+      >
+        <motion.div
+          className="flex flex-col gap-12 p-12"
+          initial={{ height: "40px" }}
+          animate={{ height: "auto" }}
+          exit={{ height: "40px", transition: { duration: 0.3 } }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          <motion.p
+            className="flex justify-center items-center text-4xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 100 }}
+            exit={{ opacity: 0, transition: { duration: 0.2 } }}
+            transition={{ duration: 1, delay: 0.7 }}
+          >
+            {t("expenses.selectCat")}
+          </motion.p>
+          <motion.div
+            className="flex flex-wrap justify-center items-center gap-8 "
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 100 }}
+            exit={{ opacity: 0, transition: { duration: 0.2 } }}
+            transition={{ duration: 1, delay: 0.7 }}
+          >
+            {categories.map((category) => (
+              <div
+                key={category}
+                className="font-base flex flex-col justify-between  items-center flex-grow w-36 h-24 border border-base-200 rounded-md hover:bg-base-200 hover:cursor-pointer hover:scale-110 active:scale-90 transition-all duration-300 ease-in-out"
+              >
+                <div className="text-4xl flex flex-1 justify-center items-center ">
+                  {
+                    categoryIconsExpenseCreator[
+                      t(`expenses.categories.${category.toLowerCase()}`)
+                    ]
+                  }
+                </div>
+                <div className="text-xl ">
+                  {t(`expenses.categories.${category.toLowerCase()}`)}
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </motion.div>
+    </>
+  );
+};
+
+export default ExpenseCreator;

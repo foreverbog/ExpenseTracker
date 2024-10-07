@@ -1,15 +1,16 @@
 import { useTranslation } from "react-i18next";
 import { useExpensesContext } from "../hooks/useExpensesContext";
 import { FaRegEdit } from "react-icons/fa";
-import categoryIcons from "../utils/categoryIcons";
 import Loading from "./Loading";
 import moment from "moment";
+import useCategoriesIcons from "../utils/categoryIcons";
 
 type ExpenseGridProps = {
   activeExpenseType: string | "Daily";
 };
 
 const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
+  const { categoryIcons } = useCategoriesIcons();
   const [t] = useTranslation("global");
   const { expenses, isLoading } = useExpensesContext();
   console.log(expenses);
@@ -62,7 +63,7 @@ const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
                   </div>
                 </div>
                 <div className="flex items-center justify-center  p-2 text-2xl text-base-text">
-                  {categoryIcons[expense.icon]}
+                  {categoryIcons[t(`expenses.categories.${expense.icon}`)]}
                 </div>
                 <p className="text-lg flex justify-start items-center pl-4 p-2 z">
                   {expense.name}

@@ -101,6 +101,22 @@
       "date": "Date"
     },
     "notFound": "No expenses found!",
+    "new": "New Expense",
+    "selectCat": "Select Category:",
+
+    "categories": {
+      "house": "House",
+      "food": "Food",
+      "transport": "Transport",
+      "clothes": "Clothes",
+      "health": "Health",
+      "wellness": "Wellness",
+      "sport": "Sport",
+      "education": "Education",
+      "gift": "Gift",
+      "gaming": "Gaming",
+      "other": "Other"
+    },
 
     "months": {
       "January": "January",

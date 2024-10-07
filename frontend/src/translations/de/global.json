@@ -100,6 +100,22 @@
       "date": "Datum"
     },
     "notFound": "Keine Ausgaben gefunden!",
+    "new": "Neue Ausgabe",
+    "selectCat": "Kategorie auswählen:",
+
+    "categories": {
+      "house": "Haus",
+      "food": "Essen",
+      "transport": "Transport",
+      "clothes": "Kleidung",
+      "health": "Gesundheit",
+      "wellness": "Wellness",
+      "sport": "Sport",
+      "education": "Bildung",
+      "gift": "Geschenk",
+      "gaming": "Spiele",
+      "other": "Sonstiges"
+    },
 
     "months": {
       "January": "Januar",
