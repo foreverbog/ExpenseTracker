@@ -12,7 +12,7 @@ type ExpenseGridProps = {
 const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
   const [t] = useTranslation("global");
   const { expenses, isLoading } = useExpensesContext();
-  // console.log(expenses);
+  console.log(expenses);
 
   const handleEditExpense = (id: string) => {
     console.log("clicked");
@@ -71,7 +71,11 @@ const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
                   {expense.value}
                 </p>
                 <p className="flex justify-start items-center pl-4 p-2 ">
-                  {moment(expense.date).format("DD/MM/YY")}
+                  {!expense.type && moment(expense.date).format("DD/MM/YY")}
+                  {expense.type === "monthly" &&
+                    moment(expense.date).format("DD")}
+                  {expense.type === "yearly" &&
+                    moment(expense.date).format("MMM")}
                 </p>
               </div>
             ) : null
