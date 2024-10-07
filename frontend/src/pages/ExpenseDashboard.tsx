@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ExpensesHeading from "../components/ExpensesHeading";
+import ExepnsesSubHeading from "../components/ExepnsesSubHeading";
 import ExpensesGrid from "../components/ExpensesGrid";
 import { useTranslation } from "react-i18next";
 import { MdBarChart } from "react-icons/md";
@@ -25,6 +26,7 @@ const ExpenseDashboard = () => {
         activeExpenseType={activeExpenseType}
         handleExpenseTypesSelect={handleExpenseTypesSelect}
       />
+      <ExepnsesSubHeading />
 
       <ExpensesGrid />
     </div>

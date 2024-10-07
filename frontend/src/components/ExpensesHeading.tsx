@@ -25,11 +25,11 @@ const ExpensesHeading: React.FC<ExpensesHeadingPropsType> = ({
           activeExpenseType === t("expenses.types.monthly") &&
           "translate-x-full"
         }
-        ${
-          activeExpenseType === t("expenses.types.yearly") &&
-          "translate-x-[200%]"
-        }
-    } transition-transform duration-500 ease-in-out`}
+          ${
+            activeExpenseType === t("expenses.types.yearly") &&
+            "translate-x-[200%]"
+          }
+      } transition-transform duration-500 ease-in-out`}
       ></div>
       {expensesTypes.map((type) => (
         <div
