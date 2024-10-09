@@ -5,7 +5,6 @@ const {
   getUser,
   editUser,
   deleteUser,
-
   getUserExpensesSort,
 } = require("../controllers/userControllers");
 

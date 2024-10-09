@@ -133,12 +133,13 @@ const deleteUser = async (req, res) => {
 //? year = NUMBER , month=NUMBER
 const getUserExpensesSort = async (req, res) => {
   const { id } = req.params;
-  const { sortBy = "date", order = "desc", type, month, year } = req.query;
+  const { sortBy = "date", order = "desc", month, year, type } = req.query;
+
   try {
     if (!["date", "value"].includes(sortBy)) {
       return res
         .status(400)
-        .json({ error: "Invalid sort field. Use 'date' or 'value'. " });
+        .json({ error: "Invalid sort field. Use 'date' or 'value'." });
     }
 
     if (!["asc", "desc"].includes(order)) {
@@ -150,7 +151,7 @@ const getUserExpensesSort = async (req, res) => {
     if (type && !["monthly", "yearly"].includes(type)) {
       return res
         .status(400)
-        .json({ error: "Invalid type. Use 'monthyl' or 'yearly'." });
+        .json({ error: "Invalid type. Use 'monthly' or 'yearly'." });
     }
 
     if (year && isNaN(year)) {
@@ -162,18 +163,29 @@ const getUserExpensesSort = async (req, res) => {
     if (month && (isNaN(month) || month < 1 || month > 12)) {
       return res
         .status(400)
-        .json({ error: "Invalid month. Provide a month between 1 and 12" });
+        .json({ error: "Invalid month. Provide a month between 1 and 12." });
     }
 
-    const startDate = new Date(year, month - 1, 1);
-    const endDate = new Date(year, month, 0);
+    const filter = {};
 
+    if (type) {
+      filter.type = type; // Filter by expense type if provided
+    }
+
+    if (year && month) {
+      const startDate = new Date(year, month - 1, 1);
+      const endDate = new Date(year, month, 0);
+      filter.date = { $gte: startDate, $lte: endDate }; // Filter by month and year range
+    } else if (year) {
+      const startDate = new Date(year, 0, 1);
+      const endDate = new Date(year, 11, 31);
+      filter.date = { $gte: startDate, $lte: endDate }; // Filter by year only
+    }
+
+    // Find user and populate expenses based on the filter
     const user = await User.findById(id).populate({
       path: "expenses",
-      match: {
-        ...(type && { type }),
-        date: { $gte: startDate, $lte: endDate },
-      },
+      match: filter, // Apply the dynamically built filter
       options: {
         sort: { [sortBy]: order === "asc" ? 1 : -1 },
       },
@@ -185,7 +197,7 @@ const getUserExpensesSort = async (req, res) => {
 
     res.status(200).json(user.expenses);
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(500).json({ error: error.message });
   }
 };
 

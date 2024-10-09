@@ -37,6 +37,20 @@ const createExpense = async (req, res) => {
   }
 };
 
+//*Get only 1 expense
+const getOneExpense = async (req, res) => {
+  const { expenseId } = req.params;
+  try {
+    const expense = await Expense.findById(expenseId);
+    if (!expense) {
+      return res.status(404).json({ error: "Expense not found" });
+    }
+    res.status(200).json(expense);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 //* Edit expense
 const editExpense = async (req, res) => {
   const { icon, name, date, value, type } = req.body;
@@ -82,6 +96,7 @@ const deleteExpense = async (req, res) => {
 
 module.exports = {
   createExpense,
+  getOneExpense,
   editExpense,
   deleteExpense,
 };
