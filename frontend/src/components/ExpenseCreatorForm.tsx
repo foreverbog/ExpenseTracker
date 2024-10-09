@@ -25,7 +25,7 @@ const ExpenseCreatorForm: React.FC<ExpenseCreatorFormProps> = ({
 
   const { user } = authContext;
 
-  const { setExpenseDate } = useExpensesContext();
+  const { setExpenseQueries } = useExpensesContext();
 
   const expenseFormData = {
     icon: newExpenseForm.expenseCategory,
@@ -41,7 +41,7 @@ const ExpenseCreatorForm: React.FC<ExpenseCreatorFormProps> = ({
     url: `http://localhost:8080/${user.id}/expenses`,
     formData: expenseFormData,
     setIsModalOpen: setIsNewExpenseOpen,
-    setDate: setExpenseDate,
+    setDate: setExpenseQueries,
   });
 
   const { t } = useTranslation("global");

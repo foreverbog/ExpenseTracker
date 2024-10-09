@@ -34,17 +34,17 @@ const ExpensesSubHeading: React.FC<ExpensesSubHeadingProps> = ({
   setIsNewExpenseOpen,
 }) => {
   const [t] = useTranslation("global");
-  const { expenseDate, setExpenseDate } = useExpensesContext();
+  const { expenseQueries, setExpenseQueries } = useExpensesContext();
   const [isDropdownOpen, setIsDropdownOpen] = useState<isDropdownOpenType>({
     month: false,
     year: false,
   });
   const handleChangeMonth = (index: number) => {
-    setExpenseDate({ ...expenseDate, month: index + 1 });
+    setExpenseQueries({ ...expenseQueries, month: index + 1 });
     setIsDropdownOpen((prev) => ({ month: !prev.month, year: false }));
   };
   const handleChangeYear = (year: string) => {
-    setExpenseDate({ ...expenseDate, year: year });
+    setExpenseQueries({ ...expenseQueries, year: year });
     setIsDropdownOpen((prev) => ({ month: false, year: !prev.year }));
   };
 
@@ -65,7 +65,7 @@ const ExpensesSubHeading: React.FC<ExpensesSubHeadingProps> = ({
                 }));
               }}
             >
-              <p>{expenseDate.year}</p>
+              <p>{expenseQueries.year}</p>
               <IoMdArrowDropdown
                 className={`text-text text-lg mt-1 transition-transform duration-500 ease-in-out ${
                   isDropdownOpen.year && "rotate-180"
@@ -93,7 +93,7 @@ const ExpensesSubHeading: React.FC<ExpensesSubHeadingProps> = ({
                       key={year}
                       onClick={() => handleChangeYear(year)}
                       className={`text-center p-1.5 cursor-pointer hover:bg-base-300 transition-colors duration-300 ease-in-out ${
-                        expenseDate.year === year &&
+                        expenseQueries.year === year &&
                         "bg-primary text-primary-text hover:bg-primary"
                       }`}
                     >
@@ -117,7 +117,7 @@ const ExpensesSubHeading: React.FC<ExpensesSubHeadingProps> = ({
                 }));
               }}
             >
-              <p>{t(`expenses.months.${months[expenseDate.month - 1]}`)}</p>
+              <p>{t(`expenses.months.${months[expenseQueries.month - 1]}`)}</p>
               <IoMdArrowDropdown
                 className={`text-text text-lg mt-1 transition-transform duration-500 ease-in-out ${
                   isDropdownOpen.month && "rotate-180"
@@ -145,7 +145,7 @@ const ExpensesSubHeading: React.FC<ExpensesSubHeadingProps> = ({
                       key={month + i}
                       onClick={() => handleChangeMonth(i)}
                       className={`text-center p-1.5 cursor-pointer hover:bg-base-300 transition-colors duration-300 ease-in-out ${
-                        months[expenseDate.month - 1] === month &&
+                        months[expenseQueries.month - 1] === month &&
                         "bg-primary text-primary-text hover:bg-primary"
                       }`}
                     >

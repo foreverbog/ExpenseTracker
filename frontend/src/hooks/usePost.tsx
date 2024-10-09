@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
-import { ExpensDateType } from "../context/ExpensesContext";
+import { ExpensQueriesType } from "../context/ExpensesContext";
 
 type UsePostProps = {
   url: string;
   formData: Record<string, string | number | boolean | null>;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  setDate?: React.Dispatch<React.SetStateAction<ExpensDateType>>;
+  setDate?: React.Dispatch<React.SetStateAction<ExpensQueriesType>>;
 };
 
 const usePost = ({ url, formData, setIsModalOpen, setDate }: UsePostProps) => {
@@ -19,7 +19,7 @@ const usePost = ({ url, formData, setIsModalOpen, setDate }: UsePostProps) => {
 
     //* if the date is given, then we reset the date, so that we can update later so that we can make a new get request in order to display all the expenses
     if (setDate) {
-      setDate({ month: 1, year: "" });
+      setDate((prev) => ({ ...prev, month: 1, year: "" }));
     }
     setIsLoading(true);
     setServerError(null);
@@ -33,10 +33,11 @@ const usePost = ({ url, formData, setIsModalOpen, setDate }: UsePostProps) => {
 
       //* here we set the date to trigger the get request
       if (setDate) {
-        setDate({
+        setDate((prev) => ({
+          ...prev,
           month: formData.month as number,
           year: formData.year as string,
-        });
+        }));
       }
       setIsModalOpen(false);
     } catch (error) {

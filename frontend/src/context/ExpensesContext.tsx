@@ -4,6 +4,7 @@ import {
   useEffect,
   useContext,
   ReactNode,
+  useMemo,
 } from "react";
 import { AuthContext } from "./AuthContext";
 import useFetch from "../hooks/useFetch";
@@ -21,7 +22,10 @@ type ExpenseType = {
 };
 
 //*Expense Date Type
-export type ExpensDateType = {
+export type ExpensQueriesType = {
+  sortBy?: "value" | "date";
+  type?: "" | "monthly" | "yearly";
+  order?: "asc" | "desc";
   month: number;
   year: string;
 };
@@ -29,8 +33,8 @@ export type ExpensDateType = {
 export type ExpensesContextType = {
   expenses: ExpenseType[];
   setExpenses: React.Dispatch<React.SetStateAction<ExpenseType[]>>;
-  expenseDate: ExpensDateType;
-  setExpenseDate: React.Dispatch<React.SetStateAction<ExpensDateType>>;
+  expenseQueries: ExpensQueriesType;
+  setExpenseQueries: React.Dispatch<React.SetStateAction<ExpensQueriesType>>;
   isLoading: boolean;
 };
 
@@ -54,34 +58,41 @@ const ExpenseContextProvider: React.FC<ExpensesContextProviderType> = ({
   const location = useLocation();
   const [expenses, setExpenses] = useState<ExpenseType[]>([]);
 
+  const currentDate = useMemo(() => moment(), []);
+
   //* getting dates for the expenses
-  const date = moment();
-  const [expenseDate, setExpenseDate] = useState<ExpensDateType>({
-    month: Number(date.format("MM")),
-    year: date.format("YYYY"),
+
+  const [expenseQueries, setExpenseQueries] = useState<ExpensQueriesType>({
+    type: "",
+    order: "desc",
+    month: Number(currentDate.format("MM")),
+    year: currentDate.format("YYYY").toString(),
   });
-  console.log(expenseDate);
+
+  console.log(expenseQueries);
 
   const [apiUrl, setApiUrl] = useState<string | null>(null);
 
   //*Reset the month/year back to today's month/year when user login/logout
   useEffect(() => {
     if (user) {
-      const currentDate = moment();
-      setExpenseDate({
+      setExpenseQueries((prev) => ({
+        ...prev,
+        type: "",
+        order: "desc",
         month: Number(currentDate.format("MM")),
-        year: currentDate.format("YYYY"),
-      });
+        year: currentDate.format("YYYY").toString(),
+      }));
     }
-  }, [user]);
+  }, [user, currentDate]);
 
   useEffect(() => {
     if (user && location.pathname === "/menu/expenses") {
       setApiUrl(
-        `http://localhost:8080/${user.id}/expenses?order=desc&year=${expenseDate.year}&month=${expenseDate.month}`
+        `http://localhost:8080/${user.id}/expenses?type=${expenseQueries.type}&order=${expenseQueries.order}&year=${expenseQueries.year}&month=${expenseQueries.month}`
       );
     }
-  }, [user, location.pathname, expenseDate]);
+  }, [user, location.pathname, expenseQueries]);
 
   //*use the custom hook to get the data
   const { apiData, isLoading } = useFetch<ExpenseType[]>(apiUrl && apiUrl);
@@ -97,8 +108,8 @@ const ExpenseContextProvider: React.FC<ExpensesContextProviderType> = ({
       value={{
         expenses,
         setExpenses,
-        expenseDate,
-        setExpenseDate,
+        expenseQueries,
+        setExpenseQueries,
         isLoading,
       }}
     >
