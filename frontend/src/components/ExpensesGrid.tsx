@@ -22,7 +22,7 @@ const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
 
   return (
     <div className=" relative border grid grid-cols-1  mx-auto mt-12 w-full xl:w-2/5 max-h-[700px] overflow-y-scroll overflow-x-hidden  ">
-      {isLoading && <Loading text="Loading..." />}
+      {isLoading && <Loading text={t("loading")} />}
       <>
         <div
           className="sticky  top-0 left-0 right-0 border grid grid-cols-4 w-full divide-x text-primary-text font-semibold  bg-primary-lighter"

@@ -1,4 +1,5 @@
 {
+  "loading": "Loading...",
   "nav": {
     "home": "Home",
     "about": "About",
@@ -103,6 +104,8 @@
     "notFound": "No expenses found!",
     "new": "New Expense",
     "selectCat": "Select Category:",
+    "addBtn": "Add New Expense",
+    "expenseDetail": "Expense details:",
 
     "categories": {
       "house": "House",

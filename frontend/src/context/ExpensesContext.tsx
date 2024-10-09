@@ -21,7 +21,7 @@ type ExpenseType = {
 };
 
 //*Expense Date Type
-type ExpensDateType = {
+export type ExpensDateType = {
   month: number;
   year: string;
 };
@@ -78,7 +78,7 @@ const ExpenseContextProvider: React.FC<ExpensesContextProviderType> = ({
   useEffect(() => {
     if (user && location.pathname === "/menu/expenses") {
       setApiUrl(
-        `http://localhost:8080/${user.id}/expenses?year=${expenseDate.year}&month=${expenseDate.month}`
+        `http://localhost:8080/${user.id}/expenses?order=desc&year=${expenseDate.year}&month=${expenseDate.month}`
       );
     }
   }, [user, location.pathname, expenseDate]);
@@ -94,7 +94,13 @@ const ExpenseContextProvider: React.FC<ExpensesContextProviderType> = ({
 
   return (
     <ExpenseContext.Provider
-      value={{ expenses, setExpenses, expenseDate, setExpenseDate, isLoading }}
+      value={{
+        expenses,
+        setExpenses,
+        expenseDate,
+        setExpenseDate,
+        isLoading,
+      }}
     >
       {children}
     </ExpenseContext.Provider>

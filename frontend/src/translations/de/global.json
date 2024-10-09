@@ -1,4 +1,6 @@
 {
+  "loading": "Laden...",
+
   "nav": {
     "home": "Home",
     "about": "Über uns",
@@ -102,6 +104,8 @@
     "notFound": "Keine Ausgaben gefunden!",
     "new": "Neue Ausgabe",
     "selectCat": "Kategorie auswählen:",
+    "addBtn": "Neue Ausgabe hinzufügen",
+    "expenseDetail": "Ausgabendetails:",
 
     "categories": {
       "house": "Haus",
