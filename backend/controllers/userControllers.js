@@ -136,6 +136,7 @@ const getUserExpensesSort = async (req, res) => {
   const { sortBy = "date", order = "desc", month, year, type } = req.query;
 
   try {
+    // Validation for sortBy, order, and type
     if (!["date", "value"].includes(sortBy)) {
       return res
         .status(400)
@@ -148,10 +149,12 @@ const getUserExpensesSort = async (req, res) => {
         .json({ error: "Invalid sort order. Use 'asc' or 'desc'." });
     }
 
-    if (type && !["monthly", "yearly"].includes(type)) {
-      return res
-        .status(400)
-        .json({ error: "Invalid type. Use 'monthly' or 'yearly'." });
+    // Allow type to be "monthly", "yearly",  or an empty string (normal)
+    if (type && !["monthly", "yearly", ""].includes(type)) {
+      return res.status(400).json({
+        error:
+          "Invalid type. Use 'monthly', 'yearly', or empty string for normal.",
+      });
     }
 
     if (year && isNaN(year)) {
@@ -166,10 +169,12 @@ const getUserExpensesSort = async (req, res) => {
         .json({ error: "Invalid month. Provide a month between 1 and 12." });
     }
 
+    // Dynamic filtering
     const filter = {};
 
-    if (type) {
-      filter.type = type; // Filter by expense type if provided
+    if (type !== undefined) {
+      // Check if type is explicitly provided (including empty string "")
+      filter.type = type;
     }
 
     if (year && month) {
