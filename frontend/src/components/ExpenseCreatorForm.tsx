@@ -83,7 +83,7 @@ const ExpenseCreatorForm: React.FC<ExpenseCreatorFormProps> = ({
           placeholder="Price"
         />
       </div>
-      <div className="flex justify-center items-center md:w-1/2">
+      <div className="flex justify-center items-center lg:w-1/2">
         <input
           type="number"
           min="1"
@@ -119,7 +119,7 @@ const ExpenseCreatorForm: React.FC<ExpenseCreatorFormProps> = ({
           placeholder="YYYY"
         />
       </div>
-      <button className="text-xs md:text-normal md:px-4 md:py-2 bg-secondary text-secondary-text rounded-md w-1/2 mt-8 font-semibold hover:scale-105 active:scale-95 transition-transform duration-300 ease-in-out drop-shadow-xl">
+      <button className="text-xs lg:text-normal lg:px-4 py-2 bg-secondary text-secondary-text rounded-md w-1/2 mt-8 font-semibold hover:scale-105 active:scale-95 transition-transform duration-300 ease-in-out drop-shadow-xl">
         {t("expenses.addBtn")}
       </button>
     </motion.form>

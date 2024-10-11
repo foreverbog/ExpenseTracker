@@ -115,7 +115,7 @@ const ExpensesSubHeading: React.FC<ExpensesSubHeadingProps> = ({
                 (activeExpenseType === t("expenses.types.monthly") ||
                   activeExpenseType === t("expenses.types.yearly")) &&
                 "hidden"
-              } rounded-md p-1 md:p-1.5 border border-primary flex items-center justify-center bg-base-100 cursor-pointer  w-[80px] md:min-w-[109px] text-xs md:text-normal${
+              } rounded-md p-1 md:p-1.5 border border-primary flex items-center justify-center bg-base-100 cursor-pointer  w-[80px] md:min-w-[109px] text-xs md:text-normal ${
                 isDropdownOpen.month && " rounded-b-none"
               }`}
               onClick={() => {
