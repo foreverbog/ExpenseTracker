@@ -4,6 +4,8 @@ import { FaRegEdit } from "react-icons/fa";
 import Loading from "./Loading";
 import moment from "moment";
 import useCategoriesIcons from "../utils/categoryIcons";
+import { FaSortAmountDown, FaSortAmountUp } from "react-icons/fa";
+import useMediaQuery from "../hooks/useMediaQuery";
 
 type ExpenseGridProps = {
   activeExpenseType: string | "Daily";
@@ -11,8 +13,10 @@ type ExpenseGridProps = {
 
 const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
   const { categoryIcons } = useCategoriesIcons();
+  const isSmallScreen = useMediaQuery("(max-width: 767px)");
   const [t] = useTranslation("global");
-  const { expenses, isLoading } = useExpensesContext();
+  const { expenses, isLoading, setExpenseQueries, expenseQueries } =
+    useExpensesContext();
   console.log(expenses);
 
   const handleEditExpense = (id: string) => {
@@ -20,18 +24,76 @@ const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
     console.log(`expenseId: ${id}`);
   };
 
+  const handleSort = (e: React.MouseEvent<HTMLElement>) => {
+    const target = e.target as HTMLElement;
+    if (target.textContent === t("expenses.gridHeading.price")) {
+      setExpenseQueries((prev) => ({
+        ...prev,
+        order: expenseQueries.order === "asc" ? "desc" : "asc",
+        sortBy: "value",
+      }));
+    } else {
+      setExpenseQueries((prev) => ({
+        ...prev,
+        order: expenseQueries.order === "asc" ? "desc" : "asc",
+        sortBy: "date",
+      }));
+    }
+  };
+
   return (
-    <div className=" relative border grid grid-cols-1  mx-auto mt-12 w-full xl:w-2/5 max-h-[700px] overflow-y-scroll overflow-x-hidden  ">
+    <div
+      className=" relative border grid grid-cols-1  mx-auto mt-12 w-full xl:w-2/5 max-h-[500px] overflow-y-scroll overflow-x-hidden "
+      style={{ scrollbarWidth: "thin" }}
+    >
       {isLoading && <Loading text={t("loading")} />}
       <>
         <div
-          className="sticky  top-0 left-0 right-0 border grid grid-cols-4 w-full divide-x text-primary-text font-semibold  bg-primary-lighter"
-          style={{ gridTemplateColumns: "50px auto 150px 150px" }}
+          className="sticky top-0 left-0 right-0 border grid grid-cols-4 w-full divide-x text-primary-text font-semibold  bg-primary-lighter  z-20 text-xs "
+          style={{
+            gridTemplateColumns: isSmallScreen
+              ? "40px auto 80px 80px"
+              : "50px auto 150px 150px",
+          }}
         >
-          <p className=" p-4 ">{t("expenses.gridHeading.category")}</p>
-          <p className=" p-4  ">{t("expenses.gridHeading.name")}</p>
-          <p className=" p-4  ">{t("expenses.gridHeading.price")}</p>
-          <p className=" p-4  ">{t("expenses.gridHeading.date")}</p>
+          <div className=" py-4 px-1 md:p-4  ">
+            {t("expenses.gridHeading.category")}
+          </div>
+          <div className=" py-4 px-1 md:p-4  ">
+            {t("expenses.gridHeading.name")}
+          </div>
+          <div
+            onClick={handleSort}
+            className="py-4 px-1  md:p-4 hover:cursor-pointer flex justify-between items-center"
+          >
+            <div>{t("expenses.gridHeading.price")}</div>
+            {expenseQueries.order === "desc" &&
+            expenseQueries.sortBy === "value" ? (
+              <FaSortAmountUp />
+            ) : (
+              <FaSortAmountDown
+                className={`${
+                  expenseQueries.sortBy !== "value" && "opacity-50"
+                }`}
+              />
+            )}
+          </div>
+          <div
+            onClick={handleSort}
+            className="py-4 px-1 md:p-4 hover:cursor-pointer flex justify-between items-center  "
+          >
+            <div>{t("expenses.gridHeading.date")}</div>
+            {expenseQueries.order === "desc" &&
+            expenseQueries.sortBy === "date" ? (
+              <FaSortAmountUp />
+            ) : (
+              <FaSortAmountDown
+                className={`${
+                  expenseQueries.sortBy !== "date" && "opacity-50"
+                }`}
+              />
+            )}
+          </div>
         </div>
         {expenses?.some(
           (expense) =>
@@ -52,7 +114,11 @@ const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
               <div
                 key={expense._id}
                 className="relative grid grid-cols-4  w-full divide-x even:bg-base odd:bg-base-100 hover:cursor-pointer group"
-                style={{ gridTemplateColumns: "50px auto 150px 150px" }}
+                style={{
+                  gridTemplateColumns: isSmallScreen
+                    ? "40px auto 80px 80px"
+                    : "50px auto 150px 150px",
+                }}
               >
                 <div
                   onClick={() => handleEditExpense(expense._id)}
@@ -62,16 +128,16 @@ const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
                     <FaRegEdit />
                   </div>
                 </div>
-                <div className="flex items-center justify-center  p-2 text-2xl text-base-text">
+                <div className="flex items-center justify-center text-lg md:p-2 md:text-2xl text-base-text ">
                   {categoryIcons[t(`expenses.categories.${expense.icon}`)]}
                 </div>
-                <p className="text-lg flex justify-start items-center pl-4 p-2 z">
+                <p className=" p-1 text-md md:text-lg flex justify-start items-center md:pl-4 md:p-2 ">
                   {expense.name}
                 </p>
-                <p className="flex justify-start items-center pl-4 p-2 ">
+                <p className="p-1 text-md md:text-lg flex justify-start items-center md:pl-4 md:p-2  ">
                   {expense.value}
                 </p>
-                <p className="flex justify-start items-center pl-4 p-2 ">
+                <p className="p-1 text-md md:text-lg flex justify-start items-center md:pl-4 md:p-2  ">
                   {!expense.type && moment(expense.date).format("DD/MM/YY")}
                   {expense.type === "monthly" &&
                     moment(expense.date).format("DD")}

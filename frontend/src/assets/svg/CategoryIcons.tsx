@@ -15,6 +15,7 @@ export const SportIcon = () => {
 export const SportIconExpenseCreator = () => {
   return (
     <svg
+      className="size-4 lg:size-auto"
       xmlns="http://www.w3.org/2000/svg"
       height="40px"
       viewBox="0 -960 960 960"
@@ -42,6 +43,7 @@ export const WellnessIcon = () => {
 export const WellnessIconExpenseCreator = () => {
   return (
     <svg
+      className="size-4 lg:size-auto"
       xmlns="http://www.w3.org/2000/svg"
       height="40px"
       viewBox="0 -960 960 960"
@@ -70,6 +72,7 @@ export const EducationIcon = () => {
 export const EducationIconExpenseCreator = () => {
   return (
     <svg
+      className="size-4 lg:size-auto"
       xmlns="http://www.w3.org/2000/svg"
       height="40px"
       viewBox="0 -960 960 960"

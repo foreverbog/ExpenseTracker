@@ -67,6 +67,7 @@ const ExpenseContextProvider: React.FC<ExpensesContextProviderType> = ({
     order: "desc",
     month: Number(currentDate.format("MM")),
     year: currentDate.format("YYYY").toString(),
+    sortBy: "date",
   });
 
   console.log(expenseQueries);
@@ -79,7 +80,6 @@ const ExpenseContextProvider: React.FC<ExpensesContextProviderType> = ({
       setExpenseQueries((prev) => ({
         ...prev,
         type: "",
-        order: "desc",
         month: Number(currentDate.format("MM")),
         year: currentDate.format("YYYY").toString(),
       }));
@@ -88,9 +88,30 @@ const ExpenseContextProvider: React.FC<ExpensesContextProviderType> = ({
 
   useEffect(() => {
     if (user && location.pathname === "/menu/expenses") {
-      setApiUrl(
-        `http://localhost:8080/${user.id}/expenses?type=${expenseQueries.type}&order=${expenseQueries.order}&year=${expenseQueries.year}&month=${expenseQueries.month}`
-      );
+      if (expenseQueries.type === "monthly") {
+        if (
+          expenseQueries.sortBy === "value" ||
+          expenseQueries.sortBy === "date"
+        ) {
+          setApiUrl(
+            `http://localhost:8080/${user.id}/expenses?sortBy=${expenseQueries.sortBy}&type=${expenseQueries.type}&order=${expenseQueries.order}&year=${expenseQueries.year}`
+          );
+        } else
+          setApiUrl(
+            `http://localhost:8080/${user.id}/expenses?type=${expenseQueries.type}&order=${expenseQueries.order}&year=${expenseQueries.year}`
+          );
+      } else if (expenseQueries.type === "yearly") {
+        setApiUrl(
+          `http://localhost:8080/${user.id}/expenses?sortBy=${expenseQueries.sortBy}&type=${expenseQueries.type}&order=${expenseQueries.order}&year=${expenseQueries.year}`
+        );
+      } else if (expenseQueries.sortBy === "value") {
+        setApiUrl(
+          `http://localhost:8080/${user.id}/expenses?sortBy=${expenseQueries.sortBy}&type=${expenseQueries.type}&order=${expenseQueries.order}&year=${expenseQueries.year}&month=${expenseQueries.month}`
+        );
+      } else
+        setApiUrl(
+          `http://localhost:8080/${user.id}/expenses?sortBy=${expenseQueries.sortBy}&type=${expenseQueries.type}&order=${expenseQueries.order}&year=${expenseQueries.year}&month=${expenseQueries.month}`
+        );
     }
   }, [user, location.pathname, expenseQueries]);
 

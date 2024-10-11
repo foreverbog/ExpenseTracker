@@ -63,7 +63,7 @@ const ExpenseCreatorForm: React.FC<ExpenseCreatorFormProps> = ({
       <p className="text-red-500 font-semibold text-balance text-center text-lg">
         {serverError}
       </p>
-      <div className=" flex flex-wrap justify-center items-center  gap-4 font-base w-full">
+      <div className="flex flex-wrap justify-center items-center  gap-4 font-base w-full">
         <input
           onChange={handleOnChange}
           type="text"
@@ -79,11 +79,11 @@ const ExpenseCreatorForm: React.FC<ExpenseCreatorFormProps> = ({
           value={newExpenseForm.expensePrice}
           id="expensePrice"
           name="expensePrice"
-          className="inputStyle bg-transparent w-1/5 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+          className="inputStyle bg-transparent w-1/2 md:w-1/4 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
           placeholder="Price"
         />
       </div>
-      <div className="flex justify-center items-center w-1/2">
+      <div className="flex justify-center items-center md:w-1/2">
         <input
           type="number"
           min="1"
@@ -119,7 +119,7 @@ const ExpenseCreatorForm: React.FC<ExpenseCreatorFormProps> = ({
           placeholder="YYYY"
         />
       </div>
-      <button className="px-4 py-2 bg-secondary text-secondary-text rounded-md w-1/2 mt-8 font-semibold hover:scale-105 active:scale-95 transition-transform duration-300 ease-in-out drop-shadow-xl">
+      <button className="text-xs md:text-normal md:px-4 md:py-2 bg-secondary text-secondary-text rounded-md w-1/2 mt-8 font-semibold hover:scale-105 active:scale-95 transition-transform duration-300 ease-in-out drop-shadow-xl">
         {t("expenses.addBtn")}
       </button>
     </motion.form>

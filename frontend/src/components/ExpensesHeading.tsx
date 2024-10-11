@@ -17,9 +17,10 @@ const ExpensesHeading: React.FC<ExpensesHeadingPropsType> = ({
   ];
 
   return (
-    <div className="relative flex text-center mx-auto roundend-full overflow-hidden border-base-200 rounded-md mt-6 w-2/3 text-base-text drop-shadow-xl">
+    <div className="relative flex  text-center mx-auto roundend-full overflow-hidden border-base-200 rounded-md mt-6  w-full md:w-2/3 text-base-text drop-shadow-xl ">
+      {/* //*DIV to show wich type is active */}
       <div
-        className={` absolute bg-secondary  left-0 top-0 h-full w-1/3 rounded-full z-20 border-secondary-darker border-2  ${
+        className={` absolute bg-secondary  left-0 top-0 h-full w-1/3  rounded-full z-20 border-secondary-darker border-2  ${
           activeExpenseType === t("expenses.types.daily") && "translate-x-0 "
         } ${
           activeExpenseType === t("expenses.types.monthly") &&
@@ -41,7 +42,8 @@ const ExpensesHeading: React.FC<ExpensesHeadingPropsType> = ({
               : "text-base-text"
           }`}
         >
-          <div className="z-40 relative">{type}</div>
+          {/* //*DIV TO PUT THE TEXT ON TOP OF THE ABSOLUTE DIV */}
+          <div className="z-40 relative text-xs md:text-normal">{type}</div>
         </div>
       ))}
     </div>
