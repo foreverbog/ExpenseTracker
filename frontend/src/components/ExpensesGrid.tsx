@@ -34,16 +34,25 @@ const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
   const { categoryIcons } = useCategoriesIcons();
   const isSmallScreen = useMediaQuery("(max-width: 767px)");
   const [t] = useTranslation("global");
+
+  //*State for Modal open/closed
   const [isEditExpenseOpen, setIsEditExpenseOpen] = useState(false);
+
+  //*State to store the expenseID
   const [expenseId, setExpenseId] = useState<string>("");
+
+  //* useFetch hook, custom hook for making get requests
   const { apiData: expense } = useFetch<ExpenseType>(
     `${expenseId && `http://localhost:8080/${user.id}/expenses/${expenseId}`}`
   );
   // console.log(expense);
+
+  //* Destructure from expenseContext
   const { expenses, isLoading, setExpenseQueries, expenseQueries } =
     useExpensesContext();
   console.log(expenses);
 
+  //* Open Edit Modal
   const handleEditExpense = (id: string) => {
     console.log("clicked");
     console.log(`expenseId: ${id}`);

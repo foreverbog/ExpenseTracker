@@ -107,6 +107,11 @@
     "addBtn": "Add New Expense",
     "expenseDetail": "Expense details:",
 
+    "oneExpense": {
+      "title": "Update your Expense",
+      "categoryChange": "Change Category"
+    },
+
     "categories": {
       "house": "House",
       "food": "Food",

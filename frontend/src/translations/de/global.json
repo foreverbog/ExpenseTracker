@@ -107,6 +107,11 @@
     "addBtn": "Neue Ausgabe hinzufügen",
     "expenseDetail": "Ausgabendetails:",
 
+    "oneExpense": {
+      "title": "Ihre Ausgabe aktualisieren",
+      "categoryChange": "Kategorie ändern"
+    },
+
     "categories": {
       "house": "Haus",
       "food": "Essen",
