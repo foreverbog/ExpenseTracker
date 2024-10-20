@@ -8,12 +8,14 @@ import usePost from "../hooks/usePost";
 import Loading from "./Loading";
 
 type ExpenseCreatorFormProps = {
+  activeExpenseType: string;
   newExpenseForm: newExpenseFormType;
   setNewExpenseForm: React.Dispatch<React.SetStateAction<newExpenseFormType>>;
   setIsNewExpenseOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const ExpenseCreatorForm: React.FC<ExpenseCreatorFormProps> = ({
+  activeExpenseType,
   newExpenseForm,
   setNewExpenseForm,
   setIsNewExpenseOpen,
@@ -24,15 +26,23 @@ const ExpenseCreatorForm: React.FC<ExpenseCreatorFormProps> = ({
   }
 
   const { user } = authContext;
+  const { t } = useTranslation("global");
 
   const { setExpenseQueries } = useExpensesContext();
+
+  console.log(activeExpenseType);
 
   const expenseFormData = {
     icon: newExpenseForm.expenseCategory,
     name: newExpenseForm.expenseName,
     value: newExpenseForm.expensePrice,
     date: `${newExpenseForm.expenseYear}-${newExpenseForm.expenseMonth}-${newExpenseForm.expenseDay}`,
-    type: "",
+    type:
+      activeExpenseType === t("expenses.types.daily")
+        ? ""
+        : activeExpenseType === t("expenses.types.monthly")
+        ? "monthly"
+        : activeExpenseType === t("expenses.types.yearly") && "yearly",
     month: newExpenseForm.expenseMonth,
     year: newExpenseForm.expenseYear,
   };
@@ -43,8 +53,6 @@ const ExpenseCreatorForm: React.FC<ExpenseCreatorFormProps> = ({
     setIsModalOpen: setIsNewExpenseOpen,
     setDate: setExpenseQueries,
   });
-
-  const { t } = useTranslation("global");
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

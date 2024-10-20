@@ -20,6 +20,7 @@ const categories: string[] = [
   "Other",
 ];
 type ExpenseCreatorProps = {
+  activeExpenseType: string;
   setIsNewExpenseOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
@@ -33,6 +34,7 @@ export type newExpenseFormType = {
 };
 
 const ExpenseCreator: React.FC<ExpenseCreatorProps> = ({
+  activeExpenseType,
   setIsNewExpenseOpen,
 }) => {
   const isSmallScreen = useMediaQuery("(max-width: 767px)");
@@ -153,6 +155,7 @@ const ExpenseCreator: React.FC<ExpenseCreatorProps> = ({
           </motion.div>
           {newExpenseForm.expenseCategory && (
             <ExpenseCreatorForm
+              activeExpenseType={activeExpenseType}
               setIsNewExpenseOpen={setIsNewExpenseOpen}
               setNewExpenseForm={setNewExpenseForm}
               newExpenseForm={newExpenseForm}

@@ -17,11 +17,15 @@ type ExpenseGridProps = {
 };
 
 export type ExpenseType = {
+  _id: string;
   icon: string;
   name: string;
   type: "" | "monthly" | "yearly";
   value: number;
   date: string;
+  day: string;
+  month: string;
+  year: string;
 };
 
 const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
@@ -50,7 +54,7 @@ const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
   //* Destructure from expenseContext
   const { expenses, isLoading, setExpenseQueries, expenseQueries } =
     useExpensesContext();
-  console.log(expenses);
+  // console.log(expenses);
 
   //* Open Edit Modal
   const handleEditExpense = (id: string) => {
@@ -59,7 +63,7 @@ const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
     setIsEditExpenseOpen(true);
     setExpenseId(id);
   };
-  console.log(expense);
+  // console.log(expense);
 
   const handleSort = (e: React.MouseEvent<HTMLElement>) => {
     const target = e.target as HTMLElement;
@@ -83,9 +87,11 @@ const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
       <AnimatePresence>
         {isEditExpenseOpen && (
           <ExpenseEditModal
+            setExpenseId={setExpenseId}
             expense={expense}
             isEditExpenseOpen={isEditExpenseOpen}
             setIsEditExpenseOpen={setIsEditExpenseOpen}
+            activeExpenseType={activeExpenseType}
           />
         )}
       </AnimatePresence>

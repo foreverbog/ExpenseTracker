@@ -51,7 +51,10 @@ const ExpenseDashboard = () => {
       <ExpensesGrid activeExpenseType={activeExpenseType} />
       <AnimatePresence>
         {isNewExpenseOpen && (
-          <ExpenseCreator setIsNewExpenseOpen={setIsNewExpenseOpen} />
+          <ExpenseCreator
+            activeExpenseType={activeExpenseType}
+            setIsNewExpenseOpen={setIsNewExpenseOpen}
+          />
         )}
       </AnimatePresence>
     </div>
