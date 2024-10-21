@@ -8,6 +8,7 @@ import useCategoriesIcons from "../utils/categoryIcons";
 import moment from "moment";
 import usePut from "../hooks/usePut";
 import Loading from "./Loading";
+import useDelete from "../hooks/useDelete";
 
 type ExpenseEditModalProps = {
   setExpenseId: React.Dispatch<React.SetStateAction<string>>;
@@ -56,8 +57,7 @@ const ExpenseEditModal: React.FC<ExpenseEditModalProps> = ({
   const { setExpenseQueries } = useExpensesContext();
 
   //*Define a default expense
-  // const [expenseToBeUpdated, setExpenseToBeUpdated] =
-  //   useState<ExpenseType | null>(expense);
+
   const [expenseToBeUpdated, setExpenseToBeUpdated] =
     useState<ExpenseToBeUpdatedType>({
       icon: "",
@@ -90,6 +90,16 @@ const ExpenseEditModal: React.FC<ExpenseEditModalProps> = ({
     year: expenseToBeUpdated.year.toString(),
   };
 
+  //* the custom hook for deleting an expense
+  const { handleDelete } = useDelete({
+    url: `http://localhost:8080/${user.id}/expenses/${expense?._id}`,
+    setDate: setExpenseQueries,
+    setIsModalOpen: setIsEditExpenseOpen,
+    month: expenseToBeUpdated.month,
+    year: expenseToBeUpdated.year.toString(),
+  });
+
+  //*the custom hook for updating an expense
   const { isLoading, serverError, handlePut, setServerError } = usePut({
     url: `http://localhost:8080/${user.id}/expenses/${expense?._id}`,
     formData: formDataEditExpense,
@@ -101,6 +111,9 @@ const ExpenseEditModal: React.FC<ExpenseEditModalProps> = ({
     const { name, value } = e.target;
     setExpenseToBeUpdated((prev) => ({ ...prev, [name]: value }));
   };
+
+  // //*Handle delete Expense
+  // const handleDeleteExpense = () => {};
 
   // *Handle submiting the updated expense
   const handleUpdateExpense = (e: React.FormEvent<HTMLFormElement>) => {
@@ -126,10 +139,11 @@ const ExpenseEditModal: React.FC<ExpenseEditModalProps> = ({
       setExpenseId("");
     }
   };
-  console.log(expenseToBeUpdated);
 
   // *Ref for closing the modal when clicking outside
   const editModal = useRef<HTMLDivElement | null>(null);
+  //* Ref for submiting the form with an button that is outside the form
+  const formRef = useRef<HTMLFormElement | null>(null);
 
   const { t } = useTranslation("global");
 
@@ -227,6 +241,7 @@ const ExpenseEditModal: React.FC<ExpenseEditModalProps> = ({
 
           {/* //*FORM To update */}
           <form
+            ref={formRef}
             className="flex flex-col justify-center items-center gap-4"
             onSubmit={handleUpdateExpense}
           >
@@ -324,26 +339,29 @@ const ExpenseEditModal: React.FC<ExpenseEditModalProps> = ({
                 />
               )}
             </div>
-
-            <div className="flex justify-around mt-6 w-full ">
-              <button
-                className="text-xs lg:text-normal px-4 py-2 bg-secondary
+          </form>
+          <div className="flex justify-around mt-6 w-full ">
+            <button
+              onClick={() => {
+                formRef.current?.requestSubmit();
+              }}
+              className="text-xs lg:text-normal px-4 py-2 bg-secondary
               text-secondary-text rounded-md  mt-8 font-semibold
               hover:scale-105 active:scale-95 transition-transform duration-300
               ease-in-out drop-shadow-xl"
-              >
-                Update
-              </button>
-              <button
-                className="text-xs lg:text-normal px-4 py-2 
+            >
+              Update
+            </button>
+            <button
+              onClick={handleDelete}
+              className="text-xs lg:text-normal px-4 py-2 
                rounded-md  mt-8 font-semibold
               hover:scale-105 active:scale-95 transition-transform duration-300
               ease-in-out drop-shadow-xl bg-red-700 hover:bg-red-800 text-base"
-              >
-                Delete
-              </button>
-            </div>
-          </form>
+            >
+              Delete
+            </button>
+          </div>
         </motion.div>
       </motion.div>
     </>

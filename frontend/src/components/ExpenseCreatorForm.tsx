@@ -30,8 +30,6 @@ const ExpenseCreatorForm: React.FC<ExpenseCreatorFormProps> = ({
 
   const { setExpenseQueries } = useExpensesContext();
 
-  console.log(activeExpenseType);
-
   const expenseFormData = {
     icon: newExpenseForm.expenseCategory,
     name: newExpenseForm.expenseName,
