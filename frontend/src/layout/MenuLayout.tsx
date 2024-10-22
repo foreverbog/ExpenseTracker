@@ -5,6 +5,10 @@ import MenuBigScreen from "../components/MenuBigScreen";
 import useMediaQuery from "../hooks/useMediaQuery";
 import { Outlet } from "react-router-dom";
 
+export type MenuContextType = {
+  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
 const MenuLayout = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
   const isSmallScreen = useMediaQuery("(max-width: 767px)");
@@ -40,7 +44,7 @@ const MenuLayout = () => {
         <MenuBigScreen logout={logout} />
       )}
       <div className={`${!isSmallScreen && "ml-11"}`}>
-        <Outlet />
+        <Outlet context={{ setIsMenuOpen }} />
       </div>
     </>
   );
