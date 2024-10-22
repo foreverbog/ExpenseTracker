@@ -45,7 +45,7 @@ const ExpenseCreatorForm: React.FC<ExpenseCreatorFormProps> = ({
     year: newExpenseForm.expenseYear,
   };
 
-  const { isLoading, serverError, handlePost } = usePost({
+  const { isLoading, serverError, setServerError, handlePost } = usePost({
     url: `http://localhost:8080/${user.id}/expenses`,
     formData: expenseFormData,
     setIsModalOpen: setIsNewExpenseOpen,
@@ -57,9 +57,27 @@ const ExpenseCreatorForm: React.FC<ExpenseCreatorFormProps> = ({
     setNewExpenseForm((prev) => ({ ...prev, [name]: value }));
   };
 
+  //*the function to update the expense, and setting the error for every specific field
+  const handleUpdateExpense = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!newExpenseForm.expenseName) {
+      setServerError(t("expenses.errors.name"));
+    } else if (!newExpenseForm.expensePrice) {
+      setServerError(t("expenses.errors.price"));
+    } else if (
+      !newExpenseForm.expenseDay ||
+      !newExpenseForm.expenseMonth ||
+      !newExpenseForm.expenseYear
+    ) {
+      setServerError(t("expenses.errors.date"));
+    } else {
+      handlePost(e);
+    }
+  };
+
   return (
     <motion.form
-      onSubmit={handlePost}
+      onSubmit={handleUpdateExpense}
       className="text-center flex flex-col justify-center items-center gap-2"
       initial={{ opacity: 0 }}
       animate={{ opacity: 100 }}
@@ -76,8 +94,11 @@ const ExpenseCreatorForm: React.FC<ExpenseCreatorFormProps> = ({
           value={newExpenseForm.expenseName}
           id="expenseName"
           name="expenseName"
-          className="inputStyle bg-transparent flex-1 "
-          placeholder="Expense Name"
+          className={`inputStyle bg-transparent flex-1 ${
+            serverError === t("expenses.errors.name") &&
+            "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
+          }`}
+          placeholder={t("placeholders.expenseName")}
         />
         <input
           onChange={handleOnChange}
@@ -85,8 +106,11 @@ const ExpenseCreatorForm: React.FC<ExpenseCreatorFormProps> = ({
           value={newExpenseForm.expensePrice}
           id="expensePrice"
           name="expensePrice"
-          className="inputStyle bg-transparent w-1/2 md:w-1/4 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-          placeholder="Price"
+          className={`inputStyle bg-transparent w-1/2 md:w-1/4 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
+            serverError === t("expenses.errors.price") &&
+            "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
+          }`}
+          placeholder={t("placeholders.price")}
         />
       </div>
       <div className="flex justify-center items-center lg:w-1/2">
@@ -98,8 +122,11 @@ const ExpenseCreatorForm: React.FC<ExpenseCreatorFormProps> = ({
           value={newExpenseForm.expenseDay}
           id="expenseDay"
           name="expenseDay"
-          className="inputStyle text-center bg-transparent w-1/4  [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-          placeholder="DD"
+          className={`inputStyle bg-transparent w-1/2 md:w-1/4 text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
+            serverError === t("expenses.errors.date") &&
+            "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
+          }`}
+          placeholder={t("placeholders.DD")}
           pattern="([1-9]|[12][0-9]|3[01])"
         />
         <span className="">/</span>
@@ -110,8 +137,11 @@ const ExpenseCreatorForm: React.FC<ExpenseCreatorFormProps> = ({
           value={newExpenseForm.expenseMonth}
           id="expenseMonth"
           name="expenseMonth"
-          className="inputStyle text-center bg-transparent w-1/4 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-          placeholder="MM"
+          className={`inputStyle bg-transparent w-1/2 md:w-1/4 text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
+            serverError === t("expenses.errors.date") &&
+            "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
+          }`}
+          placeholder={t("placeholders.MM")}
         />{" "}
         <span className="">/</span>
         <input
@@ -121,8 +151,11 @@ const ExpenseCreatorForm: React.FC<ExpenseCreatorFormProps> = ({
           value={newExpenseForm.expenseYear}
           id="expenseYear"
           name="expenseYear"
-          className="inputStyle text-center bg-transparent w-1/2 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-          placeholder="YYYY"
+          className={`inputStyle bg-transparent w-1/2 md:w-1/4 text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
+            serverError === t("expenses.errors.date") &&
+            "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
+          }`}
+          placeholder={t("placeholders.YYYY")}
         />
       </div>
       <button className="text-xs lg:text-normal lg:px-4 py-2 bg-secondary text-secondary-text rounded-md w-1/2 mt-8 font-semibold hover:scale-105 active:scale-95 transition-transform duration-300 ease-in-out drop-shadow-xl">

@@ -139,6 +139,20 @@
       "October": "Oktober",
       "November": "November",
       "December": "Dezember"
+    },
+
+    "errors": {
+      "name": "Bitte geben Sie einen Namen für die Ausgabe an.",
+      "price": "Bitte geben Sie einen Preis für die Ausgabe an.",
+      "date": "Bitte geben Sie ein vollständiges Datum für die Ausgabe an."
     }
+  },
+
+  "placeholders": {
+    "expenseName": "Ausgabenname",
+    "price": "Preis",
+    "DD": "TT",
+    "MM": "MM",
+    "YYYY": "JJJJ"
   }
 }

@@ -15,7 +15,6 @@ type ExpenseEditModalProps = {
   expense: ExpenseType | null;
   isEditExpenseOpen: boolean;
   setIsEditExpenseOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  activeExpenseType: string | "Daily";
 };
 
 const categories: string[] = [
@@ -44,7 +43,6 @@ type ExpenseToBeUpdatedType = {
 const ExpenseEditModal: React.FC<ExpenseEditModalProps> = ({
   expense,
   setExpenseId,
-  activeExpenseType,
   setIsEditExpenseOpen,
 }) => {
   const authContext = useContext(AuthContext);
@@ -120,15 +118,15 @@ const ExpenseEditModal: React.FC<ExpenseEditModalProps> = ({
     e.preventDefault();
     setExpenseQueries((prev) => ({ ...prev, month: 1, year: "" }));
     if (!expenseToBeUpdated.name) {
-      setServerError("A name bust me provided for the expense");
+      setServerError(t("expenses.errors.name"));
     } else if (!expenseToBeUpdated.value) {
-      setServerError("A price bust me provided for the expense");
+      setServerError(t("expenses.errors.price"));
     } else if (
       !expenseToBeUpdated.day ||
       !expenseToBeUpdated.month ||
       !expenseToBeUpdated.year
     ) {
-      setServerError("A complete date must be provided for the expense");
+      setServerError(t("expenses.errors.date"));
     } else {
       setExpenseQueries((prev) => ({
         ...prev,
@@ -253,38 +251,34 @@ const ExpenseEditModal: React.FC<ExpenseEditModalProps> = ({
             <div className="flex flex-wrap justify-center items-center  gap-4 font-base ">
               <input
                 className={`inputStyle bg-transparent flex-1 ${
-                  serverError === "A name bust me provided for the expense"
-                    ? "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
-                    : ""
+                  serverError === t("expenses.errors.name") &&
+                  "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
                 } `}
                 value={expenseToBeUpdated.name}
                 onChange={handleChange}
                 type="text"
                 id="name"
                 name="name"
-                placeholder="Expense Name"
+                placeholder={t("placeholders.expenseName")}
               />
               <input
                 className={`inputStyle bg-transparent w-1/2 md:w-1/4 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
-                  serverError === "A price bust me provided for the expense"
-                    ? "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
-                    : ""
+                  serverError === t("expenses.errors.price") &&
+                  "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
                 }`}
                 value={expenseToBeUpdated.value}
                 onChange={handleChange}
                 type="number"
                 id="value"
                 name="value"
-                placeholder="Price"
+                placeholder={t("placeholders.price")}
               />
             </div>
             <div className="flex justify-center items-center lg:w-1/2 mx-auto">
               <input
-                className={`inputStyle bg-transparent w-1/2 md:w-1/4 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
-                  serverError ===
-                  "A complete date must be provided for the expense"
-                    ? "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
-                    : ""
+                className={`inputStyle bg-transparent w-1/2 md:w-1/4 text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
+                  serverError === t("expenses.errors.date") &&
+                  "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
                 }`}
                 value={expenseToBeUpdated.day}
                 onChange={handleChange}
@@ -293,51 +287,40 @@ const ExpenseEditModal: React.FC<ExpenseEditModalProps> = ({
                 max="31"
                 id="day"
                 name="day"
-                placeholder="DD"
+                placeholder={t("placeholders.DD")}
               />
               <span className="">/</span>
 
-              {activeExpenseType !== t("expenses.types.monthly") && (
-                <>
-                  <input
-                    className={`inputStyle bg-transparent w-1/2 md:w-1/4 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
-                      serverError ===
-                      "A complete date must be provided for the expense"
-                        ? "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
-                        : ""
-                    }`}
-                    value={expenseToBeUpdated.month}
-                    onChange={handleChange}
-                    type="number"
-                    min="1"
-                    max="12"
-                    id="month"
-                    name="month"
-                    placeholder="MM"
-                  />
-                  {activeExpenseType !== t("expenses.types.yearly") && (
-                    <span className="">/</span>
-                  )}
-                </>
-              )}
-              {activeExpenseType !== t("expenses.types.yearly") && (
-                <input
-                  className={`inputStyle bg-transparent w-1/2 md:w-1/4 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
-                    serverError ===
-                    "A complete date must be provided for the expense"
-                      ? "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
-                      : ""
-                  }`}
-                  value={expenseToBeUpdated.year}
-                  onChange={handleChange}
-                  type="number"
-                  min="1980"
-                  max="2100"
-                  id="year"
-                  name="year"
-                  placeholder="YYYY"
-                />
-              )}
+              <input
+                className={`inputStyle bg-transparent w-1/2 md:w-1/4 text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
+                  serverError === t("expenses.errors.date") &&
+                  "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
+                }`}
+                value={expenseToBeUpdated.month}
+                onChange={handleChange}
+                type="number"
+                min="1"
+                max="12"
+                id="month"
+                name="month"
+                placeholder={t("placeholders.MM")}
+              />
+              <span className="">/</span>
+
+              <input
+                className={`inputStyle bg-transparent w-1/2 md:w-1/4 text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
+                  serverError === t("expenses.errors.date") &&
+                  "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
+                }`}
+                value={expenseToBeUpdated.year}
+                onChange={handleChange}
+                type="number"
+                min="1980"
+                max="2100"
+                id="year"
+                name="year"
+                placeholder={t("placeholders.YYYY")}
+              />
             </div>
           </form>
           <div className="flex justify-around mt-6 w-full ">

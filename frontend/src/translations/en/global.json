@@ -139,6 +139,20 @@
       "October": "October",
       "November": "November",
       "December": "December"
+    },
+
+    "errors": {
+      "name": "Please provide a name for the expense.",
+      "price": "Please provide a price for the expense.",
+      "date": "Please provide a full date for the expense."
     }
+  },
+
+  "placeholders": {
+    "expenseName": "Expense Name",
+    "price": "Price",
+    "DD": "DD",
+    "MM": "MM",
+    "YYYY": "YYYY"
   }
 }

@@ -56,7 +56,7 @@ const usePost = ({ url, formData, setIsModalOpen, setDate }: UsePostProps) => {
     }
   };
 
-  return { handlePost, isLoading, serverError };
+  return { handlePost, isLoading, serverError, setServerError };
 };
 
 export default usePost;
