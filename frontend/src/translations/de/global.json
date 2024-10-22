@@ -1,5 +1,7 @@
 {
   "loading": "Laden...",
+  "update": "Aktualisieren",
+  "delete": "Löschen",
 
   "nav": {
     "home": "Home",
@@ -22,6 +24,7 @@
       "btn": "Jetzt starten"
     }
   },
+
   "features": {
     "titleStart": "Warum",
     "titleEnd": "wählen?",

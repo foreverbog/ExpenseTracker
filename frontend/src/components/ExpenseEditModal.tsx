@@ -333,7 +333,7 @@ const ExpenseEditModal: React.FC<ExpenseEditModalProps> = ({
               hover:scale-105 active:scale-95 transition-transform duration-300
               ease-in-out drop-shadow-xl"
             >
-              Update
+              {t("update")}
             </button>
             <button
               onClick={handleDelete}
@@ -342,7 +342,7 @@ const ExpenseEditModal: React.FC<ExpenseEditModalProps> = ({
               hover:scale-105 active:scale-95 transition-transform duration-300
               ease-in-out drop-shadow-xl bg-red-700 hover:bg-red-800 text-base"
             >
-              Delete
+              {t("delete")}
             </button>
           </div>
         </motion.div>

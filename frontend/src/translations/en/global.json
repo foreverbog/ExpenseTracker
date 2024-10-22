@@ -1,5 +1,8 @@
 {
   "loading": "Loading...",
+  "update": "Update",
+  "delete": "Delete",
+
   "nav": {
     "home": "Home",
     "about": "About",
