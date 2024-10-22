@@ -41,7 +41,7 @@ const useAuthSubmit = ({
       const response = await axios.post(url, authData);
 
       const data = response.data;
-      console.log(data);
+      // console.log(data);
       login(data.token);
       setIsLoading(false);
       if (resetForm) resetForm();

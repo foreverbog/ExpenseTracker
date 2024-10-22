@@ -21,19 +21,19 @@ const ExpenseDashboard = () => {
     t("expenses.types.daily")
   );
 
-  const { setExpenseQueries, expenseQueries } = useExpensesContext();
+  const { setExpenseQueries } = useExpensesContext();
 
   const handleExpenseTypesSelect = (type: string) => {
     setActiveExpenseType(type);
     if (type === t("expenses.types.monthly")) {
       setExpenseQueries((prev) => ({ ...prev, type: "monthly" }));
-      console.log(expenseQueries);
+      // console.log(expenseQueries);
     } else if (type === t("expenses.types.yearly")) {
       setExpenseQueries((prev) => ({ ...prev, type: "yearly" }));
-      console.log(expenseQueries);
+      // console.log(expenseQueries);
     } else {
       setExpenseQueries((prev) => ({ ...prev, type: "" }));
-      console.log(expenseQueries);
+      // console.log(expenseQueries);
     }
   };
 

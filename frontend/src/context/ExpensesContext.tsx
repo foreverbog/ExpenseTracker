@@ -70,7 +70,7 @@ const ExpenseContextProvider: React.FC<ExpensesContextProviderType> = ({
     sortBy: "date",
   });
 
-  console.log(expenseQueries);
+  // console.log(expenseQueries);
 
   const [apiUrl, setApiUrl] = useState<string | null>(null);
 

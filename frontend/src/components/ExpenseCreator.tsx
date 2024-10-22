@@ -85,7 +85,7 @@ const ExpenseCreator: React.FC<ExpenseCreatorProps> = ({
     }));
   };
 
-  console.log(`The selected category is: ${newExpenseForm.expenseCategory}`);
+  // console.log(`The selected category is: ${newExpenseForm.expenseCategory}`);
 
   return (
     <>
