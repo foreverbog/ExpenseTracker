@@ -17,7 +17,7 @@ const MenuBigScreen: React.FC<MenuBigScreenType> = ({ logout }) => {
     <div className="z-40 bg-base-200 font-base text-base-text h-full flex flex-col justify-between items-center fixed left-0 w-[50px] hover:w-[220px]  transition-all duration-300 group rounded-r-md overflow-hidden">
       {/* //*Back to home Link */}
       <Link
-        to="/home"
+        to="/"
         className="absolute left-3 top-4 flex justify-center items-center gap-4 text-base-text group hover:text-primary hover:scale-105 transition duration-300 ease-in-out "
       >
         <FaHome className="text-2xl" />

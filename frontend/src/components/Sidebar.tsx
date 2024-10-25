@@ -69,7 +69,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSideBarOpen, handleSideBar }) => {
         <div className="flex flex-col flex-1 gap-3 justify-center items-center ">
           <NavLink
             onClick={handleSideBar}
-            to="/home"
+            to="/"
             className={({ isActive }) =>
               `flex items-center gap-2 text-lg xs:text-2xl  ${
                 isActive &&
@@ -107,7 +107,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSideBarOpen, handleSideBar }) => {
             <p>{t("nav.contact")}</p>
           </NavLink>
           <NavLink
-            to="/"
+            to="/set"
             className={({ isActive }) =>
               `flex items-center gap-2 text-lg xs:text-2xl  ${
                 isActive &&

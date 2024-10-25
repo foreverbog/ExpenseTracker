@@ -49,6 +49,9 @@ type ExpensesContextProviderType = {
 const ExpenseContextProvider: React.FC<ExpensesContextProviderType> = ({
   children,
 }) => {
+  const deployedUrl = "https://extr-backend.onrender.com";
+  // const localUrl = "http://localhost:8080";
+
   const authContext = useContext(AuthContext);
   if (!authContext) {
     throw new Error("useContext must be used within an AuthContextProvider");
@@ -94,23 +97,23 @@ const ExpenseContextProvider: React.FC<ExpensesContextProviderType> = ({
           expenseQueries.sortBy === "date"
         ) {
           setApiUrl(
-            `http://localhost:8080/${user.id}/expenses?sortBy=${expenseQueries.sortBy}&type=${expenseQueries.type}&order=${expenseQueries.order}&year=${expenseQueries.year}`
+            `${deployedUrl}/${user.id}/expenses?sortBy=${expenseQueries.sortBy}&type=${expenseQueries.type}&order=${expenseQueries.order}&year=${expenseQueries.year}`
           );
         } else
           setApiUrl(
-            `http://localhost:8080/${user.id}/expenses?type=${expenseQueries.type}&order=${expenseQueries.order}&year=${expenseQueries.year}`
+            `${deployedUrl}/${user.id}/expenses?type=${expenseQueries.type}&order=${expenseQueries.order}&year=${expenseQueries.year}`
           );
       } else if (expenseQueries.type === "yearly") {
         setApiUrl(
-          `http://localhost:8080/${user.id}/expenses?sortBy=${expenseQueries.sortBy}&type=${expenseQueries.type}&order=${expenseQueries.order}&year=${expenseQueries.year}`
+          `${deployedUrl}/${user.id}/expenses?sortBy=${expenseQueries.sortBy}&type=${expenseQueries.type}&order=${expenseQueries.order}&year=${expenseQueries.year}`
         );
       } else if (expenseQueries.sortBy === "value") {
         setApiUrl(
-          `http://localhost:8080/${user.id}/expenses?sortBy=${expenseQueries.sortBy}&type=${expenseQueries.type}&order=${expenseQueries.order}&year=${expenseQueries.year}&month=${expenseQueries.month}`
+          `${deployedUrl}/${user.id}/expenses?sortBy=${expenseQueries.sortBy}&type=${expenseQueries.type}&order=${expenseQueries.order}&year=${expenseQueries.year}&month=${expenseQueries.month}`
         );
       } else
         setApiUrl(
-          `http://localhost:8080/${user.id}/expenses?sortBy=${expenseQueries.sortBy}&type=${expenseQueries.type}&order=${expenseQueries.order}&year=${expenseQueries.year}&month=${expenseQueries.month}`
+          `${deployedUrl}/${user.id}/expenses?sortBy=${expenseQueries.sortBy}&type=${expenseQueries.type}&order=${expenseQueries.order}&year=${expenseQueries.year}&month=${expenseQueries.month}`
         );
     }
   }, [user, location.pathname, expenseQueries]);

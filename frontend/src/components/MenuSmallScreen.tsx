@@ -32,7 +32,7 @@ const MenuSmallScreen: React.FC<MenuSmallScreenType> = ({
         >
           {/* //*Back to home Link */}
           <Link
-            to="/home"
+            to="/"
             className="absolute left-4 top-4 flex justify-center items-center gap-2 text-base-text group hover:text-primary hover:scale-105 transition duration-300 ease-in-out"
           >
             <FaHome />
@@ -50,21 +50,21 @@ const MenuSmallScreen: React.FC<MenuSmallScreenType> = ({
               <p>{t("menu.expense")}</p>
             </NavLink>
             <NavLink
-              to="/home"
+              to="/menu/trips"
               className="flex flex-wrap  text-center gap-2 items-center justify-center   text-2xl xs:text-4xl  hover:scale-110 transition-all duration-300  p-2 hover:bg-base-200 w-full"
             >
               <TbBeach className="text-amber-500 text-3xl xs:text-5xl" />
               <p>{t("menu.trip")}</p>
             </NavLink>
             <NavLink
-              to="/home"
+              to="/menu/exchange"
               className="flex flex-wrap  text-center gap-2 items-center justify-center   text-2xl xs:text-4xl  hover:scale-110 transition-all duration-300  p-2 hover:bg-base-200 w-full"
             >
               <BsCurrencyExchange className="text-green-500 text-3xl xs:text-5xl" />
               <p>{t("menu.currency")}</p>
             </NavLink>
             <NavLink
-              to="/home"
+              to="/menu/expenses"
               className="flex flex-wrap  text-center gap-2 items-center justify-center   text-2xl xs:text-4xl  hover:scale-110 transition-all duration-300  p-2 hover:bg-base-200 w-full"
             >
               <IoMdSettings className="text-base-text text-3xl xs:text-5xl" />

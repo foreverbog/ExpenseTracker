@@ -20,6 +20,9 @@ const ExpenseCreatorForm: React.FC<ExpenseCreatorFormProps> = ({
   setNewExpenseForm,
   setIsNewExpenseOpen,
 }) => {
+  const deployedUrl = "https://extr-backend.onrender.com";
+  // const local = "http://localhost:8080";
+
   const authContext = useContext(AuthContext);
   if (!authContext) {
     throw new Error("useContext must be used withing AuthContextProvider");
@@ -46,7 +49,7 @@ const ExpenseCreatorForm: React.FC<ExpenseCreatorFormProps> = ({
   };
 
   const { isLoading, serverError, setServerError, handlePost } = usePost({
-    url: `http://localhost:8080/${user.id}/expenses`,
+    url: `${deployedUrl}/${user.id}/expenses`,
     formData: expenseFormData,
     setIsModalOpen: setIsNewExpenseOpen,
     setDate: setExpenseQueries,

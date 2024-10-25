@@ -1,8 +1,5 @@
 import { AnimatePresence } from "framer-motion";
-// import { Link } from "react-router-dom";
 import { AuthFormDataType } from "../pages/Authentication";
-// import Loading from "./Loading";
-// import { FaEye, FaEyeSlash, FaHome } from "react-icons/fa";
 import useAuthSubmit from "../hooks/useAuthSubmit";
 import SignupSmallScreen from "./SignupSmallScreen";
 import { useTranslation } from "react-i18next";
@@ -31,14 +28,16 @@ const Signup: React.FC<SignupProps> = ({
   authFormData,
   setAuthFormData,
 }) => {
+  const deployedUrl = "https://extr-backend.onrender.com";
+  // const local = "http://localhost:8080";
   const [t] = useTranslation("global");
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setAuthFormData({ ...authFormData, [name]: value });
   };
   const { isLoading, serverError, handleSubmit } = useAuthSubmit({
-    url: "https://extr-backend.onrender.com/signup",
-    redirectUrl: "/home",
+    url: `${deployedUrl}/signup`,
+    redirectUrl: "/",
     succesMessage: t("auth.signupToast", {
       firstName: authFormData.firstName,
     }),

@@ -32,6 +32,8 @@ type DecodedTokentype = {
 const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
   children,
 }) => {
+  const deployedUrl = "https://extr-backend.onrender.com";
+  // const local = "http://localhost:8080";
   const navigate = useNavigate();
   const [token, setToken] = useState<string | null>(null);
   const [user, setUser] = useState<UserType>({
@@ -43,7 +45,7 @@ const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
 
   const getUser = async (userId: string) => {
     try {
-      const response = await axios.get(`http://localhost:8080/${userId}`);
+      const response = await axios.get(`${deployedUrl}/${userId}`);
       const data = response.data;
       setUser({
         id: userId,
@@ -75,7 +77,7 @@ const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
       lastName: "",
     });
     localStorage.removeItem("token");
-    console.log("log out");
+    // console.log("log out");
     navigate("/auth");
   };
 

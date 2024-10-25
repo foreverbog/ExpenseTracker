@@ -48,7 +48,7 @@ const SignupSmallScreen: React.FC<SignupSmallScreenProps> = ({
       onAnimationComplete={() => setSignUpAnimationComplete(true)}
     >
       <Link
-        to="/home"
+        to="/"
         className={`${
           hasAccount ? "hidden" : "flex"
         } absolute left-6 top-8 md:flex gap-2 justify-center items-center group hover:cursor-pointer hover:scale-105 transition duration-300 ease-in-out z-10`}

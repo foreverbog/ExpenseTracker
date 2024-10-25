@@ -42,15 +42,13 @@ function App() {
       />
       <Routes>
         <Route path="/" element={<MainLayout />}>
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
         </Route>
         <Route
           path="/auth"
-          element={
-            isAuthenticated ? <Navigate to="/home" /> : <Authentication />
-          }
+          element={isAuthenticated ? <Navigate to="/" /> : <Authentication />}
         />
         <Route
           path="/menu"

@@ -25,6 +25,8 @@ const ExpenseEditForm: React.FC<ExpenseEditFormProps> = ({
   setExpenseId,
   setIsEditExpenseOpen,
 }) => {
+  const deployedUrl = "https://extr-backend.onrender.com";
+  // const local = "http://localhost:8080";
   const authContext = useContext(AuthContext);
   if (!authContext) {
     throw new Error("useContext must be used withing AuthContextProvider");
@@ -51,7 +53,7 @@ const ExpenseEditForm: React.FC<ExpenseEditFormProps> = ({
 
   //* the custom hook for deleting an expense
   const { handleDelete } = useDelete({
-    url: `http://localhost:8080/${user.id}/expenses/${expense?._id}`,
+    url: `${deployedUrl}/${user.id}/expenses/${expense?._id}`,
     setDate: setExpenseQueries,
     setIsModalOpen: setIsEditExpenseOpen,
     month: expenseToBeUpdated.month,
@@ -60,7 +62,7 @@ const ExpenseEditForm: React.FC<ExpenseEditFormProps> = ({
 
   //*the custom hook for updating an expense
   const { isLoading, serverError, handlePut, setServerError } = usePut({
-    url: `http://localhost:8080/${user.id}/expenses/${expense?._id}`,
+    url: `${deployedUrl}/${user.id}/expenses/${expense?._id}`,
     formData: formDataEditExpense,
     setIsModalOpen: setIsEditExpenseOpen,
     setDate: setExpenseQueries,

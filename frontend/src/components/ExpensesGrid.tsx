@@ -29,6 +29,9 @@ export type ExpenseType = {
 };
 
 const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
+  const deployedUrl = "https://extr-backend.onrender.com";
+  // const local = "http://localhost:8080";
+
   const authContext = useContext(AuthContext);
   if (!authContext) {
     throw new Error("useContext must be used within an AuthContextProvider");
@@ -47,7 +50,7 @@ const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
 
   //* useFetch hook, custom hook for making get requests
   const { apiData: expense } = useFetch<ExpenseType>(
-    `${expenseId && `http://localhost:8080/${user.id}/expenses/${expenseId}`}`
+    `${expenseId && `${deployedUrl}/${user.id}/expenses/${expenseId}`}`
   );
   // console.log(expense);
 
@@ -58,8 +61,8 @@ const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
 
   //* Open Edit Modal
   const handleEditExpense = (id: string) => {
-    console.log("clicked");
-    console.log(`expenseId: ${id}`);
+    // console.log("clicked");
+    // console.log(`expenseId: ${id}`);
     setIsEditExpenseOpen(true);
     setExpenseId(id);
   };
