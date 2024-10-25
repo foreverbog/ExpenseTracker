@@ -99,7 +99,7 @@ const ExpenseEditModal: React.FC<ExpenseEditModalProps> = ({
         >
           {/* //*TITLE */}
           <motion.p
-            className="flex justify-center items-center text-lg md:text-4xl"
+            className="flex justify-center items-center text-lg md:text-4xl text-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 100 }}
             exit={{ opacity: 0, transition: { duration: 0.2 } }}
@@ -146,7 +146,7 @@ const ExpenseEditModal: React.FC<ExpenseEditModalProps> = ({
                     ]
                   }
                 </div>
-                <div className="text-xs">
+                <div className="text-[0px] xl:text-xs">
                   {t(`expenses.categories.${category?.toLowerCase()}`)}
                 </div>
               </div>

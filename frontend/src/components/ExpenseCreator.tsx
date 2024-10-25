@@ -119,7 +119,7 @@ const ExpenseCreator: React.FC<ExpenseCreatorProps> = ({
               <div
                 onClick={() => handleSelectCategory(category)}
                 key={category}
-                className={`font-base flex flex-col justify-between  items-center flex-grow w-12 h-12 lg:w-36 lg:h-24 border border-base-200 rounded-md hover:bg-base-200 hover:cursor-pointer hover:scale-110 active:scale-90 transition-all duration-300 ease-in-out ${
+                className={`font-base flex flex-col justify-between  items-center flex-grow w-12 h-12 xl:w-36 xl:h-24 border border-base-200 rounded-md hover:bg-base-200 hover:cursor-pointer hover:scale-110 active:scale-90 transition-all duration-300 ease-in-out ${
                   newExpenseForm.expenseCategory !== null
                     ? newExpenseForm.expenseCategory === category.toLowerCase()
                       ? "pointer-events-none border-0 duration-0"
@@ -127,14 +127,14 @@ const ExpenseCreator: React.FC<ExpenseCreatorProps> = ({
                     : null
                 }`}
               >
-                <div className="lg:text-4xl flex flex-1 justify-center items-center ">
+                <div className="xl:text-4xl flex flex-1 justify-center items-center ">
                   {
                     categoryIconsExpenseCreator[
                       t(`expenses.categories.${category.toLowerCase()}`)
                     ]
                   }
                 </div>
-                <div className="text-xs font-semibold lg:text-xl ">
+                <div className="text-xs font-semibold xl:text-xl ">
                   {t(`expenses.categories.${category.toLowerCase()}`)}
                 </div>
               </div>

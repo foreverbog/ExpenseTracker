@@ -54,7 +54,7 @@ const ExpensesSubHeading: React.FC<ExpensesSubHeadingProps> = ({
 
   return (
     <div>
-      <div className=" mx-auto mt-12 0 w-4/5 md:w-2/5 flex items-center justify-between ">
+      <div className=" mx-auto mt-12 0 w-4/5 xl:w-2/5 flex items-center justify-between ">
         <div className="flex gap-4 items-center justify-center">
           {/* //*Year Dropdown */}
           <div className="relative">
@@ -171,7 +171,7 @@ const ExpensesSubHeading: React.FC<ExpensesSubHeadingProps> = ({
           className=" bg-secondary text-secondary-text font-semibold   p-1 md:p-1.5 rounded-md active:scale-90 hover:scale-105 hover:cursor-pointer focus:border-secondary-darker focus:border-2 transition-transform duration-300 ease-in-out flex justify-around items-center gap-4 md:px-4 group"
         >
           <IoMdAdd className="text-xl md:text-2xl group-hover:rotate-90  transition-all duration-1000" />
-          <p className="hidden md:block">{t("expenses.new")}</p>
+          <p className="hidden xl:block">{t("expenses.new")}</p>
         </div>
       </div>
     </div>

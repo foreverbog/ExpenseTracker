@@ -40,7 +40,7 @@ const ExpenseDashboard = () => {
   return (
     <div className=" relative bg-base   font-base text-base-text min-h-dvh flex flex-col overflow-hidden">
       <MdBarChart className="absolute -bottom-12 -right-12 md:-bottom-24 md:-right-12 text-[240px] md:text-[440px] opacity-20 text-base-text" />
-      <div className="flex  justify-around items-center bg-primary py-6 gap-4 md:block md:pl-6 ">
+      <div className="flex  justify-between items-center bg-primary px-4 py-6 gap-4 md:block md:pl-6 ">
         <GiHamburgerMenu
           onClick={() => setIsMenuOpen((prev) => !prev)}
           className="text-xl text-primary-text block md:hidden hover:cursor-pointer"
