@@ -91,7 +91,6 @@ const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
             expense={expense}
             isEditExpenseOpen={isEditExpenseOpen}
             setIsEditExpenseOpen={setIsEditExpenseOpen}
-            activeExpenseType={activeExpenseType}
           />
         )}
       </AnimatePresence>

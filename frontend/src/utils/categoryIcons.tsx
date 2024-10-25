@@ -26,6 +26,20 @@ type categoryIconsType = {
 const useCategoriesIcons = () => {
   const { t } = useTranslation("global");
 
+  const categories: string[] = [
+    "House",
+    "Food",
+    "Transport",
+    "Clothes",
+    "Health",
+    "Wellness",
+    "Sport",
+    "Education",
+    "Gift",
+    "Gaming",
+    "Other",
+  ];
+
   const categoryIcons: categoryIconsType = {
     [t("expenses.categories.house")]: <GiHouse />,
     [t("expenses.categories.food")]: <MdFastfood />,
@@ -68,6 +82,7 @@ const useCategoriesIcons = () => {
   };
 
   return {
+    categories,
     categoryIcons,
     categoryIconsExpenseCreator,
     categoryIconsExpenseEditor,

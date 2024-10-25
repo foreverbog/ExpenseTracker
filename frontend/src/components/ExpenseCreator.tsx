@@ -6,19 +6,6 @@ import moment from "moment";
 import ExpenseCreatorForm from "./ExpenseCreatorForm";
 import useMediaQuery from "../hooks/useMediaQuery";
 
-const categories: string[] = [
-  "House",
-  "Food",
-  "Transport",
-  "Clothes",
-  "Health",
-  "Wellness",
-  "Sport",
-  "Education",
-  "Gift",
-  "Gaming",
-  "Other",
-];
 type ExpenseCreatorProps = {
   activeExpenseType: string;
   setIsNewExpenseOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -45,7 +32,7 @@ const ExpenseCreator: React.FC<ExpenseCreatorProps> = ({
   const currentDay = date.date();
   const currentMonth = date.month();
   const currentYear = date.year();
-  const { categoryIconsExpenseCreator } = useCategoriesIcons();
+  const { categories, categoryIconsExpenseCreator } = useCategoriesIcons();
   const [newExpenseForm, setNewExpenseForm] = useState<newExpenseFormType>({
     expenseCategory: null,
     expenseName: "",
