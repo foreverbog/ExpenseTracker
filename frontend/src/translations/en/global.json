@@ -157,5 +157,13 @@
     "DD": "DD",
     "MM": "MM",
     "YYYY": "YYYY"
+  },
+
+  "trips": {
+    "title": "Trips Organizer"
+  },
+
+  "exchange": {
+    "title": "Currency Exchange"
   }
 }

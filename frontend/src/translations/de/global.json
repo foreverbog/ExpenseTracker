@@ -157,5 +157,13 @@
     "DD": "TT",
     "MM": "MM",
     "YYYY": "JJJJ"
+  },
+
+  "trips": {
+    "title": "Reiseplaner"
+  },
+
+  "exchange": {
+    "title": "Wechselkurs"
   }
 }
