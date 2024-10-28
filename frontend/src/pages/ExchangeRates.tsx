@@ -1,13 +1,22 @@
+import { useTranslation } from "react-i18next";
+import { useOutletContext } from "react-router-dom";
+import { MenuContextType } from "../layout/MenuLayout";
+import MenuTitleComponent from "../components/MenuTitleComponent";
+import { BsCurrencyExchange } from "react-icons/bs";
+
 const ExchangeRates = () => {
+  const { t } = useTranslation("global");
+  const { setIsMenuOpen } = useOutletContext<MenuContextType>();
   return (
-    <>
-      <div className="bg-green-500 pl-2">
-        <h1>ExchangeRates</h1>
-      </div>
-      <div className="flex justify-center items-center h-dvh pl-2 w-full text-center font-base text-4xl">
-        COMING SOON...
-      </div>
-    </>
+    <div className="relative min-h-dvh overflow-hidden ">
+      <MenuTitleComponent
+        title={t("exchange.title")}
+        setIsMenuOpen={setIsMenuOpen}
+      />
+
+      {/* //*BOTTOM RIGHT SVG */}
+      <BsCurrencyExchange className="absolute -bottom-12 -right-12 2 text-[240px] md:text-[440px] opacity-20 text-base-text" />
+    </div>
   );
 };
 

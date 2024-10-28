@@ -10,7 +10,7 @@ const MenuTitleComponent: React.FC<MenuTitleComponentProps> = ({
   title,
 }) => {
   return (
-    <div className="flex  justify-between items-center bg-primary px-4 py-6 gap-4 md:block md:pl-6 ">
+    <div className="flex justify-between items-center bg-primary px-4 py-6 gap-4 md:block md:pl-6">
       <GiHamburgerMenu
         onClick={() => setIsMenuOpen((prev) => !prev)}
         className="text-xl text-primary-text block md:hidden hover:cursor-pointer"
