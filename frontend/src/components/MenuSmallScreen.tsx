@@ -50,6 +50,7 @@ const MenuSmallScreen: React.FC<MenuSmallScreenType> = ({
               <p>{t("menu.expense")}</p>
             </NavLink>
             <NavLink
+              onClick={() => setIsMenuOpen((prev) => !prev)}
               to="/menu/trips"
               className="flex flex-wrap  text-center gap-2 items-center justify-center   text-2xl xs:text-4xl  hover:scale-110 transition-all duration-300  p-2 hover:bg-base-200 w-full"
             >

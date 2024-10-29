@@ -51,7 +51,7 @@ const createTrip = async (req, res) => {
 const getOneTrip = async (req, res) => {
   const { tripId } = req.params;
   try {
-    const trip = await Trip.findById(tripId);
+    const trip = await Trip.findById(tripId).populate("expenses");
 
     if (!trip) {
       return res.status(404).json({ error: "Trip not found!" });

@@ -52,7 +52,12 @@ const getUser = async (req, res) => {
     const findUser = await User.findById(id)
       .select("-password")
       .populate("expenses")
-      .populate("trips");
+      .populate({
+        path: "trips",
+        populate: {
+          path: "expenses", // Populate expenses within each trip
+        },
+      });
     if (!findUser) {
       return res.status(404).json({ error: "User not found!" });
     }

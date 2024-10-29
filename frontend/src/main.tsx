@@ -11,6 +11,7 @@ import i18next from "i18next";
 import { I18nextProvider } from "react-i18next";
 import { BrowserRouter } from "react-router-dom";
 import LanguageContextProvider from "./context/LanguageContext.tsx";
+import TripsContextProvider from "./context/TripsContext.tsx";
 
 i18next.init({
   interpolation: { escapeValue: false },
@@ -30,13 +31,15 @@ createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
       <AuthContextProvider>
         <I18nextProvider i18n={i18next}>
-          <ExpenseContextProvider>
-            <LanguageContextProvider>
-              <ThemeContextProvider>
-                <App />
-              </ThemeContextProvider>
-            </LanguageContextProvider>
-          </ExpenseContextProvider>
+          <TripsContextProvider>
+            <ExpenseContextProvider>
+              <LanguageContextProvider>
+                <ThemeContextProvider>
+                  <App />
+                </ThemeContextProvider>
+              </LanguageContextProvider>
+            </ExpenseContextProvider>
+          </TripsContextProvider>
         </I18nextProvider>
       </AuthContextProvider>
     </BrowserRouter>
