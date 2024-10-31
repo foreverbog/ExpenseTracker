@@ -22,6 +22,7 @@ type TripType = {
 
 export type TripsContextType = {
   trips: TripType[];
+  isLoading: boolean;
 };
 
 export const TripsContext = createContext<TripsContextType | undefined>(
@@ -44,7 +45,7 @@ const TripsContextProvider: React.FC<TripsContextProviderProps> = ({
 
   const { user } = authContext;
 
-  const { apiData } = useFetch<TripsContextType>(
+  const { apiData, isLoading } = useFetch<TripsContextType>(
     `http://localhost:8080/${user.id}`
   );
 
@@ -56,7 +57,9 @@ const TripsContextProvider: React.FC<TripsContextProviderProps> = ({
   // console.log(trips);
 
   return (
-    <TripsContext.Provider value={{ trips }}>{children}</TripsContext.Provider>
+    <TripsContext.Provider value={{ trips, isLoading }}>
+      {children}
+    </TripsContext.Provider>
   );
 };
 
