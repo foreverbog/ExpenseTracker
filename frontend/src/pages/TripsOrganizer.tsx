@@ -14,7 +14,7 @@ const TripsOrganizer = () => {
   console.log(trips);
 
   return (
-    <div className="relative min-h-dvh overflow-hidden">
+    <div className="relative min-h-dvh overflow-hidden bg-base">
       <MenuTitleComponent
         title={t("trips.title")}
         setIsMenuOpen={setIsMenuOpen}
