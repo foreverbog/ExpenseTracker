@@ -1,6 +1,6 @@
 const TripsLoadingSkeleton = () => {
   return (
-    <div className="flex flex-wrap gap-4 mt-24  justify-center items-center">
+    <div className="flex flex-wrap gap-4 mt-12 justify-center items-center">
       {Array.from({ length: 5 }).map((_, index) => (
         <div
           key={index}

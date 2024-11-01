@@ -10,6 +10,7 @@ import useFetch from "../hooks/useFetch";
 import { AuthContext } from "./AuthContext";
 
 type TripType = {
+  _id: string;
   image: string;
   name: string;
   roundTrip: boolean;
