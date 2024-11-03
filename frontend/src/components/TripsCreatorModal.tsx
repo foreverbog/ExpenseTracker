@@ -59,6 +59,8 @@ const TripsCreatorModal: React.FC<TripsCreatorModalProps> = ({
     };
   }, [setIsTripCreatorOpen]);
 
+  console.log(tripImage);
+
   return (
     <>
       <div className="inset-0 bg-black opacity-60 z-40 fixed"></div>
@@ -69,7 +71,7 @@ const TripsCreatorModal: React.FC<TripsCreatorModalProps> = ({
         transition={{ duration: "0.5" }}
         exit={{ width: "20px", transition: { duration: 0.5, delay: 0.4 } }}
         ref={modalRef}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 bg-base-100 overflow-hidden rounded-md"
+        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 bg-base-100 overflow-hidden rounded-md"
       >
         <motion.div
           className="flex flex-col gap-12 p-4 overflow-hidden"
@@ -96,13 +98,16 @@ const TripsCreatorModal: React.FC<TripsCreatorModalProps> = ({
                   alt={`${trip} Trip`}
                   className={`w-12 h-12 md:w-20 md:h-20 scale-105 rounded-md brightness-50 transition-all duration-300 ease-in-out ${
                     trip === tripImage &&
-                    "brightness-110 outline-offset-2 outline outline-2 outline-primary"
+                    " brightness-105 outline-offset-2 outline outline-2 outline-primary"
                   }`}
                 />
               ))}
             </div>
             {/* //*CREATE FORM */}
-            <TripsCreatorForm tripImage={tripImage} />
+            <TripsCreatorForm
+              tripImage={tripImage}
+              setIsTripCreatorOpen={setIsTripCreatorOpen}
+            />
           </motion.div>
         </motion.div>
       </motion.div>

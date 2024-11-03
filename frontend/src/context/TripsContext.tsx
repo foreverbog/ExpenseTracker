@@ -24,6 +24,7 @@ type TripType = {
 export type TripsContextType = {
   trips: TripType[];
   isLoading: boolean;
+  reFetchTrips: () => void;
 };
 
 export const TripsContext = createContext<TripsContextType | undefined>(
@@ -38,6 +39,11 @@ const TripsContextProvider: React.FC<TripsContextProviderProps> = ({
   children,
 }) => {
   const [trips, setTrips] = useState<TripType[]>([]);
+  const [triggerFetch, setTriggerFetch] = useState(false);
+
+  const reFetchTrips = () => {
+    setTriggerFetch((prev) => !prev);
+  };
 
   const authContext = useContext(AuthContext);
   if (!authContext) {
@@ -48,18 +54,18 @@ const TripsContextProvider: React.FC<TripsContextProviderProps> = ({
   const { user } = authContext;
 
   const { apiData, isLoading } = useFetch<TripsContextType>(
-    `${deployedUrl}/${user.id}`
+    `${deployedUrl}/${user.id}?fetch=${triggerFetch}`
   );
 
   useEffect(() => {
     if (apiData) {
       setTrips(apiData.trips);
     }
-  }, [apiData]);
-  // console.log(trips);
+  }, [apiData, triggerFetch]);
+  console.log(trips);
 
   return (
-    <TripsContext.Provider value={{ trips, isLoading }}>
+    <TripsContext.Provider value={{ trips, isLoading, reFetchTrips }}>
       {children}
     </TripsContext.Provider>
   );

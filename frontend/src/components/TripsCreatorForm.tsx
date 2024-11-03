@@ -1,8 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useMediaQuery from "../hooks/useMediaQuery";
 import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";
 import moment from "moment";
+import Loading from "./Loading";
+import { useTranslation } from "react-i18next";
+import usePost from "../hooks/usePost";
+import { AuthContext } from "../context/AuthContext";
+import useTripsContext from "../hooks/useTripsContext";
 
 type TripFormDataType = {
   image:
@@ -16,12 +21,14 @@ type TripFormDataType = {
     | "Winter";
   tripName: string;
   roundTrip: boolean;
-  roundTripCost?: number | undefined;
-  travelCost?: number | undefined;
-  accomodationCost?: number | undefined;
+  roundTripCost?: number | "";
+  travelCost?: number | "";
+  accomodationCost?: number | "";
+
   startDay: string;
   startMonth: string;
   startYear: string;
+
   endDay: string;
   endMonth: string;
   endYear: string;
@@ -39,11 +46,25 @@ type TripsCreatorFormProps = {
     | "Summer"
     | "Wellness"
     | "Winter";
+  setIsTripCreatorOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({ tripImage }) => {
+const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({
+  tripImage,
+  setIsTripCreatorOpen,
+}) => {
+  const { t } = useTranslation("global");
   const isSmallScreen = useMediaQuery("(max-width: 767px)");
   console.log(tripImage);
+
+  const { reFetchTrips } = useTripsContext();
+
+  const authContext = useContext(AuthContext);
+  if (!authContext) {
+    throw new Error("useContext must be used within AuthContextProvider");
+  }
+
+  const { user } = authContext;
 
   // *UseEffect for updating the image in the form
   useEffect(() => {
@@ -55,9 +76,9 @@ const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({ tripImage }) => {
     image: tripImage,
     tripName: "",
     roundTrip: true,
-    roundTripCost: undefined,
-    travelCost: undefined,
-    accomodationCost: undefined,
+    roundTripCost: "",
+    travelCost: "",
+    accomodationCost: "",
 
     startDay: "",
     startMonth: "",
@@ -79,8 +100,39 @@ const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({ tripImage }) => {
 
   console.log(tripFormData);
 
+  const { isLoading, handlePost } = usePost({
+    url: `http://localhost:8080/${user.id}/trips`,
+    formData: {
+      image: tripFormData.image,
+      name: tripFormData.tripName,
+      roundTrip: tripFormData.roundTrip,
+      roundTripCost: tripFormData.roundTrip
+        ? tripFormData.roundTrip
+        : Number(tripFormData.travelCost) +
+          Number(tripFormData.accomodationCost),
+      startDate: `${tripFormData.startYear}-
+        ${tripFormData.startMonth}-
+        ${tripFormData.startDay}`,
+      endDate: `${tripFormData.endYear}-
+        ${tripFormData.endMonth}-
+        ${tripFormData.endDay}`,
+      description: tripFormData?.description || "",
+    },
+    setIsModalOpen: setIsTripCreatorOpen,
+  });
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    handlePost(e);
+    reFetchTrips();
+  };
+
   return (
-    <form className="mt-4 flex flex-col justify-center items-center text-sm gap-2">
+    <form
+      onSubmit={handleSubmit}
+      className="mt-4 flex flex-col justify-center items-center text-sm gap-2"
+    >
+      {isLoading && <Loading text={t("loading")} />}
       {/* //*NAME INPUT */}
       <input
         onChange={handleChange}
