@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import tripsImages from "../utils/tripsImages";
 import TripsCreatorForm from "./TripsCreatorForm";
 import useMediaQuery from "../hooks/useMediaQuery";
+import { useTranslation } from "react-i18next";
 
 type TripsCreatorModalProps = {
   isTripCreatorOpen: boolean;
@@ -31,6 +32,7 @@ const TripsCreatorModal: React.FC<TripsCreatorModalProps> = ({
   isTripCreatorOpen,
   setIsTripCreatorOpen,
 }) => {
+  const { t } = useTranslation("global");
   const modalRef = useRef<HTMLDivElement | null>(null);
   const isSmallScreen = useMediaQuery("(max-width: 767px)");
 
@@ -88,7 +90,7 @@ const TripsCreatorModal: React.FC<TripsCreatorModalProps> = ({
             transition={{ duration: 1, delay: 0.7 }}
             exit={{ opacity: 0, transition: { duration: 0.2 } }}
           >
-            <p>Choose Image:</p>
+            <p>{t("placeholders.chooseTripImage")}</p>
             <div className="grid grid-cols-4 gap-2 ">
               {tripsImages.map((trip) => (
                 <img
@@ -98,7 +100,7 @@ const TripsCreatorModal: React.FC<TripsCreatorModalProps> = ({
                   alt={`${trip} Trip`}
                   className={`w-12 h-12 md:w-20 md:h-20 scale-105 rounded-md brightness-50 transition-all duration-300 ease-in-out ${
                     trip === tripImage &&
-                    " brightness-105 outline-offset-2 outline outline-2 outline-primary"
+                    " brightness-100 outline-offset-2 outline outline-2 outline-primary"
                   }`}
                 />
               ))}

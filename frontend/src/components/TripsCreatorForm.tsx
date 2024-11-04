@@ -57,6 +57,7 @@ const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({
   const isSmallScreen = useMediaQuery("(max-width: 767px)");
   console.log(tripImage);
 
+  // *Function to retrigger the fetch
   const { reFetchTrips } = useTripsContext();
 
   const authContext = useContext(AuthContext);
@@ -91,6 +92,7 @@ const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({
     description: "",
   });
 
+  //*Handle Change for inputs
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -100,7 +102,7 @@ const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({
 
   console.log(tripFormData);
 
-  const { isLoading, handlePost } = usePost({
+  const { isLoading, handlePost, serverError, setServerError } = usePost({
     url: `http://localhost:8080/${user.id}/trips`,
     formData: {
       image: tripFormData.image,
@@ -123,8 +125,28 @@ const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    handlePost(e);
-    reFetchTrips();
+    if (!tripFormData.tripName) {
+      setServerError(t("trips.errors.name"));
+    } else if (tripFormData.roundTrip && !tripFormData.roundTripCost) {
+      setServerError(t("trips.errors.price"));
+    } else if (
+      !tripFormData.roundTrip &&
+      (!tripFormData.travelCost || !tripFormData.accomodationCost)
+    ) {
+      setServerError(t("trips.errors.priceForTravel/Accomodation"));
+    } else if (
+      !tripFormData.startDay ||
+      !tripFormData.startMonth ||
+      !tripFormData.startYear ||
+      !tripFormData.endDay ||
+      !tripFormData.endMonth ||
+      !tripFormData.endYear
+    ) {
+      setServerError(t("trips.errors.date"));
+    } else {
+      handlePost(e);
+      reFetchTrips();
+    }
   };
 
   return (
@@ -134,13 +156,21 @@ const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({
     >
       {isLoading && <Loading text={t("loading")} />}
       {/* //*NAME INPUT */}
+      {serverError && (
+        <p className="text-red-500 font-semibold text-balance text-center md:text-sm lg:text-normal">
+          {serverError}
+        </p>
+      )}
       <input
         onChange={handleChange}
         value={tripFormData.tripName}
         name="tripName"
         type="text"
-        className="inputStyle bg-transparent text-center w-full md:w-2/3"
-        placeholder="Trip Name"
+        className={`inputStyle bg-transparent text-center w-full md:w-2/3 ${
+          serverError === t("trips.errors.name") &&
+          "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
+        }`}
+        placeholder={t("placeholders.tripName")}
       />
       {/* //*ROUND TRIP */}
       <div className="flex justify-between items-center gap-1 group ">
@@ -157,7 +187,7 @@ const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({
             type="checkbox"
             className="appearance-none border border-base-300 p-2 rounded-md bg-base-200 checked:bg-primary checked:border-primary-darker group-hover:cursor-pointer"
           />
-          <p>RoundTrip</p>
+          <p>{t("placeholders.roundTrip")}</p>
         </div>
         <input
           onChange={handleChange}
@@ -165,14 +195,17 @@ const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({
           name="roundTripCost"
           disabled={!tripFormData.roundTrip}
           type="number"
-          className="inputStyle bg-transparent text-center w-1/3 disabled:opacity-20 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-          placeholder="Price"
+          className={`inputStyle bg-transparent text-center w-1/3 disabled:opacity-20 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
+            serverError === t("trips.errors.price") &&
+            "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
+          }`}
+          placeholder={t("placeholders.price")}
         />
       </div>
       {/* //*TRANSPORT AND ACCOMODATION */}
       <AnimatePresence>
         {!tripFormData.roundTrip && (
-          <>
+          <div className="md:flex md:w-full md:justify-center">
             <motion.input
               initial={{ translateY: "-10px", opacity: 0 }}
               animate={{ translateY: "0px", opacity: 100 }}
@@ -182,8 +215,11 @@ const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({
               value={!tripFormData.roundTrip ? tripFormData.travelCost : ""}
               name="travelCost"
               type="number"
-              className="inputStyle bg-transparent text-center  md:w-1/2 lg:w-1/3 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-              placeholder="Travel price"
+              className={`inputStyle bg-transparent text-center  md:w-1/2 lg:w-1/3 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
+                serverError === t("trips.errors.priceForTravel/Accomodation") &&
+                "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
+              }`}
+              placeholder={t("placeholders.travelPrice")}
             />
             <motion.input
               initial={{ translateY: "-10px", opacity: 0 }}
@@ -196,24 +232,30 @@ const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({
               }
               name="accomodationCost"
               type="number"
-              className="inputStyle bg-transparent  text-center md:w-1/2 lg:w-1/3 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none "
-              placeholder="Accomodation price"
+              className={`inputStyle bg-transparent text-center  md:w-1/2 lg:w-1/3 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
+                serverError === t("trips.errors.priceForTravel/Accomodation") &&
+                "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
+              }`}
+              placeholder={t("placeholders.accomodationPrice")}
             />
-          </>
+          </div>
         )}
       </AnimatePresence>
       {/* //*START-END DATE */}
 
       <div className="flex flex-col lg:w-1/2">
-        <p>StartDate</p>
+        <p>{t("placeholders.startDate")}</p>
         <div className="flex justify-center items-center">
           <input
             onChange={handleChange}
             value={tripFormData.startDay}
             name="startDay"
             type="number"
-            placeholder="DD"
-            className="inputStyle bg-transparent w-1/4 text-center"
+            placeholder={t("placeholders.DD")}
+            className={`inputStyle bg-transparent w-1/4 text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
+              serverError === t("trips.errors.date") &&
+              "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
+            }`}
           />
           <span>/</span>
           <input
@@ -221,8 +263,11 @@ const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({
             value={tripFormData.startMonth}
             name="startMonth"
             type="number"
-            placeholder="MM"
-            className="inputStyle bg-transparent w-1/4 text-center"
+            placeholder={t("placeholders.MM")}
+            className={`inputStyle bg-transparent w-1/4 text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
+              serverError === t("trips.errors.date") &&
+              "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
+            }`}
           />
           <span>/</span>
           <input
@@ -230,21 +275,28 @@ const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({
             value={tripFormData.startYear}
             name="startYear"
             type="number"
-            placeholder="YYYY"
-            className="inputStyle bg-transparent w-1/3 text-center"
+            placeholder={t("placeholders.YYYY")}
+            className={`inputStyle bg-transparent w-1/4 text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
+              serverError === t("trips.errors.date") &&
+              "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
+            }`}
           />
         </div>
       </div>
       <div className="flex flex-col lg:w-1/2">
-        <p>EndDate</p>
+        {/* //*END DATE */}
+        <p>{t("placeholders.endDate")}</p>
         <div className="flex justify-center items-center">
           <input
             onChange={handleChange}
             value={tripFormData.endDay}
             name="endDay"
             type="number"
-            placeholder="DD"
-            className="inputStyle bg-transparent w-1/4 text-center"
+            placeholder={t("placeholders.DD")}
+            className={`inputStyle bg-transparent w-1/4 text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
+              serverError === t("trips.errors.date") &&
+              "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
+            }`}
           />
           <span>/</span>
           <input
@@ -252,8 +304,11 @@ const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({
             value={tripFormData.endMonth}
             name="endMonth"
             type="number"
-            placeholder="MM"
-            className="inputStyle bg-transparent w-1/4 text-center"
+            placeholder={t("placeholders.MM")}
+            className={`inputStyle bg-transparent w-1/4 text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
+              serverError === t("trips.errors.date") &&
+              "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
+            }`}
           />
           <span>/</span>
           <input
@@ -261,8 +316,11 @@ const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({
             value={tripFormData.endYear}
             name="endYear"
             type="number"
-            placeholder="YYYY"
-            className="inputStyle bg-transparent w-1/3 text-center"
+            placeholder={t("placeholders.YYYY")}
+            className={`inputStyle bg-transparent w-1/4 text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
+              serverError === t("trips.errors.date") &&
+              "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
+            }`}
           />
         </div>
       </div>
@@ -271,8 +329,8 @@ const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({
         onChange={handleChange}
         value={tripFormData.description}
         name="description"
-        placeholder="Description"
-        className="inputStyle placeholder:text-center bg-transparent border-2 appearance-none resize-none rounded-md  w-full"
+        placeholder={t("placeholders.description")}
+        className="inputStyle placeholder:text-center bg-transparent border-2 appearance-none resize-none rounded-md  w-full  placeholder:absolute placeholder:top-1/2 placeholder:left-1/2 placeholder:-translate-x-1/2 placeholder:-translate-y-1/2 placeholder:text-normal"
         rows={isSmallScreen ? 4 : 6}
       />
       <button className="text-xs lg:text-normal lg:px-4 py-2 bg-secondary text-secondary-text rounded-md w-1/2 mt-8 font-semibold hover:scale-105 active:scale-95 transition-transform duration-300 ease-in-out drop-shadow-xl">

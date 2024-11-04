@@ -156,11 +156,28 @@
     "price": "Preis",
     "DD": "TT",
     "MM": "MM",
-    "YYYY": "JJJJ"
+    "YYYY": "JJJJ",
+    "chooseTripImage": "Reisebild auswählen:",
+    "tripName": "Reisename",
+    "roundTrip": "Hin- und Rückfahrt",
+    "travelPrice": "Fahrkosten",
+    "accomodationPrice": "Unterkunftskosten",
+    "startDate": "Startdatum:",
+    "endDate": "Enddatum:",
+    "description": "Beschreibung"
   },
 
   "trips": {
-    "title": "Reiseplaner"
+    "title": "Reiseplaner",
+    "newTripBtn": "Neue Reise hinzufügen",
+    "onlyRoundTrips": "Nur Hin- und Rückfahrten",
+
+    "errors": {
+      "name": "Bitte geben Sie einen Namen für die Reise an.",
+      "price": "Bitte geben Sie einen Preis für die Reise an.",
+      "priceForTravel/Accomodation": "Bitte geben Sie einen Preis für die Fahrt und die Unterkunft an.",
+      "date": "Bitte geben Sie ein vollständiges Datum für die Reise an."
+    }
   },
 
   "exchange": {

@@ -156,11 +156,28 @@
     "price": "Price",
     "DD": "DD",
     "MM": "MM",
-    "YYYY": "YYYY"
+    "YYYY": "YYYY",
+    "chooseTripImage": "Choose Trip Image:",
+    "tripName": "Trip Name",
+    "roundTrip": "Round Trip",
+    "travelPrice": "Travel Costs",
+    "accomodationPrice": "Accomodation Costs",
+    "startDate": "Start Date:",
+    "endDate": "End Date:",
+    "description": "Description"
   },
 
   "trips": {
-    "title": "Trips Organizer"
+    "title": "Trips Organizer",
+    "newTripBtn": "Add New Trip",
+    "onlyRoundTrips": "Round Trips Only",
+
+    "errors": {
+      "name": "Please provide a name for the trip.",
+      "price": "Please provide a price for the trip.",
+      "priceForTravel/Accomodation": "Please provide a price for both Travel and Accomodation.",
+      "date": "Please provide a full date for the trip."
+    }
   },
 
   "exchange": {
