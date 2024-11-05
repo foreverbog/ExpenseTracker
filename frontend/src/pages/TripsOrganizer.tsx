@@ -16,7 +16,11 @@ const TripsOrganizer = () => {
   //*State for opening/closing the creator modal
   const [isTripCreatorOpen, setIsTripCreatorOpen] = useState(false);
 
-  console.log(isTripCreatorOpen);
+  // *States for filtering the trips array
+  const [isRoundTrip, setIsRoundTrip] = useState(false);
+  const [isOldestFirst, setIsOldestFirst] = useState(false);
+
+  // console.log(isTripCreatorOpen);
 
   return (
     <div className="relative min-h-dvh overflow-hidden bg-base">
@@ -25,9 +29,15 @@ const TripsOrganizer = () => {
         setIsMenuOpen={setIsMenuOpen}
       />
       {/* //*Add btn and filters */}
-      <TripsHeading setIsTripCreatorOpen={setIsTripCreatorOpen} />
+      <TripsHeading
+        setIsTripCreatorOpen={setIsTripCreatorOpen}
+        isRoundTrip={isRoundTrip}
+        setIsRoundTrip={setIsRoundTrip}
+        isOldestFirst={isOldestFirst}
+        setIsOldestFirst={setIsOldestFirst}
+      />
       {/* //*Where all the trips render */}
-      <TripsContainer />
+      <TripsContainer isRoundTrip={isRoundTrip} isOldestFirst={isOldestFirst} />
 
       {/* //*Modal for the trip creator form */}
       <AnimatePresence>

@@ -10,26 +10,7 @@ type TripsCreatorModalProps = {
   setIsTripCreatorOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-// type TripFormData = {
-//   image:
-//     | "Business"
-//     | "Citybreak"
-//     | "Hiking"
-//     | "Nature"
-//     | "Socialevent"
-//     | "Summer"
-//     | "Wellness"
-//     | "Winter";
-//   name: string;
-//   starDate: string;
-//   endDate: string;
-//   roundTrip: boolean;
-//   roundTripCost?: number;
-//   description?: string;
-// };
-
 const TripsCreatorModal: React.FC<TripsCreatorModalProps> = ({
-  isTripCreatorOpen,
   setIsTripCreatorOpen,
 }) => {
   const { t } = useTranslation("global");
@@ -61,7 +42,7 @@ const TripsCreatorModal: React.FC<TripsCreatorModalProps> = ({
     };
   }, [setIsTripCreatorOpen]);
 
-  console.log(tripImage);
+  // console.log(tripImage);
 
   return (
     <>
@@ -84,13 +65,13 @@ const TripsCreatorModal: React.FC<TripsCreatorModalProps> = ({
         >
           {/* //*IMAGES CONTAINER */}
           <motion.div
-            className="flex flex-col justify-center items-center gap-2 text-lg md:text-4xl text-center p-4"
+            className="flex flex-col justify-center items-center gap-2 text-lg md:text-2xl text-center p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 100 }}
             transition={{ duration: 1, delay: 0.7 }}
             exit={{ opacity: 0, transition: { duration: 0.2 } }}
           >
-            <p>{t("placeholders.chooseTripImage")}</p>
+            <p className="mb-4">{t("placeholders.chooseTripImage")}</p>
             <div className="grid grid-cols-4 gap-2 ">
               {tripsImages.map((trip) => (
                 <img
@@ -98,10 +79,11 @@ const TripsCreatorModal: React.FC<TripsCreatorModalProps> = ({
                   key={trip}
                   src={`../images/${trip}.png`}
                   alt={`${trip} Trip`}
-                  className={`w-12 h-12 md:w-20 md:h-20 scale-105 rounded-md brightness-50 transition-all duration-300 ease-in-out ${
-                    trip === tripImage &&
-                    " brightness-100 outline-offset-2 outline outline-2 outline-primary"
-                  }`}
+                  className={` ${
+                    trip === tripImage
+                      ? " brightness-100 outline-offset-2 outline outline-2 outline-primary "
+                      : "brightness-50"
+                  } w-12 h-12 md:w-20 md:h-20 scale-105 rounded-md  `}
                 />
               ))}
             </div>

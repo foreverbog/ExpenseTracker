@@ -62,7 +62,7 @@ const TripsContextProvider: React.FC<TripsContextProviderProps> = ({
       setTrips(apiData.trips);
     }
   }, [apiData, triggerFetch]);
-  console.log(trips);
+  // console.log(trips);
 
   return (
     <TripsContext.Provider value={{ trips, isLoading, reFetchTrips }}>
