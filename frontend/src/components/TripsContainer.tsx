@@ -54,7 +54,7 @@ const TripsContainer: React.FC<TripsContainerProps> = ({
   }
 
   return (
-    <div className="flex flex-wrap gap-4 mt-12 justify-center items-center">
+    <div className="flex flex-wrap gap-4 mt-12 justify-center items-center pl-2">
       {filteredTrips.map((trip) => (
         <div
           onClick={() =>
@@ -90,7 +90,7 @@ const TripsContainer: React.FC<TripsContainerProps> = ({
               {moment(trip.endDate).format("DD/MM/YYYY")}
             </div>
             <div
-              className={`rounded-md w-2/4 text-xs lg:text-sm text-center ${
+              className={`rounded-md w-3/4 text-xs lg:text-sm text-center ${
                 trip.roundTrip ? "visible" : "invisible"
               }`}
             >
