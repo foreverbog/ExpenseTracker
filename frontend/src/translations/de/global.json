@@ -162,8 +162,8 @@
     "roundTrip": "Hin- und Rückfahrt",
     "travelPrice": "Fahrkosten",
     "accomodationPrice": "Unterkunftskosten",
-    "startDate": "Startdatum:",
-    "endDate": "Enddatum:",
+    "startDate": "Start Datum:",
+    "endDate": "End Datum:",
     "description": "Beschreibung"
   },
 
