@@ -3,9 +3,11 @@ import useTripsContext from "../hooks/useTripsContext";
 import TripsLoadingSkeleton from "./TripsLoadingSkeleton";
 import moment from "moment";
 import { useTranslation } from "react-i18next";
+import TripsEditModal from "./TripsEditModal";
+import { AnimatePresence, motion } from "framer-motion";
 
-type TripType = {
-  id: string;
+export type TripType = {
+  id: string | null;
   image: string;
   name: string;
   roundTrip: boolean;
@@ -33,20 +35,20 @@ const TripsContainer: React.FC<TripsContainerProps> = ({
   const { t } = useTranslation("global");
   const { trips, isLoading } = useTripsContext();
 
-  const [trip, setTrip] = useState<TripType>();
+  const [trip, setTrip] = useState<TripType | undefined>();
 
   let filteredTrips;
 
   if (isRoundTrip && isOldestFirst) {
-    filteredTrips = trips.filter((trip) => trip.roundTrip === true);
+    filteredTrips = trips?.filter((trip) => trip.roundTrip === true);
   } else if (isOldestFirst) {
     filteredTrips = trips;
   } else if (isRoundTrip) {
     filteredTrips = [...trips]
-      .filter((trip) => trip.roundTrip === true)
+      ?.filter((trip) => trip.roundTrip === true)
       .reverse();
   } else {
-    filteredTrips = [...trips].reverse();
+    filteredTrips = [...trips]?.reverse();
   }
 
   if (isLoading) {
@@ -54,54 +56,60 @@ const TripsContainer: React.FC<TripsContainerProps> = ({
   }
 
   return (
-    <div className="flex flex-wrap gap-4 mt-12 justify-center items-center pl-2">
-      {filteredTrips.map((trip) => (
-        <div
-          onClick={() =>
-            setTrip({
-              id: trip._id,
-              image: trip.image,
-              name: trip.name,
-              roundTrip: trip.roundTrip,
-              roundTripCost: trip.roundTripCost,
-              startDay: moment(trip.startDate).format("DD"),
-              startMonth: moment(trip.startDate).format("MM"),
-              startYear: moment(trip.startDate).format("YYYY"),
-              endDay: moment(trip.endDate).format("DD"),
-              endMonth: moment(trip.endDate).format("MM"),
-              endYear: moment(trip.endDate).format("YYYY"),
-              description: trip.description,
-            })
-          }
-          key={trip._id}
-          className="border  w-[250px] lg:w-[450px]  bg-base grid grid-cols-[80px_auto] p-2 rounded-md items-center md:grid-cols-[100px_auto] drop-shadow-md z-10 hover:scale-105 active:scale-95 duration-300 transition-all ease-in-out"
-        >
-          <img
-            src={`../images/${trip.image}.png`}
-            alt={`${trip.image} Trip`}
-            className="w-16 h-16 md:w-24 md:h-24 rounded-md bg-base-200 text-xs "
-          />
-          <div className="rounded-md  flex flex-col items-center justify-between w-full h-full overflow-hidden text-balance">
-            <div className="rounded-md w-full text-center lg:text-lg text-ellipsis overflow-hidden whitespace-nowrap">
-              {trip.name}
+    <div>
+      <AnimatePresence>
+        {trip?.id && <TripsEditModal trip={trip} setTrip={setTrip} />}
+      </AnimatePresence>
+      <div className="flex flex-wrap gap-4 mt-12 justify-center items-center pl-2 relative">
+        {filteredTrips?.map((trip) => (
+          <motion.div
+            layoutId={trip._id ? trip._id : undefined}
+            onClick={() =>
+              setTrip({
+                id: trip._id,
+                image: trip.image,
+                name: trip.name,
+                roundTrip: trip.roundTrip,
+                roundTripCost: trip.roundTripCost,
+                startDay: moment(trip.startDate).format("DD"),
+                startMonth: moment(trip.startDate).format("MM"),
+                startYear: moment(trip.startDate).format("YYYY"),
+                endDay: moment(trip.endDate).format("DD"),
+                endMonth: moment(trip.endDate).format("MM"),
+                endYear: moment(trip.endDate).format("YYYY"),
+                description: trip.description,
+              })
+            }
+            key={trip._id}
+            className="border  w-[250px] lg:w-[450px]  bg-base grid grid-cols-[80px_auto] p-2 rounded-md items-center md:grid-cols-[100px_auto] drop-shadow-md z-10 hover:scale-105 active:scale-95 duration-300 transition-all ease-in-out"
+          >
+            <img
+              src={`../images/${trip.image}.png`}
+              alt={`${trip.image} Trip`}
+              className="w-16 h-16 md:w-24 md:h-24 rounded-md bg-base-200 text-xs "
+            />
+            <div className="rounded-md  flex flex-col items-center justify-between w-full h-full overflow-hidden text-balance">
+              <div className="rounded-md w-full text-center lg:text-lg text-ellipsis overflow-hidden whitespace-nowrap">
+                {trip.name}
+              </div>
+              <div className="rounded-md text-xs lg:text-sm">
+                {moment(trip.startDate).format("DD/MM/YYYY")} -
+                {moment(trip.endDate).format("DD/MM/YYYY")}
+              </div>
+              <div
+                className={`rounded-md w-3/4 text-xs lg:text-sm text-center ${
+                  trip.roundTrip ? "visible" : "invisible"
+                }`}
+              >
+                {t("placeholders.roundTrip")}
+              </div>
+              <div className="rounded-md self-end text-md lg:text-lg">
+                {trip.roundTripCost}
+              </div>
             </div>
-            <div className="rounded-md text-xs lg:text-sm">
-              {moment(trip.startDate).format("DD/MM/YYYY")} -
-              {moment(trip.endDate).format("DD/MM/YYYY")}
-            </div>
-            <div
-              className={`rounded-md w-3/4 text-xs lg:text-sm text-center ${
-                trip.roundTrip ? "visible" : "invisible"
-              }`}
-            >
-              {t("placeholders.roundTrip")}
-            </div>
-            <div className="rounded-md self-end text-md lg:text-lg">
-              {trip.roundTripCost}
-            </div>
-          </div>
-        </div>
-      ))}
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 };
