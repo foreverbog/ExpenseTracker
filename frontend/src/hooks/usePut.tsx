@@ -1,15 +1,23 @@
 import axios from "axios";
 import { useState } from "react";
 import { ExpensQueriesType } from "../context/ExpensesContext";
+import { toast, Zoom } from "react-toastify";
 
 type UsePutProps = {
   url: string;
   formData: Record<string, string | number | boolean | null | undefined>;
-  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsModalOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   setDate?: React.Dispatch<React.SetStateAction<ExpensQueriesType>>;
+  successMessage?: string;
 };
 
-const usePut = ({ url, formData, setIsModalOpen, setDate }: UsePutProps) => {
+const usePut = ({
+  url,
+  formData,
+  setIsModalOpen,
+  setDate,
+  successMessage,
+}: UsePutProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
 
@@ -38,8 +46,22 @@ const usePut = ({ url, formData, setIsModalOpen, setDate }: UsePutProps) => {
           year: formData.year as string,
         }));
       }
+
+      //*Toast with the successfull message
+      if (successMessage) {
+        toast.success(successMessage, {
+          hideProgressBar: true,
+          position: "top-center",
+          autoClose: 500,
+          closeOnClick: true,
+          transition: Zoom,
+          className: "bg-base text-center text-sm",
+        });
+      }
       //* Close the modal in the end
-      setIsModalOpen(false);
+      if (setIsModalOpen) {
+        setIsModalOpen(false);
+      }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.log(error?.response?.data);

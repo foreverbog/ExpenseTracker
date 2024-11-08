@@ -120,6 +120,7 @@ const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({
         ${tripFormData.endDay}`,
       description: tripFormData?.description || "",
     },
+    successMessage: "Created",
     setIsModalOpen: setIsTripCreatorOpen,
   });
 
@@ -144,8 +145,8 @@ const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({
     ) {
       setServerError(t("trips.errors.date"));
     } else {
-      handlePost(e);
-      reFetchTrips();
+      await handlePost(e);
+      await reFetchTrips();
     }
   };
 

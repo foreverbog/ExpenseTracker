@@ -38,12 +38,13 @@
     },
     {
       "tag": "*",
-      "color": "#EB437C",
+      "color": "#fff6",
       "strikethrough": false,
       "underline": false,
-      "backgroundColor": "transparent",
+      "backgroundColor": "#7f028730",
       "bold": false,
       "italic": false
     }
-  ]
+  ],
+  "liveServer.settings.AdvanceCustomBrowserCmdLine": ""
 }

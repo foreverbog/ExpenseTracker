@@ -59,6 +59,10 @@ const TripsContainer: React.FC<TripsContainerProps> = ({
 
   return (
     <div>
+      {/* <div className="pl-12">{trips.length}</div> */}
+      {trip?.id && (
+        <div className="bg-black inset-0  opacity-60 z-40 fixed"></div>
+      )}
       <AnimatePresence>
         {trip?.id && <TripsEditModal trip={trip} setTrip={setTrip} />}
       </AnimatePresence>

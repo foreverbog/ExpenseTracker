@@ -1,15 +1,23 @@
 import axios from "axios";
 import { useState } from "react";
 import { ExpensQueriesType } from "../context/ExpensesContext";
+import { toast, Zoom } from "react-toastify";
 
 type UsePostProps = {
   url: string;
   formData: Record<string, string | number | boolean | null>;
-  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsModalOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   setDate?: React.Dispatch<React.SetStateAction<ExpensQueriesType>>;
+  successMessage?: string;
 };
 
-const usePost = ({ url, formData, setIsModalOpen, setDate }: UsePostProps) => {
+const usePost = ({
+  url,
+  formData,
+  setIsModalOpen,
+  setDate,
+  successMessage,
+}: UsePostProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
 
@@ -39,7 +47,21 @@ const usePost = ({ url, formData, setIsModalOpen, setDate }: UsePostProps) => {
           year: formData.year as string,
         }));
       }
-      setIsModalOpen(false);
+
+      //*Toast with the successfull message
+      if (successMessage) {
+        toast.success(successMessage, {
+          hideProgressBar: true,
+          position: "top-center",
+          autoClose: 500,
+          closeOnClick: true,
+          transition: Zoom,
+          className: "bg-base text-center text-sm",
+        });
+      }
+      if (setIsModalOpen) {
+        setIsModalOpen(false);
+      }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.log(error?.response?.data);

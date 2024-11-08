@@ -1,13 +1,15 @@
 import { useState } from "react";
 import axios from "axios";
 import { ExpensQueriesType } from "../context/ExpensesContext";
+import { toast, Zoom } from "react-toastify";
 
 type UseDeleteProps = {
   url: string;
-  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsModalOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   setDate?: React.Dispatch<React.SetStateAction<ExpensQueriesType>>;
-  month: number;
-  year: string;
+  month?: number;
+  year?: string;
+  successMessage?: string;
 };
 
 const useDelete = ({
@@ -16,6 +18,7 @@ const useDelete = ({
   setIsModalOpen,
   month,
   year,
+  successMessage,
 }: UseDeleteProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
@@ -36,10 +39,25 @@ const useDelete = ({
       if (!response) {
         console.log(response);
       }
-      if (setDate) {
-        setDate((prev) => ({ ...prev, month, year }));
+      if (setDate && month !== undefined && year !== undefined) {
+        setDate((prev) => ({ ...prev, month: month, year }));
       }
-      setIsModalOpen(false);
+
+      //*Toast with the successfull message
+      if (successMessage) {
+        toast.success(successMessage, {
+          hideProgressBar: true,
+          position: "top-center",
+          autoClose: 500,
+          closeOnClick: true,
+          transition: Zoom,
+          className: "bg-base text-center text-sm",
+        });
+      }
+
+      if (setIsModalOpen) {
+        setIsModalOpen(false);
+      }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.log(error?.response?.data);
