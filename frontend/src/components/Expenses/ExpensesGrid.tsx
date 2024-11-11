@@ -1,16 +1,16 @@
 import { useTranslation } from "react-i18next";
-import { useExpensesContext } from "../hooks/useExpensesContext";
+import { useExpensesContext } from "../../hooks/useExpensesContext";
 import { FaRegEdit } from "react-icons/fa";
-import Loading from "./Loading";
+import Loading from "../Loading/Loading";
 import moment from "moment";
-import useCategoriesIcons from "../utils/categoryIcons";
+import useCategoriesIcons from "../../utils/categoryIcons";
 import { FaSortAmountDown, FaSortAmountUp } from "react-icons/fa";
-import useMediaQuery from "../hooks/useMediaQuery";
+import useMediaQuery from "../../hooks/useMediaQuery";
 import { useContext, useState } from "react";
 import ExpenseEditModal from "./ExpenseEditModal";
 import { AnimatePresence } from "framer-motion";
-import useFetch from "../hooks/useFetch";
-import { AuthContext } from "../context/AuthContext";
+import useFetch from "../../hooks/useFetch";
+import { AuthContext } from "../../context/AuthContext";
 
 type ExpenseGridProps = {
   activeExpenseType: string | "Daily";

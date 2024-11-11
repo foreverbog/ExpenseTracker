@@ -1,7 +1,7 @@
-import MenuSmallScreen from "../components/MenuSmallScreen";
+import MenuSmallScreen from "../components/Navigation/MenuSmallScreen";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
-import MenuBigScreen from "../components/MenuBigScreen";
+import MenuBigScreen from "../components/Navigation/MenuBigScreen";
 import useMediaQuery from "../hooks/useMediaQuery";
 import { Outlet } from "react-router-dom";
 

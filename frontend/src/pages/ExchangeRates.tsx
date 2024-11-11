@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useOutletContext } from "react-router-dom";
 import { MenuContextType } from "../layout/MenuLayout";
-import MenuTitleComponent from "../components/MenuTitleComponent";
+import MenuTitleComponent from "../components/Navigation/MenuTitleComponent";
 import { BsCurrencyExchange } from "react-icons/bs";
 
 const ExchangeRates = () => {

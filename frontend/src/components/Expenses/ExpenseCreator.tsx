@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import useCategoriesIcons from "../utils/categoryIcons";
+import useCategoriesIcons from "../../utils/categoryIcons";
 import { useTranslation } from "react-i18next";
 import moment from "moment";
 import ExpenseCreatorForm from "./ExpenseCreatorForm";
-import useMediaQuery from "../hooks/useMediaQuery";
+import useMediaQuery from "../../hooks/useMediaQuery";
 
 type ExpenseCreatorProps = {
   activeExpenseType: string;

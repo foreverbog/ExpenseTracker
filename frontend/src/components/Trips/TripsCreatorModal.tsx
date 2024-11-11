@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import tripsImages from "../utils/tripsImages";
+import tripsImages from "../../utils/tripsImages";
 import TripsCreatorForm from "./TripsCreatorForm";
-import useMediaQuery from "../hooks/useMediaQuery";
+import useMediaQuery from "../../hooks/useMediaQuery";
 import { useTranslation } from "react-i18next";
 
 type TripsCreatorModalProps = {

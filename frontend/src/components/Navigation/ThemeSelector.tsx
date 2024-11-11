@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useContext } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { HiOutlineColorSwatch } from "react-icons/hi";
-import { ThemeContext } from "../context/ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import { useTranslation } from "react-i18next";
 
 const themes: string[] = ["Light", "Dark", "Retro", "Lofi", "Neon"];

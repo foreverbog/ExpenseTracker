@@ -1,12 +1,12 @@
 import FeedbackUserCard from "./FeedbackUserCard";
-import users from "../utils/users.json";
+import users from "../../utils/users.json";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import { useTranslation } from "react-i18next";
-import { UserFeedbackSectionVector } from "../assets/svg/HomeVectors";
+import { UserFeedbackSectionVector } from "../../assets/svg/HomeVectors";
 
 type UsersType = {
   picture: {

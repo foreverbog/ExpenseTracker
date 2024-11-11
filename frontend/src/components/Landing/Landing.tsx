@@ -1,10 +1,10 @@
-import { LandingBackgroundVectors } from "../assets/svg/HomeVectors";
-import { LandingGridVector } from "../assets/svg/HomeVectors";
+import { LandingBackgroundVectors } from "../../assets/svg/HomeVectors";
+import { LandingGridVector } from "../../assets/svg/HomeVectors";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
-import useMediaQuery from "../hooks/useMediaQuery";
+import useMediaQuery from "../../hooks/useMediaQuery";
 
 const Landing = () => {
   const [t] = useTranslation("global");

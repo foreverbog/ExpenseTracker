@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState, useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 import { motion } from "framer-motion";
 import { ExpenseType } from "./ExpensesGrid";
 import { useTranslation } from "react-i18next";
-import useCategoriesIcons from "../utils/categoryIcons";
+import useCategoriesIcons from "../../utils/categoryIcons";
 import moment from "moment";
 import ExpenseEditForm from "./ExpenseEditForm";
 

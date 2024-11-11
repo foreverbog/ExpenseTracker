@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import useMediaQuery from "../hooks/useMediaQuery";
-import Signup from "../components/Signup";
-import Login from "../components/Login";
+import Signup from "../components/Authentication/Signup";
+import Login from "../components/Authentication/Login";
 
 export type AuthFormDataType = {
   firstName?: string;

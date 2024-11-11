@@ -1,12 +1,12 @@
 import { TbBeach } from "react-icons/tb";
-import MenuTitleComponent from "../components/MenuTitleComponent";
+import MenuTitleComponent from "../components/Navigation/MenuTitleComponent";
 import { useTranslation } from "react-i18next";
 import { useOutletContext } from "react-router-dom";
 import { MenuContextType } from "../layout/MenuLayout";
-import TripsHeading from "../components/TripsHeading";
-import TripsContainer from "../components/TripsContainer";
+import TripsHeading from "../components/Trips/TripsHeading";
+import TripsContainer from "../components/Trips/TripsContainer";
 import { useState } from "react";
-import TripsCreatorModal from "../components/TripsCreatorModal";
+import TripsCreatorModal from "../components/Trips/TripsCreatorModal";
 import { AnimatePresence } from "framer-motion";
 
 const TripsOrganizer = () => {

@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState } from "react";
-import useMediaQuery from "../hooks/useMediaQuery";
+import useMediaQuery from "../../hooks/useMediaQuery";
 import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";
 import moment from "moment";
-import Loading from "./Loading";
+import Loading from "../Loading/Loading";
 import { useTranslation } from "react-i18next";
-import usePost from "../hooks/usePost";
-import { AuthContext } from "../context/AuthContext";
-import useTripsContext from "../hooks/useTripsContext";
+import usePost from "../../hooks/usePost";
+import { AuthContext } from "../../context/AuthContext";
+import useTripsContext from "../../hooks/useTripsContext";
 
 type TripFormDataType = {
   image:

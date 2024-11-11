@@ -1,14 +1,15 @@
 import { SetStateAction, useContext, useEffect, useRef, useState } from "react";
 import { TripType } from "./TripsContainer";
 import { motion } from "framer-motion";
-import useMediaQuery from "../hooks/useMediaQuery";
+import useMediaQuery from "../../hooks/useMediaQuery";
 import { useTranslation } from "react-i18next";
-import tripsImages from "../utils/tripsImages";
-import { AuthContext } from "../context/AuthContext";
-import Loading from "./Loading";
-import usePut from "../hooks/usePut";
-import useTripsContext from "../hooks/useTripsContext";
-import useDelete from "../hooks/useDelete";
+import tripsImages from "../../utils/tripsImages";
+import { AuthContext } from "../../context/AuthContext";
+import Loading from "../Loading/Loading";
+import usePut from "../../hooks/usePut";
+import useTripsContext from "../../hooks/useTripsContext";
+import useDelete from "../../hooks/useDelete";
+import DeleteBtn from "../Common/DeleteBtn";
 
 type TripsEditModalProps = {
   trip: TripType | undefined;
@@ -304,15 +305,10 @@ const TripsEditModal: React.FC<TripsEditModalProps> = ({ trip, setTrip }) => {
                   >
                     {t("update")}
                   </button>
-                  <button
-                    onClick={handleDeleteTrip}
-                    className="text-xs lg:text-normal px-4 py-2 
-               rounded-md  font-semibold
-              hover:scale-105 active:scale-95 transition-transform duration-300
-              ease-in-out drop-shadow-xl bg-red-700 hover:bg-red-800 text-base"
-                  >
-                    {t("delete")}
-                  </button>
+                  <DeleteBtn
+                    btnText={t("delete")}
+                    handleDelete={handleDeleteTrip}
+                  />
                 </div>
               </>
             )}

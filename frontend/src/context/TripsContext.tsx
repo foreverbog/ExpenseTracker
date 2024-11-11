@@ -5,7 +5,7 @@ import {
   useContext,
   useEffect,
 } from "react";
-import { ExpenseType } from "../components/ExpensesGrid";
+import { ExpenseType } from "../components/Expenses/ExpensesGrid";
 import useFetch from "../hooks/useFetch";
 import { AuthContext } from "./AuthContext";
 

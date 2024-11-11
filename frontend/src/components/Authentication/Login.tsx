@@ -1,7 +1,7 @@
 import { AnimatePresence } from "framer-motion";
-import { AuthFormDataType } from "../pages/Authentication";
+import { AuthFormDataType } from "../../pages/Authentication";
 import LoginBigScreen from "./LoginBigScreen";
-import useAuthSubmit from "../hooks/useAuthSubmit";
+import useAuthSubmit from "../../hooks/useAuthSubmit";
 import { useTranslation } from "react-i18next";
 import LoginSmallScreen from "./LoginSmallScreen";
 

@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { HomeSectionTwoBgVector } from "../assets/svg/HomeVectors";
+import { HomeSectionTwoBgVector } from "../../assets/svg/HomeVectors";
 import { useTranslation } from "react-i18next";
 import { MdBarChart } from "react-icons/md";
 import { TbBeach } from "react-icons/tb";

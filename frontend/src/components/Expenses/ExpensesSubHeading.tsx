@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useExpensesContext } from "../hooks/useExpensesContext";
+import { useExpensesContext } from "../../hooks/useExpensesContext";
 import moment from "moment";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { IoMdAdd } from "react-icons/io";
-import useMediaQuery from "../hooks/useMediaQuery";
+import useMediaQuery from "../../hooks/useMediaQuery";
 
 type isDropdownOpenType = {
   month: boolean;

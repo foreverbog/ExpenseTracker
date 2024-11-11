@@ -1,6 +1,6 @@
 import { useRef, useEffect, useContext } from "react";
 import { motion } from "framer-motion";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { FaHome, FaInfo } from "react-icons/fa";

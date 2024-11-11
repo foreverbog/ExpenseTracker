@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { newExpenseFormType } from "./ExpenseCreator";
 import { useTranslation } from "react-i18next";
 import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
-import { useExpensesContext } from "../hooks/useExpensesContext";
-import usePost from "../hooks/usePost";
-import Loading from "./Loading";
+import { AuthContext } from "../../context/AuthContext";
+import { useExpensesContext } from "../../hooks/useExpensesContext";
+import usePost from "../../hooks/usePost";
+import Loading from "../Loading/Loading";
 
 type ExpenseCreatorFormProps = {
   activeExpenseType: string;

@@ -1,11 +1,11 @@
 import { useTranslation } from "react-i18next";
 import { useRef, useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
-import { useExpensesContext } from "../hooks/useExpensesContext";
-import useDelete from "../hooks/useDelete";
-import usePut from "../hooks/usePut";
+import { AuthContext } from "../../context/AuthContext";
+import { useExpensesContext } from "../../hooks/useExpensesContext";
+import useDelete from "../../hooks/useDelete";
+import usePut from "../../hooks/usePut";
 import { ExpenseToBeUpdatedType } from "./ExpenseEditModal";
-import Loading from "./Loading";
+import Loading from "../Loading/Loading";
 import { ExpenseType } from "./ExpensesGrid";
 
 type ExpenseEditFormProps = {

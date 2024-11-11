@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import Loading from "./Loading";
+import Loading from "../Loading/Loading";
 import { FaEye, FaEyeSlash, FaHome } from "react-icons/fa";
 import React, { useState } from "react";
-import { AuthFormDataType } from "../pages/Authentication";
-import { motion } from "framer-motion";
-
-type SignupSmallScreenProps = {
+import { AuthFormDataType } from "../../pages/Authentication";
+// import { motion } from "framer-motion";
+type SignupBigScreenProps = {
   isShowingPassword: boolean;
   setIsShowingPassword: React.Dispatch<React.SetStateAction<boolean>>;
   isSmallScreen: boolean;
@@ -20,11 +19,9 @@ type SignupSmallScreenProps = {
   serverError: string | null;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 };
-
-const SignupSmallScreen: React.FC<SignupSmallScreenProps> = ({
+const SignupBigScreen: React.FC<SignupBigScreenProps> = ({
   isShowingPassword,
   setIsShowingPassword,
-  isSmallScreen,
   hasAccount,
   setHasAccount,
   setSignUpAnimationComplete,
@@ -38,15 +35,7 @@ const SignupSmallScreen: React.FC<SignupSmallScreenProps> = ({
   const [isShowingConfirmPassword, setIsShowingConfirmPassword] =
     useState(false);
   return (
-    <motion.div
-      key="signupSmall"
-      initial={{ x: isSmallScreen ? -400 : "" }}
-      animate={{ x: 0 }}
-      exit={{ x: -400 }}
-      transition={{ duration: isSmallScreen ? 0.3 : "" }}
-      className={` h-full`}
-      onAnimationComplete={() => setSignUpAnimationComplete(true)}
-    >
+    <>
       <Link
         to="/"
         className={`${
@@ -63,13 +52,14 @@ const SignupSmallScreen: React.FC<SignupSmallScreenProps> = ({
       >
         {isLoading && <Loading text={t("auth.signupLoading")} />}
         <div className="flex flex-col  justify-center items-center gap-4">
-          <h1 className="text-4xl xs:text-5xl sm:text-6xl text-center font-semibold text-primary">
+          <h1 className="text-6xl text-center font-semibold text-primary">
             {t("auth.titleSignup")}
           </h1>
-          <h2 className="text-normal xs:text-lg text-center text-secondary font-semibold ">
+          <h2 className="text-lg text-center text-secondary font-semibold ">
             {t("auth.subtitleSignup")}
           </h2>
         </div>
+
         <form
           onSubmit={handleSubmit}
           className="flex flex-col justify-center items-center w-full gap-4"
@@ -81,47 +71,48 @@ const SignupSmallScreen: React.FC<SignupSmallScreenProps> = ({
           )}
           <div className="flex gap-4 flex-wrap justify-center items-center w-full">
             <input
-              type="text"
-              name="firstName"
-              value={authFormData.firstName}
-              onChange={handleChange}
               className={`${
                 serverError === "All fields must be filled in!" ||
                 serverError ===
                   "First name should contain at least two letters!"
                   ? "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
                   : ""
-              } inputStyle w-1/3 md:w-1/4`}
+              } inputStyle w-1/4`}
+              value={authFormData.firstName}
+              onChange={handleChange}
+              name="firstName"
               id="firstName"
+              type="text"
               placeholder={t("auth.firstName")}
             />
             <input
-              type="text"
-              name="lastName"
-              value={authFormData.lastName}
-              onChange={handleChange}
               className={`${
                 serverError === "All fields must be filled in!" ||
                 serverError === "Last name should contain at least two letters!"
                   ? "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
                   : ""
-              } inputStyle w-1/3 md:w-1/4`}
+              } inputStyle w-1/4`}
+              value={authFormData.lastName}
+              onChange={handleChange}
+              name="lastName"
               id="lastName"
+              type="text"
               placeholder={t("auth.lastName")}
             />
           </div>
+
           <input
-            type="email"
-            name="email"
-            value={authFormData.email}
-            onChange={handleChange}
             className={`${
               serverError === "All fields must be filled in!" ||
               serverError === "Email already in use!"
-                ? "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
+                ? "border-b-red-500 animate-[wiggle_0.3s_ease-in-out] "
                 : ""
             } inputStyle`}
+            value={authFormData.email}
+            onChange={handleChange}
+            name="email"
             id="email"
+            type="email"
             placeholder={t("auth.email")}
           />
           <div className=" relative">
@@ -183,7 +174,7 @@ const SignupSmallScreen: React.FC<SignupSmallScreenProps> = ({
               onClick={(e) => {
                 e.preventDefault();
                 setHasAccount((prevState) => !prevState);
-                setSignUpAnimationComplete(false);
+                setSignUpAnimationComplete(true);
               }}
             >
               {t("auth.login")}
@@ -191,8 +182,8 @@ const SignupSmallScreen: React.FC<SignupSmallScreenProps> = ({
           </div>
         </form>
       </div>
-    </motion.div>
+    </>
   );
 };
 
-export default SignupSmallScreen;
+export default SignupBigScreen;

@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { MultipleDevicesVector } from "../assets/svg/HomeVectors";
+import { MultipleDevicesVector } from "../../assets/svg/HomeVectors";
 
 const MultipleDevicesSection = () => {
   const [t] = useTranslation("global");

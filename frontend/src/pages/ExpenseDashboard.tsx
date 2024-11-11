@@ -1,13 +1,13 @@
 import { useState } from "react";
-import ExpensesHeading from "../components/ExpensesHeading";
-import ExpensesSubHeading from "../components/ExpensesSubHeading";
-import ExpensesGrid from "../components/ExpensesGrid";
+import ExpensesHeading from "../components/Expenses/ExpensesHeading";
+import ExpensesSubHeading from "../components/Expenses/ExpensesSubHeading";
+import ExpensesGrid from "../components/Expenses/ExpensesGrid";
 import { useTranslation } from "react-i18next";
 import { MdBarChart } from "react-icons/md";
 import { AnimatePresence } from "framer-motion";
-import ExpenseCreator from "../components/ExpenseCreator";
+import ExpenseCreator from "../components/Expenses/ExpenseCreator";
 import { useExpensesContext } from "../hooks/useExpensesContext";
-import MenuTitleComponent from "../components/MenuTitleComponent";
+import MenuTitleComponent from "../components/Navigation/MenuTitleComponent";
 import { useOutletContext } from "react-router-dom";
 import { MenuContextType } from "../layout/MenuLayout";
 

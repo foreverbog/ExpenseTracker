@@ -3,13 +3,13 @@ import LanguageSelector from "./LanguageSelector";
 import ThemeSelector from "./ThemeSelector";
 import { useContext, useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { LogoVector } from "../assets/svg/BrandsVectors";
-import { AuthContext } from "../context/AuthContext";
+import { LogoVector } from "../../assets/svg/BrandsVectors";
+import { AuthContext } from "../../context/AuthContext";
 import NavbarUserIcon from "./NavbarUserIcon";
 import Sidebar from "./Sidebar";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AnimatePresence } from "framer-motion";
-import useMediaQuery from "../hooks/useMediaQuery";
+import useMediaQuery from "../../hooks/useMediaQuery";
 const Navbar = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   const [isThemeOpen, setIsThemeOpen] = useState(false);

@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import {
   RightSideGridVector,
   RightSideGridLogoVector,
-} from "../assets/svg/RegisterVectors";
+} from "../../assets/svg/RegisterVectors";
 import { FaEye, FaEyeSlash, FaHome } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
-import { AuthFormDataType } from "../pages/Authentication";
-import Loading from "./Loading";
+import { AuthFormDataType } from "../../pages/Authentication";
+import Loading from "../Loading/Loading";
 import { motion } from "framer-motion";
 
 type LoginSmallScreenProps = {

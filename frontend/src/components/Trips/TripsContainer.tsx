@@ -1,11 +1,11 @@
 import { useState } from "react";
-import useTripsContext from "../hooks/useTripsContext";
-import TripsLoadingSkeleton from "./TripsLoadingSkeleton";
+import useTripsContext from "../../hooks/useTripsContext";
+import TripsLoadingSkeleton from "../Loading/TripsLoadingSkeleton";
 import moment from "moment";
 import { useTranslation } from "react-i18next";
 import TripsEditModal from "./TripsEditModal";
 import { AnimatePresence, motion } from "framer-motion";
-import { ExpenseType } from "./ExpensesGrid";
+import { ExpenseType } from "../Expenses/ExpensesGrid";
 
 export type TripType = {
   id: string | null;

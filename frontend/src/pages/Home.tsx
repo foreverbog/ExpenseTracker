@@ -1,7 +1,7 @@
-import FeaturesSection from "../components/FeaturesSection";
-import Landing from "../components/Landing";
-import UserFeedbackSection from "../components/UserFeedbackSection";
-import MultipleDevicesSection from "../components/MultipleDevicesSection";
+import FeaturesSection from "../components/Landing/FeaturesSection";
+import Landing from "../components/Landing/Landing";
+import UserFeedbackSection from "../components/Landing/UserFeedbackSection";
+import MultipleDevicesSection from "../components/Landing/MultipleDevicesSection";
 
 const Home = () => {
   return (
