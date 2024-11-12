@@ -98,7 +98,7 @@ const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
         )}
       </AnimatePresence>
       <div
-        className=" relative border grid grid-cols-1  mx-auto mt-12  md:w-auto  xl:w-3/5 max-h-[500px] overflow-y-scroll overflow-x-hidden "
+        className=" relative border grid grid-cols-1  mx-auto mt-12  md:w-auto  xl:w-3/5 max-h-[500px] overflow-y-scroll overflow-x-hidden drop-shadow-md"
         style={{ scrollbarWidth: "thin" }}
       >
         {isLoading && <Loading text={t("loading")} />}
