@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { ThemeContext } from "./context/ThemeContext";
 import MainLayout from "./layout/MainLayout";
 import { Routes, Route, Navigate } from "react-router-dom";
@@ -14,24 +14,58 @@ import ExpenseDashboard from "./pages/ExpenseDashboard";
 import TripsOrganizer from "./pages/TripsOrganizer";
 import ExchangeRates from "./pages/ExchangeRates";
 import Settings from "./pages/Settings";
+import TopLoadingBar from "react-top-loading-bar";
+
+type TopLoadingBarRef = {
+  continuousStart: () => void;
+  complete: () => void;
+};
 
 function App() {
   const themeContext = useContext(ThemeContext);
   const authContext = useContext(AuthContext);
-  // console.log(authContext);
 
-  //*Checks if is true so that TS don't thinks is undefined when I am trying to destructure it
+  // Ensure authContext and themeContext are available
   if (!authContext) {
-    throw new Error("Must be used within a AuthContextProvider");
+    throw new Error("Must be used within an AuthContextProvider");
   }
   if (!themeContext) {
     throw new Error("Must be used within a ThemeContextProvider");
   }
 
   const { theme } = themeContext;
-  const { isAuthenticated } = authContext;
+  const { isAuthenticated, isLoading } = authContext;
+
+  // Create a ref for the TopLoadingBar
+  const loadingBar = useRef<any | null>(null);
+
+  // Show loading bar only when isLoading is true
+  useEffect(() => {
+    if (isLoading) {
+      // Start the loading bar when the app is loading
+      loadingBar.current?.continuousStart();
+    } else {
+      // Complete the loading bar when loading is done
+      loadingBar.current?.complete();
+    }
+  }, [isLoading]); // Run when isLoading changes
+
+  if (isLoading) {
+    // Show nothing but loading bar during loading
+    return (
+      <div className={`theme-${theme} relative`}>
+        <TopLoadingBar
+          color="var(--color-secondary)" // Customize the color of the loading bar
+          height={3} // Customize the height of the loading bar
+          ref={loadingBar} // Attach the ref to control it programmatically
+        />
+      </div>
+    );
+  }
+
   return (
     <div className={`theme-${theme} relative`}>
+      <TopLoadingBar color="var(--color-primary)" height={3} ref={loadingBar} />
       <ToastContainer
         position="top-center"
         autoClose={1500}

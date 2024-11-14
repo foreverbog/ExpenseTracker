@@ -8,6 +8,7 @@ type AuthContextType = {
   isAuthenticated: boolean;
   login: (newToken: string) => void;
   logout: () => void;
+  isLoading: boolean;
 };
 
 export const AuthContext = createContext<AuthContextType | undefined>(
@@ -42,6 +43,7 @@ const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
     firstName: "",
     lastName: "",
   });
+  const [isLoading, setIsLoading] = useState(true);
 
   const getUser = async (userId: string) => {
     try {
@@ -53,11 +55,13 @@ const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
         firstName: data.firstName,
         lastName: data.lastName,
       });
+      setIsLoading(false);
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         console.log(error);
       }
     }
+    setIsLoading(false);
   };
 
   //*Function to set the token on login/signup or remove it
@@ -91,6 +95,8 @@ const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
 
       const decodedToken = jwtDecode<DecodedTokentype>(storedToken);
       getUser(decodedToken.id);
+    } else {
+      setIsLoading(false);
     }
   }, []);
 
@@ -99,7 +105,9 @@ const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
   const isAuthenticated = token !== null;
 
   return (
-    <AuthContext.Provider value={{ login, logout, user, isAuthenticated }}>
+    <AuthContext.Provider
+      value={{ login, logout, user, isAuthenticated, isLoading }}
+    >
       {children}
     </AuthContext.Provider>
   );
