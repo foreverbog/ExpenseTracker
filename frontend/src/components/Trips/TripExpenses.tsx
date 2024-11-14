@@ -1,16 +1,19 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { TripType } from "./TripsContainer";
 import AddBtn from "../Common/AddBtn";
 import { IoIosArrowBack } from "react-icons/io";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { FaRegEdit } from "react-icons/fa";
+
+import TripExpenseCreator from "./TripExpenseModal";
 
 type TripExpensesProps = {
   trip: TripType | undefined;
+  setTrip: React.Dispatch<React.SetStateAction<TripType | undefined>>;
   setIsTripExpenseOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-type ExpenseDetails = {
+export type ExpenseDetails = {
   id: string;
   name: string;
   price: "" | number;
@@ -18,8 +21,10 @@ type ExpenseDetails = {
 
 const TripExpenses: React.FC<TripExpensesProps> = ({
   trip,
+  setTrip,
   setIsTripExpenseOpen,
 }) => {
+  const [isAddExpense, setIsAddExpense] = useState(false);
   const [isExpenseDetailOpen, setIsExpenseDetailOpen] = useState(false);
   const [expenseDetails, setExpenseDetails] = useState<ExpenseDetails>({
     id: "",
@@ -27,23 +32,7 @@ const TripExpenses: React.FC<TripExpensesProps> = ({
     price: "",
   });
 
-  const modalRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (modalRef && !modalRef.current?.contains(e.target as Node)) {
-        setExpenseDetails({ id: "", name: "", price: "" });
-        setIsExpenseDetailOpen(false);
-      }
-    };
-    window.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      window.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [setExpenseDetails]);
-
-  console.log(expenseDetails);
+  console.log(isAddExpense);
 
   return (
     <motion.div
@@ -62,20 +51,20 @@ const TripExpenses: React.FC<TripExpensesProps> = ({
       <div className="text-center text-xl md:text-2xl font-semibold mt-8 truncate">
         {trip?.name} Expenses:
       </div>
-      {/* <div className="self-end">Add Btn</div>
-       */}
-      <AddBtn
-        btnText="add"
-        className="self-end"
-        textClassName="md:hidden"
-        setIsModalOpen={setIsExpenseDetailOpen}
-      />
+      <button className="self-end" onClick={() => setIsAddExpense(true)}>
+        <AddBtn
+          btnText="add"
+          className="self-end"
+          textClassName="md:hidden"
+          setIsModalOpen={setIsExpenseDetailOpen}
+        />
+      </button>
       {/* //*GRID FOR EXPENSES */}
       <div
         style={{ scrollbarWidth: "thin" }}
         className="grid grid-cols-1 border max-h-[300px] overflow-y-scroll drop-shadow-md"
       >
-        <div className="grid grid-cols-2 bg-primary-lighter text-primary-text sticky top-0 right-0 left-0  divide-x text-center w-full">
+        <div className="grid grid-cols-2 bg-primary-lighter text-primary-text sticky top-0 right-0 left-0  divide-x text-center w-full z-10">
           <div className="p-1.5">Name</div>
           <div className="p-1.5">Price</div>
         </div>
@@ -123,19 +112,20 @@ const TripExpenses: React.FC<TripExpensesProps> = ({
         )}
       </div>
 
-      {/*//*MODAL FOR EXPENSE DETAIL */}
-      {isExpenseDetailOpen && (
-        <>
-          <div className="inset-0 bg-black opacity-20 backdrop-blur-xl fixed rounded-md "></div>
-          <div
-            ref={modalRef}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 bg-base rounded-md border-base-300 border drop-shadow-2xl"
-          >
-            <p>{expenseDetails.name}</p>
-            <p>{expenseDetails.price}</p>
-          </div>
-        </>
-      )}
+      {/*//*MODAL FOR Creating Expense */}
+      <AnimatePresence>
+        {isExpenseDetailOpen && (
+          <TripExpenseCreator
+            trip={trip}
+            setTrip={setTrip}
+            expenseDetails={expenseDetails}
+            setExpenseDetails={setExpenseDetails}
+            setIsExpenseDetailOpen={setIsExpenseDetailOpen}
+            isAddExpense={isAddExpense}
+            setIsAddExpense={setIsAddExpense}
+          />
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };

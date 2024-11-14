@@ -76,6 +76,7 @@ const TripsEditModal: React.FC<TripsEditModalProps> = ({ trip, setTrip }) => {
               <TripExpenses
                 trip={trip}
                 setIsTripExpenseOpen={setIsTripExpenseOpen}
+                setTrip={setTrip}
               />
             ) : (
               <>

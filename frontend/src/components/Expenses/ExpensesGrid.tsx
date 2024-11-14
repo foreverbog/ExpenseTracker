@@ -104,7 +104,7 @@ const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
         {isLoading && <Loading text={t("loading")} />}
         <>
           <div
-            className="sticky top-0 left-0 right-0 border grid grid-cols-4 w-full divide-x text-primary-text font-semibold  bg-primary-lighter  z-20 text-xs "
+            className="sticky top-0 left-0 right-0  grid grid-cols-4 w-full divide-x text-primary-text font-semibold  bg-primary-lighter  z-20 text-xs "
             style={{
               gridTemplateColumns: isSmallScreen
                 ? "40px 100px 80px 80px"
