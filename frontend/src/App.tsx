@@ -16,11 +16,11 @@ import ExchangeRates from "./pages/ExchangeRates";
 import Settings from "./pages/Settings";
 import TopLoadingBar from "react-top-loading-bar";
 
-type TopLoadingBarRef = {
+type LoadingBarRef = {
+  staticStart: () => void;
   continuousStart: () => void;
   complete: () => void;
 };
-
 function App() {
   const themeContext = useContext(ThemeContext);
   const authContext = useContext(AuthContext);
@@ -37,7 +37,7 @@ function App() {
   const { isAuthenticated, isLoading } = authContext;
 
   // Create a ref for the TopLoadingBar
-  const loadingBar = useRef<any | null>(null);
+  const loadingBar = useRef<LoadingBarRef | null>(null);
 
   // Show loading bar only when isLoading is true
   useEffect(() => {
