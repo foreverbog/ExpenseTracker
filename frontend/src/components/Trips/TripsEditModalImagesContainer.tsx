@@ -20,8 +20,8 @@ const TripsEditModalImagesContainer: React.FC<
       transition={{ duration: 1, delay: 0.2 }}
       exit={{ opacity: 0, transition: { duration: 0.2 } }}
     >
-      <p className="mb-2 text-4xl">Edit your Trip</p>
-      <p className="mb-4">{t("placeholders.chooseTripImage")}</p>
+      <p className="mb-2 text-2xl lg:text-4xl">{t("trips.editTrip")}</p>
+      <p className="mb-4 text-xl">{t("placeholders.chooseTripImage")}</p>
       <div className="grid grid-cols-4 gap-2 ">
         {tripsImages.map((imageTrip) => (
           <img

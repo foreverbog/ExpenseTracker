@@ -64,7 +64,7 @@ const TripsEditModal: React.FC<TripsEditModalProps> = ({ trip, setTrip }) => {
     <>
       <div
         ref={modalRef}
-        className="fixed  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 flex justify-center items-center overflow-hidden"
+        className="fixed  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 flex justify-center items-center overflow-hidden font-base text-base-text"
       >
         <motion.div layoutId={trip?.id || undefined}>
           <motion.div
@@ -93,11 +93,12 @@ const TripsEditModal: React.FC<TripsEditModalProps> = ({ trip, setTrip }) => {
 
                 {/* //*UPDATE AND DELETE BUTTONS */}
                 <div className="flex justify-around w-full">
-                  <UpdateBtn reference={formRef} btnText={t("update")} />
-                  <DeleteBtn
-                    btnText={t("delete")}
-                    handleDelete={handleDeleteTrip}
-                  />
+                  <button onClick={() => formRef.current?.requestSubmit()}>
+                    <UpdateBtn btnText={t("update")} />
+                  </button>
+                  <button onClick={handleDeleteTrip}>
+                    <DeleteBtn btnText={t("delete")} />
+                  </button>
                 </div>
               </>
             )}

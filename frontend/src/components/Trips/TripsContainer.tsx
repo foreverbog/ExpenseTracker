@@ -90,7 +90,7 @@ const TripsContainer: React.FC<TripsContainerProps> = ({
                 })
               }
               key={trip._id}
-              className="border border-base-300  w-[250px] lg:w-[450px]  bg-base-100 grid grid-cols-[80px_auto] p-2 rounded-md items-center md:grid-cols-[100px_auto] drop-shadow-md z-10 hover:scale-105 active:scale-95 duration-300 transition-all ease-in-out"
+              className="border border-base-300  w-[250px] lg:w-[450px]  bg-base-100 grid grid-cols-[80px_auto] p-2 rounded-md items-center md:grid-cols-[100px_auto] drop-shadow-md z-10 hover:scale-105 active:scale-95 duration-300 transition-all ease-in-out font-base text-base-text"
             >
               <img
                 src={`../images/${trip.image}.png`}
@@ -113,7 +113,8 @@ const TripsContainer: React.FC<TripsContainerProps> = ({
                   {t("placeholders.roundTrip")}
                 </div>
                 <div className="rounded-md self-end text-md lg:text-lg">
-                  {trip.roundTripCost}
+                  {/*//* //this $ needs to be changed with prefered currency */}
+                  {trip.roundTripCost} $
                 </div>
               </div>
             </motion.div>

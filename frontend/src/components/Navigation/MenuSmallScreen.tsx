@@ -28,7 +28,7 @@ const MenuSmallScreen: React.FC<MenuSmallScreenType> = ({
           animate={{ width: "100%" }}
           exit={{ width: 0, transition: { duration: 0.1 } }}
           transition={{ duration: 0.2 }}
-          className="z-40 bg-base-200 font-base text-base-text h-dvh flex flex-col  items-center fixed "
+          className="z-50 bg-base-200 font-base text-base-text h-dvh flex flex-col  items-center fixed "
         >
           {/* //*Back to home Link */}
           <Link
@@ -74,7 +74,7 @@ const MenuSmallScreen: React.FC<MenuSmallScreenType> = ({
           </div>
           <button
             onClick={logout}
-            className="mb-24 bg-red-700 hover:bg-red-800 transition-colors duration-300 ease-in-out flex items-center justify-center gap-2 rounded-md py-2 w-1/2 xs:w-1/3 xs:text-xl "
+            className="mb-24 bg-red-700 hover:bg-red-800 transition-colors duration-300 ease-in-out flex items-center justify-center gap-2 rounded-md py-2 w-1/2 xs:w-1/3 xs:text-xl text-white active:scale-95"
           >
             <IoIosLogOut />
             <p>{t("nav.logout")}</p>

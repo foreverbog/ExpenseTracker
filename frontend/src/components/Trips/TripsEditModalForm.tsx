@@ -79,7 +79,9 @@ const TripsEditModalForm: React.FC<TripsEditModalForm> = ({
       animate={{ opacity: 100 }}
       transition={{ duration: 1, delay: 0.2 }}
       exit={{ opacity: 0, transition: { duration: 0.2 } }}
-      className={`flex flex-col justify-center items-center text-sm gap-2 `}
+      className={`flex flex-col justify-center items-center text-sm ${
+        serverError ? "" : "gap-2"
+      } `}
     >
       {isLoading && <Loading text={t("loading")} />}
       {serverError && (
@@ -197,9 +199,9 @@ const TripsEditModalForm: React.FC<TripsEditModalForm> = ({
         onClick={() => {
           setIsTripExpenseOpen(true);
         }}
-        className="bg-primary text-primary-text px-4 py-2 rounded-md w-2/3  text-xs"
+        className="bg-primary text-primary-text  py-2 rounded-md w-2/3  text-md mt-4 hover:scale-105 hover:bg-primary-darker active:scale-95  transition-transform duration-300 ease-in-out "
       >
-        {`Manage Trip Exepnses`}
+        {t("trips.tripExpenseBtn")}
       </button>
     </motion.form>
   );

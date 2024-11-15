@@ -65,7 +65,11 @@ function App() {
 
   return (
     <div className={`theme-${theme} relative`}>
-      <TopLoadingBar color="var(--color-primary)" height={3} ref={loadingBar} />
+      <TopLoadingBar
+        color="var(--color-secondary)"
+        height={3}
+        ref={loadingBar}
+      />
       <ToastContainer
         position="top-center"
         autoClose={1500}

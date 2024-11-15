@@ -14,7 +14,7 @@ const MenuBigScreen: React.FC<MenuBigScreenType> = ({ logout }) => {
   const [t] = useTranslation("global");
 
   return (
-    <div className="z-40 bg-base-200 font-base text-base-text h-full flex flex-col justify-between items-center fixed left-0 w-[50px] hover:w-[220px]  transition-all duration-300 group rounded-r-md overflow-hidden">
+    <div className="z-50 bg-base-200 font-base text-base-text h-full flex flex-col justify-between items-center fixed left-0 w-[50px] hover:w-[220px]  transition-all duration-300 group rounded-r-md overflow-hidden">
       {/* //*Back to home Link */}
       <Link
         to="/"
@@ -67,7 +67,7 @@ const MenuBigScreen: React.FC<MenuBigScreenType> = ({ logout }) => {
       </div>
       <button
         onClick={logout}
-        className="mb-24 bg-red-700 hover:bg-red-800 flex items-center gap-2 pl-1 transition-all duration-300 rounded-md py-2 w-2/4 group-hover:w-1/2 text-base"
+        className="mb-24 bg-red-700 hover:bg-red-800 flex items-center gap-2 pl-1 transition-all duration-300 rounded-md py-2 w-2/4 group-hover:w-1/2 text-white active:scale-95"
       >
         <IoIosLogOut className="text-xl flex-shrink-0" />
         <p className="text-md text-center font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap ">

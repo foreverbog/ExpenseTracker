@@ -194,7 +194,7 @@ const ExpenseEditForm: React.FC<ExpenseEditFormProps> = ({
           }}
           className="text-xs lg:text-normal px-4 py-2 bg-secondary
               text-secondary-text rounded-md  mt-8 font-semibold
-              hover:scale-105 active:scale-95 transition-transform duration-300
+              hover:scale-105 hover:bg-secondary-darker active:scale-95 transition-transform duration-300
               ease-in-out drop-shadow-xl"
         >
           {t("update")}
@@ -204,7 +204,7 @@ const ExpenseEditForm: React.FC<ExpenseEditFormProps> = ({
           className="text-xs lg:text-normal px-4 py-2 
                rounded-md  mt-8 font-semibold
               hover:scale-105 active:scale-95 transition-transform duration-300
-              ease-in-out drop-shadow-xl bg-red-700 hover:bg-red-800 text-base"
+              ease-in-out drop-shadow-xl bg-red-700 hover:bg-red-800 text-white"
         >
           {t("delete")}
         </button>

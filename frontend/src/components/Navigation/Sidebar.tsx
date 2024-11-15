@@ -122,7 +122,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSideBarOpen, handleSideBar }) => {
         {isAuthenticated && (
           <button
             onClick={handleLogout}
-            className="bg-red-700 flex justify-center items-center gap-2 rounded-md w-3/4 sm:w-1/2   py-2 hover:bg-red-800 mb-24 overflow-hidden text-lg xs:text-lg "
+            className="bg-red-700 flex justify-center items-center gap-2 rounded-md w-3/4 sm:w-1/2   py-2 hover:bg-red-800 mb-24 overflow-hidden text-lg xs:text-lg text-white font-medium active:scale-95"
           >
             <IoIosLogOut />
             <p>{t("nav.logout")}</p>

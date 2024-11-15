@@ -5,7 +5,8 @@ import { IoIosArrowBack } from "react-icons/io";
 import { useState } from "react";
 import { FaRegEdit } from "react-icons/fa";
 
-import TripExpenseCreator from "./TripExpenseModal";
+import TripExpenseModal from "./TripExpenseModal";
+import { useTranslation } from "react-i18next";
 
 type TripExpensesProps = {
   trip: TripType | undefined;
@@ -24,6 +25,7 @@ const TripExpenses: React.FC<TripExpensesProps> = ({
   setTrip,
   setIsTripExpenseOpen,
 }) => {
+  const { t } = useTranslation("global");
   const [isAddExpense, setIsAddExpense] = useState(false);
   const [isExpenseDetailOpen, setIsExpenseDetailOpen] = useState(false);
   const [expenseDetails, setExpenseDetails] = useState<ExpenseDetails>({
@@ -32,11 +34,11 @@ const TripExpenses: React.FC<TripExpensesProps> = ({
     price: "",
   });
 
-  console.log(isAddExpense);
+  // console.log(isAddExpense);
 
   return (
     <motion.div
-      className="relative flex flex-col gap-4  rounded-md w-[270px] md:w-[500px]"
+      className="relative flex flex-col gap-4  rounded-md w-[270px] md:w-[500px] min-h-[450px]"
       initial={{ opacity: 0 }}
       animate={{ opacity: 100 }}
     >
@@ -46,18 +48,19 @@ const TripExpenses: React.FC<TripExpensesProps> = ({
         className="text-base-text rounded-md w-2/3 text-xs flex gap-1  items-center hover:cursor-pointer hover:scale-105 transition-transform duration-300 ease-in-out"
       >
         <IoIosArrowBack className="text-xl" />
-        <p>Back To Trip Details</p>
+        <p>{t("trips.backToTrip")}</p>
       </div>
       <div className="text-center text-xl md:text-2xl font-semibold mt-8 truncate">
-        {trip?.name} Expenses:
+        {trip?.name} {t("trips.expense")}:
       </div>
-      <button className="self-end" onClick={() => setIsAddExpense(true)}>
-        <AddBtn
-          btnText="add"
-          className="self-end"
-          textClassName="md:hidden"
-          setIsModalOpen={setIsExpenseDetailOpen}
-        />
+      <button
+        className="self-end"
+        onClick={() => {
+          setIsAddExpense(true);
+          setIsExpenseDetailOpen(true);
+        }}
+      >
+        <AddBtn btnText="add" className="self-end" textClassName="md:hidden" />
       </button>
       {/* //*GRID FOR EXPENSES */}
       <div
@@ -65,13 +68,13 @@ const TripExpenses: React.FC<TripExpensesProps> = ({
         className="grid grid-cols-1 border max-h-[300px] overflow-y-scroll drop-shadow-md"
       >
         <div className="grid grid-cols-2 bg-primary-lighter text-primary-text sticky top-0 right-0 left-0  divide-x text-center w-full z-10">
-          <div className="p-1.5">Name</div>
-          <div className="p-1.5">Price</div>
+          <div className="p-1.5">{t("placeholders.expenseName")}</div>
+          <div className="p-1.5">{t("placeholders.price")}</div>
         </div>
 
         {trip?.expenses && trip.expenses.length < 1 ? (
-          <div className="h-[150px] flex justify-center items-center text-xl">
-            No expenses found! Start by adding
+          <div className="h-[150px] flex justify-center items-center text-md text-center">
+            {t("trips.noExpenses")}
           </div>
         ) : (
           trip?.expenses?.map((expense) => (
@@ -115,7 +118,7 @@ const TripExpenses: React.FC<TripExpensesProps> = ({
       {/*//*MODAL FOR Creating Expense */}
       <AnimatePresence>
         {isExpenseDetailOpen && (
-          <TripExpenseCreator
+          <TripExpenseModal
             trip={trip}
             setTrip={setTrip}
             expenseDetails={expenseDetails}

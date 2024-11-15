@@ -166,10 +166,9 @@ const ExpensesSubHeading: React.FC<ExpensesSubHeadingProps> = ({
           </div>
         </div>
         {/*//* Add Button */}
-        <AddBtn
-          btnText={t("expenses.new")}
-          setIsModalOpen={setIsNewExpenseOpen}
-        />
+        <button onClick={() => setIsNewExpenseOpen((prev) => !prev)}>
+          <AddBtn btnText={t("expenses.new")} />
+        </button>
       </div>
     </div>
   );

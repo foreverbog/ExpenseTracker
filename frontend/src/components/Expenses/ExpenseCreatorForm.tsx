@@ -161,7 +161,7 @@ const ExpenseCreatorForm: React.FC<ExpenseCreatorFormProps> = ({
           placeholder={t("placeholders.YYYY")}
         />
       </div>
-      <button className="text-xs lg:text-normal lg:px-4 py-2 bg-secondary text-secondary-text rounded-md w-1/2 mt-8 font-semibold hover:scale-105 active:scale-95 transition-transform duration-300 ease-in-out drop-shadow-xl">
+      <button className="text-xs lg:text-normal lg:px-4 py-2 bg-secondary text-secondary-text rounded-md w-1/2 mt-8 font-semibold hover:scale-105 hover:bg-secondary-darker active:scale-95 transition-transform duration-300 ease-in-out drop-shadow-xl">
         {t("expenses.addBtn")}
       </button>
     </motion.form>

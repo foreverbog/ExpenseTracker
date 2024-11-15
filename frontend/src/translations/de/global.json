@@ -171,12 +171,21 @@
     "title": "Reiseplaner",
     "newTripBtn": "Neue Reise hinzufügen",
     "onlyRoundTrips": "Nur Hin- und Rückfahrten",
+    "oldestFirst": "Älteste zuerst",
+    "editTrip": "Ihre Reise bearbeiten",
+    "tripExpenseBtn": "Reisekosten verwalten",
+    "backToTrip": "Zurück zu den Reisedetails",
+    "expense": "Ausgabe",
+    "noExpenses": "Noch keine Ausgaben! Fügen Sie die erste hinzu.",
 
     "errors": {
       "name": "Bitte geben Sie einen Namen für die Reise an.",
       "price": "Bitte geben Sie einen Preis für die Reise an.",
       "priceForTravel/Accomodation": "Bitte geben Sie einen Preis für die Fahrt und die Unterkunft an.",
-      "date": "Bitte geben Sie ein vollständiges Datum für die Reise an."
+      "date": "Bitte geben Sie ein vollständiges Datum für die Reise an.",
+      "expenseName": "Bitte geben Sie einen Namen.",
+      "expensePrice": "Bitte geben Sie einen Preis.",
+      "expenseNameandPrice": "Bitte geben Sie einen Namen und einen Preis"
     }
   },
 

@@ -14,7 +14,7 @@ import { MdDeleteForever } from "react-icons/md";
 import usePut from "../../hooks/usePut";
 import useDelete from "../../hooks/useDelete";
 
-type TripExpenseCreatorProps = {
+type TripExpenseModalProps = {
   trip: TripType | undefined;
   setTrip: React.Dispatch<React.SetStateAction<TripType | undefined>>;
   expenseDetails: ExpenseDetails;
@@ -24,7 +24,7 @@ type TripExpenseCreatorProps = {
   setIsAddExpense: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const TripExpenseCreator: React.FC<TripExpenseCreatorProps> = ({
+const TripExpenseModal: React.FC<TripExpenseModalProps> = ({
   trip,
   setTrip,
   expenseDetails,
@@ -82,11 +82,11 @@ const TripExpenseCreator: React.FC<TripExpenseCreatorProps> = ({
   const handleAdd = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!expenseDetails.name && !expenseDetails.price) {
-      setServerError("Please provide a name and a price.");
+      setServerError(t("trips.errors.expenseNameandPrice"));
     } else if (!expenseDetails.name) {
-      setServerError("Please provide a name.");
+      setServerError(t("trips.errors.expenseName"));
     } else if (!expenseDetails.price) {
-      setServerError("Please provide a price.");
+      setServerError(t("trips.errors.expensePrice"));
     } else {
       await handlePost(e);
       setTrip((prev) => prev && { ...prev, id: null });
@@ -108,11 +108,11 @@ const TripExpenseCreator: React.FC<TripExpenseCreatorProps> = ({
   const handleUpdate = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!expenseDetails.name && !expenseDetails.price) {
-      setServerError("Please provide a name and a price.");
+      setServerError(t("trips.errors.expenseNameandPrice"));
     } else if (!expenseDetails.name) {
-      setServerError("Please provide a name.");
+      setServerError(t("trips.errors.expenseName"));
     } else if (!expenseDetails.price) {
-      setServerError("Please provide a price.");
+      setServerError(t("trips.errors.expensePrice"));
     } else {
       await handlePut(e);
       reFetchTrips();
@@ -142,22 +142,6 @@ const TripExpenseCreator: React.FC<TripExpenseCreatorProps> = ({
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 bg-base rounded-md border-base-300 border drop-shadow-2xl overflow-hidden flex justify-between "
       >
         <div className="flex flex-col w-full items-center p-4 gap-4">
-          <motion.h1
-            initial={{ translateY: "20px", opacity: 0 }}
-            animate={{
-              translateY: "0",
-              opacity: "100%",
-              transition: {
-                type: "spring",
-                bounce: 0.5,
-                delay: 0.3,
-              },
-            }}
-            exit={{ opacity: "0", transition: { duration: 0.1 } }}
-            className={`text-lg  font-semibold text-primary-text text-center text-balance`}
-          >
-            {isAddExpense ? "Add New Trip Expense" : "Update Expense"}
-          </motion.h1>
           {/* //*FORM */}
 
           <form
@@ -165,6 +149,22 @@ const TripExpenseCreator: React.FC<TripExpenseCreatorProps> = ({
             onSubmit={isAddExpense ? handleAdd : handleUpdate}
             className="flex flex-col w-full justify-between items-center gap-4"
           >
+            <motion.h1
+              initial={{ translateY: "20px", opacity: 0 }}
+              animate={{
+                translateY: "0",
+                opacity: "100%",
+                transition: {
+                  type: "spring",
+                  bounce: 0.5,
+                  delay: 0.3,
+                },
+              }}
+              exit={{ opacity: "0", transition: { duration: 0.1 } }}
+              className="text-center w-full truncate text-lg  "
+            >
+              {isAddExpense ? "Create a new Expense" : "Update Expense"}
+            </motion.h1>
             {isLoading && <Loading text={t("loading")} />}
             {serverError && (
               <p className="text-red-500 font-semibold text-balance text-center">
@@ -184,11 +184,11 @@ const TripExpenseCreator: React.FC<TripExpenseCreatorProps> = ({
               }}
               exit={{ opacity: "0", transition: { duration: 0.1 } }}
               className={`inputStyle  w-3/4 placeholder:text-center text-center ${
-                (serverError === "Please provide a name." ||
-                  serverError === "Please provide a name and a price.") &&
+                (serverError === t("trips.errors.expenseName") ||
+                  serverError === t("trips.errors.expenseNameandPrice")) &&
                 "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
               }`}
-              placeholder="Name"
+              placeholder={t("placeholders.expenseName")}
               name="name"
               type="text"
               value={expenseDetails.name}
@@ -208,11 +208,11 @@ const TripExpenseCreator: React.FC<TripExpenseCreatorProps> = ({
               }}
               exit={{ opacity: "0", transition: { duration: 0.1 } }}
               className={`inputStyle w-3/4 placeholder:text-center text-center  [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
-                (serverError === "Please provide a price." ||
-                  serverError === "Please provide a name and a price.") &&
+                (serverError === t("trips.errors.expensePrice") ||
+                  serverError === t("trips.errors.expenseNameandPrice")) &&
                 " border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
               }`}
-              placeholder="Price"
+              placeholder={t("placeholders.price")}
               name="price"
               type="number"
               min={0}
@@ -235,7 +235,7 @@ const TripExpenseCreator: React.FC<TripExpenseCreatorProps> = ({
                 exit={{ opacity: "0", transition: { duration: 0.1 } }}
                 className="mt-4"
               >
-                <AddBtn btnText="add" />
+                <AddBtn btnText="add" textClassName="md:hidden" />
               </motion.button>
             )}
           </form>
@@ -268,7 +268,7 @@ const TripExpenseCreator: React.FC<TripExpenseCreatorProps> = ({
               <button
                 onClick={handleDeleteExpense}
                 className="w-1/3  flex justify-center items-center px-4 py-2  rounded-md hover:scale-105 active:scale-95 transition-transform duration-300
-                  ease-in-out drop-shadow-xl bg-red-700 hover:bg-red-800 text-base"
+                  ease-in-out drop-shadow-xl bg-red-700 hover:bg-red-800 text-white"
               >
                 <MdDeleteForever className="text-2xl" />
               </button>
@@ -280,4 +280,4 @@ const TripExpenseCreator: React.FC<TripExpenseCreatorProps> = ({
   );
 };
 
-export default TripExpenseCreator;
+export default TripExpenseModal;

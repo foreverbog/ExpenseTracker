@@ -98,13 +98,13 @@ const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
         )}
       </AnimatePresence>
       <div
-        className=" relative border grid grid-cols-1  mx-auto mt-12  md:w-auto  xl:w-3/5 max-h-[500px] overflow-y-scroll overflow-x-hidden drop-shadow-md"
+        className=" relative border border-base-text grid grid-cols-1  mx-auto mt-12  md:w-auto  xl:w-3/5 max-h-[500px] overflow-y-scroll overflow-x-hidden drop-shadow-md z-10"
         style={{ scrollbarWidth: "thin" }}
       >
         {isLoading && <Loading text={t("loading")} />}
         <>
           <div
-            className="sticky top-0 left-0 right-0  grid grid-cols-4 w-full divide-x text-primary-text font-semibold  bg-primary-lighter  z-20 text-xs "
+            className="sticky top-0 left-0 right-0  grid grid-cols-4 w-full divide-x  text-primary-text font-semibold  bg-primary-lighter  z-20 text-xs border-b border-base-text"
             style={{
               gridTemplateColumns: isSmallScreen
                 ? "40px 100px 80px 80px"
@@ -183,7 +183,7 @@ const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
                       <FaRegEdit />
                     </div>
                   </div>
-                  <div className="flex items-center justify-center text-lg md:p-2 md:text-2xl text-base-text ">
+                  <div className="flex items-center justify-center text-lg md:p-2 md:text-2xl text-base-text">
                     {categoryIcons[t(`expenses.categories.${expense.icon}`)]}
                   </div>
                   <p className=" p-1 text-md md:text-lg flex justify-start items-center md:pl-4 md:p-2 truncate ">

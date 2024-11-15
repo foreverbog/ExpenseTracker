@@ -8,13 +8,9 @@ const Home = () => {
     <div className="bg-base">
       <Landing />
       <FeaturesSection />
-      <div
-        className="bg-cover bg-center"
-        style={{ backgroundImage: "url('./images/blob-scatter-haikei.svg')" }}
-      >
-        <MultipleDevicesSection />
-        <UserFeedbackSection />
-      </div>
+
+      <MultipleDevicesSection />
+      <UserFeedbackSection />
     </div>
   );
 };

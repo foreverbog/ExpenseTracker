@@ -171,12 +171,21 @@
     "title": "Trips Organizer",
     "newTripBtn": "Add New Trip",
     "onlyRoundTrips": "Round Trips Only",
+    "oldestFirst": "Oldest first",
+    "editTrip": "Edit your Trip",
+    "tripExpenseBtn": "Manage Trip Expenses",
+    "backToTrip": "Back to Trip Details",
+    "expense": "Expense",
+    "noExpenses": "No expenses yet! Start by adding your first one.",
 
     "errors": {
       "name": "Please provide a name for the trip.",
       "price": "Please provide a price for the trip.",
       "priceForTravel/Accomodation": "Please provide a price for both Travel and Accomodation.",
-      "date": "Please provide a full date for the trip."
+      "date": "Please provide a full date for the trip.",
+      "expenseName": "Please provide a name.",
+      "expensePrice": "Please provide a price.",
+      "expenseNameandPrice": "Please provide a name and a price."
     }
   },
 
