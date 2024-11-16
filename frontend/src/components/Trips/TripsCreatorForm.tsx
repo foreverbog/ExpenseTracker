@@ -110,7 +110,7 @@ const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({
       name: tripFormData.tripName,
       roundTrip: tripFormData.roundTrip,
       roundTripCost: tripFormData.roundTrip
-        ? tripFormData.roundTrip
+        ? Number(tripFormData.roundTripCost)
         : Number(tripFormData.travelCost) +
           Number(tripFormData.accomodationCost),
       startDate: `${tripFormData.startYear}-
@@ -124,6 +124,8 @@ const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({
     successMessage: t("toasters.create", { feature: t("trip") }),
     setIsModalOpen: setIsTripCreatorOpen,
   });
+
+  console.log(tripFormData.roundTripCost);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
