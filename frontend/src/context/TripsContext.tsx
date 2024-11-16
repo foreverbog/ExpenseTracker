@@ -49,13 +49,12 @@ const TripsContextProvider: React.FC<TripsContextProviderProps> = ({
   if (!authContext) {
     throw new Error("useContext must be used withing AuthContextProvider");
   }
-  // const deployedUrl = "https://extr-backend.onrender.com";
-  const local = "http://localhost:8080";
+  const API_URL: string = import.meta.env.VITE_API_SERVER;
 
   const { user } = authContext;
 
   const { apiData, isLoading } = useFetch<TripsContextType>(
-    `${local}/${user.id}?fetch=${triggerFetch}`
+    `${API_URL}/${user.id}?fetch=${triggerFetch}`
   );
 
   useEffect(() => {

@@ -2,6 +2,22 @@
   "loading": "Loading...",
   "update": "Update",
   "delete": "Delete",
+  "expense": "Expense",
+  "trip": "Trip",
+
+  "cookies": {
+    "title": "TrackIt uses cookies!",
+    "text": "We use cookies to personalize your experience. By continuing to use this site, you consent to our use of cookies.",
+    "accept": "Accept"
+  },
+
+  "toasters": {
+    "login": "Welcome back!",
+    "signup": "Congratulations! You have successfully registered.",
+    "create": "{{feature}} created successfully.",
+    "edit": "{{feature}} updated successfully.",
+    "delete": "{{feature}} deleted successfully."
+  },
 
   "nav": {
     "home": "Home",
@@ -176,7 +192,10 @@
     "tripExpenseBtn": "Manage Trip Expenses",
     "backToTrip": "Back to Trip Details",
     "expense": "Expense",
+    "totalTrips": "Total Trips:",
+    "noTrips": "No trips yet! Start by adding your first one.",
     "noExpenses": "No expenses yet! Start by adding your first one.",
+    "addBtn": "Add New Trip",
 
     "errors": {
       "name": "Please provide a name for the trip.",

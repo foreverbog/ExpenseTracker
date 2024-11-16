@@ -28,19 +28,17 @@ const Login = ({
   authFormData,
   setAuthFormData,
 }: LoginProps) => {
-  const deployedUrl = "https://extr-backend.onrender.com";
-  // const local = "http://localhost:8080";
+  const API_URL: string = import.meta.env.VITE_API_SERVER;
+
   const [t] = useTranslation("global");
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setAuthFormData({ ...authFormData, [name]: value });
   };
   const { isLoading, serverError, handleSubmit } = useAuthSubmit({
-    url: `${deployedUrl}/login`,
+    url: `${API_URL}/login`,
     redirectUrl: "/",
-    succesMessage: t("auth.titleLogin", {
-      firstName: "s",
-    }),
+    successMessage: t("toasters.login"),
     resetForm: () =>
       setAuthFormData({
         firstName: "",

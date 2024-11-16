@@ -20,8 +20,7 @@ const ExpenseCreatorForm: React.FC<ExpenseCreatorFormProps> = ({
   setNewExpenseForm,
   setIsNewExpenseOpen,
 }) => {
-  const deployedUrl = "https://extr-backend.onrender.com";
-  // const local = "http://localhost:8080";
+  const API_URL: string = import.meta.env.VITE_API_SERVER;
 
   const authContext = useContext(AuthContext);
   if (!authContext) {
@@ -49,10 +48,11 @@ const ExpenseCreatorForm: React.FC<ExpenseCreatorFormProps> = ({
   };
 
   const { isLoading, serverError, setServerError, handlePost } = usePost({
-    url: `${deployedUrl}/${user.id}/expenses`,
+    url: `${API_URL}/${user.id}/expenses`,
     formData: expenseFormData,
     setIsModalOpen: setIsNewExpenseOpen,
     setDate: setExpenseQueries,
+    successMessage: t("toasters.create", { feature: t("expense") }),
   });
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {

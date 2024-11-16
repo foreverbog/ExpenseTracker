@@ -45,11 +45,11 @@ const Navbar = () => {
   return (
     <>
       <nav className="  text-text text-base-text p-4 flex justify-between  items-center bg-transparent absolute w-full top-0 z-10 mb-24">
-        <div className="flex flex-1 gap-24  items-center ">
+        <div className="flex flex-1  gap-8 lg:gap-24  items-center ">
           <NavLink className="group" to="/">
             <LogoVector />
           </NavLink>
-          <ul className=" hidden md:flex  w-full text-xl gap-16  text-base-text font-base ">
+          <ul className=" hidden md:flex  w-full text-xl  gap-8 lg:gap-16  text-base-text font-base ">
             <NavLink
               className={({ isActive }) =>
                 isActive

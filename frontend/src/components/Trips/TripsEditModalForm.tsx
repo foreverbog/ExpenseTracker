@@ -21,6 +21,7 @@ const TripsEditModalForm: React.FC<TripsEditModalForm> = ({
   formRef,
   setIsTripExpenseOpen,
 }) => {
+  const API_URL: string = import.meta.env.VITE_API_SERVER;
   const authContext = useContext(AuthContext);
   if (!authContext) {
     throw new Error("useContext must be used withing AuthContextProvider");
@@ -33,7 +34,7 @@ const TripsEditModalForm: React.FC<TripsEditModalForm> = ({
   const { reFetchTrips } = useTripsContext();
 
   const { isLoading, serverError, setServerError, handlePut } = usePut({
-    url: `http://localhost:8080/${user.id}/trips/${trip?.id}`,
+    url: `${API_URL}/${user.id}/trips/${trip?.id}`,
     formData: {
       image: trip?.image || null,
       name: trip?.name || null,
@@ -41,7 +42,7 @@ const TripsEditModalForm: React.FC<TripsEditModalForm> = ({
       endDate: `${trip?.endYear}-${trip?.endMonth}-${trip?.endDay}`,
       description: trip?.description || null,
     },
-    successMessage: "update",
+    successMessage: t("toasters.edit", { feature: t("trip") }),
   });
 
   //*Function for error Checking, if all Checking pass, make the put Request, refetch the trips and set the tripID to null to close the modal

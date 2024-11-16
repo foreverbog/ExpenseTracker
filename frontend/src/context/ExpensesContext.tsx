@@ -49,8 +49,7 @@ type ExpensesContextProviderType = {
 const ExpenseContextProvider: React.FC<ExpensesContextProviderType> = ({
   children,
 }) => {
-  const deployedUrl = "https://extr-backend.onrender.com";
-  // const localUrl = "http://localhost:8080";
+  const API_URL: string = import.meta.env.VITE_API_SERVER;
 
   const authContext = useContext(AuthContext);
   if (!authContext) {
@@ -97,26 +96,26 @@ const ExpenseContextProvider: React.FC<ExpensesContextProviderType> = ({
           expenseQueries.sortBy === "date"
         ) {
           setApiUrl(
-            `${deployedUrl}/${user.id}/expenses?sortBy=${expenseQueries.sortBy}&type=${expenseQueries.type}&order=${expenseQueries.order}&year=${expenseQueries.year}`
+            `${API_URL}/${user.id}/expenses?sortBy=${expenseQueries.sortBy}&type=${expenseQueries.type}&order=${expenseQueries.order}&year=${expenseQueries.year}`
           );
         } else
           setApiUrl(
-            `${deployedUrl}/${user.id}/expenses?type=${expenseQueries.type}&order=${expenseQueries.order}&year=${expenseQueries.year}`
+            `${API_URL}/${user.id}/expenses?type=${expenseQueries.type}&order=${expenseQueries.order}&year=${expenseQueries.year}`
           );
       } else if (expenseQueries.type === "yearly") {
         setApiUrl(
-          `${deployedUrl}/${user.id}/expenses?sortBy=${expenseQueries.sortBy}&type=${expenseQueries.type}&order=${expenseQueries.order}&year=${expenseQueries.year}`
+          `${API_URL}/${user.id}/expenses?sortBy=${expenseQueries.sortBy}&type=${expenseQueries.type}&order=${expenseQueries.order}&year=${expenseQueries.year}`
         );
       } else if (expenseQueries.sortBy === "value") {
         setApiUrl(
-          `${deployedUrl}/${user.id}/expenses?sortBy=${expenseQueries.sortBy}&type=${expenseQueries.type}&order=${expenseQueries.order}&year=${expenseQueries.year}&month=${expenseQueries.month}`
+          `${API_URL}/${user.id}/expenses?sortBy=${expenseQueries.sortBy}&type=${expenseQueries.type}&order=${expenseQueries.order}&year=${expenseQueries.year}&month=${expenseQueries.month}`
         );
       } else
         setApiUrl(
-          `${deployedUrl}/${user.id}/expenses?sortBy=${expenseQueries.sortBy}&type=${expenseQueries.type}&order=${expenseQueries.order}&year=${expenseQueries.year}&month=${expenseQueries.month}`
+          `${API_URL}/${user.id}/expenses?sortBy=${expenseQueries.sortBy}&type=${expenseQueries.type}&order=${expenseQueries.order}&year=${expenseQueries.year}&month=${expenseQueries.month}`
         );
     }
-  }, [user, location.pathname, expenseQueries]);
+  }, [user, location.pathname, expenseQueries, API_URL]);
 
   //*use the custom hook to get the data
   const { apiData, isLoading } = useFetch<ExpenseType[]>(apiUrl && apiUrl);

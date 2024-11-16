@@ -53,6 +53,7 @@ const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({
   tripImage,
   setIsTripCreatorOpen,
 }) => {
+  const API_URL: string = import.meta.env.VITE_API_SERVER;
   const { t } = useTranslation("global");
   const isSmallScreen = useMediaQuery("(max-width: 767px)");
   console.log(tripImage);
@@ -103,7 +104,7 @@ const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({
   console.log(tripFormData);
 
   const { isLoading, handlePost, serverError, setServerError } = usePost({
-    url: `http://localhost:8080/${user.id}/trips`,
+    url: `${API_URL}/${user.id}/trips`,
     formData: {
       image: tripFormData.image,
       name: tripFormData.tripName,
@@ -120,7 +121,7 @@ const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({
         ${tripFormData.endDay}`,
       description: tripFormData?.description || "",
     },
-    successMessage: "Created",
+    successMessage: t("toasters.create", { feature: t("trip") }),
     setIsModalOpen: setIsTripCreatorOpen,
   });
 
@@ -335,7 +336,7 @@ const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({
         rows={isSmallScreen ? 4 : 6}
       />
       <button className="text-xs lg:text-normal lg:px-4 py-2 bg-secondary text-secondary-text rounded-md w-1/2 mt-8 font-semibold hover:scale-105 active:scale-95 transition-transform duration-300 ease-in-out drop-shadow-xl">
-        add
+        {t("trips.addBtn")}
       </button>
     </form>
   );

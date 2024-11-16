@@ -25,8 +25,7 @@ const ExpenseEditForm: React.FC<ExpenseEditFormProps> = ({
   setExpenseId,
   setIsEditExpenseOpen,
 }) => {
-  const deployedUrl = "https://extr-backend.onrender.com";
-  // const local = "http://localhost:8080";
+  const API_URL: string = import.meta.env.VITE_API_SERVER;
   const authContext = useContext(AuthContext);
   if (!authContext) {
     throw new Error("useContext must be used withing AuthContextProvider");
@@ -53,19 +52,21 @@ const ExpenseEditForm: React.FC<ExpenseEditFormProps> = ({
 
   //* the custom hook for deleting an expense
   const { handleDelete } = useDelete({
-    url: `${deployedUrl}/${user.id}/expenses/${expense?._id}`,
+    url: `${API_URL}/${user.id}/expenses/${expense?._id}`,
     setDate: setExpenseQueries,
     setIsModalOpen: setIsEditExpenseOpen,
     month: expenseToBeUpdated.month,
     year: expenseToBeUpdated.year.toString(),
+    successMessage: t("toasters.delete", { feature: t("expense") }),
   });
 
   //*the custom hook for updating an expense
   const { isLoading, serverError, handlePut, setServerError } = usePut({
-    url: `${deployedUrl}/${user.id}/expenses/${expense?._id}`,
+    url: `${API_URL}/${user.id}/expenses/${expense?._id}`,
     formData: formDataEditExpense,
     setIsModalOpen: setIsEditExpenseOpen,
     setDate: setExpenseQueries,
+    successMessage: t("toasters.edit", { feature: t("expense") }),
   });
   // *Handle change event listener
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

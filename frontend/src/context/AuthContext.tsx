@@ -2,6 +2,7 @@ import { useState, useEffect, createContext, ReactNode } from "react";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 type AuthContextType = {
   user: UserType;
@@ -33,8 +34,7 @@ type DecodedTokentype = {
 const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
   children,
 }) => {
-  const deployedUrl = "https://extr-backend.onrender.com";
-  // const local = "http://localhost:8080";
+  const API_URL: string = import.meta.env.VITE_API_SERVER;
   const navigate = useNavigate();
   const [token, setToken] = useState<string | null>(null);
   const [user, setUser] = useState<UserType>({
@@ -47,7 +47,7 @@ const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
 
   const getUser = async (userId: string) => {
     try {
-      const response = await axios.get(`${deployedUrl}/${userId}`);
+      const response = await axios.get(`${API_URL}/${userId}`);
       const data = response.data;
       setUser({
         id: userId,
@@ -55,7 +55,6 @@ const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
         firstName: data.firstName,
         lastName: data.lastName,
       });
-      setIsLoading(false);
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         console.log(error);
@@ -67,7 +66,7 @@ const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
   //*Function to set the token on login/signup or remove it
   const login = (newToken: string) => {
     setToken(newToken);
-    localStorage.setItem("token", newToken);
+    Cookies.set("token", newToken);
     const decodedToken = jwtDecode<DecodedTokentype>(newToken);
     getUser(decodedToken.id);
   };
@@ -80,7 +79,7 @@ const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
       firstName: "",
       lastName: "",
     });
-    localStorage.removeItem("token");
+    Cookies.remove("token");
     // console.log("log out");
     navigate("/auth");
   };
@@ -89,7 +88,7 @@ const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
 
   //*get token from local storage , this runs only if there is a token stored
   useEffect(() => {
-    const storedToken = localStorage.getItem("token");
+    const storedToken = Cookies.get("token");
     if (storedToken) {
       setToken(storedToken);
 
@@ -98,6 +97,7 @@ const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
     } else {
       setIsLoading(false);
     }
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // console.log(user);

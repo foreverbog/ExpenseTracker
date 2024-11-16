@@ -15,6 +15,7 @@ import TripsOrganizer from "./pages/TripsOrganizer";
 import ExchangeRates from "./pages/ExchangeRates";
 import Settings from "./pages/Settings";
 import TopLoadingBar from "react-top-loading-bar";
+import CookiesInfo from "./components/Landing/CookiesInfo";
 
 type LoadingBarRef = {
   staticStart: () => void;
@@ -72,12 +73,13 @@ function App() {
       />
       <ToastContainer
         position="top-center"
-        autoClose={1500}
+        autoClose={false}
         hideProgressBar={false}
         closeOnClick
         rtl={false}
         transition={Zoom}
       />
+      <CookiesInfo />
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route path="/" element={<Home />} />

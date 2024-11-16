@@ -33,6 +33,7 @@ const TripExpenseModal: React.FC<TripExpenseModalProps> = ({
   isAddExpense,
   setIsAddExpense,
 }) => {
+  const API_URL: string = import.meta.env.VITE_API_SERVER;
   const { t } = useTranslation("global");
   const authContext = useContext(AuthContext);
   if (!authContext) {
@@ -67,7 +68,7 @@ const TripExpenseModal: React.FC<TripExpenseModalProps> = ({
   };
 
   const { isLoading, serverError, setServerError, handlePost } = usePost({
-    url: `http://localhost:8080/${user.id}/trips/${trip?.id}`,
+    url: `${API_URL}/${user.id}/trips/${trip?.id}`,
     formData: {
       icon: "trip",
       name: expenseDetails.name,
@@ -76,7 +77,7 @@ const TripExpenseModal: React.FC<TripExpenseModalProps> = ({
       type: "trip",
     },
     setIsModalOpen: setIsExpenseDetailOpen,
-    successMessage: "ADDED",
+    successMessage: t("toasters.create", { feature: t("expense") }),
   });
 
   const handleAdd = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -95,12 +96,12 @@ const TripExpenseModal: React.FC<TripExpenseModalProps> = ({
   };
 
   const { handlePut } = usePut({
-    url: `http://localhost:8080/${user.id}/expenses/${expenseDetails.id}`,
+    url: `${API_URL}/${user.id}/expenses/${expenseDetails.id}`,
     formData: {
       name: expenseDetails.name,
       value: expenseDetails.price,
     },
-    successMessage: "edited",
+    successMessage: t("toasters.edit", { feature: t("expense") }),
   });
 
   console.log(expenseDetails);
@@ -121,8 +122,8 @@ const TripExpenseModal: React.FC<TripExpenseModalProps> = ({
   };
 
   const { handleDelete } = useDelete({
-    url: `http://localhost:8080/${user.id}/expenses/${expenseDetails.id}`,
-    successMessage: "Delted",
+    url: `${API_URL}/${user.id}/expenses/${expenseDetails.id}`,
+    successMessage: t("toasters.delete", { feature: t("expense") }),
   });
 
   const handleDeleteExpense = async () => {

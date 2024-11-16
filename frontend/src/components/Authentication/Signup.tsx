@@ -28,19 +28,16 @@ const Signup: React.FC<SignupProps> = ({
   authFormData,
   setAuthFormData,
 }) => {
-  const deployedUrl = "https://extr-backend.onrender.com";
-  // const local = "http://localhost:8080";
+  const API_URL: string = import.meta.env.VITE_API_SERVER;
   const [t] = useTranslation("global");
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setAuthFormData({ ...authFormData, [name]: value });
   };
   const { isLoading, serverError, handleSubmit } = useAuthSubmit({
-    url: `${deployedUrl}/signup`,
+    url: `${API_URL}/signup`,
     redirectUrl: "/",
-    succesMessage: t("auth.signupToast", {
-      firstName: authFormData.firstName,
-    }),
+    successMessage: t("toasters.signup"),
     resetForm: () =>
       setAuthFormData({
         firstName: "",

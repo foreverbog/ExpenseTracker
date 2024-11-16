@@ -59,15 +59,23 @@ const TripsContainer: React.FC<TripsContainerProps> = ({
 
   return (
     <div>
-      {/* <div className="pl-12">{trips.length}</div> */}
+      <div className="pl-6 text-base-text text-xl mt-4 ">
+        {filteredTrips?.length !== 0 &&
+          `${t("trips.totalTrips")} ${filteredTrips?.length}`}
+      </div>
+      {/* //*TRIP EDIT MODAL */}
       {trip?.id && (
         <div className="bg-black inset-0  opacity-60 z-40 fixed"></div>
       )}
       <AnimatePresence>
         {trip?.id && <TripsEditModal trip={trip} setTrip={setTrip} />}
       </AnimatePresence>
-      <div className="flex flex-wrap gap-4 mt-12 justify-center items-center pl-2 relative">
-        {filteredTrips &&
+      <div className="flex flex-wrap gap-4 mt-6 justify-center items-center pl-2 relative">
+        {filteredTrips && filteredTrips?.length === 0 ? (
+          <div className="text-base-text text-center text-balance text-2xl mt-24">
+            {t("trips.noTrips")}
+          </div>
+        ) : (
           filteredTrips?.map((trip) => (
             <motion.div
               transition={{ duration: 0.2, ease: "easeInOut" }}
@@ -118,7 +126,8 @@ const TripsContainer: React.FC<TripsContainerProps> = ({
                 </div>
               </div>
             </motion.div>
-          ))}
+          ))
+        )}
       </div>
     </div>
   );

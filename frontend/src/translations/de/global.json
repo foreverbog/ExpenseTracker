@@ -2,6 +2,22 @@
   "loading": "Laden...",
   "update": "Aktualisieren",
   "delete": "Löschen",
+  "expense": "Ausgabe",
+  "trip": "Reise",
+
+  "cookies": {
+    "title": "TrackIt verwendet Cookies!",
+    "text": "Wir verwenden Cookies, um Ihre Erfahrung zu personalisieren. Wenn Sie diese Seite weiterhin nutzen, stimmen Sie unserer Verwendung von Cookies zu.",
+    "accept": "Akzeptieren"
+  },
+
+  "toasters": {
+    "login": "Willkommen zurück!",
+    "signup": "Herzlichen Glückwunsch! Sie haben sich erfolgreich registriert.",
+    "create": "{{feature}} erfolgreich erstellt.",
+    "edit": "{{feature}} erfolgreich aktualisiert.",
+    "delete": "{{feature}} erfolgreich gelöscht."
+  },
 
   "nav": {
     "home": "Home",
@@ -176,7 +192,10 @@
     "tripExpenseBtn": "Reisekosten verwalten",
     "backToTrip": "Zurück zu den Reisedetails",
     "expense": "Ausgabe",
+    "totalTrips": "Gesamtreisen:",
+    "noTrips": "Noch keine Reisen! Fügen Sie die erste hinzu.",
     "noExpenses": "Noch keine Ausgaben! Fügen Sie die erste hinzu.",
+    "addBtn": "Neue Reise hinzufügen",
 
     "errors": {
       "name": "Bitte geben Sie einen Namen für die Reise an.",

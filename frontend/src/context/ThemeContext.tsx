@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 type ThemeContextType = {
   theme: string;
@@ -20,7 +21,7 @@ const ThemeContextProvider = (props: ThemeContextProviderProps) => {
 
   //*get theme from localStorage
   useEffect(() => {
-    const storedTheme = localStorage.getItem("user-theme");
+    const storedTheme = Cookies.get("user-theme");
     if (storedTheme && themes.includes(storedTheme)) {
       setTheme(storedTheme);
     }
@@ -29,7 +30,7 @@ const ThemeContextProvider = (props: ThemeContextProviderProps) => {
   const themeToggler = (newTheme: string) => {
     if (themes.includes(newTheme)) {
       setTheme(newTheme);
-      localStorage.setItem("user-theme", newTheme);
+      Cookies.set("user-theme", newTheme);
     }
   };
   return (

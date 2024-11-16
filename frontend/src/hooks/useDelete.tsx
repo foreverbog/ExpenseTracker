@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { ExpensQueriesType } from "../context/ExpensesContext";
-import { toast, Zoom } from "react-toastify";
+import { toast, Slide } from "react-toastify";
 
 type UseDeleteProps = {
   url: string;
@@ -50,8 +50,9 @@ const useDelete = ({
           position: "top-center",
           autoClose: 500,
           closeOnClick: true,
-          transition: Zoom,
-          className: "bg-base text-center text-sm",
+          transition: Slide,
+          className:
+            "bg-base text-center text-xs md:text-normal border border-base-100 text-base-text font-base",
         });
       }
 

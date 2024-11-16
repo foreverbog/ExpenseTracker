@@ -17,6 +17,7 @@ type TripsEditModalProps = {
 };
 
 const TripsEditModal: React.FC<TripsEditModalProps> = ({ trip, setTrip }) => {
+  const API_URL: string = import.meta.env.VITE_API_SERVER;
   const authContext = useContext(AuthContext);
   if (!authContext) {
     throw new Error("useContext must be used withing AuthContextProvider");
@@ -34,8 +35,8 @@ const TripsEditModal: React.FC<TripsEditModalProps> = ({ trip, setTrip }) => {
   const { reFetchTrips } = useTripsContext();
 
   const { handleDelete } = useDelete({
-    url: `http://localhost:8080/${user.id}/trips/${trip?.id}`,
-    successMessage: "delete",
+    url: `${API_URL}/${user.id}/trips/${trip?.id}`,
+    successMessage: t("toasters.delete", { feature: t("trip") }),
   });
 
   //* Delete the trip, retrigger the trips fetch, set tripId to null to close the modal

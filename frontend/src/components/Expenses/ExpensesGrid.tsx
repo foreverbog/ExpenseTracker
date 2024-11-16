@@ -29,9 +29,7 @@ export type ExpenseType = {
 };
 
 const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
-  const deployedUrl = "https://extr-backend.onrender.com";
-  // const local = "http://localhost:8080";
-
+  const API_URL: string = import.meta.env.VITE_API_SERVER;
   const authContext = useContext(AuthContext);
   if (!authContext) {
     throw new Error("useContext must be used within an AuthContextProvider");
@@ -50,7 +48,7 @@ const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
 
   //* useFetch hook, custom hook for making get requests
   const { apiData: expense } = useFetch<ExpenseType>(
-    `${expenseId && `${deployedUrl}/${user.id}/expenses/${expenseId}`}`
+    `${expenseId && `${API_URL}/${user.id}/expenses/${expenseId}`}`
   );
   // console.log(expense);
 

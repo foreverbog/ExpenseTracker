@@ -2,14 +2,14 @@ import { useNavigate } from "react-router-dom";
 import { AuthFormDataType } from "../pages/Authentication";
 import { useState } from "react";
 import axios from "axios";
-import { toast, Zoom } from "react-toastify";
+import { Slide, toast } from "react-toastify";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
 type UseAuthSubmitProps = {
   url: string;
   redirectUrl: string;
-  succesMessage: string;
+  successMessage: string;
   resetForm: () => void;
   authData: AuthFormDataType;
 };
@@ -17,7 +17,7 @@ type UseAuthSubmitProps = {
 const useAuthSubmit = ({
   url,
   redirectUrl,
-  succesMessage,
+  successMessage,
   resetForm,
   authData,
 }: UseAuthSubmitProps) => {
@@ -46,14 +46,15 @@ const useAuthSubmit = ({
       setIsLoading(false);
       if (resetForm) resetForm();
 
-      if (succesMessage) {
-        toast.success(succesMessage, {
+      if (successMessage) {
+        toast.success(successMessage, {
           hideProgressBar: true,
           position: "top-center",
-          autoClose: 1500,
+          autoClose: 500,
           closeOnClick: true,
-          transition: Zoom,
-          className: "bg-base text-center text-sm",
+          transition: Slide,
+          className:
+            "bg-base text-center text-xs md:text-normal border border-base-100 text-base-text font-base",
         });
       }
 

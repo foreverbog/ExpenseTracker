@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect, ReactNode } from "react";
 import { useTranslation } from "react-i18next";
+import Cookies from "js-cookie";
 
 type LanguageContextType = {
   language: string;
@@ -25,12 +26,13 @@ const LanguageContextProvider = ({
   //*Store the language in localStorage
   const languageSelect = (newLanguage: "en" | "de") => {
     setLanguage(newLanguage);
-    localStorage.setItem("user-lng", newLanguage);
+    // localStorage.setItem("user-lng", newLanguage);
+    Cookies.set("user-lng", newLanguage);
   };
 
   //*Check if is any language stored
   useEffect(() => {
-    const storedLanguage = localStorage.getItem("user-lng") as "en" | "de";
+    const storedLanguage = Cookies.get("user-lng");
 
     if (storedLanguage) {
       setLanguage(storedLanguage);
