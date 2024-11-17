@@ -1,9 +1,9 @@
-const Contact = () => {
+const NotFound = () => {
   return (
     <div className="flex justify-center items-center font-base text-base-text min-h-dvh">
-      Contact
+      NotFound - 404
     </div>
   );
 };
 
-export default Contact;
+export default NotFound;

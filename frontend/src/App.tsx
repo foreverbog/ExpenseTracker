@@ -16,6 +16,7 @@ import ExchangeRates from "./pages/ExchangeRates";
 import Settings from "./pages/Settings";
 import TopLoadingBar from "react-top-loading-bar";
 import CookiesInfo from "./components/Landing/CookiesInfo";
+import NotFound from "./pages/NotFound";
 
 type LoadingBarRef = {
   staticStart: () => void;
@@ -85,6 +86,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/*" element={<NotFound />} />
         </Route>
         <Route
           path="/auth"

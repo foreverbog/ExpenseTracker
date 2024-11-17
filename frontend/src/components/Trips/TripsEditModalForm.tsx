@@ -46,7 +46,7 @@ const TripsEditModalForm: React.FC<TripsEditModalForm> = ({
   });
 
   //*Function for error Checking, if all Checking pass, make the put Request, refetch the trips and set the tripID to null to close the modal
-  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!trip?.name) {
       setServerError(t("trips.errors.name"));
@@ -60,7 +60,7 @@ const TripsEditModalForm: React.FC<TripsEditModalForm> = ({
     ) {
       setServerError(t("trips.errors.date"));
     } else {
-      handlePut(e);
+      await handlePut(e);
       reFetchTrips();
       setTrip((prev) => prev && { ...prev, id: null });
     }

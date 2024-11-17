@@ -11,7 +11,6 @@ const Home = () => {
       <FeaturesSection />
       <MultipleDevicesSection />
       <UserFeedbackSection />
-      {/* <CookiesInfo /> */}
     </div>
   );
 };
