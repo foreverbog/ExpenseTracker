@@ -209,6 +209,7 @@
   },
 
   "exchange": {
-    "title": "Wechselkurs"
+    "title": "Wechselkurs",
+    "inputLabel": "Wie viel möchten Sie umtauschen?"
   }
 }

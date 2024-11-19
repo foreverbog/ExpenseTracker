@@ -209,6 +209,7 @@
   },
 
   "exchange": {
-    "title": "Currency Exchange"
+    "title": "Currency Exchange",
+    "inputLabel": "How much do you want to exchange?"
   }
 }

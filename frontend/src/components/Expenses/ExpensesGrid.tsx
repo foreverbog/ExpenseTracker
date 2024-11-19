@@ -11,6 +11,7 @@ import ExpenseEditModal from "./ExpenseEditModal";
 import { AnimatePresence } from "framer-motion";
 import useFetch from "../../hooks/useFetch";
 import { AuthContext } from "../../context/AuthContext";
+import useCurrencyContext from "../../hooks/useCurrencyContext";
 
 type ExpenseGridProps = {
   activeExpenseType: string | "Daily";
@@ -30,6 +31,8 @@ export type ExpenseType = {
 
 const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
   const API_URL: string = import.meta.env.VITE_API_SERVER;
+
+  const { currencySymbol } = useCurrencyContext();
   const authContext = useContext(AuthContext);
   if (!authContext) {
     throw new Error("useContext must be used within an AuthContextProvider");
@@ -187,9 +190,16 @@ const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
                   <p className=" p-1 text-md md:text-lg flex justify-start items-center md:pl-4 md:p-2 truncate ">
                     {expense.name}
                   </p>
-                  <p className="p-1 text-md md:text-lg flex justify-start items-center md:pl-4 md:p-2  ">
-                    {expense.value}
-                  </p>
+                  <div className="p-1 text-md md:text-lg flex justify-between items-center md:pl-4 md:p-2  ">
+                    <p className="flex-1 truncate">{expense.value}</p>
+                    <p
+                      className={`${
+                        currencySymbol.length > 2 ? "text-xs" : "text-normal"
+                      } `}
+                    >
+                      {currencySymbol}
+                    </p>
+                  </div>
                   <p className="p-1 text-md md:text-lg flex justify-start items-center md:pl-4 md:p-2  ">
                     {!expense.type && moment(expense.date).format("DD/MM/YY")}
                     {expense.type === "monthly" &&
