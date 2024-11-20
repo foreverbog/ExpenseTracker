@@ -7,6 +7,7 @@ import { FaRegEdit } from "react-icons/fa";
 
 import TripExpenseModal from "./TripExpenseModal";
 import { useTranslation } from "react-i18next";
+import useCurrencyContext from "../../hooks/useCurrencyContext";
 
 type TripExpensesProps = {
   trip: TripType | undefined;
@@ -35,6 +36,8 @@ const TripExpenses: React.FC<TripExpensesProps> = ({
   });
 
   // console.log(isAddExpense);
+
+  const { currencySymbol } = useCurrencyContext();
 
   return (
     <motion.div
@@ -108,7 +111,7 @@ const TripExpenses: React.FC<TripExpensesProps> = ({
                 {expense.name}
               </div>
               <div className="truncate overflow-hidden p-1.5">
-                {expense.value} $
+                {expense.value} {currencySymbol}
               </div>
             </div>
           ))
