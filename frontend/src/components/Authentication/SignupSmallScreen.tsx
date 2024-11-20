@@ -112,8 +112,8 @@ const SignupSmallScreen: React.FC<SignupSmallScreenProps> = ({
           </div>
           <input
             type="email"
-            name="email"
-            value={authFormData.email}
+            name="signupEmail"
+            value={authFormData.signupEmail}
             onChange={handleChange}
             className={`${
               serverError === "All fields must be filled in!" ||
@@ -121,7 +121,7 @@ const SignupSmallScreen: React.FC<SignupSmallScreenProps> = ({
                 ? "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
                 : ""
             } inputStyle`}
-            id="email"
+            id="signupEmail"
             placeholder={t("auth.email")}
           />
           <div className=" relative">
@@ -133,10 +133,11 @@ const SignupSmallScreen: React.FC<SignupSmallScreenProps> = ({
                   ? "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
                   : ""
               } inputStyle`}
-              value={authFormData.password}
+              value={authFormData.signupPassword}
               onChange={handleChange}
-              name="password"
-              id="password"
+              autoComplete="new-password"
+              name="signupPassword"
+              id="signupPassword"
               type={isShowingPassword ? "text" : "password"}
               placeholder={t("auth.password")}
             />

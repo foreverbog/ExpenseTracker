@@ -108,10 +108,10 @@ const SignupBigScreen: React.FC<SignupBigScreenProps> = ({
                 ? "border-b-red-500 animate-[wiggle_0.3s_ease-in-out] "
                 : ""
             } inputStyle`}
-            value={authFormData.email}
+            value={authFormData.signupEmail}
             onChange={handleChange}
-            name="email"
-            id="email"
+            name="signupEmail"
+            id="signupEmail"
             type="email"
             placeholder={t("auth.email")}
           />
@@ -124,10 +124,11 @@ const SignupBigScreen: React.FC<SignupBigScreenProps> = ({
                   ? "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
                   : ""
               } inputStyle`}
-              value={authFormData.password}
+              value={authFormData.signupPassword}
               onChange={handleChange}
-              name="password"
-              id="password"
+              autoComplete="new-password"
+              name="signupPassword"
+              id="signupPassword"
               type={isShowingPassword ? "text" : "password"}
               placeholder={t("auth.password")}
             />

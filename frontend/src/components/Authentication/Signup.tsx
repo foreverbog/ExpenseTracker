@@ -49,8 +49,8 @@ const Signup: React.FC<SignupProps> = ({
     authData: {
       firstName: authFormData.firstName,
       lastName: authFormData.lastName,
-      email: authFormData.email,
-      password: authFormData.password,
+      email: authFormData.email || authFormData.signupEmail,
+      password: authFormData.password || authFormData.confirmPassword,
       confirmPassword: authFormData.confirmPassword,
     },
   });
