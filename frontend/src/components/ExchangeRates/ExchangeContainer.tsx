@@ -5,7 +5,7 @@ import { FaExchangeAlt } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
 import useMediaQuery from "../../hooks/useMediaQuery";
 import { useTranslation } from "react-i18next";
-import useCurrencyContext from "../../hooks/useCurrencyContext";
+// import useCurrencyContext from "../../hooks/useCurrencyContext";
 
 type ApiResponseType = {
   [key: string]: { [currencyCode: string]: number };
@@ -56,7 +56,7 @@ const ExchangeContainer = () => {
     targetCurrency: false,
   });
 
-  const { currencySymbol, currencyHandler } = useCurrencyContext();
+  // const { currencySymbol, currencyHandler } = useCurrencyContext();
 
   //*URL FOR THE EXCHANGE RATES API
   const EXCHANGE_API_URL = import.meta.env.VITE_API_EXCHANGERATES;
@@ -228,14 +228,16 @@ const ExchangeContainer = () => {
           </p>
         </div>
       </div>
-      <button
+
+      {/* //*MOCKUP BTN FOR STORING THE USER CURRENCY */}
+      {/* <button
         onClick={() => {
           currencyHandler("€");
-        }}
+      }}
         className="pl-24 font-semibold cursor-pointer mt-24 bg-red-700 rounded-md p-4"
       >
         €
-      </button>
+      </button> */}
     </>
   );
 };

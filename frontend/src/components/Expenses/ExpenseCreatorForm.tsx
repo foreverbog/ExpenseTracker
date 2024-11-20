@@ -109,7 +109,7 @@ const ExpenseCreatorForm: React.FC<ExpenseCreatorFormProps> = ({
           value={newExpenseForm.expensePrice}
           id="expensePrice"
           name="expensePrice"
-          className={`inputStyle bg-transparent w-1/2 md:w-1/4 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
+          className={`inputStyle text-center bg-transparent w-1/2 md:w-1/4 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
             serverError === t("expenses.errors.price") &&
             "border-b-red-500 animate-[wiggle_0.3s_ease-in-out]"
           }`}

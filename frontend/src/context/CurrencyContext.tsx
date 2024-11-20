@@ -17,7 +17,7 @@ export const CurrencyContext = createContext<CurrencyContextType | undefined>(
 const CurrencyContextProvider: React.FC<CurrencyContextProviderProps> = ({
   children,
 }) => {
-  const [currencySymbol, setCurrencySymbol] = useState<string>("eur");
+  const [currencySymbol, setCurrencySymbol] = useState<string>("€");
 
   useEffect(() => {
     const userCurrency = Cookies.get("user-currency");
