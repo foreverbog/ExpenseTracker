@@ -9,6 +9,7 @@ type AuthContextType = {
   isAuthenticated: boolean;
   login: (newToken: string) => void;
   logout: () => void;
+  refetchUser: () => void;
   isLoading: boolean;
 };
 
@@ -44,10 +45,17 @@ const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
     lastName: "",
   });
   const [isLoading, setIsLoading] = useState(true);
+  const [triggerFetch, setTriggerFetch] = useState(false);
+
+  const refetchUser = () => {
+    setTriggerFetch((prev) => !prev);
+  };
 
   const getUser = async (userId: string) => {
     try {
-      const response = await axios.get(`${API_URL}/${userId}`);
+      const response = await axios.get(
+        `${API_URL}/${userId}?fetch=${triggerFetch}`
+      );
       const data = response.data;
       setUser({
         id: userId,
@@ -98,7 +106,7 @@ const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
       setIsLoading(false);
     }
     //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [triggerFetch]);
 
   // console.log(user);
 
@@ -106,7 +114,7 @@ const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
 
   return (
     <AuthContext.Provider
-      value={{ login, logout, user, isAuthenticated, isLoading }}
+      value={{ refetchUser, login, logout, user, isAuthenticated, isLoading }}
     >
       {children}
     </AuthContext.Provider>

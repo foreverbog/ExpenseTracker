@@ -1,8 +1,12 @@
 import UserAvatar from "../components/UserProfile/UserAvatar";
+import UserSettings from "../components/UserProfile/UserSettings";
 
 const Settings = () => {
   return (
-    <UserAvatar />
+    <div className="bg-base-100 min-h-dvh flex flex-col gap-4">
+      <UserAvatar />
+      <UserSettings />
+    </div>
     // <div className="min-h-dvh   xs:p-6 sm:p-24 flex justify-center items-center bg-base-100 text-base-text font-base ">
     //   <div className=" relative md:grid md:grid-cols-2 md:rounded-md   bg-base  min-h-dvh md:h-[700px] w-[1200px] overflow-hidden drop-shadow-2xl">
     //     {/* <div className="flex flex-col items-center bg-base-100 text-base-text font-base border border-red-500 ">
