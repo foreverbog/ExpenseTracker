@@ -36,7 +36,7 @@ const UserSettings = () => {
     setUserForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const { handlePut, isLoading, serverError, setServerError } = usePut({
+  const { handlePut, isLoading, serverError } = usePut({
     url: `${API_URL}/${user.id}`,
     formData: {
       firstName: userForm.firstName,
@@ -61,9 +61,9 @@ const UserSettings = () => {
           onClick={() => setIsAccDetailsOpen((prev) => !prev)}
           className=" flex items-center border-b-2 border-base-300 text-lg text-center "
         >
-          <h1 className="flex-1">Account Details:</h1>
+          <h1 className="flex-1 text-balance">{t("settings.userInfo")}</h1>
           <IoMdArrowDropdown
-            className={`text-2xl transition-transform duration-500 ease-in-out ${
+            className={`text-2xl transition-transform duration-500 ease-in-out  ${
               isAccDetailsOpen && "rotate-180"
             }`}
           />
@@ -85,7 +85,7 @@ const UserSettings = () => {
               {isLoading && <Loading text={t("loading")} />}
               {serverError && (
                 <p className="text-red-500 font-semibold text-balance text-center">
-                  {serverError}
+                  {t(`serverError.${serverError}`)}
                 </p>
               )}
               <input

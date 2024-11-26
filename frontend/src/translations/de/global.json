@@ -212,5 +212,16 @@
   "exchange": {
     "title": "Wechselkurs",
     "inputLabel": "Wie viel möchten Sie umtauschen?"
+  },
+  "settings": {
+    "userInfo": "Persönliche Informationen bearbeiten",
+    "hairColor": "Haarfarbe",
+    "skinColor": "Hautfarbe"
+  },
+
+  "serverError": {
+    "First and last name are required!": "Vor- und Nachname sind erforderlich!",
+    "First and last name should contain atleast 2 letters!": "Vor- und Nachname sollten mindestens 2 Buchstaben enthalten!",
+    "First and last name should containt only letters!": "Vor- und Nachname sollten nur Buchstaben enthalten!"
   }
 }

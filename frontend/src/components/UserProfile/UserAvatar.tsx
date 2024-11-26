@@ -3,6 +3,7 @@ import { FemaleVector, MaleVector } from "../../assets/svg/SettingsVectors";
 import { useContext, useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { AuthContext } from "../../context/AuthContext";
+import { useTranslation } from "react-i18next";
 
 type AvatarColorsType = {
   hairColor: string;
@@ -25,6 +26,7 @@ const skinColors: string[] = [
 ];
 
 const UserAvatar = () => {
+  const { t } = useTranslation("global");
   const authContext = useContext(AuthContext);
   if (!authContext) {
     throw new Error("useContext must be used withing AuthContextProvider");
@@ -135,7 +137,7 @@ const UserAvatar = () => {
       {/*//*AVATAR CUSTOMIZATION */}
       {/* //*HAIR COLOR */}
       <div className="flex flex-col items-center gap-2">
-        <div className="text-sm">Hair Color:</div>
+        <div className="text-sm">{t("settings.hairColor")}:</div>
         <div className="flex gap-2">
           {hairColors.map((color) => (
             <div
@@ -153,7 +155,7 @@ const UserAvatar = () => {
       </div>
       {/* //*SKIN COLOR */}
       <div className="flex flex-col items-center gap-2">
-        <div className="text-sm">Skin Color:</div>
+        <div className="text-sm">{t("settings.skinColor")}:</div>
         <div className="flex gap-2">
           {skinColors.map((color) => (
             <div

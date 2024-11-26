@@ -212,5 +212,18 @@
   "exchange": {
     "title": "Currency Exchange",
     "inputLabel": "How much do you want to exchange?"
+  },
+
+  "settings": {
+    "userInfo": "Edit Personal Information",
+    "hairColor": "Hair Color",
+    "skinColor": "Skin Color"
+  },
+
+  "serverError": {
+    "First and last name are required!": "First and last name are required!ssaaa",
+    "First and last name should contain atleast 2 letters!": "First and last name should contain atleast 2 letters!",
+    "First and last name should containt only letters!": "First and last name should containt only letters!",
+    "dadada": "daa  a da da"
   }
 }
