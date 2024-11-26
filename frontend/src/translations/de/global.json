@@ -5,6 +5,8 @@
   "expense": "Ausgabe",
   "trip": "Reise",
   "profile": "Profil",
+  "yes": "Ja",
+  "cancel": "Abbrechen",
 
   "cookies": {
     "title": "TrackIt verwendet Cookies!",
@@ -213,10 +215,15 @@
     "title": "Wechselkurs",
     "inputLabel": "Wie viel möchten Sie umtauschen?"
   },
+
   "settings": {
     "userInfo": "Persönliche Informationen bearbeiten",
     "hairColor": "Haarfarbe",
-    "skinColor": "Hautfarbe"
+    "skinColor": "Hautfarbe",
+    "currency": "Währungspräferenz",
+    "currencyInfo": "Die ausgewählte Währung wird in der gesamten App angewendet.",
+    "deleteAcc": "Konto löschen",
+    "deleteConfirm": "Sind Sie sicher, dass Sie Ihr Konto löschen möchten? Diese Aktion ist dauerhaft und kann nicht rückgängig gemacht werden. Alle mit Ihrem Konto verknüpften Daten, einschließlich Einstellungen, Präferenzen und persönlicher Informationen, werden dauerhaft gelöscht."
   },
 
   "serverError": {

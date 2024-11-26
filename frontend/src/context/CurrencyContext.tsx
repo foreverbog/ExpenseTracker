@@ -6,8 +6,11 @@ type CurrencyContextProviderProps = {
 };
 
 export type CurrencyContextType = {
-  currencySymbol: string;
-  currencyHandler: (symbol: string) => void;
+  currency: {
+    code: string;
+    symbol: string;
+  };
+  currencyHandler: (newCurrency: { code: string; symbol: string }) => void;
 };
 
 export const CurrencyContext = createContext<CurrencyContextType | undefined>(
@@ -17,22 +20,25 @@ export const CurrencyContext = createContext<CurrencyContextType | undefined>(
 const CurrencyContextProvider: React.FC<CurrencyContextProviderProps> = ({
   children,
 }) => {
-  const [currencySymbol, setCurrencySymbol] = useState<string>("€");
+  const [currency, setCurrency] = useState<{
+    code: string;
+    symbol: string;
+  }>({ code: "EUR", symbol: "€" });
 
   useEffect(() => {
     const userCurrency = Cookies.get("user-currency");
     if (userCurrency) {
-      setCurrencySymbol(userCurrency);
+      setCurrency(JSON.parse(userCurrency));
     }
   }, []);
 
-  const currencyHandler = (symbol: string) => {
-    setCurrencySymbol(symbol);
-    Cookies.set("user-currency", symbol);
+  const currencyHandler = (newCurrency: { code: string; symbol: string }) => {
+    setCurrency(newCurrency);
+    Cookies.set("user-currency", JSON.stringify(newCurrency));
   };
 
   return (
-    <CurrencyContext.Provider value={{ currencySymbol, currencyHandler }}>
+    <CurrencyContext.Provider value={{ currency, currencyHandler }}>
       {children}
     </CurrencyContext.Provider>
   );

@@ -32,7 +32,7 @@ export type ExpenseType = {
 const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
   const API_URL: string = import.meta.env.VITE_API_SERVER;
 
-  const { currencySymbol } = useCurrencyContext();
+  const { currency } = useCurrencyContext();
   const authContext = useContext(AuthContext);
   if (!authContext) {
     throw new Error("useContext must be used within an AuthContextProvider");
@@ -194,10 +194,10 @@ const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
                     <p className="flex-1 truncate">{expense.value}</p>
                     <p
                       className={`${
-                        currencySymbol.length > 2 ? "text-xs" : "text-normal"
+                        currency.symbol.length > 2 ? "text-xs" : "text-normal"
                       } `}
                     >
-                      {currencySymbol}
+                      {currency.symbol}
                     </p>
                   </div>
                   <p className="p-1 text-md md:text-lg flex justify-start items-center md:pl-4 md:p-2  ">

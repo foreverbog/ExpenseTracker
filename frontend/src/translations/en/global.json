@@ -5,6 +5,8 @@
   "expense": "Expense",
   "trip": "Trip",
   "profile": "Profil",
+  "yes": "Yes",
+  "cancel": "Cancel",
 
   "cookies": {
     "title": "TrackIt uses cookies!",
@@ -217,7 +219,11 @@
   "settings": {
     "userInfo": "Edit Personal Information",
     "hairColor": "Hair Color",
-    "skinColor": "Skin Color"
+    "skinColor": "Skin Color",
+    "currency": "Currency Preference",
+    "currencyInfo": "The selected currency will be applied across the entire application.",
+    "deleteAcc": "Delete Account",
+    "deleteConfirm": "Are you sure you want to delete your account? This action is permanent and cannot be undone. All data associated with your account, including settings, preferences, and personal information, will be permanently deleted."
   },
 
   "serverError": {

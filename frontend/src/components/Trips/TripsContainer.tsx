@@ -53,7 +53,7 @@ const TripsContainer: React.FC<TripsContainerProps> = ({
     filteredTrips = trips && [...trips]?.reverse();
   }
 
-  const { currencySymbol } = useCurrencyContext();
+  const { currency } = useCurrencyContext();
 
   if (isLoading) {
     return isLoading && <TripsLoadingSkeleton />;
@@ -124,8 +124,7 @@ const TripsContainer: React.FC<TripsContainerProps> = ({
                   {t("placeholders.roundTrip")}
                 </div>
                 <div className="rounded-md self-end text-md lg:text-lg">
-                  {/*//* //this $ needs to be changed with prefered currency */}
-                  {trip.roundTripCost} {currencySymbol}
+                  {trip.roundTripCost} {currency.symbol}
                 </div>
               </div>
             </motion.div>

@@ -5,7 +5,8 @@ import { FaExchangeAlt } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
 import useMediaQuery from "../../hooks/useMediaQuery";
 import { useTranslation } from "react-i18next";
-// import useCurrencyContext from "../../hooks/useCurrencyContext";
+import mostUsedCurrencies from "../../utils/mostUsedCurrencies";
+import useCurrencyContext from "../../hooks/useCurrencyContext";
 
 type ApiResponseType = {
   [key: string]: { [currencyCode: string]: number };
@@ -15,48 +16,20 @@ type RatesType = {
   [currencyCode: string]: number;
 };
 
-type CurrencyType = {
-  code: string;
-  symbol: string;
-};
-
-const mostUsedCurrencies: CurrencyType[] = [
-  { code: "USD", symbol: "$" },
-  { code: "EUR", symbol: "€" },
-  { code: "RON", symbol: "lei" },
-  { code: "JPY", symbol: "¥" },
-  { code: "GBP", symbol: "£" },
-  { code: "AUD", symbol: "A$" },
-  { code: "CAD", symbol: "C$" },
-  { code: "CHF", symbol: "CHF" },
-  { code: "CNY", symbol: "¥" },
-  { code: "HKD", symbol: "HK$" },
-  { code: "NZD", symbol: "NZ$" },
-  { code: "SEK", symbol: "kr" },
-  { code: "KRW", symbol: "₩" },
-  { code: "SGD", symbol: "S$" },
-  { code: "NOK", symbol: "kr" },
-  { code: "MXN", symbol: "$" },
-  { code: "INR", symbol: "₹" },
-  { code: "RUB", symbol: "₽" },
-  { code: "ZAR", symbol: "R" },
-  { code: "TRY", symbol: "₺" },
-  { code: "BRL", symbol: "R$" },
-];
-
 const ExchangeContainer = () => {
   const { t } = useTranslation("global");
+  const { currency } = useCurrencyContext();
   const isSmallScreen = useMediaQuery("(max-width: 767px)");
   const [rates, setRates] = useState<RatesType>({});
-  const [baseCurrency, setBaseCurrency] = useState<string>("eur");
+  const [baseCurrency, setBaseCurrency] = useState<string>(
+    currency.code.toLowerCase()
+  );
   const [targetCurrency, setTargetCurrency] = useState<string>("usd");
   const [amount, setAmount] = useState<number>(1);
   const [isDropdownOpen, setIsDropdownOpen] = useState({
     baseCurrency: false,
     targetCurrency: false,
   });
-
-  // const { currencySymbol, currencyHandler } = useCurrencyContext();
 
   //*URL FOR THE EXCHANGE RATES API
   const EXCHANGE_API_URL = import.meta.env.VITE_API_EXCHANGERATES;

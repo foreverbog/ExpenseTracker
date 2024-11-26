@@ -72,7 +72,7 @@ const UserAvatar = () => {
   };
 
   return (
-    <div className="flex flex-col gap-4 items-center bg-base-100 text-base-text font-base">
+    <div className="flex flex-col gap-4 items-center text-base-text font-base">
       {/* //*AVATAR SELECTION */}
       <AnimatePresence mode="wait">
         {gender === "male" ? (

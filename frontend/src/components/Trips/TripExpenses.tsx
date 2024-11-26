@@ -37,7 +37,7 @@ const TripExpenses: React.FC<TripExpensesProps> = ({
 
   // console.log(isAddExpense);
 
-  const { currencySymbol } = useCurrencyContext();
+  const { currency } = useCurrencyContext();
 
   return (
     <motion.div
@@ -111,7 +111,7 @@ const TripExpenses: React.FC<TripExpensesProps> = ({
                 {expense.name}
               </div>
               <div className="truncate overflow-hidden p-1.5">
-                {expense.value} {currencySymbol}
+                {expense.value} {currency.symbol}
               </div>
             </div>
           ))
