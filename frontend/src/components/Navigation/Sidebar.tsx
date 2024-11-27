@@ -47,7 +47,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSideBarOpen, handleSideBar }) => {
   return (
     <>
       {isSideBarOpen && (
-        <div className="fixed inset-0 z-40 bg-black opacity-60"></div>
+        <div className="fixed inset-0 z-50 bg-black opacity-60"></div>
       )}
       <motion.div
         initial={{ width: 0 }}
@@ -58,12 +58,15 @@ const Sidebar: React.FC<SidebarProps> = ({ isSideBarOpen, handleSideBar }) => {
           stiffness: 100,
         }}
         ref={sideBarRef}
-        className="bg-base-200 font-base text-base-text absolute top-0 right-0 min-h-dvh z-50 w-1/2  flex flex-col items-center justify-start overflow-hidden "
+        className="bg-base-200 font-base text-base-text fixed top-0 right-0  min-h-dvh z-50 w-1/2  flex flex-col items-center justify-start overflow-hidden "
       >
         {isAuthenticated && (
-          <div className="flex flex-wrap gap-2 text-4xl mt-24">
-            <p>{user.firstName}</p>
-            <p>{user.lastName}</p>
+          <div className="flex flex-col justify-center  items-center flex-wrap text-lg  mt-24">
+            <p className="font-semibold text-center text-balance text-truncate">
+              {user.firstName} {user.lastName}
+            </p>
+
+            <p className="text-xs">{user.email}</p>
           </div>
         )}
         <div className="flex flex-col flex-1 gap-3 justify-center items-center ">
@@ -107,7 +110,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSideBarOpen, handleSideBar }) => {
             <p>{t("nav.contact")}</p>
           </NavLink>
           <NavLink
-            to="/set"
+            to="/settings"
             className={({ isActive }) =>
               `flex items-center gap-2 text-lg xs:text-2xl  ${
                 isActive &&
