@@ -14,6 +14,7 @@ const Navbar = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   const [isThemeOpen, setIsThemeOpen] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
   const [isUserOpen, setIsUserOpen] = useState(false);
   const isSmallScreen = useMediaQuery("(max-width: 767px)");
   const [t] = useTranslation("global");
@@ -34,6 +35,18 @@ const Navbar = () => {
     }
   }, [isSmallScreen]);
 
+  //* useEffect to keep track of scrolling
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolling(window.scrollY > 0);
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const authContext = useContext(AuthContext);
 
   if (!authContext) {
@@ -42,9 +55,17 @@ const Navbar = () => {
 
   const { isAuthenticated, logout } = authContext;
 
+  console.log(isScrolling);
+
   return (
     <>
-      <nav className="  text-text text-base-text p-4 flex justify-between  items-center bg-transparent absolute w-full top-0 z-10 mb-24">
+      <nav
+        className={`text-text text-base-text p-4 flex justify-between  items-center  fixed w-full top-0 z-50  ${
+          isScrolling
+            ? "bg-base opacity-70 transition-all duration-300 ease-in-out hover:opacity-100"
+            : "bg-transparent"
+        }`}
+      >
         <div className="flex flex-1  gap-8 lg:gap-24  items-center ">
           <NavLink className="group" to="/">
             <LogoVector />

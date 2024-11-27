@@ -45,7 +45,7 @@ const NavbarUserIcon: React.FC<NavbarUserIconProps> = ({
             className="bg-base-100 absolute right-1 w-48  rounded-br-md rounded-l-md flex flex-col gap-4 items-center overflow-hidden shadow-2xl  "
           >
             <Link
-              to="/auth"
+              to="/settings"
               className="flex justify-center items-center gap-2 font-base hover:bg-base-200 transition-colors duration-300 ease-in-out px-4 py-2  w-full"
             >
               <IoMdSettings />

@@ -11,7 +11,7 @@ const CookiesInfo = () => {
   );
 
   const handleAcceptCookies = () => {
-    Cookies.set("cookies-accepted", "accepted");
+    Cookies.set("cookies-accepted", "accepted", { expires: 365 });
     setIsCookieAccepted(true);
   };
 

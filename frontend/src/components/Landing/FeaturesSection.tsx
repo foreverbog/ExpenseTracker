@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement, useRef } from "react";
 import { HomeSectionTwoBgVector } from "../../assets/svg/HomeVectors";
 import { useTranslation } from "react-i18next";
 import { MdBarChart } from "react-icons/md";
@@ -7,6 +7,7 @@ import { BsCurrencyExchange } from "react-icons/bs";
 import { RiShieldUserLine } from "react-icons/ri";
 import { AiOutlinePieChart } from "react-icons/ai";
 import { IoColorPaletteOutline } from "react-icons/io5";
+import { useInView, motion } from "framer-motion";
 
 type FeaturesType = {
   icon: ReactElement;
@@ -56,6 +57,8 @@ const features: FeaturesType[] = [
 
 const FeaturesSection = () => {
   const [t] = useTranslation("global");
+  const featureGrid = useRef<HTMLDivElement | null>(null);
+  const isInView = useInView(featureGrid, { once: true });
 
   return (
     <div className="min-h-dvh relative font-base ">
@@ -73,9 +76,15 @@ const FeaturesSection = () => {
           <span className="text-secondary font-semibold">TrackIt</span>{" "}
           {t("features.paragraph")}
         </p>
-        <div className="text-base-text grid grid-cols-2 md:grid-cols-3   gap-y-11 justify-items-center z-20 mb-12 ">
-          {features.map((feature) => (
-            <div
+        <div
+          ref={featureGrid}
+          className="text-base-text grid grid-cols-2 md:grid-cols-3   gap-y-11 justify-items-center z-20 mb-12 "
+        >
+          {features.map((feature, index) => (
+            <motion.div
+              initial={{ opacity: 0, y: -50 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.4, delay: index * 0.2 }}
               key={feature.name}
               className="w-full flex flex-col gap-4 p-4 justify-center items-center"
             >
@@ -88,7 +97,7 @@ const FeaturesSection = () => {
               <p className="text-balance text-center text-lg w-4/5  italic">
                 {t(`features.${feature.description}`)}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -35,7 +35,7 @@ const TripsHeading: React.FC<TripsHeadingProps> = ({
               type="checkbox"
               className="peer h-4 w-8 md:h-6 md:w-12 cursor-pointer appearance-none rounded-full border-2 border-base-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset checked:border-primary"
             />
-            <span className="pointer-events-none absolute left-1 top-1  block h-2.5 w-2.5 md:h-4 md:w-4 rounded-full bg-base-300 transition-all duration-200 peer-checked:left-4 md:peer-checked:left-7 peer-checked:bg-primary"></span>
+            <span className="pointer-events-none absolute left-1 top-1.5 md:top-1  block h-2 w-2 md:h-4 md:w-4 rounded-full bg-base-300 transition-all duration-200 peer-checked:left-5 md:peer-checked:left-7 peer-checked:bg-primary"></span>
           </div>
           <div
             className={`text-normal md:text-md text-base-text ${
@@ -58,7 +58,7 @@ const TripsHeading: React.FC<TripsHeadingProps> = ({
               type="checkbox"
               className="peer h-4 w-8 md:h-6 md:w-12 cursor-pointer appearance-none rounded-full border-2 border-base-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset checked:border-primary disabled:hover:cursor-default "
             />
-            <span className="pointer-events-none absolute left-1 top-1  block h-2.5 w-2.5 md:h-4 md:w-4 rounded-full bg-base-300 transition-all duration-200 peer-checked:left-4 md:peer-checked:left-7 peer-checked:bg-primary "></span>
+            <span className="pointer-events-none absolute left-1 top-1.5 md:top-1  block h-2 w-2 md:h-4 md:w-4 rounded-full bg-base-300 transition-all duration-200 peer-checked:left-5 md:peer-checked:left-7 peer-checked:bg-primary"></span>
           </div>
           <div
             className={`text-normal md:text-md text-base-text ${

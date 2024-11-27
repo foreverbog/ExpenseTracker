@@ -7,8 +7,10 @@ import Login from "../components/Authentication/Login";
 export type AuthFormDataType = {
   firstName?: string;
   lastName?: string;
-  email: string;
-  password: string;
+  signupEmail?: string;
+  email?: string;
+  password?: string;
+  signupPassword?: string;
   confirmPassword?: string;
 };
 
@@ -23,6 +25,7 @@ const Authentication: React.FC = () => {
     lastName: "",
     email: "",
     password: "",
+    signupPassword: "",
     confirmPassword: "",
   });
 

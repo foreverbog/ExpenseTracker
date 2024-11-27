@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import TripsEditModal from "./TripsEditModal";
 import { AnimatePresence, motion } from "framer-motion";
 import { ExpenseType } from "../Expenses/ExpensesGrid";
+import useCurrencyContext from "../../hooks/useCurrencyContext";
 
 export type TripType = {
   id: string | null;
@@ -51,6 +52,8 @@ const TripsContainer: React.FC<TripsContainerProps> = ({
   } else {
     filteredTrips = trips && [...trips]?.reverse();
   }
+
+  const { currency } = useCurrencyContext();
 
   if (isLoading) {
     return isLoading && <TripsLoadingSkeleton />;
@@ -121,8 +124,7 @@ const TripsContainer: React.FC<TripsContainerProps> = ({
                   {t("placeholders.roundTrip")}
                 </div>
                 <div className="rounded-md self-end text-md lg:text-lg">
-                  {/*//* //this $ needs to be changed with prefered currency */}
-                  {trip.roundTripCost} $
+                  {trip.roundTripCost} {currency.symbol}
                 </div>
               </div>
             </motion.div>

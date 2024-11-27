@@ -3,13 +3,18 @@ import { LandingGridVector } from "../../assets/svg/HomeVectors";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import useMediaQuery from "../../hooks/useMediaQuery";
+import { useInView } from "framer-motion";
 
 const Landing = () => {
   const [t] = useTranslation("global");
   const authContext = useContext(AuthContext);
   const isSmallScreen = useMediaQuery("(max-width: 767px)");
+
+  //*REF for landing grid
+  const landingGridRef = useRef<HTMLDivElement | null>(null);
+  const isInView = useInView(landingGridRef, { once: true });
 
   if (!authContext) {
     throw new Error("useContext must be used within an AuthContextProvider");
@@ -19,7 +24,12 @@ const Landing = () => {
   return (
     <div className=" min-h-dvh flex flex-col items-center justify-center relative overflow-hidden ">
       <LandingBackgroundVectors />
-      <div className=" grid grid-cols-1 md:grid-cols-2 relative w-full mt-24 md:mt-0 gap-12 md:gap-0 ">
+      <div
+        ref={landingGridRef}
+        className={` grid grid-cols-1 md:grid-cols-2 relative w-full mt-24 md:mt-0 gap-12 md:gap-0 transition-all duration-500 ease-in-out ${
+          isInView ? "opacity-100 translate-y-0" : "opacity-50 translate-y-24"
+        } `}
+      >
         {isAuthenticated ? (
           //* USER IS AUTH
           <div className="flex flex-col justify-center items-center gap-8 h-full   font-base text-base-text  justify-self-center">

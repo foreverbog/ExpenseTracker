@@ -12,6 +12,7 @@ import { I18nextProvider } from "react-i18next";
 import { BrowserRouter } from "react-router-dom";
 import LanguageContextProvider from "./context/LanguageContext.tsx";
 import TripsContextProvider from "./context/TripsContext.tsx";
+import CurrencyContextProvider from "./context/CurrencyContext.tsx";
 
 i18next.init({
   interpolation: { escapeValue: false },
@@ -35,7 +36,9 @@ createRoot(document.getElementById("root")!).render(
             <ExpenseContextProvider>
               <LanguageContextProvider>
                 <ThemeContextProvider>
-                  <App />
+                  <CurrencyContextProvider>
+                    <App />
+                  </CurrencyContextProvider>
                 </ThemeContextProvider>
               </LanguageContextProvider>
             </ExpenseContextProvider>

@@ -4,6 +4,9 @@
   "delete": "Löschen",
   "expense": "Ausgabe",
   "trip": "Reise",
+  "profile": "Profil",
+  "yes": "Ja",
+  "cancel": "Abbrechen",
 
   "cookies": {
     "title": "TrackIt verwendet Cookies!",
@@ -209,6 +212,23 @@
   },
 
   "exchange": {
-    "title": "Wechselkurs"
+    "title": "Wechselkurs",
+    "inputLabel": "Wie viel möchten Sie umtauschen?"
+  },
+
+  "settings": {
+    "userInfo": "Persönliche Informationen bearbeiten",
+    "hairColor": "Haarfarbe",
+    "skinColor": "Hautfarbe",
+    "currency": "Währungspräferenz",
+    "currencyInfo": "Die ausgewählte Währung wird in der gesamten App angewendet.",
+    "deleteAcc": "Konto löschen",
+    "deleteConfirm": "Sind Sie sicher, dass Sie Ihr Konto löschen möchten? Diese Aktion ist dauerhaft und kann nicht rückgängig gemacht werden. Alle mit Ihrem Konto verknüpften Daten, einschließlich Einstellungen, Präferenzen und persönlicher Informationen, werden dauerhaft gelöscht."
+  },
+
+  "serverError": {
+    "First and last name are required!": "Vor- und Nachname sind erforderlich!",
+    "First and last name should contain atleast 2 letters!": "Vor- und Nachname sollten mindestens 2 Buchstaben enthalten!",
+    "First and last name should containt only letters!": "Vor- und Nachname sollten nur Buchstaben enthalten!"
   }
 }
