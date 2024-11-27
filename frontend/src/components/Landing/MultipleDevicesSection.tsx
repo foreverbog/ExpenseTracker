@@ -12,7 +12,7 @@ const MultipleDevicesSection = () => {
   const isImageInView = useInView(imageRef, { once: true });
 
   return (
-    <div className="relative bg-cover bg-center  flex  flex-wrap  justify-center items-center  gap-12 font-base text-base-text  py-36 min-h-dvh overflow-hidden ">
+    <div className="relative bg-cover bg-center  flex  flex-wrap justify-center   items-center font-base text-base-text  py-36 min-h-dvh overflow-hidden ">
       <div className="absolute z-10 -inset-24">
         <MultipleDevicesVector />
       </div>
@@ -34,14 +34,13 @@ const MultipleDevicesSection = () => {
       </div>
       <img
         ref={imageRef}
-        className={`h-[340px] z-20 transition-all duration-500 ease-in-out ${
+        className={` md:w-1/3 z-20 transition-all duration-500 ease-in-out ${
           isImageInView
             ? "opacity-100 translate-x-0"
             : "opacity-0 translate-x-24"
         }`}
-        src="./images/comp.png"
-        alt="d"
-        width={324}
+        src="./images/multipleDevices.png"
+        alt="multiple Devices"
       />
     </div>
   );
