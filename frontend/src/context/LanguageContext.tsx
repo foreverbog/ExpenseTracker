@@ -27,7 +27,7 @@ const LanguageContextProvider = ({
   const languageSelect = (newLanguage: "en" | "de") => {
     setLanguage(newLanguage);
     // localStorage.setItem("user-lng", newLanguage);
-    Cookies.set("user-lng", newLanguage);
+    Cookies.set("user-lng", newLanguage, { expires: 365 });
   };
 
   //*Check if is any language stored

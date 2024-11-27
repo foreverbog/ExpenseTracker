@@ -60,7 +60,9 @@ const UserSettings = () => {
         onClick={() => setIsAccDetailsOpen((prev) => !prev)}
         className=" flex items-center border-b-2 border-base-300 text-lg text-center "
       >
-        <h1 className="flex-1 text-balance">{t("settings.userInfo")}</h1>
+        <h1 className="flex-1 text-balance lg:text-start">
+          {t("settings.userInfo")}
+        </h1>
         <IoMdArrowDropdown
           className={`text-2xl transition-transform duration-500 ease-in-out  ${
             isAccDetailsOpen && "rotate-180"

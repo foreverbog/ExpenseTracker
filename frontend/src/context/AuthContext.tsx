@@ -74,7 +74,7 @@ const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
   //*Function to set the token on login/signup or remove it
   const login = (newToken: string) => {
     setToken(newToken);
-    Cookies.set("token", newToken);
+    Cookies.set("token", newToken, { expires: 365 });
     const decodedToken = jwtDecode<DecodedTokentype>(newToken);
     getUser(decodedToken.id);
   };

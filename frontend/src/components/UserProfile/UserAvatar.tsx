@@ -57,18 +57,18 @@ const UserAvatar = () => {
 
   //* UPDATE THE STATE WITH USER GENDER AND SET THE COOKIES
   const handleGenderChange = (gender: string) => {
-    Cookies.set("user-gender", gender);
+    Cookies.set("user-gender", gender, { expires: 365 });
     setGender(gender);
   };
 
   //*UPDATE THE COLORS STATE AND STORE IT IN COOKIES
   const handleHairColor = (color: string) => {
     setAvatarColors((prev) => ({ ...prev, hairColor: color }));
-    Cookies.set("user-hairColor", color);
+    Cookies.set("user-hairColor", color, { expires: 365 });
   };
   const handleSkinColor = (color: string) => {
     setAvatarColors((prev) => ({ ...prev, skinColor: color }));
-    Cookies.set("user-skinColor", color);
+    Cookies.set("user-skinColor", color, { expires: 365 });
   };
 
   return (

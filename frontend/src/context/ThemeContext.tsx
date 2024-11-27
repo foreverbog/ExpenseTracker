@@ -30,7 +30,7 @@ const ThemeContextProvider = (props: ThemeContextProviderProps) => {
   const themeToggler = (newTheme: string) => {
     if (themes.includes(newTheme)) {
       setTheme(newTheme);
-      Cookies.set("user-theme", newTheme);
+      Cookies.set("user-theme", newTheme, { expires: 365 });
     }
   };
   return (

@@ -34,7 +34,7 @@ const CurrencyContextProvider: React.FC<CurrencyContextProviderProps> = ({
 
   const currencyHandler = (newCurrency: { code: string; symbol: string }) => {
     setCurrency(newCurrency);
-    Cookies.set("user-currency", JSON.stringify(newCurrency));
+    Cookies.set("user-currency", JSON.stringify(newCurrency), { expires: 365 });
   };
 
   return (
