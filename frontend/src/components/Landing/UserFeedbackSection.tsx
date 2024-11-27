@@ -7,6 +7,8 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import { useTranslation } from "react-i18next";
 import { UserFeedbackSectionVector } from "../../assets/svg/HomeVectors";
+import { useRef } from "react";
+import { useInView } from "framer-motion";
 
 type UsersType = {
   picture: {
@@ -22,8 +24,16 @@ type UsersType = {
 
 const UserFeedbackSection = () => {
   const [t] = useTranslation("global");
+  const feedbackRef = useRef<HTMLDivElement | null>(null);
+  const isInView = useInView(feedbackRef);
+
   return (
-    <div className="relative my-12 flex flex-col  gap-12 md:gap-24 font-base overflow-hidden ">
+    <div
+      ref={feedbackRef}
+      className={`relative my-12 flex flex-col  gap-12 md:gap-24 font-base overflow-hidden  transition-all duration-1000 ease-in-out ${
+        isInView ? "opacity-100 scale-100" : "opacity-0 scale-90"
+      }`}
+    >
       <div className="flex flex-col justify-center items-center gap-8 text-base-text">
         <h2 className="text-3xl md:text-6xl text-center z-20 ">
           {t("feedback.title")}
