@@ -53,7 +53,7 @@ const UserDeleteModal: React.FC<UserDeleteModalProps> = ({
           translateY: "-50%",
         }}
         ref={modalRef}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  bg-base-100 rounded-md z-50 w-11/12 p-2 font-base flex flex-col  gap-8 overflow-hidden "
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  bg-base-100 rounded-md z-50 w-[300px] md:w-[450px] p-2 font-base flex flex-col  gap-8 overflow-hidden "
       >
         <CiWarning className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  text-4xl scale-[5] -z-10 opacity-10 " />
         <p className=" text-sm text-balance whitespace p-2 text-base-text text-center ">

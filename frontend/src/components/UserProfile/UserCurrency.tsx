@@ -19,23 +19,26 @@ const UserCurrency = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
-    <div className="flex flex-col font-base justify-center items-center text-base-text ">
+    <div className="flex flex-col font-base justify-center items-center text-base-text md:mt-8 ">
       <div
         onClick={() => {
           setIsCurrencyPrefOpen((prev) => !prev);
           setIsDropdownOpen(false);
         }}
-        className=" flex items-center border-b-2 border-base-300 text-lg text-center w-full "
+        className=" flex items-center text-lg text-center w-full border-b-2 border-base-300 md:border-b md:border-b-primary "
       >
-        <h1 className="flex-1 text-balance">{t("settings.currency")}</h1>
+        <h1 className="flex-1 text-balance md:text-start md:bg-base-100 md:p-2 md:rounded-md md:font-semibold">
+          {t("settings.currency")}
+        </h1>
         <IoMdArrowDropdown
-          className={`text-2xl transition-transform duration-500 ease-in-out  ${
+          className={`text-2xl transition-transform duration-500 ease-in-out md:hidden  ${
             isCurrencyPrefOpen && "rotate-180"
           }`}
         />
       </div>
+      {/* //*ANIMATION TO OPEN CURRENCY SELECTOR FOR SMALLER SCREENS */}
       <AnimatePresence>
-        {isCurrencyPrefOpen && (
+        {isCurrencyPrefOpen && isSmallScreen && (
           <>
             <motion.h1
               initial={{ translateY: "-20px", opacity: 0 }}
@@ -116,6 +119,64 @@ const UserCurrency = () => {
           </>
         )}
       </AnimatePresence>
+
+      {/* //*CURRENCY PREF SELECTOR FOR BIGGER SCREENS - ALWAYS OPEN NO ANIMATIONS */}
+      <h1 className="mt-4 text-xs text-center text-balance hidden md:block">
+        {t("settings.currencyInfo")}
+      </h1>
+      <div className="relative mt-4">
+        <div
+          className={` rounded-md p-2 md:p-2.5 border border-primary hidden md:flex items-center justify-center bg-base-100 cursor-pointer  w-[80px] md:min-w-[109px] text-sm md:text-lg ${
+            isDropdownOpen && " rounded-b-none"
+          }`}
+          onClick={() => {
+            setIsDropdownOpen((prev) => !prev);
+          }}
+        >
+          <p>{currency.code}</p>
+          <IoMdArrowDropdown
+            className={`text-text text-normal md:text-lg  transition-transform duration-500 ease-in-out ${
+              isDropdownOpen && "rotate-180"
+            } `}
+          />
+        </div>
+
+        {/* //*DROPDOWN ANIMATION */}
+        <AnimatePresence>
+          {isDropdownOpen && (
+            <motion.div
+              initial={{ height: 0 }}
+              animate={{
+                height: isSmallScreen ? "250px" : "250px",
+                overflowY: "scroll",
+                scrollbarWidth: "none",
+              }}
+              exit={{ height: 0, transition: { duration: 0.3 } }}
+              transition={{
+                type: "spring",
+                bounce: 0.3,
+              }}
+              className="absolute w-full  left-0 bg-base-200 rounded-b-md border-b border-b-primary border-x border-x-primary top-full flex flex-col  divide-y divide-primary drop-shadow-2xl z-50 overflow-hidden"
+            >
+              {mostUsedCurrencies.map((currency) => (
+                <div
+                  key={currency.code}
+                  onClick={() => {
+                    currencyHandler(currency);
+                    setIsDropdownOpen(false);
+                  }}
+                  className={`text-center p-2 md:p-2.5 cursor-pointer hover:bg-base-300 transition-colors duration-300 ease-in-out text-xs md:text-normal ${
+                    currencyCode === currency.code &&
+                    "bg-primary text-primary-text hover:bg-primary"
+                  }  `}
+                >
+                  {currency.code}
+                </div>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 };

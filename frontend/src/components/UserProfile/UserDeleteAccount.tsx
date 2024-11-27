@@ -12,7 +12,7 @@ const UserDeleteAccount = () => {
 
   return (
     <>
-      <div className="flex-grow flex items-end justify-center mb-4 relative">
+      <div className="flex-grow md:flex-grow-0 flex items-end justify-center mb-4  relative">
         <button onClick={() => setIsDeleteModalOpen((prev) => !prev)}>
           <DeleteBtn btnText={t("settings.deleteAcc")} />
         </button>

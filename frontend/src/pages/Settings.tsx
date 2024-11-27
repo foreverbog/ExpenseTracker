@@ -36,12 +36,26 @@ const Settings = () => {
         {/*//*USER DELETE PROFILE BTN AND MODAL */}
         <UserDeleteAccount />
       </div>
+
+      {/* //*BIGGER SCREENS - FROM 768 px */}
       <div className="hidden min-h-dvh lg:p-24 md:flex justify-center items-center bg-base-100 text-base-text font-base ">
-        <div className=" relative    md:grid md:grid-cols-2 rounded-md   bg-base  h-[700px] w-[1200px] overflow-hidden drop-shadow-2xl">
+        <div className=" relative md:grid md:grid-cols-2 rounded-md   bg-base  h-[700px] w-[1200px] overflow-hidden drop-shadow-2xl">
+          <Link
+            to="/"
+            className="absolute flex items-center gap-2 p-2 hover:cursor-pointer group w-[180px] text-base-text "
+          >
+            <FaHome className="group-hover:scale-105 transition-transform duration-300 ease-in-out text-lg" />
+            <p className="group-hover:scale-105 transition-transform duration-300 ease-in-out text-normal underline">
+              {t("auth.home")}
+            </p>
+          </Link>
           <UserAvatar />
-          <div>
-            <UserSettings />
-            <UserCurrency />
+          <div className="flex flex-col justify-between items-center">
+            <div className="w-full">
+              <UserSettings />
+              <UserCurrency />
+            </div>
+            <UserDeleteAccount />
           </div>
         </div>
       </div>

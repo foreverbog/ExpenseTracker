@@ -72,12 +72,12 @@ const UserAvatar = () => {
   };
 
   return (
-    <div className="flex flex-col gap-4 items-center text-base-text font-base">
+    <div className="flex flex-col gap-4 items-center md:justify-center text-base-text font-base">
       {/* //*AVATAR SELECTION */}
       <AnimatePresence mode="wait">
         {gender === "male" ? (
           <motion.div
-            className="mt-4"
+            className="mt-4 md:mt-0"
             key="male"
             initial={{ opacity: 0, translateY: "20px" }}
             animate={{ opacity: 100, translateY: "0" }}
@@ -91,7 +91,7 @@ const UserAvatar = () => {
           </motion.div>
         ) : (
           <motion.div
-            className="mt-4"
+            className="mt-4 md:mt-0"
             key="female"
             initial={{ opacity: 0, translateY: "20px" }}
             animate={{ opacity: 100, translateY: "0" }}
@@ -105,7 +105,7 @@ const UserAvatar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      <h1 className="-mt-3 font-semibold">
+      <h1 className="-mt-3 font-semibold md:text-lg">
         {user.firstName} {user.lastName}
       </h1>
       <h1 className="-mt-4 text-xs font-thin">{user.email}</h1>
@@ -118,7 +118,7 @@ const UserAvatar = () => {
         ></div>
         <div
           onClick={() => handleGenderChange("male")}
-          className={`hover:cursor-pointer w-[45px] text-center text-sm z-20 ${
+          className={`hover:cursor-pointer w-[45px] text-center text-sm md:text-normal z-20 ${
             gender === "male" && "text-primary-text"
           }`}
         >
@@ -126,7 +126,7 @@ const UserAvatar = () => {
         </div>
         <div
           onClick={() => handleGenderChange("female")}
-          className={`hover:cursor-pointer w-[45px] text-center text-sm z-20 ${
+          className={`hover:cursor-pointer w-[45px] text-center text-sm md:text-normal z-20 ${
             gender === "female" && "text-primary-text"
           }`}
         >
@@ -137,13 +137,13 @@ const UserAvatar = () => {
       {/*//*AVATAR CUSTOMIZATION */}
       {/* //*HAIR COLOR */}
       <div className="flex flex-col items-center gap-2">
-        <div className="text-sm">{t("settings.hairColor")}:</div>
+        <div className="text-sm md:text-normal">{t("settings.hairColor")}:</div>
         <div className="flex gap-2">
           {hairColors.map((color) => (
             <div
               onClick={() => handleHairColor(color)}
               key={color}
-              className={`hover:cursor-pointer hover:scale-105 active:scale-95 transition-transform duration-300 ease-in-out w-4 h-6 rounded-full ${
+              className={`hover:cursor-pointer hover:scale-105 active:scale-95 transition-transform duration-300 ease-in-out w-4 h-6 md:w-5 md:h-7 rounded-full ${
                 color === avatarColors.hairColor
                   ? "outline outline-2 outline-offset-1 outline-primary-lighter"
                   : ""
@@ -155,13 +155,13 @@ const UserAvatar = () => {
       </div>
       {/* //*SKIN COLOR */}
       <div className="flex flex-col items-center gap-2">
-        <div className="text-sm">{t("settings.skinColor")}:</div>
+        <div className="text-sm md:text-normal">{t("settings.skinColor")}:</div>
         <div className="flex gap-2">
           {skinColors.map((color) => (
             <div
               onClick={() => handleSkinColor(color)}
               key={color}
-              className={`hover:cursor-pointer hover:scale-105 active:scale-95 transition-transform duration-300 ease-in-out w-4 h-6 rounded-full ${
+              className={`hover:cursor-pointer hover:scale-105 active:scale-95 transition-transform duration-300 ease-in-out w-4 h-6 md:w-5 md:h-7 rounded-full ${
                 color === avatarColors.skinColor
                   ? "outline outline-2 outline-offset-1 outline-primary-lighter"
                   : ""
