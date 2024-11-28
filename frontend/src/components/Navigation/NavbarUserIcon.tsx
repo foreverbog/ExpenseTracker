@@ -13,6 +13,7 @@ type NavbarUserIconProps = {
   isLanguageOpen: boolean;
   setIsLanguageOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isScrolling: boolean;
+  pathname: string;
 };
 
 const NavbarUserIcon: React.FC<NavbarUserIconProps> = ({
@@ -24,6 +25,7 @@ const NavbarUserIcon: React.FC<NavbarUserIconProps> = ({
   isLanguageOpen,
   setIsLanguageOpen,
   isScrolling,
+  pathname,
 }) => {
   const { t } = useTranslation("global");
   return (
@@ -38,7 +40,11 @@ const NavbarUserIcon: React.FC<NavbarUserIconProps> = ({
       {" "}
       <FaUser
         className={`cursor-pointer text-xl lg:text-2xl  rounded-t-md ${
-          isScrolling ? "text-base-text" : "text-secondary-text"
+          pathname === "/contact" || pathname === "/about"
+            ? "text-base-text"
+            : isScrolling
+            ? "text-base-text"
+            : "text-secondary-text"
         }`}
       />
       <AnimatePresence>

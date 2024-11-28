@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import LanguageSelector from "./LanguageSelector";
 import ThemeSelector from "./ThemeSelector";
 import { useContext, useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { LogoVector } from "../../assets/svg/BrandsVectors";
 import { AuthContext } from "../../context/AuthContext";
 import NavbarUserIcon from "./NavbarUserIcon";
@@ -10,6 +10,7 @@ import Sidebar from "./Sidebar";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AnimatePresence } from "framer-motion";
 import useMediaQuery from "../../hooks/useMediaQuery";
+
 const Navbar = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   const [isThemeOpen, setIsThemeOpen] = useState(false);
@@ -47,6 +48,10 @@ const Navbar = () => {
     };
   }, []);
 
+  const location = useLocation();
+
+  const { pathname } = location;
+
   const authContext = useContext(AuthContext);
 
   if (!authContext) {
@@ -54,8 +59,6 @@ const Navbar = () => {
   }
 
   const { isAuthenticated, logout } = authContext;
-
-  console.log(isScrolling);
 
   return (
     <>
@@ -114,6 +117,7 @@ const Navbar = () => {
               isLanguageOpen={isLanguageOpen}
               setIsLanguageOpen={setIsLanguageOpen}
               isScrolling={isScrolling}
+              pathname={pathname}
             />
           ) : null}
 
@@ -126,6 +130,7 @@ const Navbar = () => {
             isLanguageOpen={isLanguageOpen}
             setIsLanguageOpen={setIsLanguageOpen}
             isScrolling={isScrolling}
+            pathname={pathname}
           />
           <LanguageSelector
             isUserOpen={isUserOpen}
@@ -135,6 +140,7 @@ const Navbar = () => {
             isThemeOpen={isThemeOpen}
             setIsThemeOpen={setIsThemeOpen}
             isScrolling={isScrolling}
+            pathname={pathname}
           />
           <GiHamburgerMenu
             onClick={handleSideBar}

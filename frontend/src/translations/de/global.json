@@ -232,5 +232,11 @@
     "First and last name should containt only letters!": "Vor- und Nachname sollten nur Buchstaben enthalten!"
   },
 
-  "footerCopyright": "Urheberrecht © 2024 Bogdan Lazar. Alle Rechte vorbehalten."
+  "footerCopyright": "Urheberrecht © 2024 Bogdan Lazar. Alle Rechte vorbehalten.",
+
+  "contact": {
+    "title": "Vielen Dank für die Besichtigung von",
+    "paragraph": "Wenn du Fragen hast oder dein Feedback teilen möchtest, kannst du dich gerne mit mir in Verbindung setzen. Ich bin immer offen für Vorschläge zur Verbesserung und zukünftige Projekte.",
+    "viewCode": "Sieh dir den Code auf GitHub an"
+  }
 }

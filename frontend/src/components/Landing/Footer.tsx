@@ -10,7 +10,7 @@ const Footer = () => {
   const { t } = useTranslation("global");
 
   return (
-    <div className="bg-base-100 relative flex flex-col justify-center items-center font-base p-6 gap-4 text-base-text ">
+    <div className="bg-base-200 relative flex flex-col justify-center items-center font-base p-6 gap-4 text-base-text ">
       <div className="flex gap-12 ">
         <Link
           to="/about"

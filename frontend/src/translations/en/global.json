@@ -233,5 +233,11 @@
     "dadada": "daa  a da da"
   },
 
-  "footerCopyright": "Copyright © 2024 Bogdan Lazar. All Rights Reserved."
+  "footerCopyright": "Copyright © 2024 Bogdan Lazar. All Rights Reserved.",
+
+  "contact": {
+    "title": " Thanks for exploring",
+    "paragraph": "If you have any questions or would like to share your feedback, feel free to connect with me. I am always open to suggestions for improvement and future projects.",
+    "viewCode": "View the code on GitHub"
+  }
 }
