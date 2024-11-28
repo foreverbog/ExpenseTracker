@@ -15,6 +15,7 @@ export type ThemeSelectorProps = {
   setIsThemeOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isLanguageOpen: boolean;
   setIsLanguageOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isScrolling: boolean;
 };
 
 const ThemeSelector = ({
@@ -25,6 +26,7 @@ const ThemeSelector = ({
   setIsThemeOpen,
   isLanguageOpen,
   setIsLanguageOpen,
+  isScrolling,
 }: ThemeSelectorProps) => {
   const themeContext = useContext(ThemeContext);
   if (!themeContext) {
@@ -42,9 +44,9 @@ const ThemeSelector = ({
           setIsLanguageOpen(false);
           setIsUserOpen(false);
         }}
-        className={`cursor-pointer flex items-center p-2 text-secondary-text  ${
-          isThemeOpen && "bg-base-100 rounded-t-md  "
-        }`}
+        className={`cursor-pointer flex items-center p-2  ${
+          isThemeOpen && "bg-base-100 rounded-t-md"
+        } ${isScrolling ? "text-base-text" : "text-secondary-text"} `}
       >
         {isSmallScreen ? (
           <HiOutlineColorSwatch className="text-base-text text-2xl" />

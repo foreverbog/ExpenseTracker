@@ -113,6 +113,7 @@ const Navbar = () => {
               setIsThemeOpen={setIsThemeOpen}
               isLanguageOpen={isLanguageOpen}
               setIsLanguageOpen={setIsLanguageOpen}
+              isScrolling={isScrolling}
             />
           ) : null}
 
@@ -124,6 +125,7 @@ const Navbar = () => {
             setIsThemeOpen={setIsThemeOpen}
             isLanguageOpen={isLanguageOpen}
             setIsLanguageOpen={setIsLanguageOpen}
+            isScrolling={isScrolling}
           />
           <LanguageSelector
             isUserOpen={isUserOpen}
@@ -132,6 +134,7 @@ const Navbar = () => {
             setIsLanguageOpen={setIsLanguageOpen}
             isThemeOpen={isThemeOpen}
             setIsThemeOpen={setIsThemeOpen}
+            isScrolling={isScrolling}
           />
           <GiHamburgerMenu
             onClick={handleSideBar}
