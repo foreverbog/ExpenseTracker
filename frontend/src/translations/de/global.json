@@ -7,6 +7,7 @@
   "profile": "Profil",
   "yes": "Ja",
   "cancel": "Abbrechen",
+  "about": "Über",
 
   "cookies": {
     "title": "TrackIt verwendet Cookies!",
@@ -237,6 +238,26 @@
   "contact": {
     "title": "Vielen Dank für die Besichtigung von",
     "paragraph": "Wenn du Fragen hast oder dein Feedback teilen möchtest, kannst du dich gerne mit mir in Verbindung setzen. Ich bin immer offen für Vorschläge zur Verbesserung und zukünftige Projekte.",
-    "viewCode": "Sieh dir den Code auf GitHub an"
+    "viewCode": "Sieh dir den Code auf GitHub an",
+
+    "frontend": {
+      "React": "Zum Erstellen dynamischer, moderner Benutzeroberflächen.",
+      "TypeScript": "Für statische Typisierung und bessere Codequalität sowie Wartbarkeit.",
+      "TailwindCSS": "Für schnelles und responsives Styling mit minimalem benutzerdefiniertem CSS.",
+      "Vite": "Für schnelle Entwicklung mit kurzen Build-Zeiten und Hot-Reloading.",
+      "Framer Motion": "Für flüssige und interaktive Animationen.",
+      "React Router": "Für effiziente Navigation in Single-Page-Anwendungen.",
+      "React Hooks": "Für das Verwalten von Zustand und Nebeneffekten in funktionalen Komponenten.",
+      "i18next": "Für die Unterstützung mehrerer Sprachen.",
+      "JWT": "Für sichere Benutzer-Authentifizierung."
+    },
+
+    "backend": {
+      "Node.js": "Für den Aufbau skalierbarer, schneller Backend-Dienste mit JavaScript.",
+      "Express": "Für die Erstellung von RESTful-APIs mit minimaler Konfiguration.",
+      "MongoDB": "Für flexible, skalierbare NoSQL-Datenbanklösungen.",
+      "Mongoose": "Für die Vereinfachung der MongoDB-Datenverarbeitung.",
+      "JWT": "Für sichere Authentifizierung und Sitzungsverwaltung."
+    }
   }
 }
