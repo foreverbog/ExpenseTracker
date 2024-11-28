@@ -2,13 +2,19 @@ import { useTranslation } from "react-i18next";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa6";
 import { ContactVector } from "../assets/svg/AboutAndContactVectors";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const { t } = useTranslation("global");
   return (
-    <div className="flex-1 text-base-text pt-36 lg:pt-48 px-2 text-balance font-base flex flex-col gap-4 relative overflow-hidden">
+    <motion.div
+      initial={{ opacity: 0, y: 60 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, type: "spring", stiffness: 300 }}
+      className="flex-1 text-base-text pt-36 lg:pt-48 px-2 text-balance font-base flex flex-col gap-4 relative overflow-hidden"
+    >
       {/* //*VECTOR BOTTOM RIGHT */}
-      <div className="absolute right-0 bottom-0 -rotate-45 z-10 ">
+      <div className="absolute right-0 bottom-0 -rotate-45 z-10 transition-none ">
         <ContactVector />
       </div>
 
@@ -52,7 +58,7 @@ const Contact = () => {
         <p> {t("contact.viewCode")} </p>
         <FaGithub className="text-xl" />
       </a>
-    </div>
+    </motion.div>
   );
 };
 
