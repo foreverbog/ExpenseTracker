@@ -230,5 +230,7 @@
     "First and last name are required!": "Vor- und Nachname sind erforderlich!",
     "First and last name should contain atleast 2 letters!": "Vor- und Nachname sollten mindestens 2 Buchstaben enthalten!",
     "First and last name should containt only letters!": "Vor- und Nachname sollten nur Buchstaben enthalten!"
-  }
+  },
+
+  "footerCopyright": "Urheberrecht © 2024 Bogdan Lazar. Alle Rechte vorbehalten."
 }

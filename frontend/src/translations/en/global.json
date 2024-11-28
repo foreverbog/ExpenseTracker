@@ -231,5 +231,7 @@
     "First and last name should contain atleast 2 letters!": "First and last name should contain atleast 2 letters!",
     "First and last name should containt only letters!": "First and last name should containt only letters!",
     "dadada": "daa  a da da"
-  }
+  },
+
+  "footerCopyright": "Copyright © 2024 Bogdan Lazar. All Rights Reserved."
 }
