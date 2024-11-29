@@ -1,13 +1,20 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { IoMdArrowDropdown } from "react-icons/io";
-
 import { motion, AnimatePresence } from "framer-motion";
 import mostUsedCurrencies from "../../utils/mostUsedCurrencies";
 import useCurrencyContext from "../../hooks/useCurrencyContext";
 import useMediaQuery from "../../hooks/useMediaQuery";
 
-const UserCurrency = () => {
+type UserCurrencyProps = {
+  isDropdownOpen: boolean;
+  setIsDropdownOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const UserCurrency: React.FC<UserCurrencyProps> = ({
+  isDropdownOpen,
+  setIsDropdownOpen,
+}) => {
   const { t } = useTranslation("global");
   const isSmallScreen = useMediaQuery("(max-width: 767px)");
 
@@ -16,7 +23,6 @@ const UserCurrency = () => {
   const currencyCode = currency.code;
 
   const [isCurrencyPrefOpen, setIsCurrencyPrefOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
     <div className="flex flex-col font-base justify-center items-center text-base-text md:mt-8 ">
@@ -147,7 +153,7 @@ const UserCurrency = () => {
             <motion.div
               initial={{ height: 0 }}
               animate={{
-                height: isSmallScreen ? "250px" : "250px",
+                height: isSmallScreen ? "250px" : "180px",
                 overflowY: "scroll",
                 scrollbarWidth: "none",
               }}

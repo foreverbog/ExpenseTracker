@@ -4,7 +4,13 @@ import { useState } from "react";
 import UserDeleteModal from "./UserDeleteModal";
 import { AnimatePresence } from "framer-motion";
 
-const UserDeleteAccount = () => {
+type UserDeleteAccountProps = {
+  isDropdownOpen: boolean;
+};
+
+const UserDeleteAccount: React.FC<UserDeleteAccountProps> = ({
+  isDropdownOpen,
+}) => {
   const { t } = useTranslation("global");
 
   //*state for tracking the modal for deleting account
@@ -13,7 +19,10 @@ const UserDeleteAccount = () => {
   return (
     <>
       <div className="flex-grow md:flex-grow-0 flex items-end justify-center mb-4  relative">
-        <button onClick={() => setIsDeleteModalOpen((prev) => !prev)}>
+        <button
+          disabled={isDropdownOpen}
+          onClick={() => setIsDeleteModalOpen((prev) => !prev)}
+        >
           <DeleteBtn btnText={t("settings.deleteAcc")} />
         </button>
       </div>

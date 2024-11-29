@@ -5,9 +5,11 @@ import { Link } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import UserDeleteAccount from "../components/UserProfile/UserDeleteAccount";
+import { useState } from "react";
 
 const Settings = () => {
   const { t } = useTranslation("global");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
     <>
@@ -31,10 +33,13 @@ const Settings = () => {
         <UserSettings />
 
         {/*//*USER CURRENCY PREF*/}
-        <UserCurrency />
+        <UserCurrency
+          setIsDropdownOpen={setIsDropdownOpen}
+          isDropdownOpen={isDropdownOpen}
+        />
 
         {/*//*USER DELETE PROFILE BTN AND MODAL */}
-        <UserDeleteAccount />
+        <UserDeleteAccount isDropdownOpen={isDropdownOpen} />
       </div>
 
       {/* //*BIGGER SCREENS - FROM 768 px */}
@@ -42,7 +47,7 @@ const Settings = () => {
         <div className=" relative md:grid md:grid-cols-2 rounded-md   bg-base  h-[700px] w-[1200px] overflow-hidden drop-shadow-2xl">
           <Link
             to="/"
-            className="absolute flex items-center gap-2 p-2 hover:cursor-pointer group w-[180px] text-base-text "
+            className="absolute flex items-center gap-2 p-2 hover:cursor-pointer group w-[200px] text-base-text "
           >
             <FaHome className="group-hover:scale-105 transition-transform duration-300 ease-in-out text-lg" />
             <p className="group-hover:scale-105 transition-transform duration-300 ease-in-out text-normal underline">
@@ -53,9 +58,12 @@ const Settings = () => {
           <div className="flex flex-col justify-between items-center">
             <div className="w-full">
               <UserSettings />
-              <UserCurrency />
+              <UserCurrency
+                setIsDropdownOpen={setIsDropdownOpen}
+                isDropdownOpen={isDropdownOpen}
+              />
             </div>
-            <UserDeleteAccount />
+            <UserDeleteAccount isDropdownOpen={isDropdownOpen} />
           </div>
         </div>
       </div>
