@@ -85,6 +85,17 @@ const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
       }));
     }
   };
+  //*FIND the most expesinve expense
+  const mostExpensiveExpense = expenses.reduce(
+    (max, expense) => (expense.value > max.value ? expense : max),
+    expenses[0]
+  );
+
+  //*FIND the least expensive expense
+  const leastExpensiveExpense = expenses.reduce(
+    (min, expense) => (expense.value < min.value ? expense : min),
+    expenses[0]
+  );
 
   return (
     <>
@@ -217,6 +228,24 @@ const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
           )}
         </>
       </div>
+      {mostExpensiveExpense && leastExpensiveExpense && (
+        <div className="flex flex-col justify-center items-center text-balance mt-4 text-center">
+          <div>
+            <span>{t("expenses.largest")}: </span>
+            <span className="font-semibold">
+              {mostExpensiveExpense.name} - {mostExpensiveExpense.value}{" "}
+              {currency.symbol}
+            </span>
+          </div>
+          <div>
+            <span>{t("expenses.smallest")}: </span>
+            <span className="font-semibold">
+              {leastExpensiveExpense.name} - {leastExpensiveExpense.value}{" "}
+              {currency.symbol}
+            </span>
+          </div>
+        </div>
+      )}
     </>
   );
 };

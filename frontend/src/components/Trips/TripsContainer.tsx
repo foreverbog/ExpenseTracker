@@ -58,7 +58,7 @@ const TripsContainer: React.FC<TripsContainerProps> = ({
   if (isLoading) {
     return isLoading && <TripsLoadingSkeleton />;
   }
-  console.log(trip);
+  // console.log(trip);
 
   return (
     <div>

@@ -1,7 +1,8 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ExpensQueriesType } from "../context/ExpensesContext";
 import { toast, Slide } from "react-toastify";
+import Cookies from "js-cookie";
 
 type UsePutProps = {
   url: string;
@@ -20,6 +21,14 @@ const usePut = ({
 }: UsePutProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
+  const [JWTtoken, setJWTtoken] = useState<string | null>(null);
+
+  useEffect(() => {
+    const token = Cookies.get("token");
+    if (token) {
+      setJWTtoken(token);
+    }
+  }, []);
 
   const handlePut = async (e: React.FormEvent<HTMLFormElement>) => {
     // * Prevent auto refresh on submit, set the loading state to true
@@ -34,7 +43,14 @@ const usePut = ({
 
     //* The put request
     try {
-      const response = await axios.put(url, formData);
+      const config = JWTtoken
+        ? {
+            headers: {
+              Authorization: `Bearer ${JWTtoken}`,
+            },
+          }
+        : {};
+      const response = await axios.put(url, formData, config);
       if (!response) {
         console.log(response);
       }

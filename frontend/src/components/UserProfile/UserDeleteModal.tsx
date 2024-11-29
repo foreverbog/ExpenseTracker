@@ -1,9 +1,11 @@
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import DeleteBtn from "../Common/DeleteBtn";
 import UpdateBtn from "../Common/UpdateBtn";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { CiWarning } from "react-icons/ci";
+import useDelete from "../../hooks/useDelete";
+import { AuthContext } from "../../context/AuthContext";
 
 type UserDeleteModalProps = {
   setIsDeleteModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -12,6 +14,7 @@ type UserDeleteModalProps = {
 const UserDeleteModal: React.FC<UserDeleteModalProps> = ({
   setIsDeleteModalOpen,
 }) => {
+  const API_URL: string = import.meta.env.VITE_API_SERVER;
   const { t } = useTranslation("global");
   const modalRef = useRef<HTMLDivElement | null>(null);
 
@@ -28,6 +31,14 @@ const UserDeleteModal: React.FC<UserDeleteModalProps> = ({
       window.removeEventListener("mousedown", handleClickOutside);
     };
   }, [setIsDeleteModalOpen]);
+
+  const authContext = useContext(AuthContext);
+  if (!authContext) {
+    throw new Error("useContext must be used withing AuthContextProvider");
+  }
+  const { user, logout } = authContext;
+
+  const { handleDelete } = useDelete({ url: `${API_URL}/${user.id}` });
 
   return (
     <>
@@ -63,7 +74,13 @@ const UserDeleteModal: React.FC<UserDeleteModalProps> = ({
           <button onClick={() => setIsDeleteModalOpen((prev) => !prev)}>
             <UpdateBtn btnText={t("cancel")} />
           </button>
-          <button onClick={() => setIsDeleteModalOpen((prev) => !prev)}>
+          <button
+            onClick={() => {
+              handleDelete();
+              logout();
+              setIsDeleteModalOpen((prev) => !prev);
+            }}
+          >
             <DeleteBtn btnText={t("yes")} />
           </button>
         </div>

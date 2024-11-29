@@ -43,7 +43,7 @@ const ExchangeContainer = () => {
       setRates(apiData[baseCurrency]);
     }
   }, [apiData, baseCurrency]);
-  console.log(rates);
+  // console.log(rates);
 
   const handleChangeBaseCurrency = (currency: string) => {
     setBaseCurrency(currency.toLowerCase());
@@ -181,8 +181,8 @@ const ExchangeContainer = () => {
           value={amount}
           className="inputStyle bg-transparent [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none mx-auto text-center placeholder:text-center text-xl"
         />
-        <div className="flex mt-8 mx-auto">
-          <p className="text-2xl font-semibold">
+        <div className="flex mt-8 mx-auto text-balance">
+          <p className="text-2xl font-semibold ">
             {(rates[baseCurrency] * amount).toFixed(0)}{" "}
             {baseCurrency.toUpperCase()} (
             {mostUsedCurrencies.find(
@@ -191,7 +191,7 @@ const ExchangeContainer = () => {
             )
           </p>
           <p className="text-2xl font-semibold  mx-4"> = </p>
-          <p className="text-2xl font-semibold">
+          <p className="text-2xl font-semibold ">
             {(rates[targetCurrency] * amount).toFixed(2)}{" "}
             {targetCurrency.toUpperCase()} (
             {mostUsedCurrencies.find(

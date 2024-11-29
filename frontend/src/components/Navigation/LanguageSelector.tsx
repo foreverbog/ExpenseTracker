@@ -11,6 +11,8 @@ type LanguageSelectorProps = {
   setIsThemeOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isLanguageOpen: boolean;
   setIsLanguageOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isScrolling: boolean;
+  pathname: string;
 };
 
 const LanguageSelector = ({
@@ -20,6 +22,8 @@ const LanguageSelector = ({
   setIsThemeOpen,
   isLanguageOpen,
   setIsLanguageOpen,
+  isScrolling,
+  pathname,
 }: LanguageSelectorProps) => {
   const languageContext = useContext(LanguageContext);
   if (!languageContext) {
@@ -35,7 +39,13 @@ const LanguageSelector = ({
           setIsThemeOpen(false);
           setIsUserOpen(false);
         }}
-        className="flex gap-1 relative justify-center items-center  p-1 text-secondary-text "
+        className={`flex gap-1 relative justify-center items-center  p-1   ${
+          pathname === "/contact" || pathname === "/about"
+            ? "text-base-text"
+            : isScrolling
+            ? "text-base-text"
+            : "text-secondary-text"
+        }`}
       >
         <img
           src={`../images/${language === "en" ? "en" : "de"}.svg`}

@@ -1,9 +1,11 @@
 const User = require("../schemas/User");
+const Trip = require("../schemas/Trip");
+const Expense = require("../schemas/Expense");
 const jwt = require("jsonwebtoken");
 
 //* create token function
 const createToken = (id) => {
-  return jwt.sign({ id }, process.env.SECRET, { expiresIn: "1d" });
+  return jwt.sign({ id }, process.env.SECRET, { expiresIn: "30d" });
 };
 
 //* User Signup
@@ -117,6 +119,9 @@ const editUser = async (req, res) => {
 const deleteUser = async (req, res) => {
   const { id } = req.params;
   try {
+    await Trip.deleteMany({ owner: id });
+    await Expense.deleteMany({ owner: id });
+
     const deletedUser = await User.findByIdAndDelete(id);
 
     if (!deletedUser) {

@@ -56,7 +56,7 @@ const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({
   const API_URL: string = import.meta.env.VITE_API_SERVER;
   const { t } = useTranslation("global");
   const isSmallScreen = useMediaQuery("(max-width: 767px)");
-  console.log(tripImage);
+  // console.log(tripImage);
 
   // *Function to retrigger the fetch
   const { reFetchTrips } = useTripsContext();
@@ -101,7 +101,7 @@ const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({
     setTripFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  console.log(tripFormData);
+  // console.log(tripFormData);
 
   const { isLoading, handlePost, serverError, setServerError } = usePost({
     url: `${API_URL}/${user.id}/trips`,
@@ -125,7 +125,7 @@ const TripsCreatorForm: React.FC<TripsCreatorFormProps> = ({
     setIsModalOpen: setIsTripCreatorOpen,
   });
 
-  console.log(tripFormData.roundTripCost);
+  // console.log(tripFormData.roundTripCost);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

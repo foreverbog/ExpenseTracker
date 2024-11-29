@@ -13,7 +13,7 @@ import { MenuContextType } from "../layout/MenuLayout";
 
 const ExpenseDashboard = () => {
   const { setIsMenuOpen } = useOutletContext<MenuContextType>();
-  const [t] = useTranslation("global");
+  const { t } = useTranslation("global");
   // console.log(expenses);
   const [isNewExpenseOpen, setIsNewExpenseOpen] = useState(false);
 

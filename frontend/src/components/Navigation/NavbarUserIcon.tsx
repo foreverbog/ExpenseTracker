@@ -12,6 +12,8 @@ type NavbarUserIconProps = {
   setIsThemeOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isLanguageOpen: boolean;
   setIsLanguageOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isScrolling: boolean;
+  pathname: string;
 };
 
 const NavbarUserIcon: React.FC<NavbarUserIconProps> = ({
@@ -22,8 +24,10 @@ const NavbarUserIcon: React.FC<NavbarUserIconProps> = ({
   setIsThemeOpen,
   isLanguageOpen,
   setIsLanguageOpen,
+  isScrolling,
+  pathname,
 }) => {
-  const [t] = useTranslation("global");
+  const { t } = useTranslation("global");
   return (
     <div
       onClick={() => {
@@ -34,7 +38,15 @@ const NavbarUserIcon: React.FC<NavbarUserIconProps> = ({
       className="relative "
     >
       {" "}
-      <FaUser className="cursor-pointer text-secondary-text text-xl lg:text-2xl  rounded-t-md " />
+      <FaUser
+        className={`cursor-pointer text-xl lg:text-2xl  rounded-t-md ${
+          pathname === "/contact" || pathname === "/about"
+            ? "text-base-text"
+            : isScrolling
+            ? "text-base-text"
+            : "text-secondary-text"
+        }`}
+      />
       <AnimatePresence>
         {isUserOpen && !isThemeOpen && !isLanguageOpen && (
           <motion.div

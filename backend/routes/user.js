@@ -7,6 +7,7 @@ const {
   deleteUser,
   getUserExpensesSort,
 } = require("../controllers/userControllers");
+const requireAuth = require("../middlewares/requireAuth");
 
 const app = express.Router();
 
@@ -15,6 +16,7 @@ app.post("/login", loginUser);
 
 app.get("/:id", getUser);
 
+app.use(requireAuth);
 app.put("/:id", editUser);
 
 app.delete("/:id", deleteUser);

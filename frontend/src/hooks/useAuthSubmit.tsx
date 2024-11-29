@@ -72,7 +72,7 @@ const useAuthSubmit = ({
       } else {
         setServerError("An unexpected error occured");
       }
-      console.log(serverError);
+      // console.log(serverError);
     } finally {
       setIsLoading(false);
     }

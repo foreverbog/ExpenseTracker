@@ -15,6 +15,8 @@ export type ThemeSelectorProps = {
   setIsThemeOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isLanguageOpen: boolean;
   setIsLanguageOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isScrolling: boolean;
+  pathname: string;
 };
 
 const ThemeSelector = ({
@@ -25,6 +27,8 @@ const ThemeSelector = ({
   setIsThemeOpen,
   isLanguageOpen,
   setIsLanguageOpen,
+  isScrolling,
+  pathname,
 }: ThemeSelectorProps) => {
   const themeContext = useContext(ThemeContext);
   if (!themeContext) {
@@ -33,7 +37,7 @@ const ThemeSelector = ({
 
   const { themeToggler } = themeContext;
 
-  const [t] = useTranslation("global");
+  const { t } = useTranslation("global");
   return (
     <div className="relative">
       <div
@@ -42,9 +46,15 @@ const ThemeSelector = ({
           setIsLanguageOpen(false);
           setIsUserOpen(false);
         }}
-        className={`cursor-pointer flex items-center p-2 text-secondary-text  ${
-          isThemeOpen && "bg-base-100 rounded-t-md  "
-        }`}
+        className={`cursor-pointer flex items-center p-2  ${
+          isThemeOpen && "bg-base-100 rounded-t-md"
+        } ${
+          pathname === "/contact" || pathname === "/about"
+            ? "text-base-text"
+            : isScrolling
+            ? "text-base-text"
+            : "text-secondary-text"
+        } `}
       >
         {isSmallScreen ? (
           <HiOutlineColorSwatch className="text-base-text text-2xl" />
