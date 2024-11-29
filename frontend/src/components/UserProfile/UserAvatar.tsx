@@ -110,7 +110,7 @@ const UserAvatar = () => {
       </h1>
       <h1 className="-mt-4 text-xs font-thin">{user.email}</h1>
       {/* //*DIV FOR CHANGING GENDER */}
-      <div className="flex text-center rounded-md  border border-base-300 bg-base relative overflow-hidden">
+      <div className="flex justify-center items-center text-center rounded-md  border border-base-300 bg-base relative overflow-hidden">
         <div
           className={`absolute w-[45px] h-full z-10 bg-primary top-0 left-0 ${
             gender === "female" ? "translate-x-full" : "translate-x-0"
@@ -118,7 +118,7 @@ const UserAvatar = () => {
         ></div>
         <div
           onClick={() => handleGenderChange("male")}
-          className={`hover:cursor-pointer w-[45px] p-1 text-center text-sm md:text-normal z-20 ${
+          className={`hover:cursor-pointer w-[45px] p-1 text-center text-xs md:text-normal z-20 ${
             gender === "male" && "text-primary-text"
           }`}
         >
@@ -126,7 +126,7 @@ const UserAvatar = () => {
         </div>
         <div
           onClick={() => handleGenderChange("female")}
-          className={`hover:cursor-pointer w-[45px] p-1 text-center text-sm md:text-normal z-20 ${
+          className={`hover:cursor-pointer w-[45px] p-1 text-center text-xs md:text-normal z-20 ${
             gender === "female" && "text-primary-text"
           }`}
         >
