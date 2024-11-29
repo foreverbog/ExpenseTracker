@@ -261,8 +261,8 @@ export const HomeSectionTwoBgVector = () => {
     >
       <defs>
         <linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0">
-          <stop stopColor="var(--color-primary-darker)" offset="0%"></stop>
-          <stop stopColor="var(--color-primary-darker)" offset="100%"></stop>
+          <stop stopColor="var(--color-primary)" offset="0%"></stop>
+          <stop stopColor="var(--color-primary)" offset="100%"></stop>
         </linearGradient>
       </defs>
       <path
