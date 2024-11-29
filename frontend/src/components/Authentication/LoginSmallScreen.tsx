@@ -38,7 +38,7 @@ const LoginSmallScreen: React.FC<LoginSmallScreenProps> = ({
   serverError,
   handleSubmit,
 }) => {
-  const [t] = useTranslation("global");
+  const { t } = useTranslation("global");
 
   return (
     <motion.div

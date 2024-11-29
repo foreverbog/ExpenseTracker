@@ -8,7 +8,7 @@ import useMediaQuery from "../../hooks/useMediaQuery";
 import { useInView } from "framer-motion";
 
 const Landing = () => {
-  const [t] = useTranslation("global");
+  const { t } = useTranslation("global");
   const authContext = useContext(AuthContext);
   const isSmallScreen = useMediaQuery("(max-width: 767px)");
 

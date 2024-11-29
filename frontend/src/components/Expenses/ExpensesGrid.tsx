@@ -41,7 +41,7 @@ const ExpensesGrid: React.FC<ExpenseGridProps> = ({ activeExpenseType }) => {
 
   const { categoryIcons } = useCategoriesIcons();
   const isSmallScreen = useMediaQuery("(max-width: 767px)");
-  const [t] = useTranslation("global");
+  const { t } = useTranslation("global");
 
   //*State for Modal open/closed
   const [isEditExpenseOpen, setIsEditExpenseOpen] = useState(false);

@@ -52,7 +52,7 @@ const UserSettings = () => {
     e: React.FormEvent<HTMLFormElement>
   ) => {
     e.preventDefault();
-    handlePut(e);
+    await handlePut(e);
     refetchUser();
   };
 

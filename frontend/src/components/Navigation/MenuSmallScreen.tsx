@@ -18,7 +18,7 @@ const MenuSmallScreen: React.FC<MenuSmallScreenType> = ({
   isMenuOpen,
   setIsMenuOpen,
 }) => {
-  const [t] = useTranslation("global");
+  const { t } = useTranslation("global");
 
   return (
     <AnimatePresence>

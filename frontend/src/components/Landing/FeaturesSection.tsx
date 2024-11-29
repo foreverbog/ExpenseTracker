@@ -56,7 +56,7 @@ const features: FeaturesType[] = [
 ];
 
 const FeaturesSection = () => {
-  const [t] = useTranslation("global");
+  const { t } = useTranslation("global");
   const featureGrid = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(featureGrid, { once: true });
 

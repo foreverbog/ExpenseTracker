@@ -23,7 +23,7 @@ type UsersType = {
 };
 
 const UserFeedbackSection = () => {
-  const [t] = useTranslation("global");
+  const { t } = useTranslation("global");
   const feedbackRef = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(feedbackRef);
 

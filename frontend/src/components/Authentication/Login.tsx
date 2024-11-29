@@ -30,7 +30,7 @@ const Login = ({
 }: LoginProps) => {
   const API_URL: string = import.meta.env.VITE_API_SERVER;
 
-  const [t] = useTranslation("global");
+  const { t } = useTranslation("global");
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setAuthFormData({ ...authFormData, [name]: value });

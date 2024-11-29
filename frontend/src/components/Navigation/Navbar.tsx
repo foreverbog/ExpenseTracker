@@ -18,7 +18,7 @@ const Navbar = () => {
   const [isScrolling, setIsScrolling] = useState(false);
   const [isUserOpen, setIsUserOpen] = useState(false);
   const isSmallScreen = useMediaQuery("(max-width: 767px)");
-  const [t] = useTranslation("global");
+  const { t } = useTranslation("global");
 
   //* open/close the sidebar and add the no scroll to it if open
   const handleSideBar = () => {

@@ -34,7 +34,7 @@ const SignupSmallScreen: React.FC<SignupSmallScreenProps> = ({
   serverError,
   handleSubmit,
 }) => {
-  const [t] = useTranslation("global");
+  const { t } = useTranslation("global");
   const [isShowingConfirmPassword, setIsShowingConfirmPassword] =
     useState(false);
   return (

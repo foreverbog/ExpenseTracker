@@ -14,7 +14,7 @@ type SidebarProps = {
 
 const Sidebar: React.FC<SidebarProps> = ({ isSideBarOpen, handleSideBar }) => {
   const sideBarRef = useRef<HTMLDivElement | null>(null);
-  const [t] = useTranslation("global");
+  const { t } = useTranslation("global");
 
   const authContext = useContext(AuthContext);
   if (!authContext) {

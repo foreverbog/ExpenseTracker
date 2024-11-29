@@ -37,7 +37,7 @@ const ExpensesSubHeading: React.FC<ExpensesSubHeadingProps> = ({
   activeExpenseType,
 }) => {
   const isSmallScreen = useMediaQuery("(max-width: 767px)");
-  const [t] = useTranslation("global");
+  const { t } = useTranslation("global");
   const { expenseQueries, setExpenseQueries } = useExpensesContext();
   const [isDropdownOpen, setIsDropdownOpen] = useState<isDropdownOpenType>({
     month: false,

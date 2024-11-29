@@ -9,7 +9,7 @@ const ExpensesHeading: React.FC<ExpensesHeadingPropsType> = ({
   activeExpenseType,
   handleExpenseTypesSelect,
 }) => {
-  const [t] = useTranslation("global");
+  const { t } = useTranslation("global");
   const expensesTypes = [
     t("expenses.types.daily"),
     t("expenses.types.monthly"),

@@ -33,7 +33,7 @@ const LoginBigScreen: React.FC<LoginBigScreenProps> = ({
   serverError,
   handleSubmit,
 }) => {
-  const [t] = useTranslation("global");
+  const { t } = useTranslation("global");
 
   return (
     <>
