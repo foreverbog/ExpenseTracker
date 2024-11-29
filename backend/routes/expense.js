@@ -5,9 +5,11 @@ const {
   editExpense,
   deleteExpense,
 } = require("../controllers/expenseController");
+const requireAuth = require("../middlewares/requireAuth");
 
 const app = express.Router();
 
+app.use(requireAuth);
 //*Create Expense
 app.post("/:id/expenses", createExpense);
 

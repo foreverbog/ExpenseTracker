@@ -6,9 +6,11 @@ const {
   deleteTrip,
   createTripExpense,
 } = require("../controllers/tripController");
+const requireAuth = require("../middlewares/requireAuth");
 
 const app = express.Router();
 
+app.use(requireAuth);
 //*Create Trip
 app.post("/:id/trips", createTrip);
 

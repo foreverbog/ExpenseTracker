@@ -3,6 +3,7 @@ import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import moment from "moment";
 
 type AuthContextType = {
   user: UserType;
@@ -30,6 +31,7 @@ type UserType = {
 
 type DecodedTokentype = {
   id: string;
+  exp: number;
 };
 
 const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
@@ -76,7 +78,13 @@ const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
     setToken(newToken);
     Cookies.set("token", newToken, { expires: 365 });
     const decodedToken = jwtDecode<DecodedTokentype>(newToken);
-    getUser(decodedToken.id);
+    const currentTime = moment().unix();
+
+    if (decodedToken.exp < currentTime) {
+      logout();
+    } else {
+      getUser(decodedToken.id);
+    }
   };
   //*logout => remove the token
   const logout = () => {
@@ -101,7 +109,16 @@ const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
       setToken(storedToken);
 
       const decodedToken = jwtDecode<DecodedTokentype>(storedToken);
-      getUser(decodedToken.id);
+      const currentTime = moment().unix();
+
+      // console.log(decodedToken.exp);
+      // console.log(currentTime);
+
+      if (decodedToken.exp < currentTime) {
+        logout();
+      } else {
+        getUser(decodedToken.id);
+      }
     } else {
       setIsLoading(false);
     }

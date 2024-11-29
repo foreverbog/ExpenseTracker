@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { ExpensQueriesType } from "../context/ExpensesContext";
 import { toast, Slide } from "react-toastify";
+import Cookies from "js-cookie";
 
 type UseDeleteProps = {
   url: string;
@@ -22,6 +23,14 @@ const useDelete = ({
 }: UseDeleteProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
+  const [JWTtoken, setJWTtoken] = useState<string | null>(null);
+
+  useEffect(() => {
+    const token = Cookies.get("token");
+    if (token) {
+      setJWTtoken(token);
+    }
+  }, []);
 
   const handleDelete = async () => {
     setIsLoading(true);
@@ -31,7 +40,14 @@ const useDelete = ({
     }
 
     try {
-      const response = await axios.delete(url);
+      const config = JWTtoken
+        ? {
+            headers: {
+              Authorization: `Bearer ${JWTtoken}`,
+            },
+          }
+        : {};
+      const response = await axios.delete(url, config);
       if (response) {
         console.log(response);
       }

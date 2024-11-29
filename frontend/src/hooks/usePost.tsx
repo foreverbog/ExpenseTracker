@@ -1,7 +1,8 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ExpensQueriesType } from "../context/ExpensesContext";
 import { toast, Slide } from "react-toastify";
+import Cookies from "js-cookie";
 
 type UsePostProps = {
   url: string;
@@ -20,6 +21,14 @@ const usePost = ({
 }: UsePostProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
+  const [JWTtoken, setJWTtoken] = useState<string | null>(null);
+
+  useEffect(() => {
+    const token = Cookies.get("token");
+    if (token) {
+      setJWTtoken(token);
+    }
+  }, []);
 
   const handlePost = async (e: React.FormEvent<HTMLFormElement>) => {
     //* Prevent fomr refreshing
@@ -32,7 +41,14 @@ const usePost = ({
     setIsLoading(true);
     setServerError(null);
     try {
-      const response = await axios.post(url, formData);
+      const config = JWTtoken
+        ? {
+            headers: {
+              Authorization: `Bearer ${JWTtoken}`,
+            },
+          }
+        : {};
+      const response = await axios.post(url, formData, config);
 
       //* this is just to get rid of the unusued var error
       if (!response) {
