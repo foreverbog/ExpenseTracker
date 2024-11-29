@@ -100,7 +100,10 @@ function App() {
           <Route path="trips" element={<TripsOrganizer />} />
           <Route path="exchange" element={<ExchangeRates />} />
         </Route>
-        <Route path="settings" element={<Settings />} />
+        <Route
+          path="settings"
+          element={isAuthenticated ? <Settings /> : <Navigate to="/auth" />}
+        />
       </Routes>
     </div>
   );
