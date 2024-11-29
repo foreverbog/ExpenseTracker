@@ -82,11 +82,11 @@ function App() {
       />
       <CookiesInfo />
       <Routes>
+        <Route path="/*" element={<NotFound />} />
         <Route path="/" element={<MainLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/*" element={<NotFound />} />
         </Route>
         <Route
           path="/auth"

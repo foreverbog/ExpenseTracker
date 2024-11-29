@@ -104,8 +104,8 @@ export const frontStack: TechType[] = [
             y2="344"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#41D1FF" />
-            <stop offset="1" stop-color="#BD34FE" />
+            <stop stopColor="#41D1FF" />
+            <stop offset="1" stopColor="#BD34FE" />
           </linearGradient>
           <linearGradient
             id="paint1_linear"
@@ -115,9 +115,9 @@ export const frontStack: TechType[] = [
             y2="292.989"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#FFEA83" />
-            <stop offset="0.0833333" stop-color="#FFDD35" />
-            <stop offset="1" stop-color="#FFA800" />
+            <stop stopColor="#FFEA83" />
+            <stop offset="0.0833333" stopColor="#FFDD35" />
+            <stop offset="1" stopColor="#FFA800" />
           </linearGradient>
         </defs>
       </svg>
@@ -191,11 +191,11 @@ export const frontStack: TechType[] = [
     icon: (
       <svg
         className="w-6"
-        enable-background="new 0 0 2500 1250"
+        enableBackground="new 0 0 2500 1250"
         viewBox="0 0 2500 1250"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <g clip-rule="evenodd" fill-rule="evenodd">
+        <g clipRule="evenodd" fillRule="evenodd">
           <path d="m0 0h2500v1250h-2500z" />
           <path
             d="m673.8 479.4-.6-168.1h-93.8l.6 168.1 46.9 64.4zm-93.8 288.1v168.7h93.8v-168.7l-46.9-64.4z"
@@ -261,11 +261,11 @@ export const backStack: TechType[] = [
     icon: (
       <svg
         className="w-6"
-        enable-background="new 0 0 2500 1250"
+        enableBackground="new 0 0 2500 1250"
         viewBox="0 0 2500 1250"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <g clip-rule="evenodd" fill-rule="evenodd">
+        <g clipRule="evenodd" fillRule="evenodd">
           <path d="m0 0h2500v1250h-2500z" />
           <path
             d="m673.8 479.4-.6-168.1h-93.8l.6 168.1 46.9 64.4zm-93.8 288.1v168.7h93.8v-168.7l-46.9-64.4z"

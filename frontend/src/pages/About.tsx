@@ -44,6 +44,7 @@ const About = () => {
         <ul className="flex flex-col gap-2 mx-auto mt-6">
           {features.map((feature, index) => (
             <motion.li
+              key={index}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: index * 0.3 }}
@@ -86,6 +87,7 @@ const About = () => {
             <h1 className="font-semibold text-lg">Frontend:</h1>
             {frontStack.map((stack, index) => (
               <motion.li
+                key={index}
                 className="grid grid-cols-2 gap-2 items-center "
                 style={{ gridTemplateColumns: "150px auto" }}
                 initial={{ opacity: 0 }}
@@ -111,6 +113,7 @@ const About = () => {
             <h1 className="font-semibold text-lg">Backend:</h1>
             {backStack.map((stack, index) => (
               <motion.li
+                key={index}
                 className="grid grid-cols-2 gap-2 items-center "
                 style={{ gridTemplateColumns: "150px auto" }}
                 initial={{ opacity: 0 }}
