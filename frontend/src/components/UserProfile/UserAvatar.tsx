@@ -118,7 +118,7 @@ const UserAvatar = () => {
         ></div>
         <div
           onClick={() => handleGenderChange("male")}
-          className={`hover:cursor-pointer w-[45px] p-1 text-center text-xs md:text-normal z-20 ${
+          className={`hover:cursor-pointer w-[45px] p-1 text-center text-normal z-20 ${
             gender === "male" && "text-primary-text"
           }`}
         >
@@ -126,7 +126,7 @@ const UserAvatar = () => {
         </div>
         <div
           onClick={() => handleGenderChange("female")}
-          className={`hover:cursor-pointer w-[45px] p-1 text-center text-xs md:text-normal z-20 ${
+          className={`hover:cursor-pointer w-[45px] p-1 text-center text-normal z-20 ${
             gender === "female" && "text-primary-text"
           }`}
         >
