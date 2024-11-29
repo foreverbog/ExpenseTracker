@@ -104,7 +104,7 @@ const TripExpenseModal: React.FC<TripExpenseModalProps> = ({
     successMessage: t("toasters.edit", { feature: t("expense") }),
   });
 
-  console.log(expenseDetails);
+  // console.log(expenseDetails);
 
   const handleUpdate = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

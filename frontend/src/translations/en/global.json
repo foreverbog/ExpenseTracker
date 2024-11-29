@@ -134,6 +134,8 @@
       "title": "Update your Expense",
       "categoryChange": "Change Category"
     },
+    "largest": "Largest Expense",
+    "smallest": "Smallest Expense",
 
     "categories": {
       "house": "House",

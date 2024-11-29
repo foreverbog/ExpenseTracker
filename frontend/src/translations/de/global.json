@@ -135,6 +135,9 @@
       "categoryChange": "Kategorie ändern"
     },
 
+    "largest": "Größte Ausgabe",
+    "smallest": "Kleinste Ausgabe",
+
     "categories": {
       "house": "Haus",
       "food": "Essen",

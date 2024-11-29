@@ -43,7 +43,7 @@ const ExchangeContainer = () => {
       setRates(apiData[baseCurrency]);
     }
   }, [apiData, baseCurrency]);
-  console.log(rates);
+  // console.log(rates);
 
   const handleChangeBaseCurrency = (currency: string) => {
     setBaseCurrency(currency.toLowerCase());
