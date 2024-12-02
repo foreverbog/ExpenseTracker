@@ -47,7 +47,7 @@ const Settings = () => {
         <div className=" relative md:grid md:grid-cols-2 rounded-md   bg-base  h-[700px] w-[1200px] overflow-hidden drop-shadow-2xl">
           <Link
             to="/"
-            className="absolute flex items-center gap-2 p-2 hover:cursor-pointer group w-[200px] text-base-text "
+            className="absolute flex items-center gap-2 p-2 hover:cursor-pointer group w-[250px] text-base-text "
           >
             <FaHome className="group-hover:scale-105 transition-transform duration-300 ease-in-out text-lg" />
             <p className="group-hover:scale-105 transition-transform duration-300 ease-in-out text-normal underline">

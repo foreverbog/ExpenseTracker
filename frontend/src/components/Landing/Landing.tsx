@@ -6,11 +6,13 @@ import { AuthContext } from "../../context/AuthContext";
 import { useContext, useRef } from "react";
 import useMediaQuery from "../../hooks/useMediaQuery";
 import { useInView } from "framer-motion";
+import useFetch from "../../hooks/useFetch";
 
 const Landing = () => {
   const [t] = useTranslation("global");
   const authContext = useContext(AuthContext);
   const isSmallScreen = useMediaQuery("(max-width: 767px)");
+  const API_URL = import.meta.env.VITE_API_SERVER;
 
   //*REF for landing grid
   const landingGridRef = useRef<HTMLDivElement | null>(null);
@@ -21,6 +23,7 @@ const Landing = () => {
   }
   const { isAuthenticated, user } = authContext;
 
+  useFetch(API_URL);
   return (
     <div className=" min-h-dvh flex flex-col items-center justify-center relative overflow-hidden ">
       <LandingBackgroundVectors />
