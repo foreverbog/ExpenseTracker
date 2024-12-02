@@ -17,6 +17,7 @@ import Settings from "./pages/Settings";
 import TopLoadingBar from "react-top-loading-bar";
 import CookiesInfo from "./components/Landing/CookiesInfo";
 import NotFound from "./pages/NotFound";
+import { useTranslation } from "react-i18next";
 
 type LoadingBarRef = {
   staticStart: () => void;
@@ -26,6 +27,7 @@ type LoadingBarRef = {
 function App() {
   const themeContext = useContext(ThemeContext);
   const authContext = useContext(AuthContext);
+  const { t } = useTranslation("global");
 
   // Ensure authContext and themeContext are available
   if (!authContext) {
@@ -55,12 +57,22 @@ function App() {
   if (isLoading) {
     // Show nothing but loading bar during loading
     return (
-      <div className={`theme-${theme} relative`}>
+      <div
+        className={`theme-${theme} relative flex flex-col justify-center items-center h-dvh bg-base`}
+      >
         <TopLoadingBar
           color="var(--color-secondary)" // Customize the color of the loading bar
           height={3} // Customize the height of the loading bar
           ref={loadingBar} // Attach the ref to control it programmatically
         />
+        <img
+          src="../images/coffee.png"
+          alt="cup of coffee"
+          className="w-1/2 md:w-1/5 -mt-24"
+        />
+        <div className="animate-pulse font-base text-xl  text-center text-balance text-base-text">
+          {t("wakeUp")}
+        </div>
       </div>
     );
   }
