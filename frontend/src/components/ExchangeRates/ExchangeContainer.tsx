@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
+import axios from "axios";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { FaExchangeAlt } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
@@ -34,15 +35,16 @@ const ExchangeContainer = () => {
   //*URL FOR THE EXCHANGE RATES API
   const EXCHANGE_API_URL = import.meta.env.VITE_API_EXCHANGERATES;
 
-  const { apiData } = useFetch<ApiResponseType>(
-    `${EXCHANGE_API_URL}/${baseCurrency}.json`
-  );
-  //   console.log(apiData);
   useEffect(() => {
-    if (apiData && apiData[baseCurrency]) {
-      setRates(apiData[baseCurrency]);
-    }
-  }, [apiData, baseCurrency]);
+    const fetchRates = async () => {
+      const response = await axios.get(
+        `${EXCHANGE_API_URL}/${baseCurrency}.json`
+      );
+      const data = response?.data;
+      setRates(data[baseCurrency]);
+    };
+    fetchRates();
+  }, [baseCurrency, EXCHANGE_API_URL]);
   // console.log(rates);
 
   const handleChangeBaseCurrency = (currency: string) => {
