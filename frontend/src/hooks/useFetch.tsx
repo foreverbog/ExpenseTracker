@@ -6,14 +6,14 @@ const useFetch = <T,>(url: string | null) => {
   const [apiData, setApiData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [serverError, setServerError] = useState<string | null>(null);
-  const [JWTtoken, setJWTtoken] = useState<string | null>(null);
+  // const [JWTtoken, setJWTtoken] = useState<string | null>(null);
 
-  useEffect(() => {
-    const token = Cookies.get("token");
-    if (token) {
-      setJWTtoken(token);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const token = Cookies.get("token");
+  //   if (token) {
+  //     setJWTtoken(token);
+  //   }
+  // }, []);
 
   useEffect(() => {
     if (!url) return;
@@ -21,16 +21,18 @@ const useFetch = <T,>(url: string | null) => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const config = JWTtoken
+        const token = await Cookies.get("token");
+        if (!token) throw new Error("No token found");
+        const config = token
           ? {
               headers: {
-                Authorization: `Bearer ${JWTtoken}`,
+                Authorization: `Bearer ${token}`,
               },
             }
           : {};
 
         const response = await axios.get<T>(url, config);
-        const data = response?.data;
+        const data = await response?.data;
         setApiData(data);
         setIsLoading(false);
       } catch (error) {
@@ -45,7 +47,7 @@ const useFetch = <T,>(url: string | null) => {
       }
     };
     fetchData();
-  }, [url, JWTtoken]);
+  }, [url]);
 
   return { isLoading, apiData, serverError };
 };

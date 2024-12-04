@@ -121,10 +121,10 @@ const ExpenseContextProvider: React.FC<ExpensesContextProviderType> = ({
   const { apiData, isLoading } = useFetch<ExpenseType[]>(apiUrl && apiUrl);
   //*Set the expenses
   useEffect(() => {
-    if (apiData && user) {
+    if (apiData) {
       setExpenses(apiData);
     }
-  }, [apiData, user]);
+  }, [apiData]);
 
   return (
     <ExpenseContext.Provider
