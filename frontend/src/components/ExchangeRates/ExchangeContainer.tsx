@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import useFetch from "../../hooks/useFetch";
 import axios from "axios";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { FaExchangeAlt } from "react-icons/fa";
@@ -8,10 +7,6 @@ import useMediaQuery from "../../hooks/useMediaQuery";
 import { useTranslation } from "react-i18next";
 import mostUsedCurrencies from "../../utils/mostUsedCurrencies";
 import useCurrencyContext from "../../hooks/useCurrencyContext";
-
-type ApiResponseType = {
-  [key: string]: { [currencyCode: string]: number };
-};
 
 type RatesType = {
   [currencyCode: string]: number;
@@ -203,16 +198,6 @@ const ExchangeContainer = () => {
           </p>
         </div>
       </div>
-
-      {/* //*MOCKUP BTN FOR STORING THE USER CURRENCY */}
-      {/* <button
-        onClick={() => {
-          currencyHandler("€");
-      }}
-        className="pl-24 font-semibold cursor-pointer mt-24 bg-red-700 rounded-md p-4"
-      >
-        €
-      </button> */}
     </>
   );
 };
