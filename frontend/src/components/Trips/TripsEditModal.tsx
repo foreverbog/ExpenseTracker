@@ -40,10 +40,10 @@ const TripsEditModal: React.FC<TripsEditModalProps> = ({ trip, setTrip }) => {
   });
 
   //* Delete the trip, retrigger the trips fetch, set tripId to null to close the modal
-  const handleDeleteTrip = () => {
-    handleDelete();
-    reFetchTrips();
-    setTrip((prev) => prev && { ...prev, id: null });
+  const handleDeleteTrip = async () => {
+    await handleDelete();
+    await reFetchTrips();
+    await setTrip((prev) => prev && { ...prev, id: null });
   };
 
   //*useEffect for closing the modal when clicked outside of the modal
